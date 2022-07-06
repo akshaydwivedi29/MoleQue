@@ -27,17 +27,18 @@ These are css styles, others're attached
   width: 350px;
   height: auto;
 }
+
 .btntestcon {
   background: #F22283;
-    color: #fff;
-    text-transform: uppercase;
-    padding: 15px;
-    /* margin: 5px; */
-    border-radius: 10px;
-    border: none;
-    width: 169px;
-    text-align: left;
-    font-weight: bold;
+  color: #fff;
+  text-transform: uppercase;
+  padding: 15px;
+  /* margin: 5px; */
+  border-radius: 10px;
+  border: none;
+  width: 169px;
+  text-align: left;
+  font-weight: bold;
 }
 
 /* MoleQue Classes Ends */
@@ -144,14 +145,14 @@ These are css styles, others're attached
 /**************************************************/
 @font-face {
   font-family: "Roboto Light";
-  src: url("../fonts/roboto/Roboto-Regular.ttf") format("truetype");
+  src: url("assets/fonts/roboto/Roboto-Regular.ttf") format("truetype");
   font-style: normal;
   font-weight: 400;
 }
 
 @font-face {
   font-family: "Roboto Bold";
-  src: url("../fonts/roboto/Roboto-Bold.ttf") format("truetype");
+  src: url("assets/fonts/roboto/Roboto-Bold.ttf") format("truetype");
   font-style: normal;
   font-weight: 700;
   font-display: block;
@@ -159,20 +160,20 @@ These are css styles, others're attached
 
 @font-face {
   font-family: "Roboto Black";
-  src: url("../fonts/roboto/Roboto-Black.ttf") format("truetype");
+  src: url("assets/fonts/roboto/Roboto-Black.ttf") format("truetype");
   font-style: normal;
   font-weight: 900;
   font-display: block;
 }
 
 @font-face {
-  src: url("../fonts/Bebas_Neue/BebasNeue-Regular.ttf") format("truetype"), url("../fonts/Bebas_Neue/BebasNeue-Regular.otf") format("opentype");
+  src: url("assets/fonts/Bebas_Neue/BebasNeue-Regular.ttf") format("truetype"), url("assets/fonts/Bebas_Neue/BebasNeue-Regular.otf") format("opentype");
   font-family: "BebasNeue";
   font-display: block;
 }
 
 @font-face {
-  src: url("../fonts/Bebas_Neue/BebasNeue-Bold.ttf") format("truetype");
+  src: url("assets/fonts/Bebas_Neue/BebasNeue-Bold.ttf") format("truetype");
   font-family: "BebasNeueBold";
 }
 
@@ -195,7 +196,7 @@ These are css styles, others're attached
 .page {
   -webkit-transition: opacity 0.8s ease-in 0.2s;
   transition: opacity 0.8s ease-in 0.2s;
-  opacity: 0;
+  /* opacity: 0; */
 }
 
 body,
@@ -830,8 +831,8 @@ a:hover {
  * -------------------------- */
 @font-face {
   font-family: 'FontAwesome';
-  src: url("../fonts/fontawesome-webfont.eot?v=4.7.0");
-  src: url("../fonts/fontawesome-webfont.eot?#iefix&v=4.7.0") format("embedded-opentype"), url("../fonts/fontawesome-webfont.woff2?v=4.7.0") format("woff2"), url("../fonts/fontawesome-webfont.woff?v=4.7.0") format("woff"), url("../fonts/fontawesome-webfont.ttf?v=4.7.0") format("truetype"), url("../fonts/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular") format("svg");
+  src: url("assets/fonts/fontawesome-webfont.eot?v=4.7.0");
+  src: url("assets/fonts/fontawesome-webfont.eot?#iefix&v=4.7.0") format("embedded-opentype"), url("assets/fonts/fontawesome-webfont.woff2?v=4.7.0") format("woff2"), url("assets/fonts/fontawesome-webfont.woff?v=4.7.0") format("woff"), url("assets/fonts/fontawesome-webfont.ttf?v=4.7.0") format("truetype"), url("assets/fonts/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular") format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -4805,6 +4806,10 @@ a:hover {
   text-decoration: none;
 }
 
+.header-top__call-text>a:hover {
+  color: #f22283;
+}
+
 .header-top__call-text:last-child p:last-child {
   font-size: 16px;
 }
@@ -7993,7 +7998,7 @@ a:hover {
   height: 900px;
   width: 100%;
   z-index: 10;
-  background-image: url(./../images/jpg/about-us-bg.jpg);
+  background-image: url(assets/images/jpg/about-us-bg.jpg);
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -8330,7 +8335,7 @@ a:hover {
   z-index: 10;
   padding-top: 120px;
   padding-bottom: 120px;
-  background-image: url("./../images/jpg/appointments-2.jpg");
+  background-image: url("assets/images/jpg/appointments-2.jpg");
   background-position: 42% center;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -8549,7 +8554,7 @@ a:hover {
 .our-numbers {
   position: relative;
   z-index: 10;
-  background-image: url("./../images/jpg/our-numbers-bg.jpg");
+  background-image: url("assets/images/jpg/our-numbers-bg.jpg");
   background-position: 42% center;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -8834,7 +8839,7 @@ a:hover {
 .our-clients {
   position: relative;
   z-index: 10;
-  background-image: url("./../images/jpg/our-clients-bg.jpg");
+  background-image: url("assets/images/jpg/our-clients-bg.jpg");
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -8870,7 +8875,7 @@ a:hover {
 }
 
 .our-clients__carousel-item {
-  background-image: url("./../../images/icons/qu.png");
+  background-image: url("assets/images/icons/qu.png");
   background-position: center top;
   background-repeat: no-repeat;
   height: 330px;
@@ -9202,7 +9207,7 @@ a:hover {
 .emergency-call-2 {
   z-index: 10;
   position: relative;
-  background-image: url("./../images/jpg/emergency.jpg");
+  background-image: url("assets/images/jpg/emergency.jpg");
   background-position: center 70%;
   background-attachment: fixed;
   background-repeat: no-repeat;
