@@ -4741,7 +4741,7 @@ a:hover {
 .header-top .container {
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 .header-top__call {
@@ -4963,6 +4963,7 @@ a:hover {
   height: 70px;
   line-height: 70px;
   position: relative;
+  text-decoration: none;
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
