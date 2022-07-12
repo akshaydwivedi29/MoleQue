@@ -11,8 +11,58 @@
 <!------------------------------------------------------------------------>
 
 <div class="page">
-
+    <!-- Main Carousel Starts  -->
     <owl-carousel-o [options]="customOptions">
+        <ng-template carouselSlide>
+            <div class="slide">
+                <img src="../../assets/images/banner/banner1-1.jpg">
+                <div class="slide-item__bg">
+                    <div class="icon">
+                        <img src="../../assets/images/banner/banner-shape.png" />
+                    </div>
+                </div>
+                <div class="carousel_text">
+                    <h1 class="carousel_title">
+                        Multidisciplinary <span>Medical<br />Center</span> in new york
+                    </h1>
+                    <h4 class="carousel_subtitle">
+                        30% discount on full examination
+                    </h4>
+                    <button type="button" class="btn btn_large">BOOK A CONSULTATION</button>
+                </div>
+
+            </div>
+
+        </ng-template>
+
+
+
+        <ng-template carouselSlide>
+            <div class="slide">
+                <img src="../../assets/images/banner/banner1-2.jpg">
+            </div>
+        </ng-template>
+        <ng-template carouselSlide>
+            <div class="slide">
+                <img src="../../assets/images/banner/banner1-3.jpg">
+            </div>
+        </ng-template>
+        <ng-template carouselSlide>
+            <div class="slide">
+                <img src="../../assets/images/banner/banner1-4.jpg">
+            </div>
+        </ng-template>
+
+
+    </owl-carousel-o>
+
+    <!-- Main Carousel Ends  -->
+
+
+
+    <!-- Services Carousel Starts  -->
+
+    <owl-carousel-o [options]="serviceOptions">
         <ng-template carouselSlide>
             <div class="slide">
                 <img src="../../assets/images/banner/banner1-1.jpg">
@@ -33,8 +83,31 @@
                 <img src="../../assets/images/banner/banner1-4.jpg">
             </div>
         </ng-template>
+
+
     </owl-carousel-o>
 
+    <!-- Services Carousel Ends  -->
+
+    <!-- Main SearchBox Starts -->
+
+    <section class="testbyname">
+        <div class="input-group d-flex justify-content-center pt-4">
+            <div class="form-outline ">
+                <input type="text" name="testList" id="form1" class="form-control" (keyup)="sendData($event)" />
+                <section class="search_results">
+                    <p *ngIf="testlist.length <1 && hasQuery">Sorry Nothing Found </p>
+                    <ng-template ngFor let-testlist [ngForOf]="testlist" let-i="index">
+                        <hr *ngIf="i > 0" />
+                        <p>{{testlist.testname}}</p>
+
+                    </ng-template>
+                </section>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main SearchBox Ends -->
 
     <!-- Start of .about -->
     <section class="about" id="about">
@@ -78,17 +151,6 @@
                 <h2>
                     Browse & book Medical Tests as per your Health Conditions
                 </h2>
-                <!-- <p>
-            IBNSINO Medical Center provide patients with choices to ask for
-            the conducting and analyzing of several lab tests on-site at no
-            cost for prioritized patients or at 70% for people with an
-            insurance.
-          </p>
-          <a href="about.html" class="read-more">read more</a>
-          <div class="about__text-signature">
-            <img src="../../assets/images/png/signature.png" alt="signature" />
-            <h4>Richard Jefferson<br /><span>Chief Medical Center</span></h4>
-          </div> -->
 
                 <button href="#" class="btntestcon">Allergy</button>
                 <button href="#" class="btntestcon mx-2">Diabetes</button>
@@ -411,58 +473,6 @@
     </section>
     <!-- End of .faq -->
 
-    <!-- Start of .testimonials -->
-    <section class="testimonials">
-        <div class="testimonials__img">
-            <img src="../../assets/images/png/testimonials.png" />
-        </div>
-        <div class="container testimonials__content wow fadeInRight" data-wow-duration="1s">
-            <h1 class="section-title">our real <span>TESTIMONIALS</span></h1>
-            <div class="testimonials__content-carousel owl-carousel owl-theme">
-                <div class="testimonials__content-carousel-item">
-                    <q>I am very impressed with you all as well as being bighly
-                        proficient is aabsoulutely adoreble. I feel so relaxed in her
-                        capable hands and hope to be her patient for a very long time!
-                        You are a fantastic team and I feel very privileged to come to
-                        you all</q>
-                    <h2>Jonny Roberston</h2>
-                    <h4>Creative Manager of “KadirovGroup”</h4>
-                </div>
-
-                <div class="testimonials__content-carousel-item">
-                    <q>I am very impressed with you all as well as being bighly
-                        proficient is aabsoulutely adoreble. I feel so relaxed in her
-                        capable hands and hope to be her patient for a very long time!
-                        You are a fantastic team and I feel very privileged to come to
-                        you all</q>
-                    <h2>Jonny Roberston</h2>
-                    <h4>Creative Manager of “KadirovGroup”</h4>
-                </div>
-
-                <div class="testimonials__content-carousel-item">
-                    <q>I am very impressed with you all as well as being bighly
-                        proficient is aabsoulutely adoreble. I feel so relaxed in her
-                        capable hands and hope to be her patient for a very long time!
-                        You are a fantastic team and I feel very privileged to come to
-                        you all</q>
-                    <h2>Jonny Roberston</h2>
-                    <h4>Creative Manager of “KadirovGroup”</h4>
-                </div>
-
-                <div class="testimonials__content-carousel-item">
-                    <q>I am very impressed with you all as well as being bighly
-                        proficient is aabsoulutely adoreble. I feel so relaxed in her
-                        capable hands and hope to be her patient for a very long time!
-                        You are a fantastic team and I feel very privileged to come to
-                        you all</q>
-                    <h2>Jonny Roberston</h2>
-                    <h4>Creative Manager of “KadirovGroup”</h4>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- End of .testimonials -->
-
     <!-- Start of .emergency-call -->
     <section class="emergency-call">
         <div class="container">
@@ -532,480 +542,61 @@
     </section>
     <!-- End of .emergency-call -->
 
-    <!-- Start of .specialists -->
-    <section class="specialists">
-        <div class="specialists__bg">
-            <div class="icon">
-                <img src="../../assets/images/png-shapes/specialists__left-bottom-shape.png" />
-            </div>
+    <!-- Start of .testimonials -->
+    <section class="testimonials">
+        <div class="testimonials__img">
+            <img src="../../assets/images/png/testimonials.png" />
         </div>
-        <div class="container">
-            <h1 class="section-title">Our <span>Specialists</span></h1>
+        <div class="container testimonials__content wow fadeInRight" data-wow-duration="1s">
+            <h1 class="section-title">our real <span>TESTIMONIALS</span></h1>
+            <div class="testimonials__content-carousel owl-carousel owl-theme">
+                <div class="testimonials__content-carousel-item">
+                    <q>I am very impressed with you all as well as being bighly
+                        proficient is aabsoulutely adoreble. I feel so relaxed in her
+                        capable hands and hope to be her patient for a very long time!
+                        You are a fantastic team and I feel very privileged to come to
+                        you all</q>
+                    <h2>Jonny Roberston</h2>
+                    <h4>Creative Manager of “KadirovGroup”</h4>
+                </div>
 
-            <div class="specialists__carousel owl-carousel owl-theme">
-                <a href="doctors-single_right.html" class="specialists__item">
-                    <div class="inner-block">
-                        <div class="img">
-                            <img src="../../assets/images/jpg/specialist-1.jpg" />
-                        </div>
-                        <h1 class="name">Dr. William Gardner</h1>
-                        <h4 class="proffesia">Cardiolog</h4>
-                        <ul class="work-date">
-                            <li><span>Mon-Thu</span><span>08:00 - 18:00</span></li>
-                            <li><span>Friday</span><span>07:00 - 14:00</span></li>
-                            <li><span>Saturday</span><span>09:00 - 12:00</span></li>
-                        </ul>
-                        <span class="btn-2 btn-2_blue">Booking a visit<i class="fa fa-angle-right"></i></span>
-                    </div>
-                </a>
+                <div class="testimonials__content-carousel-item">
+                    <q>I am very impressed with you all as well as being bighly
+                        proficient is aabsoulutely adoreble. I feel so relaxed in her
+                        capable hands and hope to be her patient for a very long time!
+                        You are a fantastic team and I feel very privileged to come to
+                        you all</q>
+                    <h2>Jonny Roberston</h2>
+                    <h4>Creative Manager of “KadirovGroup”</h4>
+                </div>
 
-                <a href="doctors-single_right.html" class="specialists__item">
-                    <div class="inner-block">
-                        <div class="img">
-                            <img src="../../assets/images/jpg/specialist-2.jpg" />
-                        </div>
-                        <h1 class="name">Dr. Ann Great</h1>
-                        <h4 class="proffesia">Pediatrist</h4>
-                        <ul class="work-date">
-                            <li><span>Mon-Thu</span><span>08:00 - 18:00</span></li>
-                            <li><span>Friday</span><span>07:00 - 14:00</span></li>
-                            <li><span>Saturday</span><span>09:00 - 12:00</span></li>
-                        </ul>
-                        <span class="btn-2 btn-2_blue">Booking a visit<i class="fa fa-angle-right"></i></span>
-                    </div>
-                </a>
+                <div class="testimonials__content-carousel-item">
+                    <q>I am very impressed with you all as well as being bighly
+                        proficient is aabsoulutely adoreble. I feel so relaxed in her
+                        capable hands and hope to be her patient for a very long time!
+                        You are a fantastic team and I feel very privileged to come to
+                        you all</q>
+                    <h2>Jonny Roberston</h2>
+                    <h4>Creative Manager of “KadirovGroup”</h4>
+                </div>
 
-                <a href="doctors-single_right.html" class="specialists__item">
-                    <div class="inner-block">
-                        <div class="img">
-                            <img src="../../assets/images/jpg/specialist-3.jpg" />
-                        </div>
-                        <h1 class="name">Dr. John Whatson</h1>
-                        <h4 class="proffesia">Neurolog</h4>
-                        <ul class="work-date">
-                            <li><span>Mon-Thu</span><span>08:00 - 18:00</span></li>
-                            <li><span>Friday</span><span>07:00 - 14:00</span></li>
-                            <li><span>Saturday</span><span>09:00 - 12:00</span></li>
-                        </ul>
-                        <span class="btn-2 btn-2_blue">Booking a visit<i class="fa fa-angle-right"></i></span>
-                    </div>
-                </a>
-
-                <a href="doctors-single_right.html" class="specialists__item">
-                    <div class="inner-block">
-                        <div class="img">
-                            <img src="../../assets/images/jpg/specialist-4.jpg" />
-                        </div>
-                        <h1 class="name">Dr. Julia Roberts</h1>
-                        <h4 class="proffesia">Cardiolog</h4>
-                        <ul class="work-date">
-                            <li><span>Mon-Thu</span><span>08:00 - 18:00</span></li>
-                            <li><span>Friday</span><span>07:00 - 14:00</span></li>
-                            <li><span>Saturday</span><span>09:00 - 12:00</span></li>
-                        </ul>
-                        <span class="btn-2 btn-2_blue">Booking a visit<i class="fa fa-angle-right"></i></span>
-                    </div>
-                </a>
-                <a href="doctors-single_right.html" class="specialists__item">
-                    <div class="inner-block">
-                        <div class="img">
-                            <img src="../../assets/images/jpg/specialist-1.jpg" />
-                        </div>
-                        <h1 class="name">Dr. William Gardner</h1>
-                        <h4 class="proffesia">Cardiolog</h4>
-                        <ul class="work-date">
-                            <li><span>Mon-Thu</span><span>08:00 - 18:00</span></li>
-                            <li><span>Friday</span><span>07:00 - 14:00</span></li>
-                            <li><span>Saturday</span><span>09:00 - 12:00</span></li>
-                        </ul>
-                        <span class="btn-2 btn-2_blue">Booking a visit<i class="fa fa-angle-right"></i></span>
-                    </div>
-                </a>
-
-                <a href="doctors-single_right.html" class="specialists__item">
-                    <div class="inner-block">
-                        <div class="img">
-                            <img src="../../assets/images/jpg/specialist-2.jpg" />
-                        </div>
-                        <h1 class="name">Dr. Ann Great</h1>
-                        <h4 class="proffesia">Pediatrist</h4>
-                        <ul class="work-date">
-                            <li><span>Mon-Thu</span><span>08:00 - 18:00</span></li>
-                            <li><span>Friday</span><span>07:00 - 14:00</span></li>
-                            <li><span>Saturday</span><span>09:00 - 12:00</span></li>
-                        </ul>
-                        <span class="btn-2 btn-2_blue">Booking a visit<i class="fa fa-angle-right"></i></span>
-                    </div>
-                </a>
-
-                <a href="doctors-single_right.html" class="specialists__item">
-                    <div class="inner-block">
-                        <div class="img">
-                            <img src="../../assets/images/jpg/specialist-3.jpg" />
-                        </div>
-                        <h1 class="name">Dr. John Whatson</h1>
-                        <h4 class="proffesia">Neurolog</h4>
-                        <ul class="work-date">
-                            <li><span>Mon-Thu</span><span>08:00 - 18:00</span></li>
-                            <li><span>Friday</span><span>07:00 - 14:00</span></li>
-                            <li><span>Saturday</span><span>09:00 - 12:00</span></li>
-                        </ul>
-                        <span class="btn-2 btn-2_blue">Booking a visit<i class="fa fa-angle-right"></i></span>
-                    </div>
-                </a>
-
-                <a href="doctors-single_right.html" class="specialists__item">
-                    <div class="inner-block">
-                        <div class="img">
-                            <img src="../../assets/images/jpg/specialist-4.jpg" />
-                        </div>
-                        <h1 class="name">Dr. Julia Roberts</h1>
-                        <h4 class="proffesia">Cardiolog</h4>
-                        <ul class="work-date">
-                            <li><span>Mon-Thu</span><span>08:00 - 18:00</span></li>
-                            <li><span>Friday</span><span>07:00 - 14:00</span></li>
-                            <li><span>Saturday</span><span>09:00 - 12:00</span></li>
-                        </ul>
-                        <span class="btn-2 btn-2_blue">Booking a visit<i class="fa fa-angle-right"></i></span>
-                    </div>
-                </a>
-                <a href="doctors-single_right.html" class="specialists__item">
-                    <div class="inner-block">
-                        <div class="img">
-                            <img src="../../assets/images/jpg/specialist-1.jpg" />
-                        </div>
-                        <h1 class="name">Dr. William Gardner</h1>
-                        <h4 class="proffesia">Cardiolog</h4>
-                        <ul class="work-date">
-                            <li><span>Mon-Thu</span><span>08:00 - 18:00</span></li>
-                            <li><span>Friday</span><span>07:00 - 14:00</span></li>
-                            <li><span>Saturday</span><span>09:00 - 12:00</span></li>
-                        </ul>
-                        <span class="btn-2 btn-2_blue">Booking a visit<i class="fa fa-angle-right"></i></span>
-                    </div>
-                </a>
-
-                <a href="doctors-single_right.html" class="specialists__item">
-                    <div class="inner-block">
-                        <div class="img">
-                            <img src="../../assets/images/jpg/specialist-2.jpg" />
-                        </div>
-                        <h1 class="name">Dr. Ann Great</h1>
-                        <h4 class="proffesia">Pediatrist</h4>
-                        <ul class="work-date">
-                            <li><span>Mon-Thu</span><span>08:00 - 18:00</span></li>
-                            <li><span>Friday</span><span>07:00 - 14:00</span></li>
-                            <li><span>Saturday</span><span>09:00 - 12:00</span></li>
-                        </ul>
-                        <span class="btn-2 btn-2_blue">Booking a visit<i class="fa fa-angle-right"></i></span>
-                    </div>
-                </a>
-
-                <a href="doctors-single_right.html" class="specialists__item">
-                    <div class="inner-block">
-                        <div class="img">
-                            <img src="../../assets/images/jpg/specialist-3.jpg" />
-                        </div>
-                        <h1 class="name">Dr. John Whatson</h1>
-                        <h4 class="proffesia">Neurolog</h4>
-                        <ul class="work-date">
-                            <li><span>Mon-Thu</span><span>08:00 - 18:00</span></li>
-                            <li><span>Friday</span><span>07:00 - 14:00</span></li>
-                            <li><span>Saturday</span><span>09:00 - 12:00</span></li>
-                        </ul>
-                        <span class="btn-2 btn-2_blue">Booking a visit<i class="fa fa-angle-right"></i></span>
-                    </div>
-                </a>
-
-                <a href="doctors-single_right.html" class="specialists__item">
-                    <div class="inner-block">
-                        <div class="img">
-                            <img src="../../assets/images/jpg/specialist-4.jpg" />
-                        </div>
-                        <h1 class="name">Dr. Julia Roberts</h1>
-                        <h4 class="proffesia">Cardiolog</h4>
-                        <ul class="work-date">
-                            <li><span>Mon-Thu</span><span>08:00 - 18:00</span></li>
-                            <li><span>Friday</span><span>07:00 - 14:00</span></li>
-                            <li><span>Saturday</span><span>09:00 - 12:00</span></li>
-                        </ul>
-                        <span class="btn-2 btn-2_blue">Booking a visit<i class="fa fa-angle-right"></i></span>
-                    </div>
-                </a>
-                <a href="doctors-single_right.html" class="specialists__item">
-                    <div class="inner-block">
-                        <div class="img">
-                            <img src="../../assets/images/jpg/specialist-1.jpg" />
-                        </div>
-                        <h1 class="name">Dr. William Gardner</h1>
-                        <h4 class="proffesia">Cardiolog</h4>
-                        <ul class="work-date">
-                            <li><span>Mon-Thu</span><span>08:00 - 18:00</span></li>
-                            <li><span>Friday</span><span>07:00 - 14:00</span></li>
-                            <li><span>Saturday</span><span>09:00 - 12:00</span></li>
-                        </ul>
-                        <span class="btn-2 btn-2_blue">Booking a visit<i class="fa fa-angle-right"></i></span>
-                    </div>
-                </a>
-
-                <a href="doctors-single_right.html" class="specialists__item">
-                    <div class="inner-block">
-                        <div class="img">
-                            <img src="../../assets/images/jpg/specialist-2.jpg" />
-                        </div>
-                        <h1 class="name">Dr. Ann Great</h1>
-                        <h4 class="proffesia">Pediatrist</h4>
-                        <ul class="work-date">
-                            <li><span>Mon-Thu</span><span>08:00 - 18:00</span></li>
-                            <li><span>Friday</span><span>07:00 - 14:00</span></li>
-                            <li><span>Saturday</span><span>09:00 - 12:00</span></li>
-                        </ul>
-                        <span class="btn-2 btn-2_blue">Booking a visit<i class="fa fa-angle-right"></i></span>
-                    </div>
-                </a>
-
-                <a href="doctors-single_right.html" class="specialists__item">
-                    <div class="inner-block">
-                        <div class="img">
-                            <img src="../../assets/images/jpg/specialist-3.jpg" />
-                        </div>
-                        <h1 class="name">Dr. John Whatson</h1>
-                        <h4 class="proffesia">Neurolog</h4>
-                        <ul class="work-date">
-                            <li><span>Mon-Thu</span><span>08:00 - 18:00</span></li>
-                            <li><span>Friday</span><span>07:00 - 14:00</span></li>
-                            <li><span>Saturday</span><span>09:00 - 12:00</span></li>
-                        </ul>
-                        <span class="btn-2 btn-2_blue">Booking a visit<i class="fa fa-angle-right"></i></span>
-                    </div>
-                </a>
-
-                <a href="doctors-single_right.html" class="specialists__item">
-                    <div class="inner-block">
-                        <div class="img">
-                            <img src="../../assets/images/jpg/specialist-4.jpg" />
-                        </div>
-                        <h1 class="name">Dr. Julia Roberts</h1>
-                        <h4 class="proffesia">Cardiolog</h4>
-                        <ul class="work-date">
-                            <li><span>Mon-Thu</span><span>08:00 - 18:00</span></li>
-                            <li><span>Friday</span><span>07:00 - 14:00</span></li>
-                            <li><span>Saturday</span><span>09:00 - 12:00</span></li>
-                        </ul>
-                        <span class="btn-2 btn-2_blue">Booking a visit<i class="fa fa-angle-right"></i></span>
-                    </div>
-                </a>
+                <div class="testimonials__content-carousel-item">
+                    <q>I am very impressed with you all as well as being bighly
+                        proficient is aabsoulutely adoreble. I feel so relaxed in her
+                        capable hands and hope to be her patient for a very long time!
+                        You are a fantastic team and I feel very privileged to come to
+                        you all</q>
+                    <h2>Jonny Roberston</h2>
+                    <h4>Creative Manager of “KadirovGroup”</h4>
+                </div>
             </div>
         </div>
     </section>
-    <!-- End of .specialists -->
+    <!-- End of .testimonials -->
 
-    <!-- Start of latest-news -->
-    <section class="latest-news">
-        <div class="latest-news__bg">
-            <div class="icon">
-                <img src="../../assets/images/png-shapes/latest-news__right-bottom-shape.png" />
-            </div>
-        </div>
-        <div class="container">
-            <h1 class="section-title">latest <span>news</span></h1>
 
-            <div class="latest-news__carousel owl-carousel owl-theme">
-                <a href="blog-details_right.html" class="latest-news__item">
-                    <div class="inner-block">
-                        <div class="img">
-                            <img src="../../assets/images/jpg/latest-news1.jpg" />
-                            <h1 class="date">Now 28. 2019</h1>
-                        </div>
-                        <h4 class="title">Improvements in Technology</h4>
-                        <p class="text">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-                            do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                            Ut enim ad minim veniam.
-                        </p>
-                        <span class="read-more-2">read more</span>
-                    </div>
-                </a>
 
-                <a href="blog-details_right.html" class="latest-news__item">
-                    <div class="inner-block">
-                        <div class="img">
-                            <img src="../../assets/images/jpg/latest-news2.jpg" />
-                            <h1 class="date">Now 28. 2019</h1>
-                        </div>
-                        <h4 class="title">Improvements in Technology</h4>
-                        <p class="text">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-                            do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                            Ut enim ad minim veniam.
-                        </p>
-                        <span class="read-more-2">read more</span>
-                    </div>
-                </a>
 
-                <a href="blog-details_right.html" class="latest-news__item">
-                    <div class="inner-block">
-                        <div class="img">
-                            <img src="../../assets/images/jpg/latest-news3.jpg" />
-                            <h1 class="date">Now 28. 2019</h1>
-                        </div>
-                        <h4 class="title">Improvements in Technology</h4>
-                        <p class="text">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-                            do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                            Ut enim ad minim veniam.
-                        </p>
-                        <span class="read-more-2">read more</span>
-                    </div>
-                </a>
-
-                <a href="blog-details_right.html" class="latest-news__item">
-                    <div class="inner-block">
-                        <div class="img">
-                            <img src="../../assets/images/jpg/latest-news1.jpg" />
-                            <h1 class="date">Now 28. 2019</h1>
-                        </div>
-                        <h4 class="title">Improvements in Technology</h4>
-                        <p class="text">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-                            do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                            Ut enim ad minim veniam.
-                        </p>
-                        <span class="read-more-2">read more</span>
-                    </div>
-                </a>
-
-                <a href="blog-details_right.html" class="latest-news__item">
-                    <div class="inner-block">
-                        <div class="img">
-                            <img src="../../assets/images/jpg/latest-news2.jpg" />
-                            <h1 class="date">Now 28. 2019</h1>
-                        </div>
-                        <h4 class="title">Improvements in Technology</h4>
-                        <p class="text">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-                            do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                            Ut enim ad minim veniam.
-                        </p>
-                        <span class="read-more-2">read more</span>
-                    </div>
-                </a>
-
-                <a href="blog-details_right.html" class="latest-news__item">
-                    <div class="inner-block">
-                        <div class="img">
-                            <img src="../../assets/images/jpg/latest-news3.jpg" />
-                            <h1 class="date">Now 28. 2019</h1>
-                        </div>
-                        <h4 class="title">Improvements in Technology</h4>
-                        <p class="text">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-                            do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                            Ut enim ad minim veniam.
-                        </p>
-                        <span class="read-more-2">read more</span>
-                    </div>
-                </a>
-
-                <a href="blog-details_right.html" class="latest-news__item">
-                    <div class="inner-block">
-                        <div class="img">
-                            <img src="../../assets/images/jpg/latest-news1.jpg" />
-                            <h1 class="date">Now 28. 2019</h1>
-                        </div>
-                        <h4 class="title">Improvements in Technology</h4>
-                        <p class="text">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-                            do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                            Ut enim ad minim veniam.
-                        </p>
-                        <span class="read-more-2">read more</span>
-                    </div>
-                </a>
-
-                <a href="blog-details_right.html" class="latest-news__item">
-                    <div class="inner-block">
-                        <div class="img">
-                            <img src="../../assets/images/jpg/latest-news2.jpg" />
-                            <h1 class="date">Now 28. 2019</h1>
-                        </div>
-                        <h4 class="title">Improvements in Technology</h4>
-                        <p class="text">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-                            do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                            Ut enim ad minim veniam.
-                        </p>
-                        <span class="read-more-2">read more</span>
-                    </div>
-                </a>
-
-                <a href="blog-details_right.html" class="latest-news__item">
-                    <div class="inner-block">
-                        <div class="img">
-                            <img src="../../assets/images/jpg/latest-news3.jpg" />
-                            <h1 class="date">Now 28. 2019</h1>
-                        </div>
-                        <h4 class="title">Improvements in Technology</h4>
-                        <p class="text">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-                            do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                            Ut enim ad minim veniam.
-                        </p>
-                        <span class="read-more-2">read more</span>
-                    </div>
-                </a>
-
-                <a href="blog-details_right.html" class="latest-news__item">
-                    <div class="inner-block">
-                        <div class="img">
-                            <img src="../../assets/images/jpg/latest-news1.jpg" />
-                            <h1 class="date">Now 28. 2019</h1>
-                        </div>
-                        <h4 class="title">Improvements in Technology</h4>
-                        <p class="text">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-                            do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                            Ut enim ad minim veniam.
-                        </p>
-                        <span class="read-more-2">read more</span>
-                    </div>
-                </a>
-
-                <a href="blog-details_right.html" class="latest-news__item">
-                    <div class="inner-block">
-                        <div class="img">
-                            <img src="../../assets/images/jpg/latest-news2.jpg" />
-                            <h1 class="date">Now 28. 2019</h1>
-                        </div>
-                        <h4 class="title">Improvements in Technology</h4>
-                        <p class="text">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-                            do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                            Ut enim ad minim veniam.
-                        </p>
-                        <span class="read-more-2">read more</span>
-                    </div>
-                </a>
-
-                <a href="blog-details_right.html" class="latest-news__item">
-                    <div class="inner-block">
-                        <div class="img">
-                            <img src="../../assets/images/jpg/latest-news3.jpg" />
-                            <h1 class="date">Now 28. 2019</h1>
-                        </div>
-                        <h4 class="title">Improvements in Technology</h4>
-                        <p class="text">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-                            do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                            Ut enim ad minim veniam.
-                        </p>
-                        <span class="read-more-2">read more</span>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </section>
-    <!-- End of latest-news -->
 
 
 </div>
@@ -1030,52 +621,5 @@
         </button>
     </form>
 </div>
-
-<!-- Popup Form -->
-<div class="popup-form">
-    <div class="inner-block">
-        <span class="popup-form-close" id="popup-form-close">&times;</span>
-        <div class="img">
-            <img src="../../assets/images/jpg/popup-form.jpg" />
-        </div>
-        <form>
-            <h1 class="section-title">make an appointment</h1>
-            <div class="input-box">
-                <label for="popup-name">Name *</label>
-                <input type="text" id="popup-name" required />
-            </div>
-
-            <div class="input-box">
-                <label for="popup-email">Email *</label>
-                <input type="text" id="popup-email" required />
-            </div>
-
-            <div class="input-box">
-                <label for="popup-phone">Phone *</label>
-                <input type="tel" id="popup-phone" required />
-            </div>
-
-            <div class="select-box">
-                <i class="fa fa-angle-down"></i>
-                <select>
-                    <option selected>Department</option>
-                    <option selected>Department2</option>
-                    <option selected>Department3</option>
-                    <option selected>Department4</option>
-                </select>
-            </div>
-            <button type="submit" class="btn btn-2_pink">send</button>
-        </form>
-    </div>
-</div>
-
-
-
-
-
-
-
-
-
 
 <app-footer></app-footer>

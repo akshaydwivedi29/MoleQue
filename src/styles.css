@@ -41,6 +41,21 @@ These are css styles, others're attached
   font-weight: bold;
 }
 
+.slide>img {
+  /* position: absolute; */
+  z-index: -1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
+  -o-object-position: center 25%;
+  object-position: center 25%;
+  -webkit-transform: scale(1);
+  transform: scale(1);
+}
+
 /* MoleQue Classes Ends */
 
 
@@ -4741,7 +4756,7 @@ a:hover {
 .header-top .container {
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 .header-top__call {
@@ -4963,7 +4978,6 @@ a:hover {
   height: 70px;
   line-height: 70px;
   position: relative;
-  text-decoration: none;
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
@@ -5265,7 +5279,7 @@ a:hover {
   position: relative;
 }
 
-.header-bottom__banner .slide-item__bg {
+.slide-item__bg {
   position: absolute;
   top: 0;
   left: 0;
@@ -5275,18 +5289,18 @@ a:hover {
   background-image: linear-gradient(to right, #ffffff 20%, transparent);
 }
 
-.header-bottom__banner .slide-item__bg>.icon {
+.slide-item__bg>.icon {
   max-width: 530px;
   width: 40%;
   top: 0;
   left: 0;
 }
 
-.header-bottom__banner .slide-item__bg>.icon>img {
+.slide-item__bg>.icon>img {
   width: 100%;
 }
 
-.header-bottom__banner .slide-item>img {
+.slide-item>img {
   position: absolute;
   z-index: -1;
   left: 0;
@@ -5308,7 +5322,7 @@ a:hover {
   flex-direction: column;
 }
 
-.header-bottom__banner .slide-item__title {
+.slide-item__title {
   margin-left: -2px;
   text-transform: uppercase;
   font-size: 78px;
@@ -5333,7 +5347,7 @@ a:hover {
   font-size: 25px;
 }
 
-.header-bottom__banner .slide-item__block {
+.slide-item__block {
   opacity: 0;
   -webkit-transform: translateX(150px);
   transform: translateX(150px);
@@ -5732,7 +5746,6 @@ a:hover {
 .about__bg>.icon {
   position: absolute;
   right: -20px;
-  top: -24px;
 }
 
 .about .container {
@@ -6578,150 +6591,14 @@ a:hover {
   object-position: center center;
 }
 
-/**************************************************/
-/* .testimonials */
-/**************************************************/
-.testimonials {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
 
-.testimonials__img {
-  max-width: 50%;
-  width: 100%;
-  overflow: hidden;
-  position: relative;
-}
-
-.testimonials__img>img {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  -o-object-fit: cover;
-  object-fit: cover;
-  -o-object-position: center center;
-  object-position: center center;
-}
-
-.testimonials__content {
-  padding: 160px 75px 270px;
-  max-width: 50%;
-  width: 100%;
-}
-
-.testimonials__content-carousel {
-  margin-top: 50px;
-}
-
-.testimonials__content-carousel-item {
-  -webkit-box-flex: 0;
-  -ms-flex: 0 0 790px;
-  flex: 0 0 790px;
-  max-width: 790px;
-}
-
-.testimonials__content-carousel-item q {
-  font-style: italic;
-  font-size: 19px;
-  line-height: 40px;
-  letter-spacing: -.15px;
-}
-
-.testimonials__content-carousel-item h2 {
-  margin-top: 30px;
-  font-size: 21.5px;
-  font-family: "Roboto Bold";
-}
-
-.testimonials__content-carousel-item h4 {
-  margin-top: 13px;
-  font-size: 17.3px;
-  color: #1f3d9d;
-}
-
-.testimonials__content-carousel .owl-nav {
-  position: absolute;
-  bottom: -115px;
-  width: 300px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-}
-
-.testimonials__content-carousel .owl-nav button {
-  overflow: hidden;
-  border-radius: 8px !important;
-  width: 49px;
-  height: 49px;
-  border: 1px solid #1f3d9d !important;
-  background-color: #ffffff !important;
-  -webkit-transition: all .3s linear;
-  transition: all .3s linear;
-}
-
-.testimonials__content-carousel .owl-nav button:hover {
-  background-color: #1f3d9d !important;
-}
-
-.testimonials__content-carousel .owl-nav button:hover span {
-  color: #ffffff;
-}
-
-.testimonials__content-carousel .owl-nav button span {
-  line-height: 20px;
-  font-weight: 900;
-  margin-top: -5px;
-  font-size: 30px;
-  color: #1f3d9d;
-}
-
-.testimonials__content-carousel .owl-dots {
-  height: 50px;
-  position: absolute;
-  bottom: -110px;
-  left: 80px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
-.testimonials__content-carousel .owl-dots>.owl-dot {
-  margin-right: 2px;
-}
-
-.testimonials__content-carousel .owl-dots>.owl-dot:last-child {
-  margin-right: 0;
-}
-
-.testimonials__content-carousel .owl-dots>.owl-dot:last-child>span {
-  margin-right: 0;
-}
-
-.testimonials__content-carousel .owl-dot span {
-  min-width: 10px;
-  height: 10px;
-}
-
-.testimonials__content-carousel .owl-dot.active span {
-  width: 48px;
-  -webkit-transition: all .3s ease;
-  transition: all .3s ease;
-  background-color: #f22283 !important;
-}
 
 /**************************************************/
 /* .emergency-call */
 /**************************************************/
 .emergency-call {
   padding-top: 160px;
-  padding-bottom: 140px;
+  padding-bottom: 100px;
   background-color: #f4f4f4;
 }
 
