@@ -32,11 +32,12 @@ export class HomepageComponent implements OnInit {
     mouseDrag: true,
     touchDrag: true,
     pullDrag: true,
-    dots: false,
+    dots: true,
     navSpeed: 700,
     navText: ['', ''],
     items: 4,
-    nav: false,
+    nav: true,
+    margin: 15,
   };
 
   testlist: Array<TestList> = [];
