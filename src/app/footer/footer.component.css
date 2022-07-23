@@ -1,3 +1,114 @@
+.footer {
+    bottom: 100px;
+}
+
+.footer_stick {
+    bottom: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
 ul {
     padding-left: 0 !important;
 }
+
+.logoimg {
+    width: 350px;
+    height: auto;
+}
+
+/* GET CALL STARTS */
+
+.get_call {
+    background: #3550A7;
+    min-height: 100px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 998;
+}
+
+.get_call_hide {
+    bottom: -108px;
+}
+
+.get_call>span {
+    position: absolute;
+    top: -28px;
+    right: 0;
+    font-size: 15px;
+    color: #fff;
+    cursor: pointer;
+    background: #3550A7;
+    padding: 3px 10px;
+    border-radius: 3px;
+}
+
+.get_call>span:hover {
+    font-weight: bolder;
+    background: #F22283;
+}
+
+.close_get_call::before {
+    content: "CLOSE";
+}
+
+.open_get_call::before {
+    content: "GET A CALL";
+}
+
+.get_call>.container>.get_call_text {
+    font-size: 22px;
+    font-family: 'roboto bold';
+    color: #fff;
+    text-align: center;
+    text-transform: none;
+    margin: 10px 0px 10px 0px;
+}
+
+.get_call_input {
+    position: relative;
+    min-width: 450px;
+    padding: 0px 0px 15px 0px;
+    box-shadow: 0 0 40px rgba(51, 51, 51, .1);
+}
+
+.get_call_input input {
+    height: 40px;
+    text-indent: 25px;
+    border: 2px solid #d6d4d4;
+}
+
+.get_call_input input:focus {
+    box-shadow: none;
+    border: 3px solid #F22283;
+
+}
+
+.get_call_input .bi-phone-fill {
+    position: absolute;
+    top: 5px;
+    left: 10px;
+    font-size: 21px;
+    color: #F22283;
+}
+
+.get_call_input button {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    height: 40px;
+    width: 145px;
+    background: #F22283;
+    color: #fff;
+    letter-spacing: 1px;
+    padding: 5px 2px;
+    text-transform: none;
+    border-radius: 0px 4px 4px 0px;
+}
+
+
+/* GET CALL ENDS */

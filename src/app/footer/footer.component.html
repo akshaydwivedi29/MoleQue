@@ -1,5 +1,26 @@
+<footer class="get_call" [ngClass]="open ? 'get_call':'get_call_hide'">
+    <span class="close_get_call" (click)="toggleGetCall()"
+        [ngClass]="toggler ? 'close_get_call':'open_get_call'"></span>
+    <div class="container d-flex align-items-center justify-content-center">
+        <div class="get_call_text">
+            Get a call back from our Health Advisor
+        </div>
+    </div>
+
+    <div class="container d-flex align-items-center justify-content-center">
+        <div class="get_call_input">
+            <i class="bi bi-phone-fill"></i>
+            <input type="tel" class="form-control" placeholder="Enter your 10 digit mobile number" name="getCall">
+            <button class="btn">Get a free call</button>
+        </div>
+    </div>
+</footer>
+
+
+
+
 <!-- Start of .footer -->
-<footer class="footer">
+<footer class="footer" [ngClass]="open ? 'footer':'footer_stick'">
     <div class="footer__bg">
         <div class="icon1">
             <img src="../../assets/images/png-shapes/footer.png" />
@@ -24,8 +45,7 @@
                                 </svg>
                             </div>
                             <div class="text">
-                                <a href="tel:+18004567890">+1 800 456 7890</a>
-                                <a href="tel:+18004567890">+1 800 456 7890</a>
+                                <a href="tel:+918826350303">+91 882 635 0303</a>
                             </div>
                         </div>
 
@@ -38,7 +58,7 @@
                                 </svg>
                             </div>
                             <div class="text">
-                                <a href="mailto:inbox@medihelp.com">inbox@medihelp.com</a>
+                                <a href="mailto:care@molequediagnostics.com">care@molequediagnostics.com</a>
                             </div>
                         </div>
                     </div>
