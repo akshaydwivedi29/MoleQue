@@ -21,7 +21,7 @@ export class TestsService {
   searchTestList(query: string) {
     return this.http
       .post<{ payload: Array<TestList> }>(
-        '/api/getTestList',
+        'https://moleque-service.azurewebsites.net/getTestList',
         { payload: query },
         {
           headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
