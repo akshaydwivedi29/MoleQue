@@ -1,3 +1,283 @@
-a {
-    text-decoration: none !important;
+/* Top Header Starts */
+
+.top_header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    background-color: rgb(31, 61, 157);
+    padding: 20px;
+    height: 80px;
 }
+
+.top_header>.top_header_logo>img {
+    width: 300px;
+    height: auto;
+    cursor: pointer;
+}
+
+.search {
+    position: relative;
+    min-width: 500px;
+    box-shadow: 0 0 40px rgba(51, 51, 51, 0.1);
+}
+
+.search>.search_input input {
+    height: 40px;
+    text-indent: 25px;
+    border: 2px solid #d6d4d4;
+}
+
+.search>.search_input input:focus {
+    box-shadow: none;
+    border: 2px solid #F22283;
+
+}
+
+.search>.search_input>.fa-search {
+    position: absolute;
+    top: 12px;
+    left: 16px;
+}
+
+.search>.search_input button {
+    position: absolute;
+    top: 1px;
+    right: 1px;
+    height: 38px;
+    width: 110px;
+    background: #F22283;
+    color: #fff;
+}
+
+.search section {
+    position: absolute;
+    top: 40px;
+    left: 1px;
+    background: #fff;
+    padding: 15px 0px 5px 15px;
+    max-height: 227px;
+    min-width: 500px;
+    line-height: 5px;
+    overflow-y: scroll;
+    overflow-X: scroll;
+}
+
+.search section a {
+    text-decoration: none;
+    color: #1F3D9D;
+    font-weight: 600;
+}
+
+.login>a,
+.cart>a {
+    color: #fff;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.login>a:hover,
+.cart>a:hover {
+    color: #f22283;
+}
+
+
+
+/* Top Header Ends */
+
+/* Navbar Starts */
+
+.nav_header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 40px;
+    margin-top: 80px;
+    padding: 10px 0;
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: 0px 0px 8px 2px #000000;
+    z-index: 990;
+}
+
+.menu ul {
+    padding: 0;
+    margin: 0;
+}
+
+.menu ul li {
+    list-style-type: none;
+    font-family: roboto light;
+    font-weight: 700;
+    color: #333333;
+    display: inline-block;
+    font-size: 15px;
+    margin-left: 24px;
+}
+
+.menu ul li a {
+    text-decoration: none;
+    color: #333333;
+}
+
+.menu ul li a:hover {
+    color: #f22283;
+}
+
+
+
+.menu ul li:hover {
+    color: #f22283;
+    cursor: pointer;
+    transition: 0.4s ease-in-out;
+}
+
+/* Fixed Navbar Starts */
+
+.fixed {
+    position: fixed;
+    width: 100%;
+    transition: 0.2s linear;
+    top: 0px;
+}
+
+.nofixed {
+    position: static;
+    transition: 0.2s linear;
+    top: -70px;
+}
+
+/* Fixed Navbar Ends */
+
+/* MENU DROPDOWN */
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    right: 0;
+    display: none;
+    position: absolute;
+    background: rgba(255, 255, 255, 0.8);
+    min-width: 280px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 990;
+}
+
+.dropdown-content a {
+    color: #fff;
+    padding: 4px 15px;
+    text-decoration: none;
+    font-size: medium;
+    display: block;
+    border-bottom: 0.1em solid #222;
+    text-align: left;
+}
+
+.dropdown-content a:hover {
+    background-color: #222;
+    color: #ffc812;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* MEDIA QUERY  */
+
+@media only screen and (max-width: 999px) {
+    header {
+        height: 60px;
+        padding: 5px 0;
+    }
+
+    .logo img {
+        width: 170px;
+        margin-top: 12px;
+    }
+
+    .menu {
+        position: fixed;
+        right: -260px;
+        top: 46px;
+        width: 260px;
+        height: 100%;
+        background: #fff;
+    }
+
+    .menu ul li {
+        display: block;
+        text-align: left;
+        margin: 0;
+        padding: 10px 0 10px 26px;
+        border-bottom: 1px solid #fff;
+    }
+
+    .menu_icon {
+        display: inline-block;
+        position: relative;
+        top: 13px;
+        right: 5px;
+    }
+
+    .menu_icon span {
+        width: 30px;
+        height: 3px;
+        background: #fff;
+        display: block;
+        transition: 0.2s ease-in-out;
+    }
+
+    .menu_icon span:nth-child(2) {
+        margin: 6px 0;
+    }
+
+    .menu_icon_Class span:nth-child(2) {
+        display: none;
+    }
+
+    .menu_icon_Class span:nth-child(1) {
+        transform: rotate(46deg);
+    }
+
+    .menu_icon_Class span:nth-child(3) {
+        transform: rotate(-47deg);
+        margin-top: -3px;
+    }
+
+    .menuClass {
+        right: 0;
+        transition: 0.4s ease-in-out;
+    }
+
+    .dropdown-content {
+        min-width: 260px;
+    }
+}
+
+/* Navbar Ends*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Media Query Starts */
+@media (max-width: 999px) {
+    .header-top {
+        display: none !important;
+    }
+}
+
+
+/* Media Query Ends */

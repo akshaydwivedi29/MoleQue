@@ -1,0 +1,56 @@
+.test_details {
+    padding: 50px;
+    margin-top: 80px;
+    background: linear-gradient(to bottom, #1f3d9d 0%, #f22283 100%);
+}
+
+.test_details>.test_info>.card {
+    width: 50%;
+    box-shadow: 0 2px 20px 0 rgb(0 0 0 / 10%);
+    border: solid 1px #909090;
+    border-radius: 20px;
+    background: #fff;
+    padding: 10px;
+}
+
+.test_details>.test_info>.card>.card-body {
+    background: #CAE2FA;
+    border-radius: 20px;
+}
+
+.test_details>.test_info>.card>.card-body>.card-title,
+.card_item>.card_item_text>.question,
+.card_item>.card_item_text>.question>a {
+    font-family: 'Roboto Bold';
+    color: rgb(242, 34, 131);
+}
+
+.card_item>.card_item_text>.question>a:hover {
+    color: #1f3d9d;
+}
+
+.card_item {
+    background: #fff;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.card_item>.card_item_text>.answer {
+    font-family: 'Roboto Bold';
+    color: #000;
+    font-size: 14px;
+}
+
+.card_item_button>button {
+    background: #1f3d9d;
+    color: #fff;
+    letter-spacing: 1px !important;
+}
+
+.card_item_button>button:hover {
+    background: #f22283;
+}
+
+i {
+    color: #1f3d9d;
+}
