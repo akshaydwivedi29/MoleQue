@@ -9,7 +9,6 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { TestDetailsComponent } from './test-details/test-details.component';
-import { SocialWidgetComponent } from './social-widget/social-widget.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +17,6 @@ import { SocialWidgetComponent } from './social-widget/social-widget.component';
     FooterComponent,
     HomepageComponent,
     TestDetailsComponent,
-    SocialWidgetComponent,
   ],
   imports: [
     BrowserModule,
