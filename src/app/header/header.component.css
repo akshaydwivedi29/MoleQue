@@ -1,3 +1,7 @@
+a {
+    text-decoration: none !important;
+}
+
 /* Top Header Starts */
 
 .top_header {
@@ -12,7 +16,7 @@
 }
 
 .top_header>.top_header_logo>img {
-    width: 300px;
+    width: 250px;
     height: auto;
     cursor: pointer;
 }
@@ -70,15 +74,19 @@
     font-weight: 600;
 }
 
-.login>a,
-.cart>a {
+.login_cart>a {
     color: #fff;
-    font-size: 22px;
+    font-size: 21px;
     cursor: pointer;
 }
 
-.login>a:hover,
-.cart>a:hover {
+.login_cart>.login::after {
+    content: "|";
+    color: #fff;
+    padding: 0 5px;
+}
+
+.login_cart>a:hover {
     color: #f22283;
 }
 
@@ -261,23 +269,31 @@
 /* Navbar Ends*/
 
 
+/* APP DOWNLOAD STARTS  */
 
-
-
-
-
-
-
-
-
-
-
-/* Media Query Starts */
-@media (max-width: 999px) {
-    .header-top {
-        display: none !important;
-    }
+.app_download {
+    position: absolute;
+    top: 0;
+    right: 8%;
 }
 
+.app_download .ios_app,
+.app_download .android_app {
+    background: none;
+    color: #fff;
+    border: none;
+    font-size: 14px;
+}
 
-/* Media Query Ends */
+.app_download .ios_app:hover,
+.app_download .android_app:hover {
+    color: #f22283;
+}
+
+.app_download>.partition::after {
+    content: "|";
+    color: #fff;
+    padding: 0 5px;
+}
+
+/* APP DOWNLOAD ENDS  */
