@@ -17,7 +17,7 @@
         <section *ngIf="testlist.length >1">
             <ng-template ngFor let-testlist [ngForOf]="testlist" let-i="index" class="test_results">
                 <hr *ngIf="i > 0" />
-                <a [routerLink]="['test-details',{SearchText:testlist.testname}]">{{testlist.testname}}</a>
+                <a [routerLink]="['/test-details',{SearchText:testlist.testname}]">{{testlist.testname}}</a>
             </ng-template>
         </section>
     </div>
@@ -36,7 +36,7 @@
     </div> -->
 
     <div class="login_cart">
-        <a href="#" class="login">
+        <a routerLink="/login" class="login">
             <span class="bi bi-person-fill"></span>&nbsp;Login
         </a>
         <a href="#">
