@@ -9,6 +9,8 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { TestDetailsComponent } from './test-details/test-details.component';
+import { LoginComponent } from './login/login.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +19,8 @@ import { TestDetailsComponent } from './test-details/test-details.component';
     FooterComponent,
     HomepageComponent,
     TestDetailsComponent,
+    LoginComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,

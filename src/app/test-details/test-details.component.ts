@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 import { TestList, TestsService } from '../header/tests.service';
 
 @Component({
@@ -14,13 +14,16 @@ export class TestDetailsComponent implements OnInit {
     private route: ActivatedRoute,
     private testsService: TestsService
   ) {
-    this.route.paramMap.subscribe((params) => {
-      this.searchName = this.route.snapshot.params['SearchText'];
+    this.route.paramMap.subscribe((params: ParamMap) => {
+      this.searchName = params.get('SearchText');
+      this.getData();
     });
   }
 
   ngOnInit(): void {
-    this.getData();
+    console.log('init');
+
+    // this.searchName = this.route.snapshot.params['SearchText'];
   }
 
   getData() {
