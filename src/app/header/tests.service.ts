@@ -8,7 +8,7 @@ export interface TestList {
   testname: string;
   price: string;
   status: string;
-  Department: string;
+  department: string;
 }
 
 @Injectable({
