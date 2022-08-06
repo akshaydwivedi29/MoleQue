@@ -11,6 +11,7 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "~14.0.4",
+    "@angular/cdk": "^14.1.0",
     "@angular/common": "~14.0.4",
     "@angular/compiler": "~14.0.4",
     "@angular/core": "~14.0.4",
@@ -24,13 +25,15 @@
     "bootstrap-icons": "^1.9.0",
     "font-awesome": "^4.7.0",
     "jquery": "^3.6.0",
+    "ngx-bootstrap": "^9.0.0",
     "ngx-owl-carousel-o": "^14.0.0",
+    "ngx-tabs": "^0.0.13",
     "rxjs": "~7.5.5",
     "tslib": "^2.4.0",
     "zone.js": "~0.11.6"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~14.0.4",
+    "@angular-devkit/build-angular": "^14.1.0",
     "@angular/cli": "~14.0.4",
     "@angular/compiler-cli": "~14.0.4",
     "@types/jasmine": "~4.0.3",

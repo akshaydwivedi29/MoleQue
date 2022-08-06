@@ -10,6 +10,7 @@ import { TestList, TestsService } from '../header/tests.service';
 export class TestDetailsComponent implements OnInit {
   searchName: any;
   testlist: Array<TestList> = [];
+  toggleTab: boolean = false;
   constructor(
     private route: ActivatedRoute,
     private testsService: TestsService
@@ -22,8 +23,6 @@ export class TestDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     console.log('init');
-
-    // this.searchName = this.route.snapshot.params['SearchText'];
   }
 
   getData() {
@@ -34,5 +33,9 @@ export class TestDetailsComponent implements OnInit {
 
         console.log(results);
       });
+  }
+
+  changeTab() {
+    this.toggleTab = !this.toggleTab;
   }
 }

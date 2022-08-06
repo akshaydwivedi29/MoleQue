@@ -299,7 +299,7 @@ ul {
 /* GET CALL STARTS */
 
 .get_call {
-    background: #3550A7;
+    background: rgba(53, 80, 167, 0.8);
     min-height: 100px;
     position: fixed;
     bottom: 0;
@@ -319,7 +319,7 @@ ul {
     font-size: 15px;
     color: #fff;
     cursor: pointer;
-    background: #3550A7;
+    background: rgba(53, 80, 167, 0.8);
     padding: 3px 10px;
     border-radius: 3px;
 }

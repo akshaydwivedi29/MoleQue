@@ -1,6 +1,6 @@
 .dashboard {
-    margin-top: 120px;
-    padding: 10px;
+    margin-top: 125px;
+    padding: 30px 10px;
     background: #EEEEEE;
 }
 
@@ -23,6 +23,7 @@
     border-radius: 5px;
     min-width: 250px;
     min-height: 250px;
+    cursor: pointer;
 }
 
 .dashboard .container .card .card-body {
