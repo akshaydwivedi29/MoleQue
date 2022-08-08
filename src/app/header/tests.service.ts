@@ -10,8 +10,9 @@ export interface TestList {
   department: string;
   checktime: string;
   tat: string;
+  instructions: string;
   description: string;
-  special_instructions: string;
+  symptoms: string;
   price: string;
   stability: string;
   temperature: string;
