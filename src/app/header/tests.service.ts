@@ -6,9 +6,18 @@ export interface TestList {
   _id: string;
   testcode: string;
   testname: string;
-  price: string;
-  status: string;
+  alias: string;
   department: string;
+  checktime: string;
+  tat: string;
+  description: string;
+  special_instructions: string;
+  price: string;
+  stability: string;
+  temperature: string;
+  method: string;
+  specimen: string;
+  tags: string;
 }
 
 @Injectable({
