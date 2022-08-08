@@ -41,7 +41,8 @@
     border-radius: 20px;
 }
 
-.test_details .test_info>.card>.card-body>.card-title,
+.test_details .test_info>.card>.card-body>.card-title>.test_name>.question,
+.test_details .test_info>.card>.card-body>.card-title>.test_code>.question,
 .card_item>.card_item_text>.question,
 .card_item>.card_item_text>.question>a {
     font-family: 'Roboto Bold';
@@ -58,7 +59,9 @@
     border-radius: 10px;
 }
 
-.card_item>.card_item_text>.answer {
+.card_item>.card_item_text>.answer,
+.test_details .test_info>.card>.card-body>.card-title>.test_name>.answer,
+.test_details .test_info>.card>.card-body>.card-title>.test_code>.answer {
     font-family: 'Roboto Bold';
     color: #000;
     font-size: 14px;
