@@ -11,6 +11,8 @@ export class HeaderComponent implements OnInit {
 
   testlist: Array<TestList> = [];
   hasQuery: Boolean = false;
+  menuVariable: boolean = false;
+  menu_icon_variable: boolean = false;
 
   sendData(event: any) {
     let query: string = event.target.value;
@@ -31,8 +33,6 @@ export class HeaderComponent implements OnInit {
       });
   }
 
-  menuVariable: boolean = false;
-  menu_icon_variable: boolean = false;
   openMenu() {
     this.menuVariable = !this.menuVariable;
     this.menu_icon_variable = !this.menu_icon_variable;
