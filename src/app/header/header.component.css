@@ -60,12 +60,12 @@ a {
     top: 40px;
     left: 1px;
     background: #fff;
-    padding: 15px 0px 5px 15px;
+    padding: 15px 0px 15px 15px;
     max-height: 227px;
     min-width: 500px;
     line-height: 5px;
-    overflow-y: scroll;
-    overflow-X: scroll;
+    overflow-y: auto;
+    white-space: nowrap;
 }
 
 .search section a {
