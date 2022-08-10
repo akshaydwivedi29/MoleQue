@@ -9,15 +9,15 @@
         <div class="search_input">
             <i class="fa fa-search"></i>
             <input type="text" class="form-control" placeholder="Search for a Test, Health Package" name="testList"
-                (keyup)="sendData($event)">
+                id="searchText" (focusout)="close()" (keyup)="sendData($event)">
             <button class="btn">Search</button>
             <p *ngIf="testlist.length <1 && hasQuery">Sorry Nothing Found </p>
         </div>
 
-        <section *ngIf="testlist.length >1">
+        <section *ngIf="testlist.length >1" id="searchResults">
             <ng-template ngFor let-testlist [ngForOf]="testlist" let-i="index" class="test_results">
                 <hr *ngIf="i > 0" />
-                <a [routerLink]="['/test-details',{SearchText:testlist.testname}]">{{testlist.testname}}</a>
+                <a (click)="routeData(testlist.testname)">{{testlist.testname}}</a>
             </ng-template>
         </section>
     </div>
