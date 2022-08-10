@@ -59,7 +59,7 @@ a {
     top: 40px;
     left: 1px;
     background: #fff;
-    padding: 15px 0px 15px 15px;
+    padding: 15px;
     max-height: 227px;
     min-width: 500px;
     line-height: 5px;
@@ -71,6 +71,7 @@ a {
     text-decoration: none;
     color: #1F3D9D;
     font-weight: 600;
+    cursor: pointer;
 }
 
 
