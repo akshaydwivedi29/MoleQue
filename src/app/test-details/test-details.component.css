@@ -80,3 +80,37 @@
 i {
     color: #1f3d9d;
 }
+
+/* RESPONSIVE MEDIA QUERY  */
+@media only screen and (max-width: 1400px) {
+
+    .toggle_btn {
+        background: #fff;
+        width: 25%;
+        height: 40px;
+        border-radius: 20px;
+    }
+
+}
+
+@media only screen and (max-width: 1210px) {
+
+    .toggle_btn {
+        background: #fff;
+        width: 30%;
+        height: 40px;
+        border-radius: 20px;
+    }
+
+}
+
+@media only screen and (max-width: 1030px) {
+
+    .toggle_btn {
+        background: #fff;
+        width: 40%;
+        height: 40px;
+        border-radius: 20px;
+    }
+
+}
