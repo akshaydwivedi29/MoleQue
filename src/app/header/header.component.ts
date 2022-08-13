@@ -45,13 +45,10 @@ export class HeaderComponent implements OnInit {
       this.hasQuery = false;
       this.testlist = [];
       $('#searchText').val('');
-    }, 200);
+    }, 300);
   }
   routeData(searchText: any) {
     console.log(searchText);
     this.router.navigate(['/test-details', { SearchText: searchText }]);
-    // this.hasQuery = false;
-    // this.testlist = [];
-    // $('#searchText').val('');
   }
 }
