@@ -70,7 +70,8 @@
                             </div>
                             <ng-template ngFor let-testlist [ngForOf]="testlist">
                                 <div class="card_item_button">
-                                    <button type="button" class="btn" (click)="routeData(testlist.testname)">Add To
+                                    <button type="button" class="btn"
+                                        (click)="routeData(testlist.testname); saveData()">Add To
                                         Cart</button>
                                 </div>
                             </ng-template>

@@ -11,6 +11,7 @@ export class TestDetailsComponent implements OnInit {
   searchName: any;
   testlist: Array<TestList> = [];
   toggleTab: boolean = false;
+  session: any;
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -42,5 +43,16 @@ export class TestDetailsComponent implements OnInit {
 
   routeData(testName: any) {
     this.router.navigate(['/cart', { testName: testName }]);
+  }
+
+  saveData() {
+    let testlist = {
+      testcode: 12,
+      testname: '',
+      price: '',
+    };
+
+    localStorage.setItem('session', JSON.stringify(testlist));
+    console.log(localStorage.getItem('session'));
   }
 }
