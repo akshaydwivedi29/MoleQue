@@ -12,6 +12,9 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { TestDetailsComponent } from './test-details/test-details.component';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { SignupComponent } from './signup/signup.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,12 +24,15 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     TestDetailsComponent,
     LoginComponent,
     DashboardComponent,
+    ForgotPasswordComponent,
+    SignupComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
     CarouselModule,
   ],
   providers: [],

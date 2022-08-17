@@ -8,27 +8,56 @@
         <div class="login_item">
             <div class="login_item_top">
                 <img src="../../assets/images/logo.png" alt="MoleQue Diagnostics">
-                <h5>SIGN IN</h5>
-                <h4>Get started with your health check now.</h4>
-                <p>Already an existing User? Please Sign-in with your registered credentials.</p>
+                <div *ngIf="!showOTP">
+                    <h5>SIGN IN</h5>
+                    <h4>Get started with your health check now.</h4>
+                    <p>Already an existing User? Please Sign-in with your registered credentials.</p>
+                </div>
             </div>
 
-            <div class="login_item_form">
-                <form>
+            <p class="error" *ngIf="showlogInError">Mobile number or password are invalid</p>
+            <p class="error" *ngIf="showlogInWithOtpError">Mobile number is not registered</p>
+
+            <div class="login_item_form" *ngIf="!showOTP">
+                <form [formGroup]="logInForm" (ngSubmit)="login()">
+
                     <div class="form-group">
                         <span>+91</span>
-                        <input type="text" class="form-control" id="mobile" placeholder="10 digit mobile number">
+                        <input type="tel" class="form-control" formControlName="number" id="mobile"
+                            placeholder="10 digit mobile number">
+                        <p class="error"
+                            *ngIf="logInForm.controls['number'].invalid && logInForm.controls['number'].touched ">
+                            Please provide valid mobile number</p>
                     </div>
 
                     <div class="form-group mt-3">
-                        <input type="password" class="form-control" id="password" placeholder="Password">
+                        <input type="password" class="form-control" formControlName="password" id="password"
+                            placeholder="Password">
+                        <p class="error"
+                            *ngIf="logInForm.controls['password'].invalid && logInForm.controls['password'].touched">
+                            Password is invaild.</p>
                     </div>
 
+                    <a routerLink="/forgot-password" id="forgotPswd">Forgot Password</a>
 
                     <div class="login_buttons mt-3">
-                        <button type="button" routerLink="/dashboard" class="login_btn_1">LOGIN</button>
+                        <button type="submit" class="login_btn_1" [disabled]="!logInForm.valid">LOGIN</button>
                         <p class="text-center my-2">or</p>
-                        <button type="submit" class="login_btn_otp">LOGIN WITH OTP</button>
+                        <button type="button" (click)="loginWithOtp()"[disabled]="logInForm.controls['number'].invalid" class="login_btn_otp">LOGIN WITH OTP</button>
+                    </div>
+                    <a id="signUp" routerLink="/signup">SIGN UP</a>
+
+                </form>
+            </div>
+
+            <div class="login_item_form" *ngIf="showOTP">
+                <form [formGroup]="otpForm">
+                    <div class="form-group mt-3">
+                        <input type="tel" class="form-control" formControlName="otpCode" id="otpCode" placeholder="Enter OTP">
+                    </div>
+
+                    <div class="login_buttons mt-3">
+                        <button type="submit" class="login_btn_1" (click)="submitOtp()">Submit</button>
                     </div>
 
                 </form>
