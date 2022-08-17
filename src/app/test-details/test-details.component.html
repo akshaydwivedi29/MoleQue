@@ -21,7 +21,7 @@
                         <div class="card-title d-flex align-items-center mb-3">
                             <div class="test_name d-flex align-items-center">
                                 <div class="question">Test Name:&nbsp;</div>
-                                <div class="answer ms-2">{{obj.testname}}</div>
+                                <div class="answer ms-2" id="testName">{{obj.testname}}</div>
                             </div>
                             <div class="test_code d-flex align-items-center ms-5">
                                 <div class="question">Test Code:</div>
@@ -68,9 +68,13 @@
                                 <div class="question mb-1">Price</div>
                                 <div class="answer">₹ {{obj.price}}</div>
                             </div>
-                            <div class="card_item_button">
-                                <button type="button" class="btn">Add To Cart</button>
-                            </div>
+                            <ng-template ngFor let-testlist [ngForOf]="testlist">
+                                <div class="card_item_button">
+                                    <button type="button" class="btn" (click)="routeData(testlist.testname)">Add To
+                                        Cart</button>
+                                </div>
+                            </ng-template>
+
                         </div>
 
                     </div>
@@ -177,9 +181,12 @@
                                 <div class="question mb-1">Price</div>
                                 <div class="answer">₹ {{obj.price}}</div>
                             </div>
-                            <div class="card_item_button">
-                                <button type="button" class="btn">Add To Cart</button>
-                            </div>
+                            <ng-template ngFor let-testlist [ngForOf]="testlist">
+                                <div class="card_item_button">
+                                    <button type="button" class="btn" (click)="routeData(testlist.testname)">Add To
+                                        Cart</button>
+                                </div>
+                            </ng-template>
                         </div>
 
                     </div>

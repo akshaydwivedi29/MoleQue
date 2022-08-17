@@ -1,44 +1,68 @@
-.login .login_img img {
-    width: 60vw;
+.login {
+    background-image: url(../../assets/images/banner/login-banner.webp);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     height: 100vh;
+    position: relative;
 }
 
-.login .login_item .login_item_top img {
+.login .card {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 10%;
+    margin: auto 0;
+    height: min-content;
+    width: min-content;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: rgba(255, 255, 255, 0.35) 0px 5px 15px;
+}
+
+.login .card .card-body .login_item {
+    padding: 20px 30px;
+}
+
+.login .card .card-body .login_item .login_item_top img {
     width: 300px;
     height: auto;
     background: #1f3d9d;
     padding: 7px;
     border-radius: 5px;
+    cursor: pointer;
 }
 
-.login .login_item .login_item_top h5 {
-    margin-top: 20px;
+.login .card .card-body .login_item .toggle_btn button {
+    background: #f22283;
+    line-height: 20px;
+    padding: 5px 10px;
+    border: none;
+    color: #fff;
+    border-radius: 5px;
+    font-size: 20px;
+}
+
+.login .card .card-body .login_item .login_item_form form h5,
+.login .card .card-body .login_item .login_item_form .social_login label {
     color: #1f3d9d;
     font-size: 17px;
     font-weight: 600;
+    margin: 20px 0;
 }
 
-.login .login_item .login_item_top h4 {
-    font-size: 26px;
-    margin-top: 60px;
-}
-
-.login .login_item .login_item_top p {
-    font-size: 13px;
-}
-
-.login .login_item {
-    padding: 20px 100px;
-}
-
-.login .login_item .login_item_form {
+.login .card .card-body .login_item .login_item_form .form-group {
     position: relative;
-    padding: 10px 80px 0 0;
 }
 
-.login .login_item .login_item_form span {
+.login .card .card-body .login_item .login_item_form .form-group input:focus {
+    box-shadow: none;
+    border: 1px solid #f22283;
+}
+
+.login .card .card-body .login_item .login_item_form .form-group span {
     position: absolute;
-    top: 10px;
+    top: 0;
     left: 0;
     background: #1f3d9d;
     color: #fff;
@@ -46,7 +70,23 @@
     border-radius: 5px 0 0 5px;
 }
 
-.login .login_item .login_item_form .login_buttons button {
+.login .card .card-body .login_item .login_item_form .form-check .form-check-input {
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+
+.login .card .card-body .login_item .login_item_form .form-check .form-check-input:checked {
+    background-color: #1f3d9d;
+    border-color: #1f3d9d;
+}
+
+.login .card .card-body .login_item .login_item_form .form-check .form-check-label {
+    color: #1f3d9d;
+    font-size: 12px;
+}
+
+.login .card .card-body .login_item .login_item_form .login_buttons button {
     background: #f22283;
     color: #fff;
     padding: 5px 10px;
@@ -59,9 +99,31 @@
 
 }
 
+.login .card .card-body .login_item .login_item_form .social_login_icon i {
+    font-size: 45px;
+}
 
-.login .login_item .login_item_form .login_buttons p {
-    margin-bottom: 0;
+.login .card .card-body .login_item .login_item_form .social_login_icon i:nth-child(1) {
+    color: #db4a39;
+}
+
+.login .card .card-body .login_item .login_item_form .social_login_icon i:nth-child(2) {
+    color: #4267B2;
+}
+
+#otp {
+    width: 60%;
+}
+
+#otp_btn {
+    background: #f22283;
+    color: #fff;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 3px;
+    line-height: 25px;
+    font-size: 17px;
+
 }
 
 #mobile {

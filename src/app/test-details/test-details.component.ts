@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { TestList, TestsService } from '../header/tests.service';
 
 @Component({
@@ -13,6 +13,7 @@ export class TestDetailsComponent implements OnInit {
   toggleTab: boolean = false;
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private testsService: TestsService
   ) {
     this.route.paramMap.subscribe((params: ParamMap) => {
@@ -37,5 +38,9 @@ export class TestDetailsComponent implements OnInit {
 
   changeTab() {
     this.toggleTab = !this.toggleTab;
+  }
+
+  routeData(testName: any) {
+    this.router.navigate(['/cart', { testName: testName }]);
   }
 }

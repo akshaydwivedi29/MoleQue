@@ -48,7 +48,6 @@ export class HeaderComponent implements OnInit {
     }, 300);
   }
   routeData(searchText: any) {
-    console.log(searchText);
     this.router.navigate(['/test-details', { SearchText: searchText }]);
   }
 }

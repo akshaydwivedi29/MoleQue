@@ -1,41 +1,97 @@
 <section class="login">
-    <div class="d-flex align-items-center justify-content-between">
 
-        <div class="login_img">
-            <img src="../../assets/images/jpg/login.jpg" alt="Login / Sign Up">
-        </div>
+    <div class="card">
+        <div class="card-body">
+            <div class="login_item">
 
-        <div class="login_item">
-            <div class="login_item_top">
-                <img src="../../assets/images/logo.png" alt="MoleQue Diagnostics">
-                <h5>SIGN IN</h5>
-                <h4>Get started with your health check now.</h4>
-                <p>Already an existing User? Please Sign-in with your registered credentials.</p>
+                <div class="login_item_top" routerLink="">
+                    <img src="../../assets/images/logo.png" alt="MoleQue Diagnostics">
+                </div>
+
+                <div class="toggle_btn d-flex align-items-center justify-content-between mt-3" (click)="changeTab()">
+                    <button type="button" [ngClass]="toggleTab ? 'bg-white text-dark' : ''">Login</button>
+                    <button type="button" [ngClass]="toggleTab ? '' : 'bg-white text-dark'">Sign Up</button>
+                </div>
+
+                <div class="login_item_form">
+
+                    <form [ngClass]="toggleTab ? 'd-none' : ''">
+
+                        <h5>Existing users login here</h5>
+
+                        <div class="form-group">
+                            <span>+91</span>
+                            <input type="tel" maxlength="10" class="form-control" id="mobile"
+                                placeholder="10 digit mobile number" required>
+                        </div>
+
+                        <div class="form-group mt-3">
+                            <input type="password" class="form-control" id="password" placeholder="Password" required>
+                        </div>
+
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="logincheckbox">
+                            <label class="form-check-label" for="keeplogged">Keep me logged in</label>
+                        </div>
+
+
+                        <div class="login_buttons">
+                            <button type="button" routerLink="/dashboard">LOGIN</button>
+                        </div>
+
+                        <div class="social_login d-flex align-items-center justify-content-center">
+                            <label for="socialLogin">----- or continue with -----</label>
+                        </div>
+
+                        <div class="social_login_icon d-flex align-items-center justify-content-center">
+                            <i class="fa fa-google-plus-square" aria-hidden="true"></i>
+                            <i class="fa fa-facebook-square ms-4" aria-hidden="true"></i>
+                        </div>
+
+                    </form>
+
+                    <form [ngClass]="toggleTab ? '' : 'd-none'">
+
+                        <h5>New user registration</h5>
+
+                        <div class="form-group">
+                            <span>+91</span>
+                            <input type="tel" maxlength="10" class="form-control" id="mobile"
+                                placeholder="10 digit mobile number" required>
+                        </div>
+
+                        <div class="form-group d-flex align-items-center justify-content-between mt-3">
+                            <input type="text" maxlength="6" class="form-control" id="otp" placeholder="6 digit OTP"
+                                required>
+                            <button type="button" id="otp_btn">GET OTP</button>
+                        </div>
+
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="logincheckbox">
+                            <label class="form-check-label" for="keeplogged">I am not a robot</label>
+                        </div>
+
+                        <div class="login_buttons">
+                            <button type="button">CONTINUE</button>
+                        </div>
+
+                        <div class="social_login d-flex align-items-center justify-content-center">
+                            <label for="socialLogin">----- or continue with -----</label>
+                        </div>
+
+                        <div class="social_login_icon d-flex align-items-center justify-content-center">
+                            <i class="fa fa-google-plus-square" aria-hidden="true"></i>
+                            <i class="fa fa-facebook-square ms-4" aria-hidden="true"></i>
+                        </div>
+
+                    </form>
+
+                </div>
+
             </div>
-
-            <div class="login_item_form">
-                <form>
-                    <div class="form-group">
-                        <span>+91</span>
-                        <input type="text" class="form-control" id="mobile" placeholder="10 digit mobile number">
-                    </div>
-
-                    <div class="form-group mt-3">
-                        <input type="password" class="form-control" id="password" placeholder="Password">
-                    </div>
-
-
-                    <div class="login_buttons mt-3">
-                        <button type="button" routerLink="/dashboard" class="login_btn_1">LOGIN</button>
-                        <p class="text-center my-2">or</p>
-                        <button type="submit" class="login_btn_otp">LOGIN WITH OTP</button>
-                    </div>
-
-                </form>
-            </div>
-
         </div>
-
-
     </div>
+
+
+
 </section>
