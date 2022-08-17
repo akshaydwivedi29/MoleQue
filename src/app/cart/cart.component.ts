@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { TestList, TestsService } from '../header/tests.service';
+import { CartService } from './cart.service';
 
 @Component({
   selector: 'app-cart',
@@ -11,27 +12,21 @@ export class CartComponent implements OnInit {
   searchName: any;
   testlist: Array<TestList> = [];
   toggleTab: boolean = false;
+  session: any;
   constructor(
     private route: ActivatedRoute,
-    private testsService: TestsService
-  ) {
-    this.route.paramMap.subscribe((params: ParamMap) => {
-      this.searchName = params.get('testName');
-      this.getData();
-    });
-  }
+    private cartService: CartService
+  ) {}
 
   ngOnInit(): void {
-    console.log('init');
+    this.loadData();
   }
 
-  getData() {
-    this.testsService
-      .searchTestList(this.searchName.trim())
-      .subscribe((results: TestList[]) => {
-        this.testlist = results;
+  loadData() {
+    this.testlist = this.cartService.getItems();
+  }
 
-        console.log(results);
-      });
+  removeItem(item: any) {
+    this.cartService.removeItem(item);
   }
 }

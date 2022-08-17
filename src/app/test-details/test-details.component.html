@@ -68,13 +68,12 @@
                                 <div class="question mb-1">Price</div>
                                 <div class="answer">₹ {{obj.price}}</div>
                             </div>
-                            <ng-template ngFor let-testlist [ngForOf]="testlist">
-                                <div class="card_item_button">
-                                    <button type="button" class="btn"
-                                        (click)="routeData(testlist.testname); saveData()">Add To
-                                        Cart</button>
-                                </div>
-                            </ng-template>
+
+                            <div class="card_item_button">
+                                <button type="button" class="btn" (click)="addToCart(obj)">Add To
+                                    Cart</button>
+                            </div>
+
 
                         </div>
 
@@ -182,12 +181,12 @@
                                 <div class="question mb-1">Price</div>
                                 <div class="answer">₹ {{obj.price}}</div>
                             </div>
-                            <ng-template ngFor let-testlist [ngForOf]="testlist">
-                                <div class="card_item_button">
-                                    <button type="button" class="btn" (click)="routeData(testlist.testname)">Add To
-                                        Cart</button>
-                                </div>
-                            </ng-template>
+
+                            <div class="card_item_button">
+                                <button type="button" class="btn" (click)="addToCart(obj)">Add To
+                                    Cart</button>
+                            </div>
+
                         </div>
 
                     </div>

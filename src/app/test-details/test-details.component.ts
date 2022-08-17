@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { CartService } from '../cart/cart.service';
 import { TestList, TestsService } from '../header/tests.service';
 
 @Component({
@@ -15,7 +16,8 @@ export class TestDetailsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private testsService: TestsService
+    private testsService: TestsService,
+    private cartService: CartService
   ) {
     this.route.paramMap.subscribe((params: ParamMap) => {
       this.searchName = params.get('SearchText');
@@ -32,7 +34,7 @@ export class TestDetailsComponent implements OnInit {
       .searchTestList(this.searchName.trim())
       .subscribe((results: TestList[]) => {
         this.testlist = results;
-
+        localStorage.setItem('session', JSON.stringify(results));
         console.log(results);
       });
   }
@@ -41,18 +43,21 @@ export class TestDetailsComponent implements OnInit {
     this.toggleTab = !this.toggleTab;
   }
 
-  routeData(testName: any) {
-    this.router.navigate(['/cart', { testName: testName }]);
+  addToCart(item: any) {
+    this.cartService.addToCart(item);
   }
 
-  saveData() {
-    let testlist = {
-      testcode: 12,
-      testname: '',
-      price: '',
-    };
+  // routeData(testName: any) {
+  //   this.router.navigate(['/cart', { testName: testName }]);
+  // }
 
-    localStorage.setItem('session', JSON.stringify(testlist));
-    console.log(localStorage.getItem('session'));
-  }
+  // saveData() {
+  //   let testlist = {
+  //     testcode: 12,
+  //     testname: 'Dummy test',
+  //     price: 'Dummy price',
+  //   };
+
+  // localStorage.setItem('session', JSON.stringify(testlist));
+  // console.log(localStorage.getItem('session'));
 }
