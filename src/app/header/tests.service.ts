@@ -1,15 +1,24 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
-import { data } from 'autoprefixer';
 
 export interface TestList {
   _id: string;
   testcode: string;
   testname: string;
+  alias: string;
+  department: string;
+  checktime: string;
+  tat: string;
+  instructions: string;
+  description: string;
+  symptoms: string;
   price: string;
-  status: string;
-  Department: string;
+  stability: string;
+  temperature: string;
+  method: string;
+  specimen: string;
+  tags: string;
 }
 
 @Injectable({

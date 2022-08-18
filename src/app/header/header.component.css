@@ -12,7 +12,7 @@
 }
 
 .top_header>.top_header_logo>img {
-    width: 300px;
+    width: 250px;
     height: auto;
     cursor: pointer;
 }
@@ -32,7 +32,6 @@
 .search>.search_input input:focus {
     box-shadow: none;
     border: 2px solid #F22283;
-
 }
 
 .search>.search_input>.fa-search {
@@ -56,32 +55,58 @@
     top: 40px;
     left: 1px;
     background: #fff;
-    padding: 15px 0px 5px 15px;
+    padding: 15px;
     max-height: 227px;
     min-width: 500px;
     line-height: 5px;
-    overflow-y: scroll;
-    overflow-X: scroll;
+    overflow-y: auto;
+    white-space: nowrap;
 }
 
 .search section a {
     text-decoration: none;
     color: #1F3D9D;
     font-weight: 600;
-}
-
-.login>a,
-.cart>a {
-    color: #fff;
-    font-size: 22px;
     cursor: pointer;
 }
 
-.login>a:hover,
-.cart>a:hover {
+.login_cart>button {
+    background: none;
+    color: #fff;
+    border: none;
+    font-size: 21px;
+    cursor: pointer;
+}
+
+.login_cart>.login::after {
+    content: "|";
+    color: #fff;
+    padding: 0 5px;
+}
+
+.login_cart .cart {
+    position: relative;
+}
+
+.login_cart>button:hover {
     color: #f22283;
 }
 
+.login_cart button:nth-child(2) span:nth-child(2) {
+    position: absolute;
+    background: #F22283;
+    color: #fff;
+    top: 0%;
+    left: 15%;
+    font-size: 12px;
+    border-radius: 25px;
+    padding: 0 6px 0 6px;
+}
+
+.login_cart>button:hover span:nth-child(2) {
+    background: #fff;
+    color: #F22283;
+}
 
 
 /* Top Header Ends */
@@ -261,23 +286,31 @@
 /* Navbar Ends*/
 
 
+/* APP DOWNLOAD STARTS  */
 
-
-
-
-
-
-
-
-
-
-
-/* Media Query Starts */
-@media (max-width: 999px) {
-    .header-top {
-        display: none !important;
-    }
+.app_download {
+    position: absolute;
+    top: 0;
+    right: 8%;
 }
 
+.app_download .ios_app,
+.app_download .android_app {
+    background: none;
+    color: #fff;
+    border: none;
+    font-size: 14px;
+}
 
-/* Media Query Ends */
+.app_download .ios_app:hover,
+.app_download .android_app:hover {
+    color: #f22283;
+}
+
+.app_download>.partition::after {
+    content: "|";
+    color: #fff;
+    padding: 0 5px;
+}
+
+/* APP DOWNLOAD ENDS  */

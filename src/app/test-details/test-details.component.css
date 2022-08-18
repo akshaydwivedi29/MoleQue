@@ -1,10 +1,33 @@
+.toggle_btn {
+    background: #fff;
+    width: 22%;
+    height: 40px;
+    border-radius: 20px;
+}
+
+.toggle_btn button {
+    border: none;
+    padding: 0 10px;
+    background: rgb(242, 34, 131);
+    color: #fff;
+    border-radius: 20px;
+    line-height: 38px;
+}
+
 .test_details {
     padding: 50px;
     margin-top: 80px;
     background: linear-gradient(to bottom, #1f3d9d 0%, #f22283 100%);
 }
 
-.test_details>.test_info>.card {
+.test_details .test_info span {
+    text-transform: uppercase;
+    border-left: 2px solid #fff;
+    color: #fff;
+    padding-left: 5px;
+}
+
+.test_details .test_info>.card {
     width: 50%;
     box-shadow: 0 2px 20px 0 rgb(0 0 0 / 10%);
     border: solid 1px #909090;
@@ -13,12 +36,13 @@
     padding: 10px;
 }
 
-.test_details>.test_info>.card>.card-body {
+.test_details .test_info>.card>.card-body {
     background: #CAE2FA;
     border-radius: 20px;
 }
 
-.test_details>.test_info>.card>.card-body>.card-title,
+.test_details .test_info>.card>.card-body>.card-title>.test_name>.question,
+.test_details .test_info>.card>.card-body>.card-title>.test_code>.question,
 .card_item>.card_item_text>.question,
 .card_item>.card_item_text>.question>a {
     font-family: 'Roboto Bold';
@@ -35,7 +59,9 @@
     border-radius: 10px;
 }
 
-.card_item>.card_item_text>.answer {
+.card_item>.card_item_text>.answer,
+.test_details .test_info>.card>.card-body>.card-title>.test_name>.answer,
+.test_details .test_info>.card>.card-body>.card-title>.test_code>.answer {
     font-family: 'Roboto Bold';
     color: #000;
     font-size: 14px;
@@ -53,4 +79,38 @@
 
 i {
     color: #1f3d9d;
+}
+
+/* RESPONSIVE MEDIA QUERY  */
+@media only screen and (max-width: 1400px) {
+
+    .toggle_btn {
+        background: #fff;
+        width: 25%;
+        height: 40px;
+        border-radius: 20px;
+    }
+
+}
+
+@media only screen and (max-width: 1210px) {
+
+    .toggle_btn {
+        background: #fff;
+        width: 30%;
+        height: 40px;
+        border-radius: 20px;
+    }
+
+}
+
+@media only screen and (max-width: 1030px) {
+
+    .toggle_btn {
+        background: #fff;
+        width: 40%;
+        height: 40px;
+        border-radius: 20px;
+    }
+
 }

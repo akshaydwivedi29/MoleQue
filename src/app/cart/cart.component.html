@@ -1,0 +1,90 @@
+<app-header></app-header>
+
+
+<section class="cart container">
+
+    <div class="cart_items">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">S.No.</th>
+                    <th scope="col">Test code</th>
+                    <th scope="col">Test / Package</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngIf="testlist.length <1">
+                    <td class="bg-white" colspan="5">
+                        <div class="empty_cart bg-white">
+                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                            <h4>Your cart is empty!</h4>
+                            <p>Add items to it now.</p>
+                            <button type="button">ADD A TEST</button>
+                        </div>
+                    </td>
+                </tr>
+                <tr *ngFor='let obj of testlist; let i = index;'>
+                    <td class="text-center">{{i+1}}</td>
+                    <td>{{obj.testcode}}</td>
+                    <td>{{obj.testname}}</td>
+                    <td>₹ {{obj.price}}</td>
+                    <td class="text-center" (click)="removeItem(obj); loadData()"><i class="bi bi-trash3-fill"></i></td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr *ngIf="testlist.length >1">
+                    <td colspan="3">Total Payable Amount</td>
+                    <td colspan="2">₹ {{totalCartValue}}</td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+    <!-- <div class="payment">
+        <form>
+
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="firstName">Patient First Name</label>
+                        <input type="text" class="form-control" placeholder="Enter Patient First Name">
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="lastName">Patient Last Name</label>
+                        <input type="text" class="form-control" placeholder="Enter Patient Last Name">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="email">Enter E-mail</label>
+                        <input type="email" class="form-control" placeholder="Enter email address">
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="mobile">Mobile Number</label>
+                        <input type="tel" class="form-control" placeholder="Enter 10 Digit Mobile number">
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Proceed to payment</button>
+        </form>
+    </div> -->
+
+
+
+
+</section>
+
+<!-- <div style="margin-top: 200px;" class="btn" (click)="loadData()">Click</div> -->
+
+
+
+<app-footer></app-footer>
