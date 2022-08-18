@@ -1,28 +1,67 @@
-.footer {
-    bottom: 100px;
+/* SOCIAL WIDGET STARTS  */
+
+.social_widget>ul {
+    position: fixed;
+    top: 45%;
+    left: 0;
+    padding-left: 0;
+    margin-bottom: 0;
+    z-index: 999;
 }
 
-.footer_stick {
-    bottom: 0;
+.social_widget>ul>li:nth-child(1) {
+    background: green;
 }
 
-a {
+.social_widget>ul>li:nth-child(2) {
+    background: #1f3d9d;
+}
+
+.social_widget>ul>li>i {
+    font-size: 30px;
+    color: #fff;
+    padding: 5px;
+}
+
+.social_widget>ul>li .whatsapp,
+.social_widget>ul>li .phone {
+    display: none;
+}
+
+.social_widget>ul>li>.iwhatsapp:hover>.whatsapp {
+    display: inline;
+    font-size: 20px;
+    color: #fff;
+    position: absolute;
+    top: 0px;
+    left: 36px;
+    background: green;
+    padding: 10px;
+    animation: 1s ease-out 0s 1 slideInLeft;
     text-decoration: none;
 }
 
-ul {
-    padding-left: 0 !important;
+.social_widget>ul>li>.iphone:hover>.phone {
+    display: inline;
+    font-size: 20px;
+    color: #fff;
+    position: absolute;
+    top: 40px;
+    left: 36px;
+    width: 100px;
+    background: #1f3d9d;
+    padding: 10px;
+    animation: 1s ease-out 0s 1 slideInLeft;
+    text-decoration: none;
 }
 
-.logoimg {
-    width: 350px;
-    height: auto;
-}
+/* SOCIAL WIDGET ENDS  */
 
 /* GET CALL STARTS */
 
 .get_call {
-    background: #3550A7;
+    /* background: rgba(53, 80, 167, 0.8); */
+    background: rgb(53, 80, 167);
     min-height: 100px;
     position: fixed;
     bottom: 0;
@@ -42,7 +81,8 @@ ul {
     font-size: 15px;
     color: #fff;
     cursor: pointer;
-    background: #3550A7;
+    /* background: rgba(53, 80, 167, 0.8); */
+    background: rgb(53, 80, 167);
     padding: 3px 10px;
     border-radius: 3px;
 }
@@ -53,11 +93,11 @@ ul {
 }
 
 .close_get_call::before {
-    content: "CLOSE";
+    content: "GET A CALL";
 }
 
 .open_get_call::before {
-    content: "GET A CALL";
+    content: "CLOSE";
 }
 
 .get_call>.container>.get_call_text {
@@ -110,5 +150,94 @@ ul {
     border-radius: 0px 4px 4px 0px;
 }
 
-
 /* GET CALL ENDS */
+
+/* FOOTER STARTS  */
+
+.footer {
+    background-color: #0c1a4a;
+    background-image: url(../../assets/images/png-shapes/footer.png);
+    background-repeat: no-repeat;
+    background-size: 60% auto;
+    background-position: left;
+    position: relative;
+    width: 100%;
+    height: auto;
+}
+
+.footer>.footer_logo>img {
+    width: 300px;
+    height: auto;
+    padding: 50px 0;
+}
+
+.footer .container div>h2 {
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 38px;
+    font-family: BebasNeueBold;
+    position: relative;
+}
+
+.footer .container div>h2::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 0;
+    height: 3px;
+    width: 62px;
+    background-color: #1f3d9d;
+}
+
+.footer .container div ul li i,
+.footer .container div ul li a {
+    color: #fff;
+    font-size: 17px;
+}
+
+.footer .container div ul {
+    padding-left: 0;
+}
+
+.footer .container div ul li a {
+    margin-left: 12px;
+}
+
+.footer .container div ul li {
+    padding-top: 20px;
+}
+
+.footer .container div ul li a:hover,
+.footer .container>.contact .social_media>a>i:hover {
+    color: #F22283;
+}
+
+.footer .container>.contact .social_media>a>i {
+    font-size: 30px;
+}
+
+.footer .copyright {
+    border-top: 1px solid #555f81;
+}
+
+.footer .copyright>p {
+    color: #555f81;
+    padding-top: 10px;
+}
+
+/* FOOTER ENDS  */
+
+
+/* ANIMATIONS STARTS  */
+
+@keyframes slideInLeft {
+    0% {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+/* ANIMATION ENDS  */

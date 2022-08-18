@@ -1,0 +1,47 @@
+.dashboard {
+    margin-top: 125px;
+    padding: 30px 10px;
+    background: #EEEEEE;
+}
+
+.dashboard .dashboard_title h3 {
+    color: #1f3d9d;
+    text-align: center;
+    font-weight: 600;
+}
+
+.dashboard .dashboard_title h3::after {
+    content: "";
+    display: block;
+    margin: 0 auto;
+    width: 15%;
+    padding-top: 5px;
+    border-bottom: 3px solid #f22283;
+}
+
+.dashboard .container .card {
+    border-radius: 5px;
+    min-width: 250px;
+    min-height: 250px;
+    cursor: pointer;
+}
+
+.dashboard .container .card .card-body {
+    position: relative;
+}
+
+.dashboard .container .card .card-body img {
+    width: 100px;
+    height: auto;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 50%);
+}
+
+.dashboard .container .card .card-body p {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, -60%);
+}

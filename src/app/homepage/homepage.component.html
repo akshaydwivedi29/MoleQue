@@ -2,114 +2,78 @@
 
 <div class="page">
 
-    <!-- Main Carousel Starts  -->
-    <section class="main_carousel">
-        <owl-carousel-o [options]="customOptions">
-            <ng-template carouselSlide>
-                <div class="slide">
-                    <img src="../../assets/images/banner/banner1-1.jpg">
-                    <div class="slide__bg">
-                        <div class="icon">
-                            <img src="../../assets/images/banner/banner-shape.png" />
-                        </div>
+    <!-- INTRO SECTION  -->
+
+    <section class="intro_section d-flex align-items-center justify-content-center">
+
+        <div class="container d-flex align-items-center justify-content-around">
+
+            <div class="card">
+                <div class="card-body">
+                    <div class="report-whitebox"></div>
+                    <div class="reportwhite-cir">
+                        <span></span>
                     </div>
-                    <div class="container">
-                        <div class="slide__block">
-                            <h1 class="slide__title">
-                                Multidisciplinary <span>Medical<br />Center</span> in new york
-                            </h1>
-                            <h4 class="slide__subtitle">
-                                30% discount on full examination
-                            </h4>
-                            <a href="departments-details_right.html" class="btn btn_blue">BOOK A CONSULTATION</a>
-                        </div>
+                    <div class="card-title">
+                        <h4>VIEW ALL YOUR TEST REPORTS</h4>
                     </div>
 
+                    <form>
+                        <div class="form-group">
+                            <label for="visitID">Lab/Visit ID</label>
+                            <input type="text" class="form-control" id="visitID" placeholder="Enter Lab/Visit ID">
+                        </div>
+
+                        <div class="form-group mt-3">
+                            <label for="password">Password</label>
+                            <input type="password" class="form-control" id="password"
+                                placeholder="Eg. Surname/Last Name">
+                        </div>
+
+                        <div class="form-group mt-3">
+                            <label for="captcha">Captcha</label>
+                            <div class="d-flex align-items-center">
+                                <button type="button" class="captchabtn">JBG5E7</button>
+                                <input type="text" class="form-control ms-3" id="captcha"
+                                    placeholder="Type Captcha Here">
+                            </div>
+
+                        </div>
+
+                        <button type="submit" class="check_report mt-3">CHECK REPORT</button>
+                    </form>
                 </div>
+            </div>
 
-            </ng-template>
+            <div class="main_carousel">
+                <owl-carousel-o [options]="customOptions">
 
+                    <ng-template carouselSlide>
+                        <img src="../../assets/images/banner/banner1-1.jpg">
+                    </ng-template>
 
+                    <ng-template carouselSlide>
+                        <img src="../../assets/images/banner/banner1-2.jpg">
+                    </ng-template>
 
-            <ng-template carouselSlide>
-                <div class="slide">
-                    <img src="../../assets/images/banner/banner1-2.jpg">
-                    <div class="slide__bg">
-                        <div class="icon">
-                            <img src="../../assets/images/banner/banner-shape.png" />
-                        </div>
-                    </div>
-                    <div class="container">
-                        <div class="slide__block">
-                            <h1 class="slide__title">
-                                Multidisciplinary <span>Medical<br />Center</span> in new york
-                            </h1>
-                            <h4 class="slide__subtitle">
-                                30% discount on full examination
-                            </h4>
-                            <a href="departments-details_right.html" class="btn btn_blue">BOOK A CONSULTATION</a>
-                        </div>
-                    </div>
+                    <ng-template carouselSlide>
+                        <img src="../../assets/images/banner/banner1-3.jpg">
+                    </ng-template>
 
-                </div>
+                    <ng-template carouselSlide>
+                        <img src="../../assets/images/banner/banner1-4.jpg">
+                    </ng-template>
 
-            </ng-template>
-            <ng-template carouselSlide>
-                <div class="slide">
-                    <img src="../../assets/images/banner/banner1-3.jpg">
-                    <div class="slide__bg">
-                        <div class="icon">
-                            <img src="../../assets/images/banner/banner-shape.png" />
-                        </div>
-                    </div>
-                    <div class="container">
-                        <div class="slide__block">
-                            <h1 class="slide__title">
-                                Multidisciplinary <span>Medical<br />Center</span> in new york
-                            </h1>
-                            <h4 class="slide__subtitle">
-                                30% discount on full examination
-                            </h4>
-                            <a href="departments-details_right.html" class="btn btn_blue">BOOK A CONSULTATION</a>
-                        </div>
-                    </div>
-
-                </div>
-
-            </ng-template>
-            <ng-template carouselSlide>
-                <div class="slide">
-                    <img src="../../assets/images/banner/banner1-4.jpg">
-                    <div class="slide__bg">
-                        <div class="icon">
-                            <img src="../../assets/images/banner/banner-shape.png" />
-                        </div>
-                    </div>
-                    <div class="container">
-                        <div class="slide__block">
-                            <h1 class="slide__title">
-                                Multidisciplinary <span>Medical<br />Center</span> in new york
-                            </h1>
-                            <h4 class="slide__subtitle">
-                                30% discount on full examination
-                            </h4>
-                            <a href="departments-details_right.html" class="btn btn_blue">BOOK A CONSULTATION</a>
-                        </div>
-                    </div>
-
-                </div>
-
-            </ng-template>
-
-
-        </owl-carousel-o>
+                </owl-carousel-o>
+            </div>
+        </div>
     </section>
 
-    <!-- Main Carousel Ends  -->
+
 
 
     <!-- Services Carousel Starts  -->
-    <section class="service_carousel">
+    <!-- <section class="service_carousel">
 
         <owl-carousel-o [options]="serviceOptions">
 
@@ -184,10 +148,73 @@
                 </div>
             </ng-template>
         </owl-carousel-o>
-    </section>
+    </section> -->
     <!-- Services Carousel Ends  -->
 
+    <!-- HOME COLLECTION SECTION STARTS  -->
 
+    <section class="home_collection">
+        <div class="container">
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-title">
+                        <h4>Book Home Collection</h4>
+                    </div>
+                    <div class="d-flex align-items-center justify-content-around mt-4">
+                        <div class="hc_item text-center">
+                            <img src="../../assets/images/icons/sandglass.png" alt="Time Saving">
+                            <p class="mt-3">Convenient & Time Saving</p>
+                        </div>
+                        <div class="hc_item text-center">
+                            <img src="../../assets/images/icons/homecollection.png" alt="Home Collection">
+                            <p class="mt-3">Free Home Collection & Cancellation</p>
+                        </div>
+                        <div class="hc_item text-center">
+                            <img src="../../assets/images/icons/phlebotomy.png" alt="Home Collection">
+                            <p class="mt-3">Well Trained Phlebotmists</p>
+                        </div>
+                        <div class="hc_item text-center">
+                            <img src="../../assets/images/icons/stats.png" alt="Report Access">
+                            <p class="mt-3">Online Access to Reports</p>
+                        </div>
+                    </div>
+
+                    <div class="d-flex align-items-center justify-content-center">
+                        <button type="button" class="hc_btn mt-4">BOOK NOW</button>
+                    </div>
+                    <p class="hc_bottom">Not sure about the tests
+                        <span>Click here..</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="container d-flex align-items-center justify-content-between">
+
+            <div class="card">
+                <div class="card-body">
+                    <p>New Pregnancy<br>Packages</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-body">
+                    <p>Diabetes Care<br>Program</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-body">
+                    <p>Family<br>Care</p>
+                </div>
+            </div>
+
+        </div>
+
+
+    </section>
+
+    <!-- HOME COLLECTION SECTION ENDS  -->
 
     <!-- Start of .about -->
     <section class="about" id="about">
@@ -309,53 +336,7 @@
             </div>
         </div>
     </section>
-    <!-- End of .why-choose-us -->
 
-    <!-- Start of .appointments -->
-    <section class="appointments" id="departments">
-        <div class="appointments__bg">
-            <div class="icon">
-                <img src="../../assets/images/png-shapes/appointments-shape.png" />
-            </div>
-        </div>
-        <div class="container">
-            <div class="online-appointments">
-                <h1 class="section-title">
-                    Online Appointments<br /><span>and Prescriptions</span>
-                </h1>
-                <p class="appointments-text">
-                    You can now book a limited amount of doctors appointments online
-                </p>
-            </div>
-
-            <div class="company-numbers">
-                <div class="company-numbers__item">
-                    <h2 class="number">150k</h2>
-                    <div class="content">
-                        <h3 class="title">Cured patients</h3>
-                        <p class="text">
-                            For over 15 years, we have delighted our customers and provide
-                            them with the necessary services
-                        </p>
-                    </div>
-                </div>
-
-                <div class="company-numbers__item">
-                    <h2 class="number">100%</h2>
-                    <div class="content">
-                        <h3 class="title">Happy Clients</h3>
-                        <p class="text">
-                            Absolutely all our clients are ready to assure you of the high
-                            quality of our services
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <a href="departments-details_right.html" class="btn btn_blue">REQUEST AN APPOINTMENT</a>
-        </div>
-    </section>
-    <!-- End of .appointments -->
 
     <!-- Start of .other-servises -->
     <section class="other-services" id="services">
@@ -488,70 +469,7 @@
     </section>
     <!-- End of .from -->
 
-    <!-- Start of .faq -->
-    <section class="faq" id="faq">
-        <div class="faq__content">
-            <h1 class="section-title">Questions <span>and answers</span></h1>
-            <div class="accardion container">
-                <div class="accardion__item wow fadeInLeft" data-wow-duration="1s">
-                    <h2 class="accardion__item-title">
-                        <span>1.</span>How do I make an appontment?<i class="fa fa-angle-down"></i>
-                    </h2>
-                    <p class="accardion__item-text">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                        Officia ipsum, voluptatum. Pariatur expedita facere fugit,
-                        doloribus reiciendis repellendus quaerat? Nihil ad eos molestias
-                        numquam quas eveniet sit suscipit, nostrum vel ipsa voluptate
-                        nobis facere in quos.
-                    </p>
-                </div>
-                <div class="accardion__item wow fadeInLeft" data-wow-duration="1s">
-                    <h2 class="accardion__item-title">
-                        <span>2.</span>How do I get a copy of my records to another
-                        provider?<i class="fa fa-angle-up"></i>
-                    </h2>
-                    <p class="accardion__item-text">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                        Officia ipsum, voluptatum. Pariatur expedita facere fugit,
-                        doloribus reiciendis repellendus quaerat? Nihil ad eos molestias
-                        numquam quas eveniet sit suscipit, nostrum vel ipsa voluptate
-                        nobis facere in quos.
-                    </p>
-                </div>
-                <div class="accardion__item wow fadeInLeft" data-wow-duration="1s">
-                    <h2 class="accardion__item-title">
-                        <span>3.</span>Is there a charge for copies of my medical
-                        record?<i class="fa fa-angle-down"></i>
-                    </h2>
-                    <p class="accardion__item-text">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                        Officia ipsum, voluptatum. Pariatur expedita facere fugit,
-                        doloribus reiciendis repellendus quaerat? Nihil ad eos molestias
-                        numquam quas eveniet sit suscipit, nostrum vel ipsa voluptate
-                        nobis facere in quos.
-                    </p>
-                </div>
-                <div class="accardion__item wow fadeInLeft" data-wow-duration="1s">
-                    <h2 class="accardion__item-title">
-                        <span>4.</span>How do I assure that my person I designate has
-                        access to my medical record?<i class="fa fa-angle-down"></i>
-                    </h2>
-                    <p class="accardion__item-text">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                        Officia ipsum, voluptatum. Pariatur expedita facere fugit,
-                        doloribus reiciendis repellendus quaerat? Nihil ad eos molestias
-                        numquam quas eveniet sit suscipit, nostrum vel ipsa voluptate
-                        nobis facere in quos.
-                    </p>
-                </div>
-            </div>
-            <a href="faqs.html" class="read-more">ASK QUESTION <i class="fa fa-angle-right"></i></a>
-        </div>
-        <div class="faq__img">
-            <img src="../../assets/images/jpg/faq.jpg" />
-        </div>
-    </section>
-    <!-- End of .faq -->
+
 
     <!-- Start of .emergency-call -->
     <section class="emergency-call">
@@ -616,63 +534,12 @@
                             transform="translate(-809 -353.063)" />
                     </svg>
                 </div>
-                <a href="tel:+123-12-456-77-89">+123-12-456-77-89</a>
+                <a href="tel:+918826350303">+91 882 635 0303</a>
+
             </div>
         </div>
     </section>
-    <!-- End of .emergency-call -->
 
-    <!-- Start of .testimonials -->
-    <section class="testimonials">
-        <div class="testimonials__img">
-            <img src="../../assets/images/png/testimonials.png" />
-        </div>
-        <div class="container testimonials__content wow fadeInRight" data-wow-duration="1s">
-            <h1 class="section-title">our real <span>TESTIMONIALS</span></h1>
-            <div class="testimonials__content-carousel owl-carousel owl-theme">
-                <div class="testimonials__content-carousel-item">
-                    <q>I am very impressed with you all as well as being bighly
-                        proficient is aabsoulutely adoreble. I feel so relaxed in her
-                        capable hands and hope to be her patient for a very long time!
-                        You are a fantastic team and I feel very privileged to come to
-                        you all</q>
-                    <h2>Jonny Roberston</h2>
-                    <h4>Creative Manager of “KadirovGroup”</h4>
-                </div>
-
-                <div class="testimonials__content-carousel-item">
-                    <q>I am very impressed with you all as well as being bighly
-                        proficient is aabsoulutely adoreble. I feel so relaxed in her
-                        capable hands and hope to be her patient for a very long time!
-                        You are a fantastic team and I feel very privileged to come to
-                        you all</q>
-                    <h2>Jonny Roberston</h2>
-                    <h4>Creative Manager of “KadirovGroup”</h4>
-                </div>
-
-                <div class="testimonials__content-carousel-item">
-                    <q>I am very impressed with you all as well as being bighly
-                        proficient is aabsoulutely adoreble. I feel so relaxed in her
-                        capable hands and hope to be her patient for a very long time!
-                        You are a fantastic team and I feel very privileged to come to
-                        you all</q>
-                    <h2>Jonny Roberston</h2>
-                    <h4>Creative Manager of “KadirovGroup”</h4>
-                </div>
-
-                <div class="testimonials__content-carousel-item">
-                    <q>I am very impressed with you all as well as being bighly
-                        proficient is aabsoulutely adoreble. I feel so relaxed in her
-                        capable hands and hope to be her patient for a very long time!
-                        You are a fantastic team and I feel very privileged to come to
-                        you all</q>
-                    <h2>Jonny Roberston</h2>
-                    <h4>Creative Manager of “KadirovGroup”</h4>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- End of .testimonials -->
 
 
 
@@ -680,28 +547,4 @@
 
 
 </div>
-
-<!------------------------------------------------------------------------>
-
-<!-- scroll top - to top page -->
-<div class=" to-top" id="scrollUp"><i class="fa fa-angle-up"></i>
-</div>
-
-<!-- search box -->
-<div class="searchBox">
-    <span class="searchBox-close">&times;</span>
-    <form>
-        <input type="search" placeholder="Write Search Keyword & Press Enter" />
-        <button type="submit">
-            <svg width="24.71" height="25.687" viewBox="0 0 24.71 24.687">
-                <path id="search.svg" class="cls-2"
-                    d="M1144.4,440.468l8.19,8.178-3.47,3.467-8.19-8.178,1.18-1.177-1.38-1.385a7.878,7.878,0,1,1,1.11-1.11l1.38,1.383Zm-2.36-5.172a6.29,6.29,0,1,0-6.29,6.282A6.293,6.293,0,0,0,1142.04,435.3Zm8.33,13.35-3.61-3.6-1.24,1.245,3.6,3.6Zm-5.97-3.465,1.25-1.246-1.25-1.245-1.24,1.245Zm-11.79-9.885h-1.57a4.715,4.715,0,0,1,4.71-4.712v1.57A3.146,3.146,0,0,0,1132.61,435.3Z"
-                    transform="translate(-1127.88 -427.438)" />
-            </svg>
-            search
-        </button>
-    </form>
-</div>
-
-<app-social-widget></app-social-widget>
 <app-footer></app-footer>
