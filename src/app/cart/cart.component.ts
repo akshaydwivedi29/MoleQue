@@ -12,7 +12,7 @@ export class CartComponent implements OnInit {
   searchName: any;
   testlist: Array<TestList> = [];
   toggleTab: boolean = false;
-  session: any;
+  totalCartValue: number = 0;
   constructor(
     private route: ActivatedRoute,
     private cartService: CartService
@@ -24,6 +24,8 @@ export class CartComponent implements OnInit {
 
   loadData() {
     this.testlist = this.cartService.getItems();
+    console.log(this.testlist.length);
+    this.totalCartValue = this.cartService.getTotalCartValue();
   }
 
   removeItem(item: any) {

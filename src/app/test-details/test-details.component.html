@@ -70,8 +70,9 @@
                             </div>
 
                             <div class="card_item_button">
-                                <button type="button" class="btn" (click)="addToCart(obj)">Add To
-                                    Cart</button>
+                                <button type="button" class="btn" (click)="addToCart(obj)"
+                                    [disabled]="!canAddToCart">{{canAddToCart?'Add To Cart' : 'Already In
+                                    Cart'}}</button>
                             </div>
 
 
@@ -183,8 +184,9 @@
                             </div>
 
                             <div class="card_item_button">
-                                <button type="button" class="btn" (click)="addToCart(obj)">Add To
-                                    Cart</button>
+                                <button type="button" class="btn" (click)="addToCart(obj)"
+                                    [disabled]="!canAddToCart">{{canAddToCart?'Add To Cart' : 'Already In
+                                    Cart'}}</button>
                             </div>
 
                         </div>
