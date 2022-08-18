@@ -96,7 +96,10 @@
     line-height: 30px;
     font-size: 17px;
     letter-spacing: 2px;
+}
 
+button:disabled{
+    background-color: grey !important;
 }
 
 .login .card .card-body .login_item .login_item_form .social_login_icon i {
@@ -128,4 +131,13 @@
 
 #mobile {
     text-indent: 35px;
+}
+
+.error {
+    color: red;
+}
+
+#forgotPswd,#signUp{
+   float: right;
+   margin: 10px 0;
 }
