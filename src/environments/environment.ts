@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  serverURL: "https://moleque-service.azurewebsites.net/"
+  // serverURL: "https://moleque-service.azurewebsites.net/",
+  serverURL: "http://localhost:3000/",
 };
 
 /*

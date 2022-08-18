@@ -8,31 +8,24 @@ import { TestList, TestsService } from '../header/tests.service';
   styleUrls: ['./test-details.component.css'],
 })
 export class TestDetailsComponent implements OnInit {
-  searchName: any;
-  testlist: Array<TestList> = [];
+  testId: any;
+  obj: any;
   toggleTab: boolean = false;
-  constructor(
-    private route: ActivatedRoute,
-    private testsService: TestsService
-  ) {
+
+  constructor(private route: ActivatedRoute, private testsService: TestsService ) {
     this.route.paramMap.subscribe((params: ParamMap) => {
-      this.searchName = params.get('SearchText');
+      this.testId = params.get('Id');
       this.getData();
     });
   }
 
   ngOnInit(): void {
-    console.log('init');
   }
 
   getData() {
-    this.testsService
-      .searchTestList(this.searchName.trim())
-      .subscribe((results: TestList[]) => {
-        this.testlist = results;
-
-        console.log(results);
-      });
+    this.testsService.getTestDetail(this.testId.trim()).subscribe((results: any) => {
+      this.obj = results;
+    });
   }
 
   changeTab() {

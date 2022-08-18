@@ -8,7 +8,7 @@ declare var $: any;
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
-  constructor(private testsService: TestsService, private router: Router) {}
+  constructor(private testsService: TestsService, private router: Router) { }
 
   testlist: Array<TestList> = [];
   hasQuery: Boolean = false;
@@ -16,22 +16,13 @@ export class HeaderComponent implements OnInit {
   menu_icon_variable: boolean = false;
 
   sendData(event: any) {
-    let query: string = event.target.value;
-    //Will match if query is nothing or is only spaces
-    let matchSpaces: any = query.match(/\s*/);
-    if (matchSpaces[0] === query) {
-      this.testlist = [];
-      this.hasQuery = false;
-      return;
+    let query = event.target.value;
+    if(!query || query.length<1){
+      return ;
     }
-
-    this.testsService
-      .searchTestList(query.trim())
-      .subscribe((results: TestList[]) => {
-        this.testlist = results;
-        this.hasQuery = true;
-        // console.log(results);
-      });
+    this.testsService.searchTestList(query).subscribe((res:any) => {
+    this.testlist = res;
+    })
   }
 
   openMenu(): void {
@@ -39,7 +30,8 @@ export class HeaderComponent implements OnInit {
     this.menu_icon_variable = !this.menu_icon_variable;
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
+
   close() {
     setTimeout(() => {
       this.hasQuery = false;
@@ -49,7 +41,7 @@ export class HeaderComponent implements OnInit {
   }
   routeData(searchText: any) {
     console.log(searchText);
-    this.router.navigate(['/test-details', { SearchText: searchText }]);
+    this.router.navigate(['/test-details', { Id: searchText._id }]);
     // this.hasQuery = false;
     // this.testlist = [];
     // $('#searchText').val('');
