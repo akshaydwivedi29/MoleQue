@@ -16,6 +16,7 @@ export class ForgotPasswordComponent implements OnInit {
   mobile: any;
   otp!: FormGroup;
   code: any;
+  number: string = "";
 
   constructor(private forgotPwdService: ForgotPswdService, private fb: FormBuilder, private router
     : Router) {
@@ -27,7 +28,9 @@ export class ForgotPasswordComponent implements OnInit {
     this.otp = this.fb.group({
       otpCode: ['', [Validators.required, Validators.maxLength(6)]],
       newPassword: ['', ([Validators.required, Validators.pattern('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$')])]
-    })
+    });
+
+    this.number = history.state.data;
   }
 
   ngOnInit(): void {
@@ -46,6 +49,21 @@ export class ForgotPasswordComponent implements OnInit {
     this.otp.reset();
     this.showAlert = true;
     this.router.navigate(['login'])
+  }
+
+  move(event: any, previous: any, current: any, next: any) {
+    let length = current.value.length;
+    let maxLength = current.getAttribute('maxlength');
+    if(length == maxLength){
+      if(next != ""){
+        next.focus();
+      }
+    }
+    if(event.key === "Backspace"){
+      if(previous != ""){
+        previous.focus();
+      }
+    }
   }
 
 }

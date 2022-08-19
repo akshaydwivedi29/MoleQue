@@ -36,7 +36,7 @@
     padding: 10px 80px 0 0;
 }
 
-.login .login_item .login_item_form span {
+.login .login_item .login_item_form #countryCode {
     position: absolute;
     top: 10px;
     left: 0;
@@ -56,6 +56,12 @@
     line-height: 30px;
     font-size: 17px;
     letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+button:disabled{
+    background-color: grey !important;
+    cursor: not-allowed;
 }
 
 .login .login_item .login_item_form .login_buttons p {
@@ -68,9 +74,4 @@
 
 .error {
     color: red;
-}
-
-#signIn{
-   float: right;
-   margin: 10px 0;
 }

@@ -19,7 +19,7 @@
                 <form [formGroup]="signUpForm" (ngSubmit)="signUp()">
 
                     <div class="form-group">
-                        <span>+91</span>
+                        <span id="countryCode">+91</span>
                         <input type="tel" class="form-control" formControlName="number" id="mobile"
                             placeholder="10 digit mobile number">
                         <p class="error"
@@ -44,10 +44,10 @@
                     </div>
 
                     <div class="login_buttons mt-3">
-                        <button type="submit">SIGN UP</button>
+                        <button type="submit" [disabled]="!signUpForm.valid">SIGN UP</button>
                     </div>
 
-                    <a id="signIn" routerLink="/login">SIGN IN</a>
+                    <span>Already an <a id="signIn" routerLink="/login">Existing User? </a>Please Sign-in with your registered credentials.</span>
 
 
                 </form>

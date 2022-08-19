@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { LoginServiceService } from './login-service.service';
 
 @Component({
@@ -19,13 +19,13 @@ export class LoginComponent implements OnInit {
   number: string = "";
   otpCode: any;
 
-  constructor(private fb: FormBuilder, private loginService: LoginServiceService, private router: Router) {
-    this.logInForm = this.fb.group({
+  constructor(private formBuilder: FormBuilder, private loginService: LoginServiceService, private router: Router,private route: ActivatedRoute) {
+    this.logInForm = this.formBuilder.group({
       number: ['', [Validators.required, Validators.maxLength(10)]],
       password: ['', ([Validators.required, Validators.pattern('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$')])]
     });
 
-    this.otpForm = this.fb.group({
+    this.otpForm = this.formBuilder.group({
       otpCode: ['', [Validators.required, Validators.maxLength(10)]]
     });
   }
@@ -64,6 +64,26 @@ export class LoginComponent implements OnInit {
     this.otpCode = this.otpForm.value.otpCode;
     this.loginService.loginWithOtp({ ...this.otpCode, mobile: this.number }).subscribe();
     this.router.navigate(['dashboard']);
+  }
+
+  forgotPage(){
+    this.number = this.logInForm.value.number;
+    this.router.navigate(['/forgot-password'],{state:{data:this.number}})
+  }
+
+  move(event: any, previous: any, current: any, next: any) {
+    let length = current.value.length;
+    let maxLength = current.getAttribute('maxlength');
+    if(length == maxLength){
+      if(next != ""){
+        next.focus();
+      }
+    }
+    if(event.key === "Backspace"){
+      if(previous != ""){
+        previous.focus();
+      }
+    }
   }
 
 }
