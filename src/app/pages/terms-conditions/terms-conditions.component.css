@@ -1,0 +1,26 @@
+.tnc {
+    margin-top: 125px;
+    padding: 30px 10px;
+    background: #EEEEEE;
+}
+
+.tnc .tnc_title h2 {
+    color: #1f3d9d;
+    text-align: center;
+    font-family: BebasNeueBold;
+    font-size: 40px;
+}
+
+.tnc .tnc_title h2::after {
+    content: "";
+    display: block;
+    margin: 0 auto;
+    width: 25%;
+    border-bottom: 3px solid #f22283;
+}
+
+.tnc .container h3 {
+    font-family: BebasNeueBold;
+    font-size: 30px;
+    margin-top: 20px;
+}

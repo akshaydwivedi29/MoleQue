@@ -34,57 +34,14 @@
                 </tr>
             </tbody>
             <tfoot>
-                <tr *ngIf="testlist.length >1">
+                <tr *ngIf="testlist.length >=1">
                     <td colspan="3">Total Payable Amount</td>
-                    <td colspan="2">₹ {{totalCartValue}}</td>
+                    <td>₹ {{totalCartValue}}</td>
+                    <td class="text-center" (click)="clearCart(); realodPage()"><i class="bi bi-trash3-fill"></i>
+                    </td>
                 </tr>
             </tfoot>
         </table>
     </div>
-
-    <!-- <div class="payment">
-        <form>
-
-            <div class="row">
-                <div class="col">
-                    <div class="form-group">
-                        <label for="firstName">Patient First Name</label>
-                        <input type="text" class="form-control" placeholder="Enter Patient First Name">
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="form-group">
-                        <label for="lastName">Patient Last Name</label>
-                        <input type="text" class="form-control" placeholder="Enter Patient Last Name">
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col">
-                    <div class="form-group">
-                        <label for="email">Enter E-mail</label>
-                        <input type="email" class="form-control" placeholder="Enter email address">
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="form-group">
-                        <label for="mobile">Mobile Number</label>
-                        <input type="tel" class="form-control" placeholder="Enter 10 Digit Mobile number">
-                    </div>
-                </div>
-            </div>
-            <button type="submit" class="btn btn-primary">Proceed to payment</button>
-        </form>
-    </div> -->
-
-
-
-
 </section>
-
-<!-- <div style="margin-top: 200px;" class="btn" (click)="loadData()">Click</div> -->
-
-
-
 <app-footer></app-footer>

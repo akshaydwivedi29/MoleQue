@@ -1,0 +1,89 @@
+.contact_us .top_div {
+    position: relative;
+}
+
+.contact_us .top_div img {
+    width: 100%;
+    height: auto;
+}
+
+.contact_us .top_div .contact_details {
+    position: absolute;
+    top: 32%;
+    left: 27%;
+}
+
+.contact_us .top_div .contact_details h2 {
+    color: #1f3d9d;
+    font-size: 60px;
+    font-family: 'BebasNeueBold';
+}
+
+.contact_us .top_div .contact_details p {
+    color: #F22283;
+    font-size: 30px;
+    font-family: 'BebasNeueBold';
+}
+
+.contact_us .container .full_details h3, .form_title {
+    color: #1f3d9d;
+    font-family: 'BebasNeueBold';
+    font-size: 45px;
+}
+
+.contact_us .container .full_details h3::after {
+    content: "";
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    padding-top: 5px;
+    border-bottom: 3px solid #f22283;
+}
+
+.contact_us .container .full_details p,
+.contact_us .container .full_details .question,
+.contact_us .container .full_details .answer1,
+.contact_us .container .full_details .colon,
+.contact_us .container .full_details .colon1,
+.contact_us .container .full_details .answer ul li:nth-child(odd) {
+    font-size: 20px;
+    font-weight: 600;
+    color: #555555;
+}
+
+.contact_us .container .full_details .answer1 {
+    margin-left: 70px;
+}
+
+.contact_us .container .full_details .colon1 {
+    margin-left: 30px;
+}
+
+.contact_us .container .full_details .answer ul li:nth-child(even) {
+    margin-bottom: 10px;
+}
+
+.contact_form {
+    background: #eeeeee;
+    height: min-content;
+    padding: 30px;
+}
+
+.form_title {
+    color: #1f3d9d;
+    font-family: 'BebasNeueBold';
+    font-size: 35px;
+}
+
+form button {
+    background: #1f3d9d;
+    color: #fff;
+    padding: 5px 50px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 25px;
+    font-family: 'BebasNeueBold';
+    letter-spacing: 3px;
+    font-size: 25px;
+    line-height: 35px;
+}

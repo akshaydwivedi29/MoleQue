@@ -1,0 +1,21 @@
+.stcomp {
+    margin-top: 125px;
+    padding: 30px 10px;
+    background: #EEEEEE;
+}
+
+.stcomp .stcomp_title h2 {
+    color: #1f3d9d;
+    text-align: center;
+    font-family: BebasNeueBold;
+    font-size: 40px;
+}
+
+.stcomp .stcomp_title h2::after {
+    content: "";
+    display: block;
+    margin: 0 auto;
+    width: 22%;
+    padding-top: 5px;
+    border-bottom: 3px solid #f22283;
+}

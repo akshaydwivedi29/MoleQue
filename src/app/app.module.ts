@@ -13,6 +13,11 @@ import { TestDetailsComponent } from './test-details/test-details.component';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CartComponent } from './cart/cart.component';
+import { ProfileComponent } from './profile/profile.component';
+import { TermsConditionsComponent } from './pages/terms-conditions/terms-conditions.component';
+import { ContactUsComponent } from './pages/contact-us/contact-us.component';
+import { PrivacyPolicyComponent } from './pages/privacy-policy/privacy-policy.component';
+import { StatutoryComplianceComponent } from './pages/statutory-compliance/statutory-compliance.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,6 +28,11 @@ import { CartComponent } from './cart/cart.component';
     LoginComponent,
     DashboardComponent,
     CartComponent,
+    ProfileComponent,
+    TermsConditionsComponent,
+    ContactUsComponent,
+    PrivacyPolicyComponent,
+    StatutoryComplianceComponent,
   ],
   imports: [
     BrowserModule,
