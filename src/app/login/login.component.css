@@ -50,7 +50,7 @@
 
 .login .login_item .login_item_form #countryCode {
     position: absolute;
-    top: 0;
+    top: 10px;
     left: 0;
     background: #1f3d9d;
     color: #fff;
@@ -74,7 +74,7 @@
     font-size: 12px;
 }
 
-.login .card .card-body .login_item .login_item_form .login_buttons button {
+.login .login_item .login_item_form .login_buttons button {
     background: #f22283;
     color: #fff;
     padding: 5px 10px;
