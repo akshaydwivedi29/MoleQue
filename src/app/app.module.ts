@@ -12,6 +12,7 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { TestDetailsComponent } from './test-details/test-details.component';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { CartComponent } from './cart/cart.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { SignupComponent } from './signup/signup.component';
@@ -24,8 +25,9 @@ import { SignupComponent } from './signup/signup.component';
     TestDetailsComponent,
     LoginComponent,
     DashboardComponent,
-    ForgotPasswordComponent,
+    CartComponent,
     SignupComponent,
+    ForgotPasswordComponent
   ],
   imports: [
     BrowserModule,

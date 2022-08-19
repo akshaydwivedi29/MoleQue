@@ -8,12 +8,13 @@ import { Component, OnInit } from '@angular/core';
 export class FooterComponent implements OnInit {
   open = true;
   toggler = true;
+
+  constructor() {}
+
   toggleGetCall(): void {
     this.open = !this.open;
     this.toggler = !this.toggler;
   }
-
-  constructor() {}
 
   ngOnInit(): void {}
 }

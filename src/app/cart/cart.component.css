@@ -1,0 +1,55 @@
+.cart {
+    margin-top: 120px;
+    padding: 40px 0;
+    display: flex;
+    align-items: center;
+}
+
+.cart .cart_items {
+    min-width: 50%;
+}
+
+.cart .cart_items table tbody tr:nth-child(odd) {
+    background: rgba(31, 61, 157, 0.25);
+}
+
+/* .cart .cart_items table tbody tr:nth-child(even) {
+    background: rgba(242, 34, 131, 0.4);
+} */
+
+.cart .cart_items table thead {
+    background: rgb(242, 34, 131);
+    color: #fff;
+}
+
+.cart .cart_items table tfoot {
+    background: rgb(31, 61, 157);
+    color: #fff;
+}
+
+.cart .cart_items table tbody .empty_cart {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cart .cart_items table tbody .empty_cart i {
+    font-size: 120px;
+    color: #1F3D9D;
+    padding: 20px 0;
+}
+
+.cart .cart_items table tbody .empty_cart button {
+    border: none;
+    background: #F22283;
+    color: #fff;
+    padding: 10px 30px;
+    border-radius: 5px;
+    letter-spacing: 2px;
+    font-weight: 600;
+}
+
+.cart .cart_items table tbody .empty_cart button:hover {
+    background: #1F3D9D;
+}

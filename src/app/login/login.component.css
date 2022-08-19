@@ -9,13 +9,25 @@
     background: #1f3d9d;
     padding: 7px;
     border-radius: 5px;
+    cursor: pointer;
 }
 
-.login .login_item .login_item_top h5 {
-    margin-top: 20px;
+.login .card .card-body .login_item .toggle_btn button {
+    background: #f22283;
+    line-height: 20px;
+    padding: 5px 10px;
+    border: none;
+    color: #fff;
+    border-radius: 5px;
+    font-size: 20px;
+}
+
+.login .card .card-body .login_item .login_item_form form h5,
+.login .card .card-body .login_item .login_item_form .social_login label {
     color: #1f3d9d;
     font-size: 17px;
     font-weight: 600;
+    margin: 20px 0;
 }
 
 .login .login_item .login_item_top h4 {
@@ -38,7 +50,7 @@
 
 .login .login_item .login_item_form #countryCode {
     position: absolute;
-    top: 10px;
+    top: 0;
     left: 0;
     background: #1f3d9d;
     color: #fff;
@@ -46,7 +58,23 @@
     border-radius: 5px 0 0 5px;
 }
 
-.login .login_item .login_item_form .login_buttons button {
+.login .card .card-body .login_item .login_item_form .form-check .form-check-input {
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+
+.login .card .card-body .login_item .login_item_form .form-check .form-check-input:checked {
+    background-color: #1f3d9d;
+    border-color: #1f3d9d;
+}
+
+.login .card .card-body .login_item .login_item_form .form-check .form-check-label {
+    color: #1f3d9d;
+    font-size: 12px;
+}
+
+.login .card .card-body .login_item .login_item_form .login_buttons button {
     background: #f22283;
     color: #fff;
     padding: 5px 10px;

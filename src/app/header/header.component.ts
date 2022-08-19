@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { CartService } from '../cart/cart.service';
 import { TestsService, TestList } from './tests.service';
 declare var $: any;
 @Component({
@@ -8,12 +9,25 @@ declare var $: any;
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
-  constructor(private testsService: TestsService, private router: Router) { }
+  
 
   testlist: Array<TestList> = [];
+  cartCount: Array<TestList> = [];
   hasQuery: Boolean = false;
   menuVariable: boolean = false;
   menu_icon_variable: boolean = false;
+  itemCount: number = 0;
+
+  constructor(
+    private testsService: TestsService,
+    private router: Router,
+    private cartService: CartService
+  ) {
+    this.cartService.events.subscribe((res: any) => {
+      console.log(res);
+      this.itemCount = parseInt(res);
+    });
+  }
 
   sendData(event: any) {
     let query = event.target.value;
@@ -30,14 +44,17 @@ export class HeaderComponent implements OnInit {
     this.menu_icon_variable = !this.menu_icon_variable;
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.cartCount = this.cartService.getItems();
+    this.itemCount = this.cartCount.length;
+  }
 
   close() {
     setTimeout(() => {
       this.hasQuery = false;
       this.testlist = [];
       $('#searchText').val('');
-    }, 200);
+    }, 300);
   }
   routeData(searchText: any) {
     console.log(searchText);

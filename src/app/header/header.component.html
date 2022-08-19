@@ -14,8 +14,8 @@
             <p *ngIf="testlist.length <1 && hasQuery">Sorry Nothing Found </p>
         </div>
 
-        <section *ngIf="testlist.length >1" id="searchResults">
-            <ng-template ngFor let-testlist [ngForOf]="testlist" let-i="index" class="test_results">
+        <section *ngIf="testlist.length >1">
+            <ng-template ngFor let-testlist [ngForOf]="testlist" let-i="index">
                 <hr *ngIf="i > 0" />
                 <a (click)="routeData(testlist)">{{testlist.testname}}</a>
             </ng-template>
@@ -36,12 +36,13 @@
     </div> -->
 
     <div class="login_cart">
-        <a routerLink="/login" class="login">
+        <button routerLink="/login" class="login">
             <span class="bi bi-person-fill"></span>&nbsp;Login
-        </a>
-        <a href="#">
-            <span class="bi bi-cart-dash-fill">&nbsp;Cart</span>
-        </a>
+        </button>
+        <button class="cart" routerLink="/cart">
+            <span class="bi bi-cart-fill">&nbsp;Cart</span>
+            <span class="cart_count">{{itemCount}}</span>
+        </button>
     </div>
 </header>
 <!-- Top Header Ends -->
