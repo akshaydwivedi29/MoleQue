@@ -16,6 +16,10 @@ import { CartComponent } from './cart/cart.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { SignupComponent } from './signup/signup.component';
+import { ContactUsComponent } from './pages/contact-us/contact-us.component';
+import { PrivacyPolicyComponent } from './pages/privacy-policy/privacy-policy.component';
+import { StatutoryComplianceComponent } from './pages/statutory-compliance/statutory-compliance.component';
+import { TermsConditionsComponent } from './pages/terms-conditions/terms-conditions.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +31,11 @@ import { SignupComponent } from './signup/signup.component';
     DashboardComponent,
     CartComponent,
     SignupComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    ContactUsComponent,
+    PrivacyPolicyComponent,
+    StatutoryComplianceComponent,
+    TermsConditionsComponent,
   ],
   imports: [
     BrowserModule,
