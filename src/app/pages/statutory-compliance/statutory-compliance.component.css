@@ -19,3 +19,40 @@
     padding-top: 5px;
     border-bottom: 3px solid #f22283;
 }
+
+.stcomp .container .card {
+    margin: 30px 0;
+    width: 55%;
+    border-radius: 10px;
+}
+
+.stcomp .container .card .card-body {
+    padding: 10px 30px;
+}
+
+.stcomp .container .card .card-body .question {
+    font-weight: bold;
+    color: #1f3d9d;
+    text-transform: uppercase;
+    padding-top: 15px;
+}
+
+.stcomp .container .card .card-body .answer {
+    border-bottom: 1px solid #f22283;
+    padding-bottom: 5px;
+}
+
+.stcomp .container .card .card-body .answer span a, a {
+    color: #000;
+}
+
+.stcomp .container .card .card-body .answer span a:hover, a:hover {
+    color: #f22283;
+}
+
+.stcomp .container .card .card-body .answer span:nth-child(2) a::before,
+.stcomp .container .card .card-body .answer span:nth-child(2) a::after {
+    content: "|";
+    margin: 0 5px;
+    color: #1f3d9d;
+}

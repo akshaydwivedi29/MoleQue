@@ -2,13 +2,14 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CartComponent } from './cart/cart.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { LoginComponent } from './login/login.component';
 import { ContactUsComponent } from './pages/contact-us/contact-us.component';
 import { PrivacyPolicyComponent } from './pages/privacy-policy/privacy-policy.component';
 import { StatutoryComplianceComponent } from './pages/statutory-compliance/statutory-compliance.component';
 import { TermsConditionsComponent } from './pages/terms-conditions/terms-conditions.component';
-import { ProfileComponent } from './profile/profile.component';
+import { SignupComponent } from './signup/signup.component';
 import { TestDetailsComponent } from './test-details/test-details.component';
 
 const routes: Routes = [
@@ -33,8 +34,12 @@ const routes: Routes = [
     component: CartComponent,
   },
   {
-    path: 'profile',
-    component: ProfileComponent,
+    path: 'forgot-password',
+    component: ForgotPasswordComponent,
+  },
+  {
+    path: 'signup',
+    component: SignupComponent,
   },
   {
     path: 'contact-us',

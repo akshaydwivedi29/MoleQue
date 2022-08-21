@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { map } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 
 export interface TestList {
   _id: string;
@@ -27,15 +27,11 @@ export interface TestList {
 export class TestsService {
   constructor(private http: HttpClient) {}
 
-  searchTestList(query: string) {
-    return this.http
-      .post<{ payload: Array<TestList> }>(
-        '/api/getTestList',
-        { payload: query },
-        {
-          headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
-        }
-      )
-      .pipe(map((data) => data.payload));
+  searchTestList(testName:TestList){
+    return this.http.get(`${environment.serverURL}search/${testName}`)
+  }
+
+  getTestDetail(testId:string){
+    return this.http.get(`${environment.serverURL}search/testDetails/${testId}`)
   }
 }

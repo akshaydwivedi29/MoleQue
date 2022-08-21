@@ -13,11 +13,13 @@ import { TestDetailsComponent } from './test-details/test-details.component';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CartComponent } from './cart/cart.component';
-import { ProfileComponent } from './profile/profile.component';
-import { TermsConditionsComponent } from './pages/terms-conditions/terms-conditions.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { SignupComponent } from './signup/signup.component';
 import { ContactUsComponent } from './pages/contact-us/contact-us.component';
 import { PrivacyPolicyComponent } from './pages/privacy-policy/privacy-policy.component';
 import { StatutoryComplianceComponent } from './pages/statutory-compliance/statutory-compliance.component';
+import { TermsConditionsComponent } from './pages/terms-conditions/terms-conditions.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,17 +30,19 @@ import { StatutoryComplianceComponent } from './pages/statutory-compliance/statu
     LoginComponent,
     DashboardComponent,
     CartComponent,
-    ProfileComponent,
-    TermsConditionsComponent,
+    SignupComponent,
+    ForgotPasswordComponent,
     ContactUsComponent,
     PrivacyPolicyComponent,
     StatutoryComplianceComponent,
+    TermsConditionsComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
     CarouselModule,
   ],
   providers: [],

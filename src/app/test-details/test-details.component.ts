@@ -9,8 +9,8 @@ import { TestList, TestsService } from '../header/tests.service';
   styleUrls: ['./test-details.component.css'],
 })
 export class TestDetailsComponent implements OnInit {
-  searchName: any;
-  testlist: Array<TestList> = [];
+  testId: any;
+  obj: any;
   toggleTab: boolean = false;
   canAddToCart: boolean = true;
   constructor(
@@ -19,22 +19,21 @@ export class TestDetailsComponent implements OnInit {
     private cartService: CartService
   ) {
     this.route.paramMap.subscribe((params: ParamMap) => {
-      this.searchName = params.get('SearchText');
+      this.testId = params.get('Id');
       this.getData();
     });
   }
 
   ngOnInit(): void {}
 
+
   getData() {
-    this.testsService
-      .searchTestList(this.searchName.trim())
-      .subscribe((results: TestList[]) => {
-        this.testlist = results;
-        this.canAddToCart = !this.cartService.isAlreadyAddedInCart(
-          this.testlist[0]
-        );
-      });
+    this.testsService.getTestDetail(this.testId.trim()).subscribe((results: any) => {
+      this.obj = results;
+      this.canAddToCart = !this.cartService.isAlreadyAddedInCart(
+        this.obj
+      );
+    });
   }
 
   changeTab() {

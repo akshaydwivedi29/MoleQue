@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  // serverURL: "https://moleque-service.azurewebsites.net/",
+  serverURL: "http://localhost:3000/",
 };
 
 /*

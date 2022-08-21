@@ -21,6 +21,19 @@
 
 .tnc .container h3 {
     font-family: BebasNeueBold;
-    font-size: 30px;
+    font-size: 27px;
     margin-top: 20px;
+}
+
+ul li {
+    list-style-type: disc !important;
+}
+
+ol li {
+    list-style-type: auto;
+}
+
+i {
+    font-weight: bold;
+    font-size: 18px;
 }

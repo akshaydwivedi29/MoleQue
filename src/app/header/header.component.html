@@ -17,7 +17,7 @@
         <section *ngIf="testlist.length >1">
             <ng-template ngFor let-testlist [ngForOf]="testlist" let-i="index">
                 <hr *ngIf="i > 0" />
-                <a (click)="routeData(testlist.testname)">{{testlist.testname}}</a>
+                <a (click)="routeData(testlist)">{{testlist.testname}}</a>
             </ng-template>
         </section>
     </div>

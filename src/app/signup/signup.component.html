@@ -1,0 +1,60 @@
+<section class="login">
+    <div class="d-flex align-items-center justify-content-between">
+
+        <div class="login_img">
+            <img src="../../assets/images/jpg/login.jpg" alt="Login / Sign Up">
+        </div>
+
+        <div class="login_item">
+            <div class="login_item_top">
+                <img src="../../assets/images/logo.png" alt="MoleQue Diagnostics">
+                <h5>SIGN UP</h5>
+                <h4>Get started with your health check now.</h4>
+                <p>Already an existing User? Please Sign-in with your registered credentials.</p>
+            </div>
+
+            <p class="error" *ngIf="showSignUpError">User already exists</p>
+
+            <div class="login_item_form">
+                <form [formGroup]="signUpForm" (ngSubmit)="signUp()">
+
+                    <div class="form-group">
+                        <span id="countryCode">+91</span>
+                        <input type="tel" class="form-control" formControlName="number" id="mobile"
+                            placeholder="10 digit mobile number">
+                        <p class="error"
+                            *ngIf="signUpForm.controls['number'].invalid && signUpForm.controls['number'].touched ">
+                            Please provide valid mobile number</p>
+                    </div>
+
+                    <div class="form-group mt-3">
+                        <input type="text" class="form-control" formControlName="name" id="userName" placeholder="Name">
+                        <p class="error"
+                            *ngIf="signUpForm.controls['name'].invalid && signUpForm.controls['name'].touched ">Please
+                            enter your name</p>
+                    </div>
+
+                    <div class="form-group mt-3">
+                        <input type="password" class="form-control" formControlName="password" id="password"
+                            placeholder="Password">
+                        <p class="error"
+                            *ngIf="signUpForm.controls['password'].invalid && signUpForm.controls['password'].touched">
+                            Password should have minimum 6 characters, at least 1 uppercase letter, 1 lowercase
+                            letter and 1 number)</p>
+                    </div>
+
+                    <div class="login_buttons mt-3">
+                        <button type="submit" [disabled]="!signUpForm.valid">SIGN UP</button>
+                    </div>
+
+                    <span>Already an <a id="signIn" routerLink="/login">Existing User? </a>Please Sign-in with your registered credentials.</span>
+
+
+                </form>
+            </div>
+
+        </div>
+
+
+    </div>
+</section>
