@@ -34,9 +34,11 @@
                 </tr>
             </tbody>
             <tfoot>
-                <tr *ngIf="testlist.length >1">
+                <tr *ngIf="testlist.length >=1">
                     <td colspan="3">Total Payable Amount</td>
-                    <td colspan="2">₹ {{totalCartValue}}</td>
+                    <td>₹ {{totalCartValue}}</td>
+                    <td class="text-center" (click)="clearCart(); realodPage()"><i class="bi bi-trash3-fill"></i>
+                    </td>
                 </tr>
             </tfoot>
         </table>

@@ -31,4 +31,12 @@ export class CartComponent implements OnInit {
   removeItem(item: any) {
     this.cartService.removeItem(item);
   }
+
+  clearCart() {
+    localStorage.clear();
+  }
+
+  realodPage() {
+    location.reload();
+  }
 }

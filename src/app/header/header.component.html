@@ -41,7 +41,7 @@
         </button>
         <button class="cart" routerLink="/cart">
             <span class="bi bi-cart-fill">&nbsp;Cart</span>
-            <span class="cart_count">{{itemCount}}</span>
+            <span class="cart_count" *ngIf="cartCount.length >=1">{{itemCount}}</span>
         </button>
     </div>
 </header>
