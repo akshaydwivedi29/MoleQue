@@ -19,3 +19,9 @@
     padding-top: 5px;
     border-bottom: 3px solid #f22283;
 }
+
+.ppolicy .container h3 {
+    font-family: BebasNeueBold;
+    font-size: 27px;
+    margin-top: 20px;
+}
