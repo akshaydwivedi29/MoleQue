@@ -4,69 +4,63 @@
 
     <!-- INTRO SECTION  -->
 
-    <section class="intro_section d-flex align-items-center justify-content-center">
+    <section class="main_carousel">
+        <owl-carousel-o [options]="customOptions">
 
-        <div class="container d-flex align-items-center justify-content-around">
+            <ng-template carouselSlide>
+                <img src="../../assets/images/banner/banner1-1.webp">
+            </ng-template>
 
-            <div class="card">
-                <div class="card-body">
-                    <div class="report-whitebox"></div>
-                    <div class="reportwhite-cir">
-                        <span></span>
-                    </div>
-                    <div class="card-title">
-                        <h4>VIEW ALL YOUR TEST REPORTS</h4>
-                    </div>
+            <ng-template carouselSlide>
+                <img src="../../assets/images/banner/banner1-2.webp">
+            </ng-template>
 
-                    <form>
-                        <div class="form-group">
-                            <label for="visitID">Lab/Visit ID</label>
-                            <input type="text" class="form-control" id="visitID" placeholder="Enter Lab/Visit ID">
-                        </div>
+            <ng-template carouselSlide>
+                <img src="../../assets/images/banner/banner1-3.webp">
+            </ng-template>
 
-                        <div class="form-group mt-3">
-                            <label for="password">Password</label>
-                            <input type="password" class="form-control" id="password"
-                                placeholder="Eg. Surname/Last Name">
-                        </div>
+            <ng-template carouselSlide>
+                <img src="../../assets/images/banner/banner1-4.webp">
+            </ng-template>
 
-                        <div class="form-group mt-3">
-                            <label for="captcha">Captcha</label>
-                            <div class="d-flex align-items-center">
-                                <button type="button" class="captchabtn">JBG5E7</button>
-                                <input type="text" class="form-control ms-3" id="captcha"
-                                    placeholder="Type Captcha Here">
-                            </div>
+        </owl-carousel-o>
 
-                        </div>
-
-                        <button type="submit" class="check_report mt-3">CHECK REPORT</button>
-                    </form>
+        <div class="card">
+            <div class="card-body">
+                <div class="report-whitebox"></div>
+                <div class="reportwhite-cir">
+                    <span></span>
                 </div>
-            </div>
+                <div class="card-title">
+                    <h4>VIEW ALL YOUR TEST REPORTS</h4>
+                </div>
 
-            <div class="main_carousel">
-                <owl-carousel-o [options]="customOptions">
+                <form>
+                    <div class="form-group">
+                        <label for="visitID">Lab/Visit ID</label>
+                        <input type="text" class="form-control" id="visitID" placeholder="Enter Lab/Visit ID">
+                    </div>
 
-                    <ng-template carouselSlide>
-                        <img src="../../assets/images/banner/banner1-1.webp">
-                    </ng-template>
+                    <div class="form-group mt-3">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" id="password" placeholder="Eg. Surname/Last Name">
+                    </div>
 
-                    <ng-template carouselSlide>
-                        <img src="../../assets/images/banner/banner1-2.webp">
-                    </ng-template>
+                    <div class="form-group mt-3">
+                        <label for="captcha">Captcha</label>
+                        <div class="d-flex align-items-center">
+                            <button type="button" class="captchabtn">JBG5E7</button>
+                            <input type="text" class="form-control ms-3" id="captcha" placeholder="Type Captcha Here">
+                        </div>
 
-                    <ng-template carouselSlide>
-                        <img src="../../assets/images/banner/banner1-3.webp">
-                    </ng-template>
+                    </div>
 
-                    <ng-template carouselSlide>
-                        <img src="../../assets/images/banner/banner1-4.webp">
-                    </ng-template>
-
-                </owl-carousel-o>
+                    <button type="submit" class="check_report mt-3">CHECK REPORT</button>
+                </form>
             </div>
         </div>
+
+
     </section>
 
 

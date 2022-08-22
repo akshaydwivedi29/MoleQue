@@ -1,22 +1,23 @@
-/* INTRO SECTION STARTS  */
+/* MAIN CAROUSEL  */
 
-.intro_section {
-    background-image: url(../../assets/images/banner/top_banner.webp);
-    background-size: cover;
-    background-attachment: fixed;
-    height: 550px;
-    margin-top: 120px;
+.main_carousel {
+    position: relative;
+    margin-top: 80px;
 }
 
 /* CHECK REPORT  */
 
-.intro_section .card {
+.main_carousel .card {
+    position: absolute;
+    top: 20%;
+    right: 5%;
+    z-index: 1;
     max-width: 320px;
     border: 10px solid #1f3d9d;
     border-radius: 5px;
 }
 
-.intro_section .card .card-title>h4 {
+.main_carousel .card .card-title>h4 {
     text-align: center;
     font-weight: 600;
     font-size: 20px;
@@ -98,23 +99,6 @@
     border-radius: 100%;
     top: 4px;
 }
-
-/* MAIN CAROUSEL  */
-
-.main_carousel {
-    width: 70%;
-    height: auto;
-    border: 10px solid #F22283;
-    border-radius: 5px;
-}
-
-.main_carousel img {
-    height: 450px;
-    margin: auto;
-}
-
-
-
 
 /* HOME COLLECTION SECTION STARTS  */
 
