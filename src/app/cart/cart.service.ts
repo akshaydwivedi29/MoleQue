@@ -1,39 +1,39 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CartService {
-  constructor() {
-    this.loadCart();
-  }
 
   items: any = [];
   totalCartValue: number = 0;
   protected _eventSubject = new Subject();
   public events = this._eventSubject.asObservable();
 
-  addToCart(item: any) {
-    this.items.push(item);
-    this.saveCart();
+  constructor(private http:HttpClient) { this.loadCart();
   }
 
-  getItems() {
-    return this.items;
+  addToCart(item:any) {
+    return this.http.post(`${environment.serverURL}cart/`,item);
+  }
+  
+  getItems(userId:string) {
+    return this.http.get(`${environment.serverURL}cart/getCartByUserId/${userId}`);
+  }
+  
+  clearCart(userId:string) {
+    return this.http.delete(`${environment.serverURL}cart/removeAll/${userId}`);
   }
 
-  clearCart() {
-    this.items = [];
-    localStorage.removeItem('cart_items');
+  removeItem(testId: any) {
+    return this.http.delete(`${environment.serverURL}cart/${testId}`);
   }
 
-  removeItem(item: any) {
-    const index = this.items.findIndex((o: any) => o._id === item._id);
-    if (index > -1) {
-      this.items.splice(index, 1);
-      this.saveCart();
-    }
+  getAllTestDetail() {
+    return this.http.get(`${environment.serverURL}search`);
   }
 
   saveCart() {
@@ -61,13 +61,5 @@ export class CartService {
     const index = this.items.findIndex((o: any) => o._id === item._id);
     if (index > -1) return true;
     return false;
-  }
-
-  getTotalCartValue() {
-    this.totalCartValue = 0;
-    this.items.forEach((element: any) => {
-      this.totalCartValue += parseFloat(element.price);
-    });
-    return this.totalCartValue;
   }
 }

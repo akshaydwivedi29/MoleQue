@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, ParamMap } from '@angular/router';
-import { TestList, TestsService } from '../header/tests.service';
+import { Router } from '@angular/router';
+import { TestsService } from '../header/tests.service';
 import { CartService } from './cart.service';
 
 @Component({
@@ -9,34 +9,60 @@ import { CartService } from './cart.service';
   styleUrls: ['./cart.component.css'],
 })
 export class CartComponent implements OnInit {
-  searchName: any;
-  testlist: Array<TestList> = [];
+
+  testlist: any;
+  testDetail: any;
   toggleTab: boolean = false;
   totalCartValue: number = 0;
+  userId: any;
+
   constructor(
-    private route: ActivatedRoute,
-    private cartService: CartService
-  ) {}
+    private router: Router,
+    private cartService: CartService,
+    private testService: TestsService
+  ) {
+    this.userId = localStorage.getItem('id')
+  }
 
   ngOnInit(): void {
     this.loadData();
   }
 
   loadData() {
-    this.testlist = this.cartService.getItems();
-    console.log(this.testlist.length);
-    this.totalCartValue = this.cartService.getTotalCartValue();
+    this.cartService.getItems(this.userId).subscribe(res => {
+      this.testlist = res;
+      this.testlist.forEach((element: any) => {
+        this.totalCartValue += parseFloat(element.testDetail.price);
+      });
+    });
   }
 
-  removeItem(item: any) {
-    this.cartService.removeItem(item);
+  removeItem(testId: any) {
+    this.cartService.removeItem(testId._id).subscribe();
+    this.testlist.forEach((element: any) => {
+      this.totalCartValue -= parseFloat(element.testDetail.price);
+
+    })
   }
 
   clearCart() {
-    localStorage.clear();
+    this.cartService.clearCart(this.userId).subscribe(res => {
+      console.log(res)
+    });
   }
 
-  realodPage() {
-    location.reload();
+  getAllTestDetail() {
+    this.cartService.getAllTestDetail().subscribe(res => {
+      this.testDetail = res;
+    })
+  }
+
+  openRequestPage(test: any) {
+    this.testService.getTestDetail(test._id).subscribe();
+    this.router.navigate(['/test-details', { Id: test._id }])
+  }
+
+  addToCart(item: any) {
+    this.cartService.addToCart({ userId: this.userId, testDetail: item }).subscribe();
   }
 }

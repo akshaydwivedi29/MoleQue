@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 
 @Component({
@@ -7,6 +8,11 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
   styleUrls: ['./homepage.component.css'],
 })
 export class HomepageComponent implements OnInit {
+
+  finalCaptcha: string = "";
+  testReportForm!: FormGroup;
+  testReportValue: any;
+
   customOptions: OwlOptions = {
     loop: true,
     autoplay: true,
@@ -39,5 +45,39 @@ export class HomepageComponent implements OnInit {
     margin: 0,
   };
 
-  ngOnInit(): void {}
+  constructor(private fb: FormBuilder) {
+    this.testReportForm = this.fb.group({
+      visitId: ['', [Validators.required]],
+      password: ['', ([Validators.required, Validators.pattern('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$')])],
+      captcha: ['', [Validators.required]],
+    });
+  }
+
+  ngOnInit(): void {
+    this.generateCaptcha();
+  }
+
+  generateCaptcha() {
+    let alpha = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V'
+      , 'W', 'X', 'Y', 'Z', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '!', '@', '#', '$', '%', '^', '&', '*', '+'];
+    let a = alpha[Math.floor(Math.random() * 71)];
+    let b = alpha[Math.floor(Math.random() * 71)];
+    let c = alpha[Math.floor(Math.random() * 71)];
+    let d = alpha[Math.floor(Math.random() * 71)];
+    let e = alpha[Math.floor(Math.random() * 71)];
+    let f = alpha[Math.floor(Math.random() * 71)];
+    this.finalCaptcha = a + b + c + d + e + f;
+  }
+
+  validDetail() {
+    this.testReportValue = this.testReportForm.value;
+    if (this.finalCaptcha === this.testReportValue.captcha || this.testReportValue.valid) {
+      alert('done');
+      return true;
+    } 
+    else {
+      alert('undone')
+      return false;
+    }
+  }
 }

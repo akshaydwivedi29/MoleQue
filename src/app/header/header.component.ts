@@ -9,14 +9,15 @@ declare var $: any;
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
-  
+
 
   testlist: Array<TestList> = [];
-  cartCount: Array<TestList> = [];
+  cartCount: any;
   hasQuery: Boolean = false;
   menuVariable: boolean = false;
   menu_icon_variable: boolean = false;
   itemCount: number = 0;
+  userId: any;
 
   constructor(
     private testsService: TestsService,
@@ -27,15 +28,17 @@ export class HeaderComponent implements OnInit {
       console.log(res);
       this.itemCount = parseInt(res);
     });
+
+    this.userId = localStorage.getItem('id');
   }
 
   sendData(event: any) {
     let query = event.target.value;
-    if(!query || query.length<1){
-      return ;
+    if (!query || query.length < 1) {
+      return;
     }
-    this.testsService.searchTestList(query).subscribe((res:any) => {
-    this.testlist = res;
+    this.testsService.searchTestList(query).subscribe((res: any) => {
+      this.testlist = res;
     })
   }
 
@@ -45,8 +48,15 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.cartCount = this.cartService.getItems();
-    this.itemCount = this.cartCount.length;
+    this.getCart();
+  }
+
+  async getCart() {
+    await this.cartService.getItems(this.userId).subscribe(res => {
+      this.cartCount = res;
+      this.itemCount = this.cartCount.length;
+    });
+
   }
 
   close() {
@@ -57,10 +67,6 @@ export class HeaderComponent implements OnInit {
     }, 300);
   }
   routeData(searchText: any) {
-    console.log(searchText);
     this.router.navigate(['/test-details', { Id: searchText._id }]);
-    // this.hasQuery = false;
-    // this.testlist = [];
-    // $('#searchText').val('');
   }
 }

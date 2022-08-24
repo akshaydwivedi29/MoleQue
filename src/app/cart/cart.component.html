@@ -1,8 +1,25 @@
 <app-header></app-header>
 
+<div class="container testDetail">
+    <div class="row">
+        <div class="col">
+            <div class="card" *ngFor="let detail of testDetail">
+                <div class="card-body">
+                    <h5 class="card-title" id="testName">{{detail.testname | uppercase}}</h5>
+                    <p class="card-text">No special preparation required</p>
+                    <p class="card-text">26 Parameter(s) Covered</p>
+                    <p class="card-text">Daily</p>
+                    <a class="card-text" href="#">Download Sample Report</a>
+                    <p class="card-text" id="price">₹ {{detail.price}}</p>
+                    <button (click)="openRequestPage(detail)" class="knowMoreBtn">Know more...</button>
+                    <button class="btn" type="button" (click)="addToCart(detail)">Add to cart</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <section class="cart container">
-
     <div class="cart_items">
         <table class="table">
             <thead>
@@ -15,29 +32,29 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngIf="testlist.length <1">
+                <tr *ngIf="testlist?.length <1">
                     <td class="bg-white" colspan="5">
                         <div class="empty_cart bg-white">
                             <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                             <h4>Your cart is empty!</h4>
                             <p>Add items to it now.</p>
-                            <button type="button">ADD A TEST</button>
+                            <button class="btn" type="button" (click)="getAllTestDetail()">ADD A TEST</button>
                         </div>
                     </td>
                 </tr>
                 <tr *ngFor='let obj of testlist; let i = index;'>
                     <td class="text-center">{{i+1}}</td>
-                    <td>{{obj.testcode}}</td>
-                    <td>{{obj.testname}}</td>
-                    <td>₹ {{obj.price}}</td>
+                    <td>{{obj.testDetail.testcode}}</td>
+                    <td>{{obj.testDetail.testname}}</td>
+                    <td>₹ {{obj.testDetail.price}}</td>
                     <td class="text-center" (click)="removeItem(obj); loadData()"><i class="bi bi-trash3-fill"></i></td>
                 </tr>
             </tbody>
             <tfoot>
-                <tr *ngIf="testlist.length >=1">
+                <tr *ngIf="testlist?.length >=1">
                     <td colspan="3">Total Payable Amount</td>
                     <td>₹ {{totalCartValue}}</td>
-                    <td class="text-center" (click)="clearCart(); realodPage()"><i class="bi bi-trash3-fill"></i>
+                    <td class="text-center" (click)="clearCart()"><i class="bi bi-trash3-fill"></i>
                     </td>
                 </tr>
             </tfoot>

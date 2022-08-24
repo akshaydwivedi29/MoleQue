@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { CartService } from '../cart/cart.service';
-import { TestList, TestsService } from '../header/tests.service';
+import {  TestsService } from '../header/tests.service';
 
 @Component({
   selector: 'app-test-details',
@@ -10,9 +10,11 @@ import { TestList, TestsService } from '../header/tests.service';
 })
 export class TestDetailsComponent implements OnInit {
   testId: any;
+  userId: any;
   obj: any;
   toggleTab: boolean = false;
   canAddToCart: boolean = true;
+
   constructor(
     private route: ActivatedRoute,
     private testsService: TestsService,
@@ -22,17 +24,18 @@ export class TestDetailsComponent implements OnInit {
       this.testId = params.get('Id');
       this.getData();
     });
+    this.userId = localStorage.getItem('id')
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
 
   getData() {
-    this.testsService.getTestDetail(this.testId.trim()).subscribe((results: any) => {
+    this.testsService.getTestDetail(this.testId).subscribe((results: any) => {
       this.obj = results;
-      this.canAddToCart = !this.cartService.isAlreadyAddedInCart(
-        this.obj
-      );
+      // this.canAddToCart = !this.cartService.isAlreadyAddedInCart(
+      //   this.obj
+      // );
     });
   }
 
@@ -41,7 +44,7 @@ export class TestDetailsComponent implements OnInit {
   }
 
   addToCart(item: any) {
-    this.cartService.addToCart(item);
+    this.cartService.addToCart({userId:this.userId,testDetail:item}).subscribe();
     this.canAddToCart = !this.cartService.isAlreadyAddedInCart(item);
   }
 }
