@@ -11,6 +11,7 @@ import { StatutoryComplianceComponent } from './pages/statutory-compliance/statu
 import { TermsConditionsComponent } from './pages/terms-conditions/terms-conditions.component';
 import { SignupComponent } from './signup/signup.component';
 import { TestDetailsComponent } from './test-details/test-details.component';
+import { TestListComponent } from './test-list/test-list.component';
 
 const routes: Routes = [
   {
@@ -56,6 +57,10 @@ const routes: Routes = [
   {
     path: 'terms-conditions',
     component: TermsConditionsComponent,
+  },
+  {
+    path: 'test-list',
+    component: TestListComponent,
   },
 ];
 

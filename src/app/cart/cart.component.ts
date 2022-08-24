@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { TestsService } from '../header/tests.service';
 import { CartService } from './cart.service';
 
 @Component({
@@ -11,16 +9,11 @@ import { CartService } from './cart.service';
 export class CartComponent implements OnInit {
 
   testlist: any;
-  testDetail: any;
   toggleTab: boolean = false;
   totalCartValue: number = 0;
   userId: any;
 
-  constructor(
-    private router: Router,
-    private cartService: CartService,
-    private testService: TestsService
-  ) {
+  constructor(private cartService: CartService) {
     this.userId = localStorage.getItem('id')
   }
 
@@ -49,20 +42,5 @@ export class CartComponent implements OnInit {
     this.cartService.clearCart(this.userId).subscribe(res => {
       console.log(res)
     });
-  }
-
-  getAllTestDetail() {
-    this.cartService.getAllTestDetail().subscribe(res => {
-      this.testDetail = res;
-    })
-  }
-
-  openRequestPage(test: any) {
-    this.testService.getTestDetail(test._id).subscribe();
-    this.router.navigate(['/test-details', { Id: test._id }])
-  }
-
-  addToCart(item: any) {
-    this.cartService.addToCart({ userId: this.userId, testDetail: item }).subscribe();
   }
 }

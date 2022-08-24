@@ -1,24 +1,5 @@
 <app-header></app-header>
 
-<div class="container testDetail">
-    <div class="row">
-        <div class="col">
-            <div class="card" *ngFor="let detail of testDetail">
-                <div class="card-body">
-                    <h5 class="card-title" id="testName">{{detail.testname | uppercase}}</h5>
-                    <p class="card-text">No special preparation required</p>
-                    <p class="card-text">26 Parameter(s) Covered</p>
-                    <p class="card-text">Daily</p>
-                    <a class="card-text" href="#">Download Sample Report</a>
-                    <p class="card-text" id="price">₹ {{detail.price}}</p>
-                    <button (click)="openRequestPage(detail)" class="knowMoreBtn">Know more...</button>
-                    <button class="btn" type="button" (click)="addToCart(detail)">Add to cart</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
 <section class="cart container">
     <div class="cart_items">
         <table class="table">
@@ -38,7 +19,7 @@
                             <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                             <h4>Your cart is empty!</h4>
                             <p>Add items to it now.</p>
-                            <button class="btn" type="button" (click)="getAllTestDetail()">ADD A TEST</button>
+                            <button class="btn" type="button" routerLink="/test-list">ADD A TEST</button>
                         </div>
                     </td>
                 </tr>

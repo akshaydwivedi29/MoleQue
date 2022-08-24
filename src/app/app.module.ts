@@ -20,6 +20,7 @@ import { ContactUsComponent } from './pages/contact-us/contact-us.component';
 import { PrivacyPolicyComponent } from './pages/privacy-policy/privacy-policy.component';
 import { StatutoryComplianceComponent } from './pages/statutory-compliance/statutory-compliance.component';
 import { TermsConditionsComponent } from './pages/terms-conditions/terms-conditions.component';
+import { TestListComponent } from './test-list/test-list.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,6 +37,7 @@ import { TermsConditionsComponent } from './pages/terms-conditions/terms-conditi
     PrivacyPolicyComponent,
     StatutoryComplianceComponent,
     TermsConditionsComponent,
+    TestListComponent,
   ],
   imports: [
     BrowserModule,
