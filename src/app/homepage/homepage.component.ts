@@ -74,7 +74,9 @@ export class HomepageComponent implements OnInit {
   checkTestReport() {
     this.testReportValue = this.testReportForm.value;
     if (this.testReportValue && this.finalCaptcha === this.testReportValue.captcha) {
-      this.homeService.checkReport(this.testReportValue).subscribe(res => { })
+      this.homeService.checkReport(this.testReportValue).subscribe(res => {
+        this.testReportForm.reset();
+      })
     }
     else if (this.finalCaptcha != this.testReportValue.captcha) {
       this.showAlert = true;
