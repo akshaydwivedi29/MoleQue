@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import { HomeServiceService } from './home-service.service';
 
 @Component({
   selector: 'app-homepage',
@@ -12,6 +13,7 @@ export class HomepageComponent implements OnInit {
   finalCaptcha: string = "";
   testReportForm!: FormGroup;
   testReportValue: any;
+  showAlert: boolean = false;
 
   customOptions: OwlOptions = {
     loop: true,
@@ -45,7 +47,7 @@ export class HomepageComponent implements OnInit {
     margin: 0,
   };
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private homeService: HomeServiceService) {
     this.testReportForm = this.fb.group({
       visitId: ['', [Validators.required]],
       password: ['', ([Validators.required, Validators.pattern('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$')])],
@@ -69,15 +71,13 @@ export class HomepageComponent implements OnInit {
     this.finalCaptcha = a + b + c + d + e + f;
   }
 
-  validDetail() {
+  checkTestReport() {
     this.testReportValue = this.testReportForm.value;
-    if (this.finalCaptcha === this.testReportValue.captcha || this.testReportValue.valid) {
-      alert('done');
-      return true;
-    } 
-    else {
-      alert('undone')
-      return false;
+    if (this.testReportValue && this.finalCaptcha === this.testReportValue.captcha) {
+      this.homeService.checkReport(this.testReportValue).subscribe(res => { })
+    }
+    else if (this.finalCaptcha != this.testReportValue.captcha) {
+      this.showAlert = true;
     }
   }
 }

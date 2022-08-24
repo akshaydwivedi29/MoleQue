@@ -45,7 +45,6 @@ export class CartService {
     let cartItems = localStorage.getItem('cart_items');
     if (cartItems) {
       this.items = JSON.parse(cartItems);
-      console.log(this.items);
     }
   }
 

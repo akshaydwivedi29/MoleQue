@@ -35,7 +35,7 @@
 
 .captchabtn {
     background: #1f3d9d;
-    text-decoration: line-through;
+    /* text-decoration: line-through; */
     border: none;
     color: #fff;
     padding: 0 10px;
@@ -58,6 +58,15 @@
     border-radius: 5px;
     letter-spacing: 3px;
     font-weight: 600;
+}
+
+.check_report:disabled {
+    background-color: grey !important;
+    cursor: not-allowed;
+}
+
+.error {
+    color: red;
 }
 
 .report-whitebox {
