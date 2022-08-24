@@ -50,7 +50,7 @@ export class HomepageComponent implements OnInit {
   constructor(private fb: FormBuilder, private homeService: HomeServiceService) {
     this.testReportForm = this.fb.group({
       visitId: ['', [Validators.required]],
-      password: ['', ([Validators.required, Validators.pattern('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$')])],
+      password: ['', ([Validators.required])],
       captcha: ['', [Validators.required]],
     });
   }
