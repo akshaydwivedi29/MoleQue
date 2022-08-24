@@ -25,7 +25,6 @@ export class HeaderComponent implements OnInit {
     private cartService: CartService
   ) {
     this.cartService.events.subscribe((res: any) => {
-      console.log(res);
       this.itemCount = parseInt(res);
     });
 
@@ -66,6 +65,7 @@ export class HeaderComponent implements OnInit {
       $('#searchText').val('');
     }, 300);
   }
+  
   routeData(searchText: any) {
     this.router.navigate(['/test-details', { Id: searchText._id }]);
   }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { LoginServiceService } from './login-service.service';
 
 @Component({
@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
   number: string = "";
   otpCode: any;
 
-  constructor(private formBuilder: FormBuilder, private loginService: LoginServiceService, private router: Router,private route: ActivatedRoute) {
+  constructor(private formBuilder: FormBuilder, private loginService: LoginServiceService, private router: Router) {
     this.logInForm = this.formBuilder.group({
       number: ['', [Validators.required, Validators.maxLength(10)]],
       password: ['', ([Validators.required, Validators.pattern('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$')])]

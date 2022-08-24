@@ -35,5 +35,4 @@ export class TestListComponent implements OnInit {
       this.testList = res;
     })
   }
-
 }
