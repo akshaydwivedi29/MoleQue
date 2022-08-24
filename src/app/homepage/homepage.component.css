@@ -1,22 +1,33 @@
-/* INTRO SECTION STARTS  */
+/* MAIN CAROUSEL  */
 
-.intro_section {
-    background-image: url(../../assets/images/banner/top_banner.webp);
-    background-size: cover;
-    background-attachment: fixed;
-    height: 550px;
-    margin-top: 120px;
+.main_carousel {
+    position: relative;
+    margin-top: 80px;
+}
+
+.carousel_bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: -webkit-gradient(linear, left top, right top, color-stop(20%, #ffffff), to(transparent));
+    background-image: linear-gradient(to left, #000000c2 20%, transparent);
 }
 
 /* CHECK REPORT  */
 
-.intro_section .card {
+.main_carousel .card {
+    position: absolute;
+    top: 20%;
+    right: 5%;
+    z-index: 1;
     max-width: 320px;
     border: 10px solid #1f3d9d;
     border-radius: 5px;
 }
 
-.intro_section .card .card-title>h4 {
+.main_carousel .card .card-title>h4 {
     text-align: center;
     font-weight: 600;
     font-size: 20px;
@@ -99,23 +110,6 @@
     top: 4px;
 }
 
-/* MAIN CAROUSEL  */
-
-.main_carousel {
-    width: 70%;
-    height: auto;
-    border: 10px solid #F22283;
-    border-radius: 5px;
-}
-
-.main_carousel img {
-    height: 450px;
-    margin: auto;
-}
-
-
-
-
 /* HOME COLLECTION SECTION STARTS  */
 
 .home_collection {
@@ -135,6 +129,8 @@
     text-align: center;
     font-weight: 600;
     font-size: 24px;
+    color: #1f3d9d;
+    padding: 10px 0;
 }
 
 .hc_item img {
@@ -151,6 +147,10 @@
     border-radius: 5px;
     letter-spacing: 3px;
     font-weight: 600;
+}
+
+.hc_btn:hover {
+    background: #1f3d9d;
 }
 
 .hc_bottom {

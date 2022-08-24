@@ -4,19 +4,40 @@
 
     <!-- INTRO SECTION  -->
 
-    <section class="intro_section d-flex align-items-center justify-content-center">
+    <section class="main_carousel">
+        <owl-carousel-o [options]="customOptions">
 
-        <div class="container d-flex align-items-center justify-content-around">
+            <ng-template carouselSlide>
+                <img src="../../assets/images/banner/banner1-1.webp">
+                <div class="carousel_bg"></div>
+            </ng-template>
 
-            <div class="card">
-                <div class="card-body">
-                    <div class="report-whitebox"></div>
-                    <div class="reportwhite-cir">
-                        <span></span>
-                    </div>
-                    <div class="card-title">
-                        <h4>VIEW ALL YOUR TEST REPORTS</h4>
-                    </div>
+            <ng-template carouselSlide>
+                <img src="../../assets/images/banner/banner1-2.webp">
+                <div class="carousel_bg"></div>
+            </ng-template>
+
+            <ng-template carouselSlide>
+                <img src="../../assets/images/banner/banner1-3.webp">
+                <div class="carousel_bg"></div>
+            </ng-template>
+
+            <ng-template carouselSlide>
+                <img src="../../assets/images/banner/banner1-4.webp">
+                <div class="carousel_bg"></div>
+            </ng-template>
+
+        </owl-carousel-o>
+
+        <div class="card">
+            <div class="card-body">
+                <div class="report-whitebox"></div>
+                <div class="reportwhite-cir">
+                    <span></span>
+                </div>
+                <div class="card-title">
+                    <h4>VIEW ALL YOUR TEST REPORTS</h4>
+                </div>
 
                     <form [formGroup]="testReportForm" (ngSubmit)="validDetail()" >
                         <div class="form-group">
@@ -45,28 +66,7 @@
                 </div>
             </div>
 
-            <div class="main_carousel">
-                <owl-carousel-o [options]="customOptions">
 
-                    <ng-template carouselSlide>
-                        <img src="../../assets/images/banner/banner1-1.webp">
-                    </ng-template>
-
-                    <ng-template carouselSlide>
-                        <img src="../../assets/images/banner/banner1-2.webp">
-                    </ng-template>
-
-                    <ng-template carouselSlide>
-                        <img src="../../assets/images/banner/banner1-3.webp">
-                    </ng-template>
-
-                    <ng-template carouselSlide>
-                        <img src="../../assets/images/banner/banner1-4.webp">
-                    </ng-template>
-
-                </owl-carousel-o>
-            </div>
-        </div>
     </section>
 
     <!-- Services Carousel Starts  -->
@@ -361,7 +361,7 @@
                         Services:
                     </h4>
                     <ul class="lists">
-                        <li><i class="fa fa-check"></i>Complate Family Health Care</li>
+                        <li><i class="fa fa-check"></i>Complete Family Health Care</li>
                         <li><i class="fa fa-check"></i>EKG</li>
                         <li><i class="fa fa-check"></i>X-Ray</li>
                         <li><i class="fa fa-check"></i>UltraSound</li>
@@ -497,7 +497,7 @@
                         </svg>
                     </div>
                     <div class="content">
-                        <h1>Complate Lab Services</h1>
+                        <h1>Complete Lab Services</h1>
                         <p>
                             Cost-efficient, comprehensive and clinical laboratory services
                         </p>
