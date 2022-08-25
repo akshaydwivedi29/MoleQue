@@ -12,6 +12,7 @@ export class TestListComponent implements OnInit {
 
   userId: any;
   testList: any;
+  canAddToCart: boolean[] = [false];
 
   constructor(private testService: TestsService, private router: Router, private cartService: CartService) {
     this.userId = localStorage.getItem('id');
@@ -27,7 +28,14 @@ export class TestListComponent implements OnInit {
   }
 
   addToCart(item: any) {
-    this.cartService.addToCart({ userId: this.userId, testDetail: item }).subscribe();
+    if (this.userId) {
+      this.cartService.addToCart({ userId: this.userId, testDetail: item }).subscribe();
+      this.canAddToCart[item._id] = !this.cartService.isAlreadyAddedInCart(item._id);
+    }
+    else{
+      this.cartService.addToCartLS(item);
+      this.canAddToCart[item._id] = !this.cartService.isAlreadyAddedInCart(item._id);
+    }
   }
 
   getTestList() {

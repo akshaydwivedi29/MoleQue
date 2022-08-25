@@ -12,6 +12,7 @@ export class CartComponent implements OnInit {
   toggleTab: boolean = false;
   totalCartValue: number = 0;
   userId: any;
+  data:any;
 
   constructor(private cartService: CartService) {
     this.userId = localStorage.getItem('id')
@@ -19,28 +20,43 @@ export class CartComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadData();
+    this.loadDataLS();
   }
 
   loadData() {
-    this.cartService.getItems(this.userId).subscribe(res => {
+    this.cartService.getItems(this.userId).subscribe((res:any) => {
       this.testlist = res;
+      this.data = res;
+      console.log('loadData',this.testlist)
       this.testlist.forEach((element: any) => {
         this.totalCartValue += parseFloat(element.testDetail.price);
       });
     });
+  }
+  
+  loadDataLS() {
+    this.testlist = this.cartService.getItemsLS();
+    console.log('loadDataLS',this.testlist)
+    console.log(this.testlist.length);
+    this.totalCartValue = this.cartService.getTotalCartValue();
   }
 
   removeItem(testId: any) {
     this.cartService.removeItem(testId._id).subscribe();
     this.testlist.forEach((element: any) => {
       this.totalCartValue -= parseFloat(element.testDetail.price);
-
-    })
+})
   }
 
-  clearCart() {
-    this.cartService.clearCart(this.userId).subscribe(res => {
-      console.log(res)
-    });
+  removeItemLS(item: any) {
+    this.cartService.removeItem(item);
+  }
+
+  clearCartLS() {
+    // this.cartService.clearCart(this.userId).subscribe(res => {
+    //   console.log(res)
+    // });
+    localStorage.clear();
   }
 }
+

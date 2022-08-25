@@ -13,30 +13,59 @@ export class CartService {
   protected _eventSubject = new Subject();
   public events = this._eventSubject.asObservable();
 
-  constructor(private http:HttpClient) { this.loadCart();
+  constructor(private http: HttpClient) {
+    this.loadCart();
   }
 
-  addToCart(item:any) {
-    return this.http.post(`${environment.serverURL}cart/`,item);
+  addToCart(item: any) {
+    return this.http.post(`${environment.serverURL}cart/`, item);
   }
-  
-  getItems(userId:string) {
+
+  Cart(item: any) {
+    return this.http.post(`${environment.serverURL}cart/`, item).subscribe(res => {
+      this.items = res;
+    });
+  }
+
+  addToCartLS(item: any) {
+    this.items.push(item);
+    this.saveCartLS();
+  }
+
+  getItems(userId: string) {
     return this.http.get(`${environment.serverURL}cart/getCartByUserId/${userId}`);
   }
-  
-  clearCart(userId:string) {
+
+  getItemsLS() {
+    return this.items;
+  }
+
+  clearCart(userId: string) {
     return this.http.delete(`${environment.serverURL}cart/removeAll/${userId}`);
+  }
+
+  clearCartLS() {
+    this.items = [];
+    localStorage.removeItem('cart_items');
   }
 
   removeItem(testId: any) {
     return this.http.delete(`${environment.serverURL}cart/${testId}`);
   }
 
+  removeItemLS(item: any) {
+    const index = this.items.findIndex((o: any) => o._id === item._id);
+    if (index > -1) {
+      this.items.splice(index, 1);
+      this.saveCartLS();
+    }
+  }
+
   getAllTestDetail() {
     return this.http.get(`${environment.serverURL}search`);
   }
 
-  saveCart() {
+  saveCartLS() {
     localStorage.setItem('cart_items', JSON.stringify(this.items));
     this.publishCartCount();
   }
@@ -61,4 +90,13 @@ export class CartService {
     if (index > -1) return true;
     return false;
   }
+
+  getTotalCartValue() {
+    this.totalCartValue = 0;
+    this.items.forEach((element: any) => {
+      this.totalCartValue += parseFloat(element.price);
+    });
+    return this.totalCartValue;
+  }
+
 }

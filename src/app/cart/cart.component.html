@@ -25,17 +25,17 @@
                 </tr>
                 <tr *ngFor='let obj of testlist; let i = index;'>
                     <td class="text-center">{{i+1}}</td>
-                    <td>{{obj.testDetail.testcode}}</td>
-                    <td>{{obj.testDetail.testname}}</td>
-                    <td>₹ {{obj.testDetail.price}}</td>
-                    <td class="text-center" (click)="removeItem(obj); loadData()"><i class="bi bi-trash3-fill"></i></td>
+                    <td>{{obj?.testcode}}</td>
+                    <td>{{obj?.testname}}</td>
+                    <td>₹ {{obj?.price}}</td>
+                    <td class="text-center" (click)="removeItem(obj); loadDataLS()"><i class="bi bi-trash3-fill"></i></td>
                 </tr>
             </tbody>
             <tfoot>
                 <tr *ngIf="testlist?.length >=1">
                     <td colspan="3">Total Payable Amount</td>
                     <td>₹ {{totalCartValue}}</td>
-                    <td class="text-center" (click)="clearCart()"><i class="bi bi-trash3-fill"></i>
+                    <td class="text-center" (click)="clearCartLS()"><i class="bi bi-trash3-fill"></i>
                     </td>
                 </tr>
             </tfoot>

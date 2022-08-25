@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { CartService } from '../cart/cart.service';
-import {  TestsService } from '../header/tests.service';
+import { TestsService } from '../header/tests.service';
 
 @Component({
   selector: 'app-test-details',
@@ -33,9 +33,9 @@ export class TestDetailsComponent implements OnInit {
   getData() {
     this.testsService.getTestDetail(this.testId).subscribe((results: any) => {
       this.obj = results;
-      // this.canAddToCart = !this.cartService.isAlreadyAddedInCart(
-      //   this.obj
-      // );
+      this.canAddToCart = !this.cartService.isAlreadyAddedInCart(
+        this.obj
+      );
     });
   }
 
@@ -44,7 +44,15 @@ export class TestDetailsComponent implements OnInit {
   }
 
   addToCart(item: any) {
-    this.cartService.addToCart({userId:this.userId,testDetail:item}).subscribe();
-    this.canAddToCart = !this.cartService.isAlreadyAddedInCart(item);
+    if (this.userId) {
+      this.cartService.addToCart({ userId: this.userId, testDetail: item }).subscribe(res=>{
+        console.log(res)
+      });
+      this.canAddToCart = !this.cartService.isAlreadyAddedInCart(item);
+    }
+    else{
+      this.cartService.addToCartLS(item);
+      this.canAddToCart = !this.cartService.isAlreadyAddedInCart(item);
+    }
   }
 }
