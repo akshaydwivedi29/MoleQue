@@ -19,7 +19,7 @@ export class CartComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.loadData();
+    // this.loadData();
     this.loadDataLS();
   }
 
@@ -43,20 +43,21 @@ export class CartComponent implements OnInit {
 
   removeItem(testId: any) {
     this.cartService.removeItem(testId._id).subscribe();
+    this.cartService.removeItemLS(testId);
     this.testlist.forEach((element: any) => {
       this.totalCartValue -= parseFloat(element.testDetail.price);
 })
   }
 
   removeItemLS(item: any) {
-    this.cartService.removeItem(item);
+    this.cartService.removeItemLS(item);
   }
 
   clearCartLS() {
     // this.cartService.clearCart(this.userId).subscribe(res => {
     //   console.log(res)
     // });
-    localStorage.clear();
+    this.cartService.clearCartLS();
   }
 }
 

@@ -28,14 +28,14 @@
                     <td>{{obj?.testcode}}</td>
                     <td>{{obj?.testname}}</td>
                     <td>₹ {{obj?.price}}</td>
-                    <td class="text-center" (click)="removeItem(obj); loadDataLS()"><i class="bi bi-trash3-fill"></i></td>
+                    <td class="text-center" (click)="removeItemLS(obj); loadDataLS()"><i class="bi bi-trash3-fill"></i></td>
                 </tr>
             </tbody>
             <tfoot>
                 <tr *ngIf="testlist?.length >=1">
                     <td colspan="3">Total Payable Amount</td>
                     <td>₹ {{totalCartValue}}</td>
-                    <td class="text-center" (click)="clearCartLS()"><i class="bi bi-trash3-fill"></i>
+                    <td class="text-center" (click)="clearCartLS(); loadDataLS()"><i class="bi bi-trash3-fill"></i>
                     </td>
                 </tr>
             </tfoot>
