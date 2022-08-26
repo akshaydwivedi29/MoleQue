@@ -1,17 +1,51 @@
 <app-header></app-header>
 
 <section class="top_section">
-    <div class="container d-flex align-items-center justify-content-between">
-        <div class="offer_slider d-flex align-items-center justify-content-center">
-            <div class="dummy_slider">Dummy Slider</div>
-        </div>
-        <div class="prescription d-flex align-items-center justify-content-center">
+    <!-- <div class="container d-flex align-items-center justify-content-between"> -->
+
+    <div class="container d-block">
+
+        <owl-carousel-o [options]="offerOptions">
+
+            <ng-template carouselSlide>
+                <div class="dummyslide">Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro voluptatum
+                    delectus commodi enim, quidem obcaecati harum amet non nihil, illum praesentium quas tenetur
+                    recusandae! Ducimus neque magnam molestias blanditiis asperiores eius quae perferendis inventore,
+                    exercitationem iusto similique voluptatum, possimus repellat. Reiciendis quo enim iste quis in totam
+                    ea assumenda corrupti explicabo corporis!</div>
+            </ng-template>
+
+            <ng-template carouselSlide>
+                <div class="dummyslide">Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro voluptatum
+                    delectus commodi enim, quidem obcaecati harum amet non nihil, illum praesentium quas tenetur
+                    recusandae! Ducimus neque magnam molestias blanditiis asperiores eius quae perferendis inventore,
+                    exercitationem iusto similique voluptatum, possimus repellat. Reiciendis quo enim iste quis in totam
+                    ea assumenda corrupti explicabo corporis!</div>
+            </ng-template>
+
+
+            <ng-template carouselSlide>
+                <div class="dummyslide">Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro voluptatum
+                    delectus commodi enim, quidem obcaecati harum amet non nihil, illum praesentium quas tenetur
+                    recusandae! Ducimus neque magnam molestias blanditiis asperiores eius quae perferendis inventore,
+                    exercitationem iusto similique voluptatum, possimus repellat. Reiciendis quo enim iste quis in totam
+                    ea assumenda corrupti explicabo corporis!</div>
+            </ng-template>
+
+
+
+        </owl-carousel-o>
+    </div>
+
+    <!-- <div class="prescription d-flex align-items-center justify-content-center">
             <img src="../../assets/images/icons/report.png" alt="Prescription">
             <div class="px-3">Upload Prescription<br>to place an order</div>
             <button type="button">UPLOAD</button>
 
-        </div>
-    </div>
+        </div> -->
+
+
+    <!-- </div> -->
 </section>
 
 <section class="packages">
@@ -29,39 +63,6 @@
         </div>
     </div>
 </section>
-
-
-
-
-<!-- <ng-template #content let-modal>
-    <div class="modal-header">
-        <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
-        <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
-    </div>
-    <div class="modal-body">
-        <form>
-            <div class="mb-3">
-                <label for="dateOfBirth">Date of birth</label>
-                <div class="input-group">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente quo soluta accusamus error
-                    incidunt eius reiciendis maiores. Suscipit labore minima explicabo culpa, dignissimos maiores?
-                    Laborum sit obcaecati vel est quae a, placeat dolorum ullam corporis totam ex impedit sunt beatae,
-                    repudiandae, aperiam exercitationem nostrum cupiditate ea officiis expedita. Odio nesciunt vel rem
-                    repellendus. Voluptatum error aliquam possimus animi id odit a eius eveniet at molestiae aperiam
-                    laboriosam perspiciatis quisquam nemo voluptatem repellendus debitis minima, voluptates mollitia,
-                    fugit cupiditate. Possimus nostrum totam eveniet mollitia, odit iste excepturi reiciendis pariatur
-                    fugiat temporibus? Debitis ipsam, necessitatibus exercitationem asperiores dolorum aspernatur nam
-                    commodi delectus?
-                </div>
-            </div>
-        </form>
-    </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
-    </div>
-</ng-template>
-
-<button class="btn btn-lg btn-outline-primary" (click)="open(content)">Launch demo modal</button> -->
 
 
 

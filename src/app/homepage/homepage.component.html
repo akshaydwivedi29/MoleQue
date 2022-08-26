@@ -1,6 +1,6 @@
 <app-header></app-header>
 
-<div class="page">
+<div class="page" [ngClass]="blur_bg ? 'blur_body' : ''">
 
     <!-- INTRO SECTION  -->
 
@@ -181,9 +181,9 @@
                     </div>
 
                     <div class="d-flex align-items-center justify-content-center">
-                        <button type="button" class="hc_btn mt-4" routerLink="/book-test">BOOK NOW</button>
+                        <button type="button" class="hc_btn mt-4" (click)="openPopup()">BOOK NOW</button>
                     </div>
-                    <p class="hc_bottom">Not sure about the tests
+                    <p class=" hc_bottom">Not sure about the tests
                         <span>Click here..</span>
                     </p>
                 </div>
@@ -535,11 +535,107 @@
                             transform="translate(-809 -353.063)" />
                     </svg>
                 </div>
-                <a href="tel:+918826350303">+91 882 635 0303</a>
+                <a href="tel:+918826350303">+91 995 555 0855</a>
 
             </div>
         </div>
     </section>
 
 </div>
+
+<!-- MODAL POPUP STARTS -->
+
+<div class="modal align-items-center justify-content-center" tabindex="-1" role="dialog"
+    [ngStyle]="{'display':displayStyle}">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h4 class="modal-title"> Secure Login</h4>
+                <button type="button" (click)="closePopup()">
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <div class="d-flex justify-content-between m-2">
+                    <div class="secure_login_form">
+                        <form>
+                            <div class="form-group question" [ngClass]="secure_login ? 'd-none' : ''">
+                                <input type="tel" class="form-control" placeholder="Enter Mobile Number" maxLength="10">
+                                <button type="button" (click)="submitOTP()">Get OTP</button>
+                            </div>
+
+                            <div class="form-group" [ngClass]="secure_login ? '' : 'd-none'">
+                                <h6>Please enter verification code (OTP) sent to:</h6>
+                                <div class="otp_number">*******123</div>
+                                <div class="otp d-flex">
+                                    <input class="text-center form-control rounded" type="text" id="first"
+                                        maxlength="1" />
+                                    <input class="text-center form-control rounded" type="text" id="second"
+                                        maxlength="1" />
+                                    <input class="text-center form-control rounded" type="text" id="third"
+                                        maxlength="1" />
+                                    <input class="text-center form-control rounded" type="text" id="fourth"
+                                        maxlength="1" />
+                                    <input class="text-center form-control rounded" type="text" id="fifth"
+                                        maxlength="1" />
+                                    <input class="text-center form-control rounded" type="text" id="sixth"
+                                        maxlength="1" />
+                                </div>
+                                <div class="resend_otp">OTP not received ? <span>Resend OTP</span> </div>
+                                <button type="button" class="submit_otp" routerLink="/book-test">SUBMIT</button>
+
+
+
+
+
+                            </div>
+
+                        </form>
+                    </div>
+
+
+                    <div class="secure_login_info">
+                        <div>Advantage of our secure login</div>
+                        <div>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            Stay informed with latest offers & reminders
+                        </div>
+                        <div>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            Single login for App & Web, access to reports
+                        </div>
+                        <div>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            Control all notifications, zero spam
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-flex align-items-center justify-content-between mt-4 whatsapp_alert_bg"
+                    [ngClass]="secure_login ? '' : 'd-none'">
+                    <div class="whatsapp_alert d-flex align-items-center">
+                        <img src="../../assets/images/icons/whatsapp.png" alt="Whatsapp Alerts">
+                        <div class="ms-3">Get Alerts On Whatsapp</div>
+                    </div>
+                    <div class="toggle_switch">
+                        <label class="switch"><input type="checkbox" />
+                            <div></div>
+                        </label>
+                    </div>
+                </div>
+
+
+
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- MODAL POPUP ENDS  -->
+
+
 <app-footer></app-footer>

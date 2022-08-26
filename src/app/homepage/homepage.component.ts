@@ -13,6 +13,8 @@ export class HomepageComponent implements OnInit {
   testReportForm!: FormGroup;
   testReportValue: any;
   showAlert: boolean = false;
+  blur_bg: boolean = false;
+  secure_login: boolean = false;
 
   customOptions: OwlOptions = {
     loop: true,
@@ -156,5 +158,27 @@ export class HomepageComponent implements OnInit {
     } else if (this.finalCaptcha != this.testReportValue.captcha) {
       this.showAlert = true;
     }
+  }
+
+  displayStyle = 'none';
+
+  openPopup() {
+    this.displayStyle = 'flex';
+    this.blurBody();
+  }
+  closePopup() {
+    this.displayStyle = 'none';
+    this.sharpBody();
+  }
+
+  blurBody() {
+    this.blur_bg = true;
+  }
+  sharpBody() {
+    this.blur_bg = false;
+  }
+
+  submitOTP() {
+    this.secure_login = true;
   }
 }
