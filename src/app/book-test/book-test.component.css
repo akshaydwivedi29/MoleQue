@@ -3,16 +3,17 @@
     padding: 30px 0;
 }
 
-.offer_slider {
-    min-width: 850px;
-    min-height: 140px;
-    background: #eeeeee;
+.offer_carousel,
+.offer_carousel img {
+    width: 900px;
+    height: 150px;
 }
 
 .prescription {
     background: #eeeeee;
-    min-height: 140px;
-    padding: 40px 30px;
+    height: 150px;
+    width: auto;
+    padding: 50px 30px;
 }
 
 .prescription img {
@@ -37,4 +38,8 @@
 .dummyslide {
     background: #eeeeee;
     padding: 15px;
+}
+
+.mrp {
+    text-decoration: line-through;
 }
