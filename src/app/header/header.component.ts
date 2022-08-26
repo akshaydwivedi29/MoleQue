@@ -51,10 +51,13 @@ export class HeaderComponent implements OnInit {
   }
 
   async getCart() {
-    await this.cartService.getItems(this.userId).subscribe(res => {
+    /* await this.cartService.getItems(this.userId).subscribe(res => {
       this.cartCount = res;
+      this.itemCount = this.cartCount.length; */
+      // });
+      this.cartCount = this.cartService.getItemsLS();
       this.itemCount = this.cartCount.length;
-    });
+      console.log(this.itemCount)
 
   }
 
