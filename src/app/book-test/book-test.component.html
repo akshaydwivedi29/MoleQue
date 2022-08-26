@@ -66,19 +66,31 @@
 
 
 
-<section class="packages">
-    <div class="container d-block">
-        <h5>Top Tests</h5>
-        <div class="card">
-            <div class="card-body">
-                <h6 class="package_name">Test 1</h6>
-                <p class="components">11 Tests included</p>
-                <hr>
-                <div class="mrp">₹600</div>
-                <div class="price">₹499</div>
-                <button type="button" class="mt-3">ADD TO CART</button>
+<section class="packages d-block container">
+    <h5>Top Tests</h5>
+
+    <owl-carousel-o [options]="customOptions">
+
+        <ng-template carouselSlide *ngFor="let list of testList">
+            <div class="card">
+                <div class="card-body">
+                    <h6 class="package_name">{{ (list.testname.length>6)? (list.testname |
+                        slice:0:15)+'..':(list.testname) }}</h6>
+                    <p class="components">11 Tests included</p>
+                    <hr>
+                    <div class="mrp">₹600</div>
+                    <div class="price">₹ {{list.price}}</div>
+                    <button type="button" class="mt-3" (click)="addToCart(list)"
+                        [disabled]="canAddToCart[list._id]">{{canAddToCart[list._id]?'Added To Cart' : 'Add To
+                        Cart'}} </button>
+                </div>
             </div>
-        </div>
-    </div>
+        </ng-template>
+    </owl-carousel-o>
+
+
+
+
+
 </section>
 <app-footer></app-footer>

@@ -7,7 +7,6 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class CartService {
-
   items: any = [];
   totalCartValue: number = 0;
   protected _eventSubject = new Subject();
@@ -22,9 +21,11 @@ export class CartService {
   }
 
   Cart(item: any) {
-    return this.http.post(`${environment.serverURL}cart/`, item).subscribe(res => {
-      this.items = res;
-    });
+    return this.http
+      .post(`${environment.serverURL}cart/`, item)
+      .subscribe((res) => {
+        this.items = res;
+      });
   }
 
   addToCartLS(item: any) {
@@ -33,7 +34,9 @@ export class CartService {
   }
 
   getItems(userId: string) {
-    return this.http.get(`${environment.serverURL}cart/getCartByUserId/${userId}`);
+    return this.http.get(
+      `${environment.serverURL}cart/getCartByUserId/${userId}`
+    );
   }
 
   getItemsLS() {
@@ -98,5 +101,4 @@ export class CartService {
     });
     return this.totalCartValue;
   }
-
 }

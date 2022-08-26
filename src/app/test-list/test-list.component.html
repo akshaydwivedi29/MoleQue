@@ -12,7 +12,9 @@
                     <a class="card-text" href="#">Download Sample Report</a>
                     <p class="card-text" id="price">₹ {{list.price}}</p>
                     <button (click)="openRequestPage(list)" class="knowMoreBtn">Know more...</button>
-                    <button class="btn" type="button" (click)="addToCart(list)" [disabled]="canAddToCart[list._id]">{{canAddToCart[list._id]?'Added To Cart' : 'Add To Cart'}}</button>
+                    <button class="btn" type="button" (click)="addToCart(list)"
+                        [disabled]="canAddToCart[list._id]">{{canAddToCart[list._id]?'Added To Cart' : 'Add To
+                        Cart'}}</button>
                 </div>
             </div>
         </div>

@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 // import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { Router } from '@angular/router';
+import { CartService } from '../cart/cart.service';
+import { TestsService } from '../header/tests.service';
+import { OwlOptions } from 'ngx-owl-carousel-o';
 
 @Component({
   selector: 'app-book-test',
@@ -7,9 +11,36 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./book-test.component.css'],
 })
 export class BookTestComponent implements OnInit {
-  closeResult = '';
-  constructor() // private modalService: NgbModal
-  {}
+  // closeResult = '';
+  userId: any;
+  testList: any;
+  canAddToCart: boolean[] = [false];
+
+  customOptions: OwlOptions = {
+    loop: true,
+    autoplay: true,
+    autoplaySpeed: 1500,
+    autoplayTimeout: 7000,
+    autoplayHoverPause: false,
+    mouseDrag: true,
+    touchDrag: true,
+    pullDrag: true,
+    dots: false,
+    navSpeed: 700,
+    navText: ['', ''],
+    items: 7,
+    nav: true,
+    // margin: 1,
+  };
+
+  constructor(
+    private testService: TestsService,
+    private router: Router,
+    private cartService: CartService // private modalService: NgbModal
+  ) {
+    this.userId = localStorage.getItem('id');
+    this.getTestList();
+  }
 
   ngOnInit(): void {}
 
@@ -35,4 +66,31 @@ export class BookTestComponent implements OnInit {
   //     return `with: ${reason}`;
   //   }
   // }
+
+  openRequestPage(test: any) {
+    this.testService.getTestDetail(test._id).subscribe();
+    this.router.navigate(['/test-details', { Id: test._id }]);
+  }
+
+  addToCart(item: any) {
+    if (this.userId) {
+      this.cartService
+        .addToCart({ userId: this.userId, testDetail: item })
+        .subscribe();
+      this.canAddToCart[item._id] = !this.cartService.isAlreadyAddedInCart(
+        item._id
+      );
+    } else {
+      this.cartService.addToCartLS(item);
+      this.canAddToCart[item._id] = !this.cartService.isAlreadyAddedInCart(
+        item._id
+      );
+    }
+  }
+
+  getTestList() {
+    this.cartService.getAllTestDetail().subscribe((res) => {
+      this.testList = res;
+    });
+  }
 }
