@@ -9,8 +9,7 @@ import { HomeServiceService } from './home-service.service';
   styleUrls: ['./homepage.component.css'],
 })
 export class HomepageComponent implements OnInit {
-
-  finalCaptcha: string = "";
+  finalCaptcha: string = '';
   testReportForm!: FormGroup;
   testReportValue: any;
   showAlert: boolean = false;
@@ -47,10 +46,13 @@ export class HomepageComponent implements OnInit {
     margin: 0,
   };
 
-  constructor(private fb: FormBuilder, private homeService: HomeServiceService) {
+  constructor(
+    private fb: FormBuilder,
+    private homeService: HomeServiceService
+  ) {
     this.testReportForm = this.fb.group({
       visitId: ['', [Validators.required]],
-      password: ['', ([Validators.required])],
+      password: ['', [Validators.required]],
       captcha: ['', [Validators.required]],
     });
   }
@@ -60,8 +62,79 @@ export class HomepageComponent implements OnInit {
   }
 
   generateCaptcha() {
-    let alpha = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V'
-      , 'W', 'X', 'Y', 'Z', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '!', '@', '#', '$', '%', '^', '&', '*', '+'];
+    let alpha = [
+      'A',
+      'B',
+      'C',
+      'D',
+      'E',
+      'F',
+      'G',
+      'H',
+      'I',
+      'J',
+      'K',
+      'L',
+      'M',
+      'N',
+      'O',
+      'P',
+      'Q',
+      'R',
+      'S',
+      'T',
+      'U',
+      'V',
+      'W',
+      'X',
+      'Y',
+      'Z',
+      '1',
+      '2',
+      '3',
+      '4',
+      '5',
+      '6',
+      '7',
+      '8',
+      '9',
+      '0',
+      'a',
+      'b',
+      'c',
+      'd',
+      'e',
+      'f',
+      'g',
+      'h',
+      'i',
+      'j',
+      'k',
+      'l',
+      'm',
+      'n',
+      'o',
+      'p',
+      'q',
+      'r',
+      's',
+      't',
+      'u',
+      'v',
+      'w',
+      'x',
+      'y',
+      'z',
+      '!',
+      '@',
+      '#',
+      '$',
+      '%',
+      '^',
+      '&',
+      '*',
+      '+',
+    ];
     let a = alpha[Math.floor(Math.random() * 71)];
     let b = alpha[Math.floor(Math.random() * 71)];
     let c = alpha[Math.floor(Math.random() * 71)];
@@ -73,12 +146,14 @@ export class HomepageComponent implements OnInit {
 
   checkTestReport() {
     this.testReportValue = this.testReportForm.value;
-    if (this.testReportValue && this.finalCaptcha === this.testReportValue.captcha) {
-      this.homeService.checkReport(this.testReportValue).subscribe(res => {
+    if (
+      this.testReportValue &&
+      this.finalCaptcha === this.testReportValue.captcha
+    ) {
+      this.homeService.checkReport(this.testReportValue).subscribe((res) => {
         this.testReportForm.reset();
-      })
-    }
-    else if (this.finalCaptcha != this.testReportValue.captcha) {
+      });
+    } else if (this.finalCaptcha != this.testReportValue.captcha) {
       this.showAlert = true;
     }
   }

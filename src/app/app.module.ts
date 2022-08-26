@@ -21,6 +21,7 @@ import { PrivacyPolicyComponent } from './pages/privacy-policy/privacy-policy.co
 import { StatutoryComplianceComponent } from './pages/statutory-compliance/statutory-compliance.component';
 import { TermsConditionsComponent } from './pages/terms-conditions/terms-conditions.component';
 import { TestListComponent } from './test-list/test-list.component';
+import { BookTestComponent } from './book-test/book-test.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,6 +39,7 @@ import { TestListComponent } from './test-list/test-list.component';
     StatutoryComplianceComponent,
     TermsConditionsComponent,
     TestListComponent,
+    BookTestComponent,
   ],
   imports: [
     BrowserModule,

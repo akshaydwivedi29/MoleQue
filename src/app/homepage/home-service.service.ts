@@ -3,13 +3,12 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class HomeServiceService {
+  constructor(private http: HttpClient) {}
 
-  constructor(private http :HttpClient) { }
-
-  checkReport(data:any) {
-    return this.http.post(`${environment.serverURL}testReport`, data )
+  checkReport(data: any) {
+    return this.http.post(`${environment.serverURL}testReport`, data);
   }
 }
