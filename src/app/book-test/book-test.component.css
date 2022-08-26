@@ -10,15 +10,27 @@
 }
 
 .prescription {
-    background: #eeeeee;
+    background: rgba(31, 61, 157, 0.15);
     height: 150px;
-    width: auto;
+    width: 380px;
     padding: 50px 30px;
+    /* position: relative; */
 }
 
 .prescription img {
     width: 60px;
     height: auto;
+    /* position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto 20px; */
+}
+
+.prescription div {
+    font-size: 15px;
+    font-weight: bold;
 }
 
 .prescription button,
