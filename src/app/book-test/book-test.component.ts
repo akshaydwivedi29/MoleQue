@@ -17,7 +17,7 @@ export class BookTestComponent implements OnInit {
   offerOptions: OwlOptions = {
     loop: true,
     autoplay: true,
-    autoplaySpeed: 1500,
+    autoplaySpeed: 1000,
     autoplayTimeout: 7000,
     autoplayHoverPause: false,
     mouseDrag: true,
@@ -27,7 +27,7 @@ export class BookTestComponent implements OnInit {
     navSpeed: 700,
     navText: ['', ''],
     items: 1,
-    nav: true,
+    nav: false,
   };
 
   customOptions: OwlOptions = {
