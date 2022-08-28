@@ -134,9 +134,10 @@
 }
 
 .home_collection .container:nth-child(2) .card:nth-child(1) {
-    background-image: url(../../assets/images/icons/pregnancy.png);
+    background-image: url(../../assets/images/icons/infertility.png);
     background-repeat: no-repeat;
-    background-size: 110px auto;
+    background-size: 155px auto;
+    background-position-x: 30px;
 }
 
 .home_collection .container:nth-child(2) .card:nth-child(2) {
@@ -165,7 +166,7 @@
     text-align: right;
     position: absolute;
     bottom: 0;
-    right: 5%;
+    right: 10%;
 }
 
 .home_collection .container:nth-child(2) .card:nth-child(2) .card-body p {
