@@ -32,17 +32,17 @@ export class BookTestComponent implements OnInit {
 
   customOptions: OwlOptions = {
     loop: true,
-    autoplay: true,
-    autoplaySpeed: 1500,
-    autoplayTimeout: 7000,
-    autoplayHoverPause: false,
+    // autoplay: true,
+    // autoplaySpeed: 1500,
+    // autoplayTimeout: 7000,
+    // autoplayHoverPause: false,
     mouseDrag: true,
     touchDrag: true,
     pullDrag: true,
     dots: false,
     navSpeed: 700,
-    navText: ['<<', '>>'],
-    items: 7,
+    navText: ['<', '>'],
+    items: 5,
     nav: true,
   };
 

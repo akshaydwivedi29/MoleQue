@@ -64,7 +64,7 @@
 
     <owl-carousel-o [options]="customOptions">
 
-        <ng-template carouselSlide *ngFor="let list of testList">
+        <ng-template carouselSlide *ngFor="let list of testList" let i="index">
             <div class="card">
                 <div class="card-body">
                     <h6 class="package_name">{{ (list.testname.length>6)? (list.testname |
@@ -75,7 +75,7 @@
                     <div class="price">₹ {{list.price}}</div>
                     <button type="button" class="mt-3" (click)="addToCart(list)"
                         [disabled]="canAddToCart[list._id]">{{canAddToCart[list._id]?'Added To Cart' : 'Add To
-                        Cart'}} </button>
+                        Cart'}}</button>
                 </div>
             </div>
         </ng-template>

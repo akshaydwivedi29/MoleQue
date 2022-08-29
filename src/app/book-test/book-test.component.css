@@ -43,8 +43,9 @@
 }
 
 .packages .card {
-    width: fit-content;
+    width: 75%;
     margin: 20px 0;
+    background: #CAE2FA;
 }
 
 .dummyslide {
