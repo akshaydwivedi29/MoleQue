@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { CartService } from '../cart/cart.service';
-import { TestsService, TestList } from './tests.service';
+import { CartService } from '../services/cart.service';
+import { TestsService, TestList } from '../services/tests.service';
 declare var $: any;
 @Component({
   selector: 'app-header',
@@ -9,8 +9,6 @@ declare var $: any;
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
-
-
   testlist: Array<TestList> = [];
   cartCount: any;
   hasQuery: Boolean = false;
@@ -38,7 +36,7 @@ export class HeaderComponent implements OnInit {
     }
     this.testsService.searchTestList(query).subscribe((res: any) => {
       this.testlist = res;
-    })
+    });
   }
 
   openMenu(): void {
@@ -54,11 +52,10 @@ export class HeaderComponent implements OnInit {
     /* await this.cartService.getItems(this.userId).subscribe(res => {
       this.cartCount = res;
       this.itemCount = this.cartCount.length; */
-      // });
-      this.cartCount = this.cartService.getItemsLS();
-      this.itemCount = this.cartCount.length;
-      console.log(this.itemCount)
-
+    // });
+    this.cartCount = this.cartService.getItemsLS();
+    this.itemCount = this.cartCount.length;
+    console.log(this.itemCount);
   }
 
   close() {
@@ -68,7 +65,7 @@ export class HeaderComponent implements OnInit {
       $('#searchText').val('');
     }, 300);
   }
-  
+
   routeData(searchText: any) {
     this.router.navigate(['/test-details', { Id: searchText._id }]);
   }

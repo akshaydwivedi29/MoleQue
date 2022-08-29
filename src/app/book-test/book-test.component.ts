@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { CartService } from '../cart/cart.service';
-import { TestsService } from '../header/tests.service';
+import { CartService } from '../services/cart.service';
+import { TestsService } from '../services/tests.service';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 
 @Component({

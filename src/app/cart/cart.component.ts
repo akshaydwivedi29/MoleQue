@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CartService } from './cart.service';
+import { CartService } from '../services/cart.service';
 
 @Component({
   selector: 'app-cart',
@@ -7,15 +7,14 @@ import { CartService } from './cart.service';
   styleUrls: ['./cart.component.css'],
 })
 export class CartComponent implements OnInit {
-
   testlist: any;
   toggleTab: boolean = false;
   totalCartValue: number = 0;
   userId: any;
-  data:any;
+  data: any;
 
   constructor(private cartService: CartService) {
-    this.userId = localStorage.getItem('id')
+    this.userId = localStorage.getItem('id');
   }
 
   ngOnInit(): void {
@@ -24,19 +23,19 @@ export class CartComponent implements OnInit {
   }
 
   loadData() {
-    this.cartService.getItems(this.userId).subscribe((res:any) => {
+    this.cartService.getItems(this.userId).subscribe((res: any) => {
       this.testlist = res;
       this.data = res;
-      console.log('loadData',this.testlist)
+      console.log('loadData', this.testlist);
       this.testlist.forEach((element: any) => {
         this.totalCartValue += parseFloat(element.testDetail.price);
       });
     });
   }
-  
+
   loadDataLS() {
     this.testlist = this.cartService.getItemsLS();
-    console.log('loadDataLS',this.testlist)
+    console.log('loadDataLS', this.testlist);
     console.log(this.testlist.length);
     this.totalCartValue = this.cartService.getTotalCartValue();
   }
@@ -46,7 +45,7 @@ export class CartComponent implements OnInit {
     this.cartService.removeItemLS(testId);
     this.testlist.forEach((element: any) => {
       this.totalCartValue -= parseFloat(element.testDetail.price);
-})
+    });
   }
 
   removeItemLS(item: any) {
@@ -60,4 +59,3 @@ export class CartComponent implements OnInit {
     this.cartService.clearCartLS();
   }
 }
-

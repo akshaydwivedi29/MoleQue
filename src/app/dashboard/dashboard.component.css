@@ -21,10 +21,18 @@
 
 .dashboard .container .card {
     border-radius: 5px;
-    min-width: 250px;
-    min-height: 250px;
+    min-width: 285px;
+    min-height: 270px;
     cursor: pointer;
 }
+
+/* .dashboard .container .card:hover {
+    background: #1f3d9d;
+}
+
+.dashboard .container .card:hover p {
+    color: #fff;
+} */
 
 .dashboard .container .card .card-body {
     position: relative;
@@ -39,9 +47,65 @@
     transform: translate(-50%, 50%);
 }
 
-.dashboard .container .card .card-body p {
+.dashboard .container .card .card-body p, .edit_info button {
     position: absolute;
     bottom: 0;
     left: 50%;
     transform: translate(-50%, -60%);
+    font-weight: bold;
+}
+
+.edit_info {
+    background: #1f3d9d;
+}
+
+.edit_info button {
+    background: #f22283;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 2px solid transparent;
+}
+
+.edit_info button:hover {
+    background: #1f3d9d;
+    border: 2px solid #fff;
+}
+
+.edit_info .info_avtar {
+    background: #f22283;
+    color: #fff;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 60%);
+    padding: 10px 15px;
+    border-radius: 50%;
+}
+
+.edit_info .info_name {
+    color: #fff;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, 80%);
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.edit_info .info_email {
+    color: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 35%);
+}
+
+.edit_info .info_number {
+    color: #fff;
+    position: absolute;
+    bottom: 30%;
+    left: 50%;
+    transform: translate(-50%, 50%);
 }
