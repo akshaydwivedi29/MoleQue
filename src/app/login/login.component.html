@@ -42,7 +42,8 @@
 
 
                     <div class="login_buttons mt-3">
-                        <button type="submit" class="login_btn_1" [disabled]="!logInForm.valid">LOGIN</button>
+                        <button type="submit" class="login_btn_1" [disabled]="!logInForm.valid"
+                            routerLink="/dashboard">LOGIN</button>
                         <p class="text-center my-2">or</p>
                         <button type="button" (click)="loginWithOtp()" [disabled]="logInForm.controls['number'].invalid"
                             class="login_btn_otp">LOGIN WITH OTP</button>

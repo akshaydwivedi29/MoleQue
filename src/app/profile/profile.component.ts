@@ -9,4 +9,14 @@ export class ProfileComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
+
+  id: any = 'profile';
+  tabChange(ids: any) {
+    this.id = ids;
+  }
+
+  open: any;
+  toggleForm(opened: any) {
+    this.open = opened;
+  }
 }
