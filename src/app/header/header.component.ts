@@ -11,10 +11,10 @@ declare var $: any;
 export class HeaderComponent implements OnInit {
   testlist: Array<TestList> = [];
   cartCount: any;
-  hasQuery: Boolean = false;
-  menuVariable: boolean = false;
-  menu_icon_variable: boolean = false;
-  itemCount: number = 0;
+  hasQuery = false;
+  menuVariable = false;
+  menu_icon_variable = false;
+  itemCount = 0;
   userId: any;
 
   constructor(

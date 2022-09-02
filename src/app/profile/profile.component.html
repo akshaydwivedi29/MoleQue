@@ -22,28 +22,42 @@
                     <div class="user_name">Hi, John Samuel</div>
                 </div>
 
-                <form>
+                <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
                     <div class="row my-4">
                         <div class="form-group col">
                             <label for="firstname" class="required">First Name</label>
-                            <input type="text" class="form-control" placeholder="Enter First name">
+                            <input type="text" formControlName="firstName" class="form-control"
+                                placeholder="Enter First name">
+                            <div class="error"
+                                *ngIf="profileForm.controls['firstName'].invalid && profileForm.controls['firstName'].touched ">
+                                Please provide valid first name</div>
                         </div>
 
                         <div class="form-group col">
                             <label for="lastname" class="required">Last Name</label>
-                            <input type="text" class="form-control" placeholder="Enter Last name">
+                            <input type="text" formControlName="lastName" class="form-control"
+                                placeholder="Enter Last name">
+                            <div class="error"
+                                *ngIf="profileForm.controls['lastName'].invalid && profileForm.controls['lastName'].touched ">
+                                Please provide valid last name</div>
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="form-group col">
                             <label for="email" class="required">Email</label>
-                            <input type="email" class="form-control" placeholder="Enter email">
+                            <input type="email" formControlName="email" class="form-control" placeholder="Enter email">
+                            <div class="error"
+                                *ngIf="profileForm.controls['email'].invalid && profileForm.controls['email'].touched ">
+                                Please provide valid email address</div>
                         </div>
 
                         <div class="form-group col">
                             <label for="mobile" class="required">Mobile</label>
-                            <input type="tel" class="form-control" placeholder="Enter Mobile">
+                            <input type="tel" formControlName="mobile" class="form-control" placeholder="Enter Mobile">
+                            <div class="error"
+                                *ngIf="profileForm.controls['mobile'].invalid && profileForm.controls['mobile'].touched ">
+                                Please provide valid mobile number</div>
                         </div>
                     </div>
 
@@ -71,7 +85,8 @@
 
                         <div class="form-group col">
                             <label for="dob" class="required">Date Of Birth</label>
-                            <input type="number" class="form-control" placeholder="Enter DOB">
+                            <input type="text" bsDatepicker [bsConfig]="datePickerConfig" class="form-control"
+                                placeholder="MM/DD/YYYY">
 
                         </div>
                     </div>
@@ -87,7 +102,7 @@
                         </div>
                         <div class="col">
                             <button type="button" class="me-3">Cancel</button>
-                            <button type="button" class="ms-3">Update Profile</button>
+                            <button type="button" class="ms-3" [disabled]="!profileForm.valid">Update Profile</button>
                         </div>
                     </div>
                 </form>
@@ -147,7 +162,8 @@
 
                             <div class="form-group col">
                                 <label for="dob" class="required">Date Of Birth</label>
-                                <input type="number" class="form-control" placeholder="Enter DOB">
+                                <input type="text" bsDatepicker [bsConfig]="datePickerConfig" class="form-control"
+                                    placeholder="MM/DD/YYYY">
                             </div>
 
                             <div class="d-flex align-items-center justify-content-center mt-5">

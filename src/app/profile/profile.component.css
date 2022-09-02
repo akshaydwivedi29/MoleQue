@@ -135,3 +135,9 @@
 .profile .container .tab_content p:hover {
     color: #f22283;
 }
+
+.error {
+    font-size: 13px;
+    margin-left: 5px;
+    color: red;
+}

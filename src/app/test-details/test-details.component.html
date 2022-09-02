@@ -70,7 +70,7 @@
                             </div>
 
                             <div class="card_item_button">
-                                <button type="button" class="btn" (click)="addToCart(obj)"
+                                <button type="button" class="btn" #patient (click)="addToCart(obj)"
                                     [disabled]="!canAddToCart">{{canAddToCart?'Add To Cart' : 'Added To Cart'}}</button>
                             </div>
 
@@ -183,7 +183,7 @@
                             </div>
 
                             <div class="card_item_button">
-                                <button type="button" class="btn" (click)="addToCart(obj)"
+                                <button type="button" class="btn" #analytics (click)="addToCart(obj)"
                                     [disabled]="!canAddToCart">{{canAddToCart?'Add To Cart' : 'Added To Cart'}}</button>
                             </div>
 
@@ -198,16 +198,7 @@
 
     </div>
 
-
-
-
-
-
-
-
-
-
-
+    <app-cart-modal *ngIf="showCartModal"></app-cart-modal>
 
 
     <div class="container">

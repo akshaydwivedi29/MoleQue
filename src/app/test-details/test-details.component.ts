@@ -12,8 +12,9 @@ export class TestDetailsComponent implements OnInit {
   testId: any;
   userId: any;
   obj: any;
-  toggleTab: boolean = false;
-  canAddToCart: boolean = true;
+  toggleTab = false;
+  canAddToCart = true;
+  showCartModal = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -40,6 +41,10 @@ export class TestDetailsComponent implements OnInit {
     this.toggleTab = !this.toggleTab;
   }
 
+  hideModal() {
+    this.showCartModal = false;
+  }
+
   addToCart(item: any) {
     if (this.userId) {
       this.cartService
@@ -52,5 +57,7 @@ export class TestDetailsComponent implements OnInit {
       this.cartService.addToCartLS(item);
       this.canAddToCart = !this.cartService.isAlreadyAddedInCart(item);
     }
+
+    this.showCartModal = true;
   }
 }

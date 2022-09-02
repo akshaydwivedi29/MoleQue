@@ -8,7 +8,7 @@ import { environment } from 'src/environments/environment';
 })
 export class CartService {
   items: any = [];
-  totalCartValue: number = 0;
+  totalCartValue = 0;
   protected _eventSubject = new Subject();
   public events = this._eventSubject.asObservable();
 
