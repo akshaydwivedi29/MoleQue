@@ -7,9 +7,9 @@
         <div class="tabs">
             <ul>
                 <li id="profile" [class.tab_selected]="id === 'profile'" (click)="tabChange('profile')">My Profile</li>
+                <li id="address" [class.tab_selected]="id === 'address'" (click)="tabChange('address')">My Address</li>
                 <li id="family" [class.tab_selected]="id === 'family'" (click)="tabChange('family')">Family Members</li>
-                <li id="address" [class.tab_selected]="id === 'address'" (click)="tabChange('address')">Manage Address
-                </li>
+
             </ul>
         </div>
 
@@ -102,7 +102,7 @@
                         </div>
                         <div class="col">
                             <button type="button" class="me-3">Cancel</button>
-                            <button type="button" class="ms-3" [disabled]="!profileForm.valid">Update Profile</button>
+                            <button type="button" class="ms-3">Update Profile</button>
                         </div>
                     </div>
                 </form>
