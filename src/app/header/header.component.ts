@@ -12,10 +12,9 @@ export class HeaderComponent implements OnInit {
   testlist: Array<TestList> = [];
   cartCount: any;
   hasQuery = false;
-  menuVariable = false;
-  menu_icon_variable = false;
   itemCount = 0;
   userId: any;
+  mobileMenu = true;
 
   constructor(
     private testsService: TestsService,
@@ -39,20 +38,11 @@ export class HeaderComponent implements OnInit {
     });
   }
 
-  openMenu(): void {
-    this.menuVariable = !this.menuVariable;
-    this.menu_icon_variable = !this.menu_icon_variable;
-  }
-
   ngOnInit(): void {
     this.getCart();
   }
 
   async getCart() {
-    /* await this.cartService.getItems(this.userId).subscribe(res => {
-      this.cartCount = res;
-      this.itemCount = this.cartCount.length; */
-    // });
     this.cartCount = this.cartService.getItemsLS();
     this.itemCount = this.cartCount.length;
     console.log(this.itemCount);
@@ -68,5 +58,9 @@ export class HeaderComponent implements OnInit {
 
   routeData(searchText: any) {
     this.router.navigate(['/test-details', { Id: searchText._id }]);
+  }
+
+  showMenu() {
+    this.mobileMenu = !this.mobileMenu;
   }
 }

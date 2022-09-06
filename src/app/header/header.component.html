@@ -1,8 +1,14 @@
 <!-- Top Header Starts -->
-<header class="top_header d-flex align-items-center justify-content-around">
+<header class="top_header d-flex align-items-center">
 
-    <div class="top_header_logo">
-        <img src="../../assets/images/logo.png" routerLink="/" alt="MolequeDiagnostics" />
+    <div class="mobile_header" (click)="showMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <div class="header_logo">
+        <img src="../../assets/images/logo.png" routerLink="/" alt="Moleque Diagnostics" />
     </div>
 
     <div class="search">
@@ -22,79 +28,37 @@
         </section>
     </div>
 
-    <!-- <div class="app_download">
-        <a href="#" class="partition">
-            <button type="button" class="ios_app">
-                <i class="bi bi-apple"></i>&nbsp;iOS
-            </button>
-        </a>
-        <a href="#">
-            <button type="button" class="android_app">
-                <i class="bi bi-android2"></i>&nbsp;ANDROID
-            </button>
-        </a>
-    </div> -->
+    <div class="login_cart d-flex align-items-center justify-content-center">
 
-    <div class="login_cart">
-        <button routerLink="/login" class="login">
-            <span class="bi bi-person-fill"></span>&nbsp;Login
-        </button>
-        <button class="cart" routerLink="/cart">
-            <span class="bi bi-cart-fill">&nbsp;Cart</span>
-            <span class="cart_count" *ngIf="cartCount?.length >=1">{{itemCount}}</span>
-        </button>
+        <div class="login" routerLink="/login">
+            <i class="bi bi-person-fill"></i>
+        </div>
+        <div class="cart" routerLink="/cart">
+            <i class="bi bi-cart-fill"></i>
+            <span *ngIf="cartCount?.length >= 1">{{itemCount}}</span>
+        </div>
     </div>
 </header>
 <!-- Top Header Ends -->
 
 <!-- Navbar Starts -->
-<header class="nav_header d-flex align-items-center justify-content-center">
-    <div class="menu_icon" [class.menu_icon_Class]="menu_icon_variable" (click)="openMenu()">
-        <span></span>
-        <span></span>
-        <span></span>
-    </div>
-    <div class="menu" [class.menuClass]="menuVariable">
+<header class="nav_header" [ngClass]="mobileMenu ? 'nav_header_hide' : 'nav_header_show'">
+    <div class="menu">
         <ul>
-            <li>
-                <a routerLink="/">Home</a>
-            </li>
-            <li class="dropdown">
-                Features
-                <!-- <div class="dropdown-content">
-                        <a class="mt-4" href="#">Banking and Finance</a>
-                        <a href="#">Education</a>
-                        <a href="#">Life Science and Pharmaceuticals</a>
-                        <a routerLink="">Preventive Healthcare</a>
-                        <a>Medicine and Devices</a>
-                        <a>Information Services</a>
-                        <a>Sports and Hospitality</a>
-                    </div> -->
-            </li>
+            <li routerLink="/">Home</li>
+            <li>Features</li>
             <li class="dropdown">
                 Services
                 <div class="dropdown-content">
                     <a class="mt-4" routerLink="">Pathology Tests</a>
                     <a href="#">Radiology & Scan</a>
                     <a href="#">Consult A Doctor</a>
-                    <!-- <a>Brand Portfolio</a>
-                        <a>Big Data and Analytics</a>
-                        <a>Cyber Security</a>
-                        <a>LIS/HIS</a>
-                        <a>Enterprise Solutions</a>
-                        <a>Mobile Apps and Infrastructure</a>
-                        <a>Web and sass</a>
-                        <a>Product Life Cycle Management</a> -->
                 </div>
             </li>
             <li>About Us</li>
-
             <li routerLink="/contact-us">Contact Us</li>
-
-
         </ul>
     </div>
-
 </header>
 
 <!-- Navbar Ends -->
