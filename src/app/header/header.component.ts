@@ -15,6 +15,7 @@ export class HeaderComponent implements OnInit {
   itemCount = 0;
   userId: any;
   mobileMenu = true;
+  topHeader = true;
 
   constructor(
     private testsService: TestsService,
@@ -62,5 +63,13 @@ export class HeaderComponent implements OnInit {
 
   showMenu() {
     this.mobileMenu = !this.mobileMenu;
+  }
+
+  showMobileSearch() {
+    this.topHeader = false;
+  }
+
+  closeMobileSearch() {
+    this.topHeader = true;
   }
 }

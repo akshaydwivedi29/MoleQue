@@ -1,5 +1,5 @@
 <!-- Top Header Starts -->
-<header class="top_header d-flex align-items-center">
+<header class="top_header d-flex align-items-center" [ngClass]="topHeader ? '' : 'top_header_search'">
 
     <div class="mobile_header" (click)="showMenu()" [ngClass]="mobileMenu ? '' : 'span_active'">
         <span></span>
@@ -28,7 +28,7 @@
 
     <div class="login_cart d-flex align-items-center justify-content-center">
 
-        <div class="mobile_search">
+        <div class="mobile_search" (click)="showMobileSearch()">
             <i class="fa fa-search"></i>
         </div>
 
@@ -39,6 +39,10 @@
             <i class="bi bi-cart-fill"></i>
             <span *ngIf="cartCount?.length >= 1">{{itemCount}}</span>
         </div>
+    </div>
+
+    <div class="close_search" (click)="closeMobileSearch()">
+        <i class="fa fa-times"></i>
     </div>
 </header>
 <!-- Top Header Ends -->
