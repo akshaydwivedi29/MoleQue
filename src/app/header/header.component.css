@@ -23,6 +23,10 @@
     min-width: 500px;
 }
 
+.top_header .mobile_search i {
+    display: none;
+}
+
 .search>.search_input input {
     height: 40px;
     text-indent: 25px;
@@ -309,12 +313,27 @@
     }
 
     .search {
-        display: none;
+        position: absolute !important;
+        min-width: 90% !important;
+        margin-top: -150px;
+    }
+
+    .top_header .mobile_search i {
+        display: block;
+        color: #fff;
+        font-size: 27px;
+        cursor: pointer;
+        margin-right: 10px;
     }
 
     .login_cart .login i:after,
     .login_cart .cart i:after {
         content: '';
+    }
+
+    .login_cart>.login:after {
+        content: "";
+        padding: 0 3px;
     }
 
     .login_cart .login i, .login_cart .cart i {
@@ -328,6 +347,7 @@
         padding: 0;
         display: block !important;
         z-index: 998;
+        background: #d6d4d4;
     }
 
     .nav_header_show {
@@ -344,15 +364,50 @@
     }
 
     .mobile_header span {
-        width: 30px;
-        height: 3px;
-        background: #fff;
-        display: block;
-        transition: 0.2s ease-in-out;
+        background-color: #fff;
+        border-radius: 1px;
+        height: 2px;
+        width: 25px;
+        position: absolute;
+        left: 4%;
+        top: 50%;
+        transition: height 100ms;
     }
 
-    .mobile_header span:nth-child(2) {
-        margin: 5px 0;
+    .mobile_header span:before,
+    .mobile_header span:after {
+        content: '';
+        background-color: #fff;
+        border-radius: 1px;
+        height: 2px;
+        width: 25px;
+        position: absolute;
+        transition: all 200ms;
+    }
+
+    .mobile_header span:before {
+        bottom: -7px;
+    }
+
+    .mobile_header span:after {
+        top: -7px;
+    }
+
+    .span_active span {
+        height: 0;
+    }
+
+    .span_active span:before {
+        transform: rotate(-45deg);
+    }
+
+    .span_active span:after {
+        transform: rotate(45deg);
+    }
+
+    .span_active span:after,
+    .span_active span:before {
+        top: 1px;
     }
 
     .menu ul li {
