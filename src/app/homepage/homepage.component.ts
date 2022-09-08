@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { HomeServiceService } from '../services/home-service.service';
+import { LoginServiceService } from '../services/login-service.service';
 
 @Component({
   selector: 'app-homepage',
@@ -15,6 +17,12 @@ export class HomepageComponent implements OnInit {
   showAlert: boolean = false;
   blur_bg: boolean = false;
   secure_login: boolean = false;
+  invalidOtp: boolean = false;
+  unregMobile: boolean = false;
+  mobileNumber: FormGroup;
+  otpForm: FormGroup;
+  number: string = '';
+  otpCode: string = '';
 
   customOptions: OwlOptions = {
     loop: true,
@@ -50,12 +58,23 @@ export class HomepageComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private homeService: HomeServiceService
+    private homeService: HomeServiceService,
+    private loginService: LoginServiceService,
+    private router: Router
   ) {
     this.testReportForm = this.fb.group({
       visitId: ['', [Validators.required]],
       password: ['', [Validators.required]],
       captcha: ['', [Validators.required]],
+    });
+
+    this.mobileNumber = this.fb.group({
+      mobile: ['', [Validators.required]],
+    });
+    this.number = this.mobileNumber.value.mobile;
+
+    this.otpForm = this.fb.group({
+      otpCode: ['', [Validators.required]],
     });
   }
 
@@ -163,8 +182,14 @@ export class HomepageComponent implements OnInit {
   displayStyle = 'none';
 
   openPopup() {
-    this.displayStyle = 'flex';
-    this.blurBody();
+    const userId = localStorage.getItem('id');
+    if (userId) {
+      this.router.navigate(['/book-test'])
+    }
+    else {
+      this.displayStyle = 'flex';
+      this.blurBody();
+    }
   }
   closePopup() {
     this.displayStyle = 'none';
@@ -178,7 +203,51 @@ export class HomepageComponent implements OnInit {
     this.blur_bg = false;
   }
 
-  submitOTP() {
-    this.secure_login = true;
+  getOTP() {
+    this.number = this.mobileNumber.value.mobile;
+    this.loginService.generateOTP(this.number).subscribe((res: any) => {
+      this.secure_login = true;
+    },
+      err => {
+        this.unregMobile = true;
+      });
+  }
+
+  resendOtp() {
+    this.loginService.generateOTP(this.number).subscribe();
+  }
+
+  submitOtp(otp1: any, otp2: any, otp3: any, otp4: any, otp5: any, otp6: any) {
+    this.otpCode = otp1.value + otp2.value + otp3.value + otp4.value + otp5.value + otp6.value;
+    this.loginService.loginWithOtp({ mobile: this.number, otp: this.otpCode }).subscribe((res: any) => {
+      console.log(res)
+      if (res) {
+        this.router.navigate(['/book-test'], {
+          replaceUrl: true,
+        });
+        localStorage.setItem('id', res._id);
+      }
+    },
+      (err) => {
+        this.invalidOtp = true;
+        setTimeout(() => {
+          this.invalidOtp = false;
+        }, 10000);
+      });
+  }
+
+  move(event: any, previous: any, current: any, next: any) {
+    let length = current.value.length;
+    let maxLength = current.getAttribute('maxlength');
+    if (length == maxLength) {
+      if (next != '') {
+        next.focus();
+      }
+    }
+    if (event.key === 'Backspace') {
+      if (previous != '') {
+        previous.focus();
+      }
+    }
   }
 }

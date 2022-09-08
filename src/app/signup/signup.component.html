@@ -5,17 +5,24 @@
             <img src="../../assets/images/jpg/login.jpg" alt="Login / Sign Up">
         </div>
 
-        <div class="login_item">
-            <div class="login_item_top">
+        <div class="login_item" >
+            <div class="login_item_top" *ngIf="!showOTP">
                 <img src="../../assets/images/logo.png" alt="MoleQue Diagnostics">
                 <h5>SIGN UP</h5>
                 <h4>Get started with your health check now.</h4>
                 <p>Already an existing User? Please Sign-in with your registered credentials.</p>
             </div>
 
-            <p class="error" *ngIf="showSignUpError">User already exists</p>
+            <div class="login_item_top" *ngIf="showOTP">
+                <img src="../../assets/images/logo.png" alt="MoleQue Diagnostics">
+                <h4>OTP Verification</h4>
+                <p class="message">We've sent a verification code to your mobile {{number}}</p>
+            </div>
 
-            <div class="login_item_form">
+            <p class="error" *ngIf="showSignUpError">User already exists</p>
+            <p class="error" *ngIf="invalidOtp">Invalid OTP. Please enter valid OTP code.</p>
+
+            <div class="login_item_form" *ngIf="!showOTP">
                 <form [formGroup]="signUpForm" (ngSubmit)="signUp()">
 
                     <div class="form-group">
@@ -49,6 +56,44 @@
 
                     <span>Already an <a id="signIn" routerLink="/login">Existing User? </a>Please Sign-in with your registered credentials.</span>
 
+
+                </form>
+            </div>
+
+            <div class="login_item_form" *ngIf="showOTP">
+                <form [formGroup]="otpForm" (ngSubmit)="submitOtp(otpCode1,otpCode2,otpCode3,otpCode4,otpCode5,otpCode6)">
+                    <div class="row">
+                        <div class="col">
+                            <input type="tel" class="form-control" formControlName="otpCode" #otpCode1 maxlength="1"
+                                (keyup)="move($event,'',otpCode1,otpCode2)">
+                        </div>
+                        <div class="col">
+                            <input type="tel" class="form-control" formControlName="otpCode" #otpCode2 maxlength="1"
+                                (keyup)="move($event,otpCode1,otpCode2,otpCode3)">
+                        </div>
+                        <div class="col">
+                            <input type="tel" class="form-control" formControlName="otpCode" #otpCode3 maxlength="1"
+                                (keyup)="move($event,otpCode2,otpCode3,otpCode4)">
+                        </div>
+                        <div class="col">
+                            <input type="tel" class="form-control" formControlName="otpCode" #otpCode4 maxlength="1"
+                                (keyup)="move($event,otpCode3,otpCode4,otpCode5)">
+                        </div>
+                        <div class="col">
+                            <input type="tel" class="form-control" formControlName="otpCode" #otpCode5 maxlength="1"
+                                (keyup)="move($event,otpCode4,otpCode5,otpCode6)">
+                        </div>
+                        <div class="col">
+                            <input type="tel" class="form-control" formControlName="otpCode" #otpCode6 maxlength="1"
+                                (keyup)="move($event,otpCode5,otpCode6,'')">
+                        </div>
+                    </div>
+
+
+                    <div class="login_buttons mt-3">
+                        <button type="submit" class="login_btn_1" [disabled]="otpForm.invalid"
+                            >Submit</button>
+                    </div>
 
                 </form>
             </div>

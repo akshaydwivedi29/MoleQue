@@ -9,14 +9,15 @@ import { LoginServiceService } from '../services/login-service.service';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  showlogInError: boolean = false;
-  showlogInWithOtpError: boolean = false;
+  logInError: boolean = false;
+  unregMobile: boolean = false;
   showOTP: boolean = false;
-  logInForm!: FormGroup;
-  otpForm!: FormGroup;
-  loginData: any;
+  invalidOtp: boolean = false;
+  logInForm: FormGroup;
+  otpForm: FormGroup;
+  loginData: {} = {};
   number: string = '';
-  otpCode: any;
+  otpCode: string = '';
 
   constructor(
     private formBuilder: FormBuilder,
@@ -35,45 +36,61 @@ export class LoginComponent implements OnInit {
     });
 
     this.otpForm = this.formBuilder.group({
-      otpCode: ['', [Validators.required, Validators.maxLength(10)]],
+      otpCode: ['', [Validators.required]],
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   login() {
     this.loginData = this.logInForm.value;
     this.loginService.login(this.loginData).subscribe((res: any) => {
+      console.log(res)
       if (res.length == 1) {
         this.router.navigate(['dashboard'], {
           replaceUrl: true,
         });
-      } else {
-        this.showlogInError = true;
+        localStorage.setItem('id', res[0]?._id);
       }
-
-      localStorage.setItem('id', res[0]._id);
-    });
+    },
+      (err) => {
+        this.logInError = true;
+        setTimeout(() => {
+          this.logInError = false;
+        }, 10000);
+      })
   }
 
   loginWithOtp() {
     this.number = this.logInForm.value.number;
-    this.loginService.generateOTP(this.number).subscribe(
-      (res) => {
-        this.showOTP = true;
-      },
+    this.loginService.generateOTP(this.number).subscribe((res: any) => {
+      this.showOTP = true;
+    },
       (err) => {
-        this.showlogInWithOtpError = true;
+        this.unregMobile = true;
+        setTimeout(() => {
+          this.unregMobile = false;
+        }, 10000);
       }
     );
   }
 
-  submitOtp() {
-    this.otpCode = this.otpForm.value.otpCode;
-    this.loginService
-      .loginWithOtp({ ...this.otpCode, mobile: this.number })
-      .subscribe();
-    this.router.navigate(['dashboard']);
+  submitOtp(otp1: any, otp2: any, otp3: any, otp4: any, otp5: any, otp6: any) {
+    this.otpCode = otp1.value + otp2.value + otp3.value + otp4.value + otp5.value + otp6.value;
+    this.loginService.loginWithOtp({mobile: this.number, otp: this.otpCode }).subscribe((res: any) => {
+      if (res) {
+        this.router.navigate(['dashboard'], {
+          replaceUrl: true,
+        });
+        localStorage.setItem('id', res._id);
+      }
+    },
+      (err) => {
+        this.invalidOtp = true;
+        setTimeout(() => {
+          this.invalidOtp = false;
+        }, 10000);
+      });
   }
 
   forgotPage() {

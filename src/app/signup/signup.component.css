@@ -33,7 +33,7 @@
 
 .login .login_item .login_item_form {
     position: relative;
-    padding: 10px 80px 0 0;
+    padding: 10px 0 0 0;
 }
 
 .login .login_item .login_item_form #countryCode {
@@ -73,5 +73,17 @@ button:disabled{
 }
 
 .error {
-    color: red;
+    padding: 15px 10px;
+    border-radius: 5px;
+    background-color: rgb(241, 178, 178);
+    color: rgba(44, 5, 5, 0.719);
+    font-weight: bold;
+}
+
+.message{
+    font-size: 15px !important;
+    padding: 20px;
+    background-color: rgba(149, 235, 206, 0.863);
+    border-radius: 5px;
+    color: rgba(0, 128, 0, 0.534);
 }

@@ -474,41 +474,44 @@
             </div>
 
             <div class="modal-body">
+                <p class="error" *ngIf="unregMobile">Mobile number is not registered. Please &nbsp;<a
+                        routerLink="/signup">SignUp</a></p>
                 <div class="d-flex justify-content-between m-2">
                     <div class="secure_login_form">
-                        <form>
+                        <form [formGroup]="mobileNumber">
                             <div class="form-group question" [ngClass]="secure_login ? 'd-none' : ''">
-                                <input type="tel" class="form-control" placeholder="Enter Mobile Number" maxLength="10">
-                                <button type="button" (click)="submitOTP()">Get OTP</button>
+                                <input type="tel" class="form-control" formControlName="mobile"
+                                    placeholder="Enter Mobile Number" maxLength="10">
+                                <button type="button" class="getOtpBtn" [disabled]="mobileNumber.invalid"
+                                    (click)="getOTP()">Get OTP</button>
                             </div>
+                        </form>
 
+                        <form [formGroup]="otpForm"
+                            (ngSubmit)="submitOtp(otpCode1,otpCode2,otpCode3,otpCode4,otpCode5,otpCode6)">
                             <div class="form-group" [ngClass]="secure_login ? '' : 'd-none'">
                                 <h6>Please enter verification code (OTP) sent to:</h6>
-                                <div class="otp_number">*******123</div>
+                                <div class="otp_number">{{number}}</div>
                                 <div class="otp d-flex">
-                                    <input class="text-center form-control rounded" type="text" id="first"
-                                        maxlength="1" />
-                                    <input class="text-center form-control rounded" type="text" id="second"
-                                        maxlength="1" />
-                                    <input class="text-center form-control rounded" type="text" id="third"
-                                        maxlength="1" />
-                                    <input class="text-center form-control rounded" type="text" id="fourth"
-                                        maxlength="1" />
-                                    <input class="text-center form-control rounded" type="text" id="fifth"
-                                        maxlength="1" />
-                                    <input class="text-center form-control rounded" type="text" id="sixth"
-                                        maxlength="1" />
+                                    <input class="text-center form-control rounded" type="text" #otpCode1 maxlength="1"
+                                        (keyup)="move($event,'',otpCode1,otpCode2)" />
+                                    <input class="text-center form-control rounded" type="text" #otpCode2 maxlength="1"
+                                        (keyup)="move($event,otpCode1,otpCode2,otpCode3)" />
+                                    <input class="text-center form-control rounded" type="text" #otpCode3 maxlength="1"
+                                        (keyup)="move($event,otpCode2,otpCode3,otpCode4)" />
+                                    <input class="text-center form-control rounded" type="text" #otpCode4 maxlength="1"
+                                        (keyup)="move($event,otpCode3,otpCode4,otpCode5)" />
+                                    <input class="text-center form-control rounded" type="text" #otpCode5 maxlength="1"
+                                        (keyup)="move($event,otpCode4,otpCode5,otpCode6)" />
+                                    <input class="text-center form-control rounded" type="text" #otpCode6 maxlength="1"
+                                        (keyup)="move($event,otpCode5,otpCode6,'')" />
                                 </div>
-                                <div class="resend_otp">OTP not received ? <span>Resend OTP</span> </div>
-                                <button type="button" class="submit_otp" routerLink="/book-test">SUBMIT</button>
-
-
-
-
-
+                                <div class="resend_otp">OTP not received ? <span (click)="resendOtp()">Resend OTP</span>
+                                </div>
+                                <button type="submit" class="submit_otp">SUBMIT</button>
                             </div>
-
                         </form>
+
                     </div>
 
 

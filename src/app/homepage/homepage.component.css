@@ -127,8 +127,17 @@
     cursor: not-allowed;
 }
 
+.getOtpBtn:disabled {
+    background-color: grey !important;
+    cursor: not-allowed;
+}
+
 .error {
-    color: red;
+    padding: 15px 10px;
+    border-radius: 5px;
+    background-color: rgb(241, 178, 178);
+    color: rgba(44, 5, 5, 0.719);
+    font-weight: bold;
 }
 
 /* HOME COLLECTION SECTION STARTS  */

@@ -11,7 +11,12 @@ import { LoginServiceService } from '../services/login-service.service';
 export class SignupComponent implements OnInit {
   showSignUpError: boolean = false;
   signUpForm!: FormGroup;
+  otpForm!: FormGroup;
   signUpData: any;
+  showOTP: boolean = false;
+  invalidOtp: boolean = false;
+  number: string = '';
+  otpCode: string = '';
 
   constructor(
     private fb: FormBuilder,
@@ -36,21 +41,57 @@ export class SignupComponent implements OnInit {
         ],
       ],
     });
+
+    this.otpForm = this.fb.group({
+      otpCode: ['', [Validators.required]],
+    });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   signUp() {
+    this.number = this.signUpForm.value.number;
     this.signUpData = this.signUpForm.value;
     this.loginService.signUp(this.signUpData).subscribe(
-      (res) => {
-        this.router.navigate(['/login']);
-        this.signUpForm.reset();
+      (res:any) => {
+        this.number = res.number;
+        this.showOTP = true;
+        this.loginService.generateOTP(this.number).subscribe();
       },
       (err) => {
         this.showSignUpError = true;
-        this.signUpForm.reset();
+        setTimeout(() => {
+          this.showSignUpError = false;
+        }, 10000);
       }
     );
+  }
+
+  move(event: any, previous: any, current: any, next: any) {
+    let length = current.value.length;
+    let maxLength = current.getAttribute('maxlength');
+    if (length == maxLength) {
+      if (next != '') {
+        next.focus();
+      }
+    }
+    if (event.key === 'Backspace') {
+      if (previous != '') {
+        previous.focus();
+      }
+    }
+  }
+
+  submitOtp(otp1: any, otp2: any, otp3: any, otp4: any, otp5: any, otp6: any) {
+    this.otpCode = otp1.value + otp2.value + otp3.value + otp4.value + otp5.value + otp6.value;
+    this.loginService.loginWithOtp({ otp: this.otpCode, mobile: this.number }).subscribe((res: any) => {
+      this.router.navigate(['login']);
+    },
+      err => {
+        this.invalidOtp = true;
+        setTimeout(() => {
+          this.invalidOtp = false;
+        }, 10000);
+      });
   }
 }

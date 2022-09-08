@@ -10,12 +10,13 @@ import { ForgotPswdService } from '../services/forgot-pswd.service';
 })
 export class ForgotPasswordComponent implements OnInit {
   show: boolean = false;
-  showAlert: boolean = false;
+  showError: boolean = false;
   mobileNumber!: FormGroup;
-  mobile: any;
+  mobile: string = '';
   otp!: FormGroup;
-  code: any;
+  code: string = '';
   number: string = '';
+  newPassword: string = '';
 
   constructor(
     private forgotPwdService: ForgotPswdService,
@@ -40,26 +41,30 @@ export class ForgotPasswordComponent implements OnInit {
     this.number = history.state.data;
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
-  next() {
+  verify() {
     this.mobile = this.mobileNumber.value.number;
-    // request otp from backend
+    this.number = this.mobile;
     this.forgotPwdService.generateOTP(this.mobile).subscribe(
-      (res) => {},
-      (err) => {}
+      (res) => { },
+      (err) => { }
     );
     this.show = true;
   }
 
-  submit() {
-    this.code = this.otp.value;
-    this.forgotPwdService
-      .generateNewPassword({ ...this.code, mobile: this.mobile })
-      .subscribe();
-    this.otp.reset();
-    this.showAlert = true;
-    this.router.navigate(['login']);
+  submit(otp1: any, otp2: any, otp3: any, otp4: any, otp5: any, otp6: any) {
+    this.newPassword = this.otp.value.newPassword;
+    this.code = otp1.value + otp2.value + otp3.value + otp4.value + otp5.value + otp6.value;
+    this.forgotPwdService.generateNewPassword({ mobile: this.mobile, otpCode: this.code, newPassword: this.newPassword }).subscribe((res) => {
+      this.router.navigate(['login']);
+    },
+      (err) => {
+        this.showError = true;
+        setTimeout(() => {
+          this.showError = false;
+        }, 10000);
+      });
   }
 
   move(event: any, previous: any, current: any, next: any) {

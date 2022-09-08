@@ -17,8 +17,9 @@
                 <p *ngIf="showOTP">Please check the OTP sent to {{number}}</p>
             </div>
 
-            <p class="error" *ngIf="showlogInError">Mobile number or password are invalid</p>
-            <p class="error" *ngIf="showlogInWithOtpError">Mobile number is not registered</p>
+            <p class="error" *ngIf="logInError">Wrong credentials. Invalid Mobile number or password</p>
+            <p class="error" *ngIf="unregMobile">Mobile number is not registered</p>
+            <p class="error" *ngIf="invalidOtp">Invalid OTP. Please enter valid OTP code.</p>
 
             <div class="login_item_form" *ngIf="!showOTP">
                 <form [formGroup]="logInForm" (ngSubmit)="login()">
@@ -47,15 +48,15 @@
                         <button type="button" (click)="loginWithOtp()" [disabled]="logInForm.controls['number'].invalid"
                             class="login_btn_otp">LOGIN WITH OTP</button>
                     </div>
-                    <span (click)="forgotPage()" id="forgotPswd"
-                        [class.disabled]="logInForm.controls['number'].invalid">Forgot Password?</span><br>
+                    <a (click)="forgotPage()" id="forgotPswd"
+                        [class.disabled]="logInForm.controls['number'].invalid">Forgot Password?</a><br>
                     <span id="signUp">New User? &nbsp;<a routerLink="/signup">Create an account.</a></span>
 
                 </form>
             </div>
 
             <div class="login_item_form" *ngIf="showOTP">
-                <form [formGroup]="otpForm">
+                <form [formGroup]="otpForm" (ngSubmit)="submitOtp(otpCode1,otpCode2,otpCode3,otpCode4,otpCode5,otpCode6)">
                     <div class="row">
                         <div class="col">
                             <input type="tel" class="form-control" formControlName="otpCode" #otpCode1 maxlength="1"
@@ -86,7 +87,7 @@
 
                     <div class="login_buttons mt-3">
                         <button type="submit" class="login_btn_1" [disabled]="otpForm.invalid"
-                            (click)="submitOtp()">Submit</button>
+                            >Submit</button>
                     </div>
 
                 </form>
