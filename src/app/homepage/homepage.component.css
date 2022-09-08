@@ -289,8 +289,6 @@
     border: none;
     border-radius: 0;
     border-bottom: 2px solid #1f3d9d;
-    /* min-width: 250px; */
-    /* line-height: 0px; */
 }
 
 .secure_login_form form .question input:focus {

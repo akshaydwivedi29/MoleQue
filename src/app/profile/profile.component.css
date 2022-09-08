@@ -1,52 +1,143 @@
 .profile {
     margin-top: 120px;
+    background: #eeeeee;
+}
+
+.profile .container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 20px 0;
+}
+
+.profile .container .tabs {
+    border-radius: 5px 5px 0 0;
+}
+
+.profile .container .tabs ul {
+    padding-left: 0 !important;
+    margin-bottom: 0 !important;
+    line-height: 10px !important;
+}
+
+.profile .container .tabs ul li {
+    cursor: pointer;
+    display: inline-block;
+    background: #f22283;
+    color: #fff;
+    padding: 15px 10px;
+    border-radius: 5px 5px 0 0;
+}
+
+.profile .container .tabs ul li:nth-child(2) {
+    margin: 0 2px;
+}
+
+.tab_selected {
+    background: #1f3d9d !important;
+    font-weight: bold;
+}
+
+.profile .container .tab_content .my_profile,
+.profile .container .tab_content .family,
+.profile .container .tab_content .address {
+    background: #fff;
+    padding: 50px;
+    width: 50%;
+    border-radius: 0 10px 10px 10px;
+    box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset,
+        rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+        rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+
+.profile .container .tab_content .my_profile img {
+    width: 111px;
+    height: auto;
+    border-radius: 50%;
+}
+
+.profile .container .tab_content .my_profile .user_name {
+    font-weight: bold;
+    font-size: 22px;
+}
+
+.profile .container .tab_content .form-group label,
+.profile .container .tab_content .form-check label {
+    font-weight: bold;
+}
+
+.required:after {
+    content: '*';
+    color: #f22283;
+    font-size: 15px;
+}
+
+.profile .container .tab_content .form-group input,
+.profile .container .tab_content .form-group select,
+.profile .container .tab_content .form-check input {
+    border: 1px solid #f22283;
+    margin-top: 5px;
+}
+
+.profile .container .tab_content .form-group .form-select option:hover {
+    background: #f22283;
+    color: #fff;
+}
+
+.profile .container .tab_content input:focus,
+.profile .container .tab_content select:focus,
+.profile .container .tab_content input:focus {
+    box-shadow: none;
+}
+
+.profile .container .tab_content .my_profile button {
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+
+.profile .container .tab_content .my_profile button:nth-child(1) {
     background: #1f3d9d;
 }
 
-.profile .container .profile_img img {
-    width: 200px;
-    height: auto;
+.profile .container .tab_content .my_profile button:nth-child(2) {
+    background: #f22283;
 }
 
-
-
-.form-control:focus {
-    box-shadow: none;
-    border-color: #BA68C8
+.profile .container .tab_content .my_profile button:nth-child(1):hover {
+    background: #f22283;
 }
 
-.profile-button {
-    background: rgb(99, 39, 120);
-    box-shadow: none;
-    border: none
+.profile .container .tab_content .my_profile button:nth-child(2):hover,
+.profile .container .tab_content .family button:hover {
+    background: #1f3d9d;
 }
 
-.profile-button:hover {
-    background: #682773
+.profile .container .tab_content .form-check-input:checked {
+    background-color: #f22283;
 }
 
-.profile-button:focus {
-    background: #682773;
-    box-shadow: none
-}
-
-.profile-button:active {
-    background: #682773;
-    box-shadow: none
-}
-
-.back:hover {
-    color: #682773;
-    cursor: pointer
-}
-
-.labels {
-    font-size: 11px
-}
-
-.add-experience:hover {
-    background: #BA68C8;
+.profile .container .tab_content .family button,
+.profile .container .tab_content .address button {
+    background: #f22283;
     color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+
+.profile .container .tab_content p {
+    color: #1f3d9d;
     cursor: pointer;
-    border: solid 1px #BA68C8
+}
+
+.profile .container .tab_content p:hover {
+    color: #f22283;
+}
+
+.error {
+    font-size: 13px;
+    margin-left: 5px;
+    color: red;
 }

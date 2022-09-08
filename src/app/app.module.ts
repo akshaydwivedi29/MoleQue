@@ -4,6 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CarouselModule } from 'ngx-owl-carousel-o';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -22,6 +23,8 @@ import { StatutoryComplianceComponent } from './pages/statutory-compliance/statu
 import { TermsConditionsComponent } from './pages/terms-conditions/terms-conditions.component';
 import { TestListComponent } from './test-list/test-list.component';
 import { BookTestComponent } from './book-test/book-test.component';
+import { ProfileComponent } from './profile/profile.component';
+import { CartModalComponent } from './cart-modal/cart-modal.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,6 +43,8 @@ import { BookTestComponent } from './book-test/book-test.component';
     TermsConditionsComponent,
     TestListComponent,
     BookTestComponent,
+    ProfileComponent,
+    CartModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,6 +53,7 @@ import { BookTestComponent } from './book-test/book-test.component';
     BrowserAnimationsModule,
     ReactiveFormsModule,
     CarouselModule,
+    BsDatepickerModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],

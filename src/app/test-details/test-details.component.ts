@@ -1,4 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Renderer2,
+  ElementRef,
+  ViewChild,
+} from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { CartService } from '../services/cart.service';
 import { TestsService } from '../services/tests.service';
@@ -12,19 +18,34 @@ export class TestDetailsComponent implements OnInit {
   testId: any;
   userId: any;
   obj: any;
-  toggleTab: boolean = false;
-  canAddToCart: boolean = true;
+  toggleTab = false;
+  canAddToCart = true;
+  modal = false;
+  @ViewChild('popup') popup!: ElementRef;
+  @ViewChild('patient') patient!: ElementRef;
+  @ViewChild('analytics') analytics!: ElementRef;
 
   constructor(
     private route: ActivatedRoute,
     private testsService: TestsService,
-    private cartService: CartService
+    private cartService: CartService,
+    private renderer: Renderer2
   ) {
     this.route.paramMap.subscribe((params: ParamMap) => {
       this.testId = params.get('Id');
       this.getData();
     });
     this.userId = localStorage.getItem('id');
+
+    this.renderer.listen('window', 'click', (e: Event) => {
+      if (
+        e.target !== this.popup.nativeElement &&
+        e.target !== this.patient.nativeElement &&
+        e.target !== this.analytics.nativeElement
+      ) {
+        this.modal = false;
+      }
+    });
   }
 
   ngOnInit(): void {}
@@ -52,5 +73,7 @@ export class TestDetailsComponent implements OnInit {
       this.cartService.addToCartLS(item);
       this.canAddToCart = !this.cartService.isAlreadyAddedInCart(item);
     }
+
+    this.modal = true;
   }
 }

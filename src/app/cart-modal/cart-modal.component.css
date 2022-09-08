@@ -1,0 +1,40 @@
+.cart_modal {
+    min-width: 400px;
+    background: #eeeeee;
+    border: 5px solid #1f3d9d;
+    border-radius: 5px;
+    position: fixed;
+    right: 5%;
+    bottom: 5%;
+    padding: 25px;
+    box-shadow: 4px 6px 8px rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+.cart_modal .offer i {
+    font-size: 25px;
+    color: #f22283;
+}
+
+.cart_modal .offer span {
+    font-size: 20px;
+    color: #f22283;
+    font-weight: bold;
+}
+
+.item_detail button {
+    border: none;
+    background: none;
+}
+
+.cart_btn button {
+    border: none;
+    background: #1f3d9d;
+    color: #fff;
+    border-radius: 5px;
+    padding: 10px;
+    width: 100%;
+    letter-spacing: 1px;
+    font-weight: bold;
+    box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.5);
+}

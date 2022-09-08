@@ -19,7 +19,6 @@
     "@angular/platform-browser": "~14.0.4",
     "@angular/platform-browser-dynamic": "~14.0.4",
     "@angular/router": "~14.0.4",
-    "@ng-bootstrap/ng-bootstrap": "^13.0.0",
     "@popperjs/core": "^2.11.6",
     "angular-animations": "^0.11.0",
     "angular-popper": "^2.0.1",
@@ -28,8 +27,8 @@
     "bootstrap-icons": "^1.9.0",
     "font-awesome": "^4.7.0",
     "jquery": "^3.6.0",
+    "ngx-bootstrap": "^9.0.0",
     "ngx-owl-carousel-o": "^14.0.0",
-    "ngx-tabs": "^0.0.13",
     "rxjs": "~7.5.5",
     "tslib": "^2.4.0",
     "zone.js": "~0.11.6"
