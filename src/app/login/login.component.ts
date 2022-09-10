@@ -45,7 +45,6 @@ export class LoginComponent implements OnInit {
   login() {
     this.loginData = this.logInForm.value;
     this.loginService.login(this.loginData).subscribe((res: any) => {
-      console.log(res)
       if (res.length == 1) {
         this.router.navigate(['dashboard'], {
           replaceUrl: true,
@@ -95,9 +94,7 @@ export class LoginComponent implements OnInit {
 
   forgotPage() {
     this.number = this.logInForm.value.number;
-    this.router.navigate(['/forgot-password'], {
-      state: { data: this.number },
-    });
+    this.router.navigate(['/forgot-password',{number:this.number}]);
   }
 
   move(event: any, previous: any, current: any, next: any) {

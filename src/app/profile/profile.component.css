@@ -141,3 +141,8 @@
     margin-left: 5px;
     color: red;
 }
+
+button:disabled {
+    background-color: grey !important;
+    cursor: not-allowed;
+}

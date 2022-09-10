@@ -17,6 +17,7 @@ export class SignupComponent implements OnInit {
   invalidOtp: boolean = false;
   number: string = '';
   otpCode: string = '';
+  userId: string = '';
 
   constructor(
     private fb: FormBuilder,
@@ -24,22 +25,22 @@ export class SignupComponent implements OnInit {
     private router: Router
   ) {
     this.signUpForm = this.fb.group({
-      name: [
-        '',
-        [
-          Validators.required,
-          Validators.minLength(3),
-          Validators.pattern('[a-zA-Z0-9]*'),
-        ],
-      ],
+      // name: [
+      //   '',
+      //   [
+      //     Validators.required,
+      //     Validators.minLength(3),
+      //     Validators.pattern('[a-zA-Z0-9]*'),
+      //   ],
+      // ],
       number: ['', [Validators.required, Validators.maxLength(10)]],
-      password: [
-        '',
-        [
-          Validators.required,
-          Validators.pattern('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$'),
-        ],
-      ],
+      // password: [
+      //   '',
+      //   [
+      //     Validators.required,
+      //     Validators.pattern('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$'),
+      //   ],
+      // ],
     });
 
     this.otpForm = this.fb.group({
@@ -49,12 +50,19 @@ export class SignupComponent implements OnInit {
 
   ngOnInit(): void { }
 
-  signUp() {
+  // register() {
+  //   this.number = this.signUpForm.value.number;
+  //   this.loginService.generateOTP(this.number).subscribe((res: any) => {});
+  //     this.showOTP = true;
+  // }
+
+  register() {
     this.number = this.signUpForm.value.number;
     this.signUpData = this.signUpForm.value;
     this.loginService.signUp(this.signUpData).subscribe(
-      (res:any) => {
+      (res: any) => {
         this.number = res.number;
+        this.userId = res._id;
         this.showOTP = true;
         this.loginService.generateOTP(this.number).subscribe();
       },
@@ -62,7 +70,7 @@ export class SignupComponent implements OnInit {
         this.showSignUpError = true;
         setTimeout(() => {
           this.showSignUpError = false;
-        }, 10000);
+        }, 5000);
       }
     );
   }
@@ -85,13 +93,14 @@ export class SignupComponent implements OnInit {
   submitOtp(otp1: any, otp2: any, otp3: any, otp4: any, otp5: any, otp6: any) {
     this.otpCode = otp1.value + otp2.value + otp3.value + otp4.value + otp5.value + otp6.value;
     this.loginService.loginWithOtp({ otp: this.otpCode, mobile: this.number }).subscribe((res: any) => {
-      this.router.navigate(['login']);
+      this.router.navigate(['/profile',{ number: this.number, userId: this.userId }
+    ]);
     },
       err => {
         this.invalidOtp = true;
         setTimeout(() => {
           this.invalidOtp = false;
-        }, 10000);
+        }, 5000);
       });
   }
 }

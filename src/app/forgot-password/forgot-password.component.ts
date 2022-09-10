@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ForgotPswdService } from '../services/forgot-pswd.service';
 
 @Component({
@@ -21,7 +21,8 @@ export class ForgotPasswordComponent implements OnInit {
   constructor(
     private forgotPwdService: ForgotPswdService,
     private fb: FormBuilder,
-    private router: Router
+    private router: Router,
+    private route :ActivatedRoute
   ) {
     this.mobileNumber = this.fb.group({
       number: ['', [Validators.required, Validators.maxLength(10)]],
@@ -38,10 +39,11 @@ export class ForgotPasswordComponent implements OnInit {
       ],
     });
 
-    this.number = history.state.data;
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.number = this.route.snapshot.params['number'];
+   }
 
   verify() {
     this.mobile = this.mobileNumber.value.number;

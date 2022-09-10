@@ -5,7 +5,7 @@
             <img src="../../assets/images/jpg/login.jpg" alt="Login / Sign Up">
         </div>
 
-        <div class="login_item" >
+        <div class="login_item">
             <div class="login_item_top" *ngIf="!showOTP">
                 <img src="../../assets/images/logo.png" alt="MoleQue Diagnostics">
                 <h5>SIGN UP</h5>
@@ -19,11 +19,11 @@
                 <p class="message">We've sent a verification code to your mobile {{number}}</p>
             </div>
 
-            <p class="error" *ngIf="showSignUpError">User already exists</p>
-            <p class="error" *ngIf="invalidOtp">Invalid OTP. Please enter valid OTP code.</p>
+            <p class="alertError" *ngIf="showSignUpError">User already exists</p>
+            <p class="alertError" *ngIf="invalidOtp">Invalid OTP. Please enter valid OTP code.</p>
 
             <div class="login_item_form" *ngIf="!showOTP">
-                <form [formGroup]="signUpForm" (ngSubmit)="signUp()">
+                <form [formGroup]="signUpForm" (ngSubmit)="register()">
 
                     <div class="form-group">
                         <span id="countryCode">+91</span>
@@ -34,35 +34,34 @@
                             Please provide valid mobile number</p>
                     </div>
 
-                    <div class="form-group mt-3">
+                    <!-- <div class="form-group mt-3">
                         <input type="text" class="form-control" formControlName="name" id="userName" placeholder="Name">
                         <p class="error"
                             *ngIf="signUpForm.controls['name'].invalid && signUpForm.controls['name'].touched ">Please
                             enter your name</p>
-                    </div>
+                    </div> -->
 
-                    <div class="form-group mt-3">
+                    <!-- <div class="form-group mt-3">
                         <input type="password" class="form-control" formControlName="password" id="password"
                             placeholder="Password">
                         <p class="error"
                             *ngIf="signUpForm.controls['password'].invalid && signUpForm.controls['password'].touched">
                             Password should have minimum 6 characters, at least 1 uppercase letter, 1 lowercase
                             letter and 1 number)</p>
-                    </div>
+                    </div> -->
 
                     <div class="login_buttons mt-3">
-                        <button type="submit" [disabled]="!signUpForm.valid">SIGN UP</button>
+                        <button type="submit" [disabled]="!signUpForm.valid">Register</button>
                     </div>
 
                     <span>Already an <a id="signIn" routerLink="/login">Existing User? </a>Please Sign-in with your
                         registered credentials.</span>
-
-
                 </form>
             </div>
 
             <div class="login_item_form" *ngIf="showOTP">
-                <form [formGroup]="otpForm" (ngSubmit)="submitOtp(otpCode1,otpCode2,otpCode3,otpCode4,otpCode5,otpCode6)">
+                <form [formGroup]="otpForm"
+                    (ngSubmit)="submitOtp(otpCode1,otpCode2,otpCode3,otpCode4,otpCode5,otpCode6)">
                     <div class="row">
                         <div class="col">
                             <input type="tel" class="form-control" formControlName="otpCode" #otpCode1 maxlength="1"
@@ -92,8 +91,7 @@
 
 
                     <div class="login_buttons mt-3">
-                        <button type="submit" class="login_btn_1" [disabled]="otpForm.invalid"
-                            >Submit</button>
+                        <button type="submit" class="login_btn_1" [disabled]="otpForm.invalid">Submit</button>
                     </div>
 
                 </form>

@@ -11,10 +11,10 @@
         <div class="card edit_info">
             <div class="card-body">
                 <div class="info_avtar">M</div>
-                <div class="info_name">Molque</div>
-                <div class="info_email">abc@xyz.com</div>
-                <div class="info_number">+9101234678</div>
-                <button type="button" routerLink="/profile">EDIT INFO</button>
+                <div class="info_name">{{userDetail?.firstName}}</div>
+                <div class="info_email">{{userDetail?.email}}</div>
+                <div class="info_number">+91 {{userDetail?.number}}</div>
+                <button type="button" (click)="editInfo($event)">EDIT INFO</button>
             </div>
         </div>
 

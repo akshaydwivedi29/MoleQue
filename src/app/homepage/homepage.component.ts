@@ -176,6 +176,9 @@ export class HomepageComponent implements OnInit {
       });
     } else if (this.finalCaptcha != this.testReportValue.captcha) {
       this.showAlert = true;
+      setTimeout(() => {
+        this.showAlert = false;
+      }, 5000);
     }
   }
 

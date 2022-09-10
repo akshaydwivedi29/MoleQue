@@ -132,12 +132,16 @@
     cursor: not-allowed;
 }
 
-.error {
+.alertError {
     padding: 15px 10px;
     border-radius: 5px;
     background-color: rgb(241, 178, 178);
     color: rgba(44, 5, 5, 0.719);
     font-weight: bold;
+}
+
+.error{
+    color: red;
 }
 
 /* HOME COLLECTION SECTION STARTS  */
