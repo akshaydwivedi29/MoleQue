@@ -113,7 +113,7 @@ button:disabled {
     text-indent: 35px;
 }
 
-.Alerterror {
+.alertError {
     padding: 15px 10px;
     border-radius: 5px;
     background-color: rgb(241, 178, 178);

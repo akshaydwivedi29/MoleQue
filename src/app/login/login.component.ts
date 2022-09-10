@@ -45,6 +45,7 @@ export class LoginComponent implements OnInit {
   login() {
     this.loginData = this.logInForm.value;
     this.loginService.login(this.loginData).subscribe((res: any) => {
+      console.log(res)
       if (res.length == 1) {
         this.router.navigate(['dashboard'], {
           replaceUrl: true,
@@ -56,7 +57,7 @@ export class LoginComponent implements OnInit {
         this.logInError = true;
         setTimeout(() => {
           this.logInError = false;
-        }, 10000);
+        }, 5000);
       })
   }
 
@@ -69,7 +70,7 @@ export class LoginComponent implements OnInit {
         this.unregMobile = true;
         setTimeout(() => {
           this.unregMobile = false;
-        }, 10000);
+        }, 5000);
       }
     );
   }
@@ -88,7 +89,7 @@ export class LoginComponent implements OnInit {
         this.invalidOtp = true;
         setTimeout(() => {
           this.invalidOtp = false;
-        }, 10000);
+        }, 5000);
       });
   }
 
