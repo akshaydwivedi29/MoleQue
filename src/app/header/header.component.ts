@@ -72,4 +72,9 @@ export class HeaderComponent implements OnInit {
   closeMobileSearch() {
     this.topHeader = true;
   }
+
+  login(){
+    localStorage.removeItem('id')
+    this.router.navigate(['/login'])
+  }
 }
