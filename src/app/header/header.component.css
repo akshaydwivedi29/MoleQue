@@ -1,5 +1,9 @@
 /* Top Header Starts */
 
+.topgap {
+    height: 80px;
+}
+
 .top_header {
     position: fixed;
     top: 0;
@@ -309,6 +313,11 @@
 } */
 
 @media only screen and (max-width: 576px) {
+
+    .topgap {
+        height: 60px;
+    }
+
     .top_header {
         height: 60px;
         padding: 0 20px;

@@ -16,7 +16,6 @@
 
 .test_details {
     padding: 50px;
-    margin-top: 80px;
     background: linear-gradient(to bottom, #1f3d9d 0%, #f22283 100%);
 }
 
@@ -82,6 +81,15 @@ i {
 }
 
 /* RESPONSIVE MEDIA QUERY  */
+
+@media only screen and (max-width: 576px) {
+
+    .test_details .test_info>.card {
+        width: 100%;
+    }
+
+}
+
 @media only screen and (max-width: 1400px) {
 
     .toggle_btn {
