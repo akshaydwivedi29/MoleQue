@@ -15,7 +15,6 @@ export class ProfileComponent implements OnInit {
   addressForm!: FormGroup;
   familyMemberForm!: FormGroup;
   submitted: boolean = false;
-  // edit: any;
   number: string = '';
   userId: string = '';
   userDetail: any;
@@ -23,18 +22,8 @@ export class ProfileComponent implements OnInit {
   passwordError: boolean = false;
   profileDetail: any;
   address: any;
-  addressDetail: any;
-  familyMember: any;
-  familyMemberProfile: any;
-  familyMemberDOB: any;
-  firstName: string = '';
-  lastName: string = '';
-  email: string = '';
-  mobile: string = '';
-  gender: string = '';
-  password: string = '';
-  confirmPassword: string = '';
-  DOB!: Date;
+  addressArray:[]=[];
+  familyMemberValue: any;
   datePickerConfig: Partial<BsDatepickerConfig>;
 
   constructor(private fb: FormBuilder, private loginService: LoginServiceService, private route: ActivatedRoute, private router: Router) {
@@ -109,7 +98,6 @@ export class ProfileComponent implements OnInit {
       memberDOB: ['', [Validators.required]]
     });
 
-    // this.edit = this.route.snapshot.params['edit'];
     this.Id = localStorage.getItem('id')
     this.getUserDetail();
 
@@ -184,13 +172,15 @@ export class ProfileComponent implements OnInit {
   }
 
   addMember() {
-    this.familyMember = this.familyMemberForm.value;
+    this.familyMemberValue = this.familyMemberForm.value;
     if (this.userId && this.familyMemberForm.valid) {
-      this.loginService.updateUserProfile(this.userId, { familyMember: this.familyMember }).subscribe(res => { });
+      this.loginService.updateUserProfile(this.userId, { familyMember: this.familyMemberValue }).subscribe(res => { });
       this.router.navigate(['/dashboard'])
     }
     else if (this.Id && this.familyMemberForm.valid) {
-      this.loginService.updateUserProfile(this.Id, { familyMember: this.familyMember }).subscribe();
+      this.loginService.updateUserProfile(this.Id, { familyMember: this.familyMemberValue }).subscribe((res:any)=>{
+        
+      });
       this.familyMemberForm.reset();
       this.router.navigate(['/dashboard'])
     }
@@ -206,8 +196,6 @@ export class ProfileComponent implements OnInit {
         this.userDetail.DOB= new Date (this.userDetail.DOB)
         this.profileForm.patchValue(this.userDetail)
         this.addressForm.patchValue(this.userDetail.address)
-        this.userDetail.familyMember.memberDOB= new Date (this.userDetail.familyMember?.memberDOB)
-        this.familyMemberForm.patchValue(this.userDetail.familyMember);
       });
     }
   }
