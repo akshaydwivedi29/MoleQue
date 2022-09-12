@@ -23,6 +23,7 @@ export class HomepageComponent implements OnInit {
   otpForm: FormGroup;
   number: string = '';
   otpCode: string = '';
+  mobileReport = true;
 
   customOptions: OwlOptions = {
     loop: true,
@@ -187,9 +188,8 @@ export class HomepageComponent implements OnInit {
   openPopup() {
     const userId = localStorage.getItem('id');
     if (userId) {
-      this.router.navigate(['/book-test'])
-    }
-    else {
+      this.router.navigate(['/book-test']);
+    } else {
       this.displayStyle = 'flex';
       this.blurBody();
     }
@@ -208,12 +208,14 @@ export class HomepageComponent implements OnInit {
 
   getOTP() {
     this.number = this.mobileNumber.value.mobile;
-    this.loginService.generateOTP(this.number).subscribe((res: any) => {
-      this.secure_login = true;
-    },
-      err => {
+    this.loginService.generateOTP(this.number).subscribe(
+      (res: any) => {
+        this.secure_login = true;
+      },
+      (err) => {
         this.unregMobile = true;
-      });
+      }
+    );
   }
 
   resendOtp() {
@@ -221,22 +223,32 @@ export class HomepageComponent implements OnInit {
   }
 
   submitOtp(otp1: any, otp2: any, otp3: any, otp4: any, otp5: any, otp6: any) {
-    this.otpCode = otp1.value + otp2.value + otp3.value + otp4.value + otp5.value + otp6.value;
-    this.loginService.loginWithOtp({ mobile: this.number, otp: this.otpCode }).subscribe((res: any) => {
-      console.log(res)
-      if (res) {
-        this.router.navigate(['/book-test'], {
-          replaceUrl: true,
-        });
-        localStorage.setItem('id', res._id);
-      }
-    },
-      (err) => {
-        this.invalidOtp = true;
-        setTimeout(() => {
-          this.invalidOtp = false;
-        }, 10000);
-      });
+    this.otpCode =
+      otp1.value +
+      otp2.value +
+      otp3.value +
+      otp4.value +
+      otp5.value +
+      otp6.value;
+    this.loginService
+      .loginWithOtp({ mobile: this.number, otp: this.otpCode })
+      .subscribe(
+        (res: any) => {
+          console.log(res);
+          if (res) {
+            this.router.navigate(['/book-test'], {
+              replaceUrl: true,
+            });
+            localStorage.setItem('id', res._id);
+          }
+        },
+        (err) => {
+          this.invalidOtp = true;
+          setTimeout(() => {
+            this.invalidOtp = false;
+          }, 10000);
+        }
+      );
   }
 
   move(event: any, previous: any, current: any, next: any) {
@@ -252,5 +264,9 @@ export class HomepageComponent implements OnInit {
         previous.focus();
       }
     }
+  }
+
+  showClipBoard() {
+    this.mobileReport = !this.mobileReport;
   }
 }

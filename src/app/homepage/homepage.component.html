@@ -8,28 +8,28 @@
         <owl-carousel-o [options]="customOptions">
 
             <ng-template carouselSlide>
-                <img src="../../assets/images/banner/banner1-1.webp">
+                <div class="banner1"></div>
                 <div class="carousel_bg"></div>
             </ng-template>
 
             <ng-template carouselSlide>
-                <img src="../../assets/images/banner/banner1-2.webp">
+                <div class="banner2"></div>
                 <div class="carousel_bg"></div>
             </ng-template>
 
             <ng-template carouselSlide>
-                <img src="../../assets/images/banner/banner1-3.webp">
+                <div class="banner3"></div>
                 <div class="carousel_bg"></div>
             </ng-template>
 
             <ng-template carouselSlide>
-                <img src="../../assets/images/banner/banner1-4.webp">
+                <div class="banner4"></div>
                 <div class="carousel_bg"></div>
             </ng-template>
 
         </owl-carousel-o>
 
-        <div class="card">
+        <div class="card" [ngClass]="mobileReport ? '' : 'show_report_card'">
             <div class="clip">
                 <div class="circle"></div>
             </div>
@@ -68,6 +68,28 @@
                 </form>
             </div>
         </div>
+    </section>
+
+    <!-- HOME COLLECTION MOBILE  -->
+
+    <section class="mobile_report">
+
+        <div class="row">
+            <div class="col text-center" (click)="showClipBoard()">
+                <i class="bi bi-file-earmark-text"></i><br>
+                <span>Download Reports</span>
+            </div>
+            <div class="col text-center mx-2">
+                <i class="bi bi-house-fill"></i><br>
+                <span>Book Home Collection</span>
+            </div>
+            <div class="col text-center">
+                <i class="bi bi-person-lines-fill"></i><br>
+                <span>Popular Packages</span>
+            </div>
+        </div>
+
+
     </section>
 
     <!-- HOME COLLECTION SECTION STARTS  -->

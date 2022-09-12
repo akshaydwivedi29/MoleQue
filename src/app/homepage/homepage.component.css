@@ -5,6 +5,37 @@
     margin-top: 80px;
 }
 
+.main_carousel .banner1,
+.main_carousel .banner2,
+.main_carousel .banner3,
+.main_carousel .banner4 {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    min-height: 570px;
+}
+
+.banner1 {
+    background: url(../../assets/images/banner/banner1-1.webp);
+
+}
+
+.banner2 {
+    background: url(../../assets/images/banner/banner1-2.webp);
+
+}
+
+.banner3 {
+    background: url(../../assets/images/banner/banner1-3.webp);
+
+}
+
+.banner4 {
+    background: url(../../assets/images/banner/banner1-4.webp);
+
+}
+
 .carousel_bg {
     position: absolute;
     top: 0;
@@ -78,7 +109,6 @@
     border: 8px solid #1f3d9d;
     border-radius: 35px;
     background: transparent;
-    /* animation: colorchange 3s infinite; */
 }
 
 .main_carousel .card .card-body {
@@ -97,7 +127,6 @@
 
 .captchabtn {
     background: #1f3d9d;
-    /* text-decoration: line-through; */
     border: none;
     color: #fff;
     padding: 0 10px;
@@ -127,20 +156,11 @@
     cursor: not-allowed;
 }
 
-.getOtpBtn:disabled {
-    background-color: grey !important;
-    cursor: not-allowed;
+.mobile_report {
+    display: none;
 }
 
-.alertError {
-    padding: 15px 10px;
-    border-radius: 5px;
-    background-color: rgb(241, 178, 178);
-    color: rgba(44, 5, 5, 0.719);
-    font-weight: bold;
-}
-
-.error{
+.error {
     color: red;
 }
 
@@ -960,5 +980,47 @@
     .btn_blue {
         letter-spacing: 0;
         padding: 20px;
+    }
+}
+
+@media only screen and (max-width: 767.98px) {
+    .main_carousel {
+        margin-top: 60px;
+    }
+
+    .main_carousel .card {
+        margin-right: -500px;
+    }
+
+    .show_report_card {
+        margin-right: 10px !important;
+        transition: all 1s;
+    }
+
+    .mobile_report {
+        display: block !important;
+        padding: 20px 0;
+        background: #EEEEEE;
+    }
+
+    .mobile_report .row .col {
+        background: #fff;
+        border-radius: 5px;
+        box-shadow: 0px 6px 7px 0px rgb(0 0 0 / 20%);
+
+    }
+
+    .clip:before {
+        top: -14px;
+    }
+
+    .mobile_report i {
+        color: #F22283;
+        font-size: 40px;
+    }
+
+    .mobile_report span {
+        color: #1f3d9d;
+        font-weight: 600;
     }
 }
