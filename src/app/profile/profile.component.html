@@ -19,7 +19,7 @@
 
                 <div class="d-flex align-items-center justify-content-evenly mb-5">
                     <img src="../../assets/images/icons/avatar.png" alt="Avatar">
-                    <div *ngIf="edit" class="user_name">Hi, {{userDetail?.firstName}}</div>
+                    <div *ngIf="Id" class="user_name">Hi, {{userDetail?.firstName}}</div>
                 </div>
 
                 <form [formGroup]="profileForm" (ngSubmit)="register('address')">
@@ -27,18 +27,18 @@
                         <div class="form-group col">
                             <label for="firstname" class="required">First Name</label>
                             <input type="text" formControlName="firstName" class="form-control"
-                                placeholder="Enter First name" [ngModel]="firstName">
+                                placeholder="Enter First name">
                             <div class="error"
-                                *ngIf="profileForm.controls['firstName'].invalid && profileForm.controls['firstName'].touched ">
+                                *ngIf="profileForm.controls['firstName']?.invalid && profileForm.controls['firstName'].touched ">
                                 Please provide valid first name</div>
                         </div>
 
                         <div class="form-group col">
                             <label for="lastname" class="required">Last Name</label>
                             <input type="text" formControlName="lastName" class="form-control"
-                                placeholder="Enter Last name" [ngModel]='lastName'>
+                                placeholder="Enter Last name">
                             <div class="error"
-                                *ngIf="profileForm.controls['lastName'].invalid && profileForm.controls['lastName'].touched ">
+                                *ngIf="profileForm.controls['lastName']?.invalid && profileForm.controls['lastName'].touched ">
                                 Please provide valid last name</div>
                         </div>
                     </div>
@@ -46,9 +46,9 @@
                     <div class="row">
                         <div class="form-group col">
                             <label for="email" class="required">Email</label>
-                            <input type="email" formControlName="email" class="form-control" placeholder="Enter email" [ngModel]='email'>
+                            <input type="email" formControlName="email" class="form-control" placeholder="Enter email">
                             <div class="error"
-                                *ngIf="profileForm.controls['email'].invalid && profileForm.controls['email'].touched ">
+                                *ngIf="profileForm.controls['email']?.invalid && profileForm.controls['email'].touched ">
                                 Please provide valid email address</div>
 
                             <div class="error"
@@ -60,10 +60,10 @@
 
                         <div class="form-group col">
                             <label for="mobile" class="required">Mobile</label>
-                            <input type="tel" formControlName="mobile" class="form-control" 
-                                placeholder="Enter Mobile" [ngModel]='number'>
+                            <input type="tel" formControlName="number" class="form-control" 
+                                placeholder="Enter Mobile" >
                             <div class="error"
-                                *ngIf="profileForm.controls['mobile'].invalid && profileForm.controls['mobile'].touched ">
+                                *ngIf="profileForm.controls['mobile']?.invalid && profileForm.controls['mobile'].touched ">
                                 Please provide valid mobile number</div>
                         </div>
                     </div>
@@ -75,14 +75,14 @@
                             <div class="d-flex align-items-center">
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" value="Male" name="gender"
-                                        id="flexRadioDefault1" formControlName="gender" [ngModel]="gender">
+                                        id="flexRadioDefault1" formControlName="gender">
                                     <label class="form-check-label" for="flexRadioDefault1">
                                         Male
                                     </label>
                                 </div>
                                 <div class="form-check ms-4">
                                     <input class="form-check-input" type="radio" value="Female" name="gender"
-                                        id="flexRadioDefault2" formControlName="gender" [ngModel]="gender">
+                                        id="flexRadioDefault2" formControlName="gender">
                                     <label class="form-check-label" for="flexRadioDefault2">
                                         Female
                                     </label>
@@ -93,7 +93,7 @@
                         <div class="form-group col">
                             <label for="dob" class="required">Date Of Birth</label>
                             <input type="text" bsDatepicker [bsConfig]="datePickerConfig" class="form-control"
-                                placeholder="MM/DD/YYYY" formControlName="DOB" [ngModel]='DOB'>
+                                placeholder="MM/DD/YYYY" formControlName="DOB" >
 
                         </div>
 
@@ -101,11 +101,11 @@
 
                     <div class="row">
                         <div class="form-group col"  >
-                            <label for="password" class="required">{{edit ? 'Change Password' : 'Password'}}</label>
+                            <label for="password" class="required">{{Id ? 'Change Password' : 'Password'}}</label>
                             <input type="password" formControlName="password" class="form-control"
-                                placeholder="Enter Password" [ngModel]='password'>
+                                placeholder="Enter Password" >
                             <div class="error"
-                                *ngIf="profileForm.controls['password'].invalid && profileForm.controls['password'].touched ">
+                                *ngIf="profileForm.controls['password']?.invalid && profileForm.controls['password'].touched ">
                                 Password should have minimum 6 characters, at least 1 uppercase letter, 1 lowercase
                                 letter and 1 number)</div>
                         </div>
@@ -113,9 +113,9 @@
                         <div class="form-group col">
                             <label for="confirm_password" class="required">Confirm Password</label>
                             <input type="password" formControlName="confirm_password" class="form-control"
-                                placeholder="Re-enter Password" [ngModel]='confirmPassword'>
+                                placeholder="Re-enter Password">
                             <div class="error"
-                                *ngIf="profileForm.controls['confirm_password'].invalid && profileForm.controls['confirm_password'].touched ">
+                                *ngIf="profileForm.controls['confirm_password']?.invalid && profileForm.controls['confirm_password'].touched ">
                                 Password should have minimum 6 characters, at least 1 uppercase letter, 1 lowercase
                                 letter and 1 number)</div>
                             </div>
@@ -134,7 +134,7 @@
                         </div><br><br>
                         <div class="col-12">
                             <button type="button" class="me-3">Cancel</button>
-                            <button type="submit" class="ms-3" [disabled]="profileForm.invalid">{{!edit ? 'Register' : 'Update'}}</button>
+                            <button type="submit" class="ms-3" [disabled]="profileForm.invalid">{{!Id ? 'Register' : 'Update'}}</button>
                         </div>
                     </div>
                 </form>
@@ -147,17 +147,17 @@
                         <div class="row my-4">
                             <div class="form-group col">
                                 <label for="memberfirstname" class="required">First Name</label>
-                                <input type="text" class="form-control" formControlName="memberFirstName" placeholder="Enter First name" [ngModel]="familyMemberProfile?.memberFirstName">
+                                <input type="text" class="form-control" formControlName="memberFirstName" placeholder="Enter First name" >
                             </div>
                             <div class="form-group col">
                                 <label for="memberlastname" class="required">Last Name</label>
-                                <input type="text" class="form-control" formControlName="memberLastName" placeholder="Enter Last name" [ngModel]="familyMemberProfile?.memberLastName">
+                                <input type="text" class="form-control" formControlName="memberLastName" placeholder="Enter Last name">
                             </div>
                         </div>
                         <div class="row">
                             <div class="form-group col">
                                 <label for="relation" class="required">Relation</label>
-                                <select class="form-select" formControlName="relation" aria-label="Default select example" [ngModel]="familyMemberProfile?.relation">
+                                <select class="form-select" formControlName="relation" aria-label="Default select example" >
                                     <option selected disabled>Please Choose Relation</option>
                                     <option value="1">One</option>
                                     <option value="2">Two</option>
@@ -167,7 +167,7 @@
 
                             <div class="form-group col">
                                 <label for="relativemobile" class="required">Mobile</label>
-                                <input type="tel" class="form-control" formControlName="memberMobile" placeholder="Enter Mobile" [ngModel]="familyMemberProfile?.memberMobile">
+                                <input type="tel" class="form-control" formControlName="memberMobile" placeholder="Enter Mobile">
                             </div>
                         </div>
 
@@ -177,14 +177,14 @@
                                 <div class="d-flex align-items-center">
                                     <div class="form-check">
                                         <input class="form-check-input" type="radio" value="Male" name="memberGender"
-                                            id="flexRadioDefault1" formControlName="memberGender" [ngModel]="familyMemberProfile?.memberGender">
+                                            id="flexRadioDefault1" formControlName="memberGender">
                                         <label class="form-check-label" for="flexRadioDefault3">
                                             Male
                                         </label>
                                     </div>
                                     <div class="form-check ms-4">
                                         <input class="form-check-input" type="radio" value="Female" name="memberGender"
-                                            id="flexRadioDefault2" formControlName="memberGender" [ngModel]="familyMemberProfile?.memberGender">
+                                            id="flexRadioDefault2" formControlName="memberGender" >
                                         <label class="form-check-label" for="flexRadioDefault4">
                                             Female
                                         </label>
@@ -194,7 +194,7 @@
 
                             <div class="form-group col">
                                 <label for="dob" class="required">Date Of Birth</label>
-                                <input type="text" bsDatepicker [bsConfig]="datePickerConfig" class="form-control" placeholder="MM/DD/YYYY" formControlName="memberDOB" [ngModel]="familyMemberDOB">
+                                <input type="text" bsDatepicker [bsConfig]="datePickerConfig" class="form-control" placeholder="MM/DD/YYYY" formControlName="memberDOB" >
                             </div>
 
                             <div class="d-flex align-items-center justify-content-center mt-5">
@@ -212,24 +212,24 @@
                         <div class="row my-4">
                             <div class="form-group col">
                                 <label for="AddressLine1" class="required">Address Line 1</label>
-                                <input type="text" class="form-control" [ngModel]="addressDetail?.addressLine1" formControlName="addressLine1" placeholder="Address Line 1">
+                                <input type="text" class="form-control" formControlName="addressLine1" placeholder="Address Line 1">
                             </div>
                         </div>
                         <div class="row">
                             <div class="form-group col">
                                 <label for="AddressLine2" class="required">Address Line 2</label>
-                                <input type="text" class="form-control" [ngModel]="addressDetail?.addressLine2" formControlName="addressLine2" placeholder="Address Line 2">
+                                <input type="text" class="form-control"  formControlName="addressLine2" placeholder="Address Line 2">
                             </div>
                         </div>
 
                         <div class="row my-4">
                             <div class="form-group col">
                                 <label for="city" class="required">City</label>
-                                <input type="text" class="form-control" [ngModel]="addressDetail?.city" formControlName="city" placeholder="City">
+                                <input type="text" class="form-control" formControlName="city" placeholder="City">
                             </div>
                             <div class="form-group col">
                                 <label for="state" class="required">State</label>
-                                <input type="text" class="form-control" [ngModel]="addressDetail?.state" formControlName="state" placeholder="State">
+                                <input type="text" class="form-control" formControlName="state" placeholder="State">
                             </div>
                         </div>
 
@@ -238,17 +238,17 @@
 
                             <div class="form-group col">
                                 <label for="pincode" class="required">PIN Code</label>
-                                <input type="number" class="form-control" [ngModel]="addressDetail?.pinCode" formControlName="pinCode" placeholder="PIN Code">
+                                <input type="number" class="form-control"  formControlName="pinCode" placeholder="PIN Code">
                             </div>
 
                             <div class="form-group col">
                                 <label for="landmark">Nearby Landmark</label>
-                                <input type="text" class="form-control" [ngModel]="addressDetail?.landmark" formControlName="landmark" placeholder="Nearby Landmark (optional)">
+                                <input type="text" class="form-control" formControlName="landmark" placeholder="Nearby Landmark (optional)">
                             </div>
                         </div>
 
                         <div class="d-flex align-items-center justify-content-center mt-5">
-                            <button type="submit">{{!edit ? 'Save Address' : 'Update Address'}}</button>
+                            <button type="submit">{{!Id ? 'Save Address' : 'Update Address'}}</button>
                         </div>
                     </form>
                 </div>

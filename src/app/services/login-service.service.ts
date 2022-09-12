@@ -30,6 +30,6 @@ export class LoginServiceService {
   }
 
   getUserDetail(userId: string) {
-    return this.http.get(`${environment.serverURL}users/${userId}`)
+    return this.http.get(`${environment.serverURL}users/userById/${userId}`)
   }
 }

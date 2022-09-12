@@ -15,7 +15,7 @@ export class ProfileComponent implements OnInit {
   addressForm!: FormGroup;
   familyMemberForm!: FormGroup;
   submitted: boolean = false;
-  edit: any;
+  // edit: any;
   number: string = '';
   userId: string = '';
   userDetail: any;
@@ -69,7 +69,7 @@ export class ProfileComponent implements OnInit {
           Validators.email,
         ],
       ],
-      mobile: ['', [Validators.required, Validators.maxLength(10)]],
+      number: ['', [Validators.required, Validators.maxLength(10)]],
       gender: ['', [Validators.required]],
       DOB: ['', [Validators.required]],
       password: ['', [Validators.required, Validators.pattern('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$'),],],
@@ -109,8 +109,8 @@ export class ProfileComponent implements OnInit {
       memberDOB: ['', [Validators.required]]
     });
 
-    this.edit = this.route.snapshot.params['edit'];
-    this.Id = this.route.snapshot.params['id'];
+    // this.edit = this.route.snapshot.params['edit'];
+    this.Id = localStorage.getItem('id')
     this.getUserDetail();
 
   }
@@ -156,7 +156,7 @@ export class ProfileComponent implements OnInit {
       // this.router.navigate(['/login'])
     }
 
-    else if (this.edit && this.profileForm.valid) {
+    else if (this.Id && this.profileForm.valid) {
       this.loginService.updateUserProfile(this.Id, this.profileDetail).subscribe();
       this.profileForm.reset();
       this.tabChange(add)
@@ -173,7 +173,7 @@ export class ProfileComponent implements OnInit {
       this.loginService.updateUserProfile(this.userId, { address: this.address }).subscribe(res => { });
       this.router.navigate(['/login'])
     }
-    else if (this.edit && this.addressForm.valid) {
+    else if (this.Id && this.addressForm.valid) {
       this.loginService.updateUserProfile(this.Id, { address: this.address }).subscribe();
       this.addressForm.reset();
       this.router.navigate(['/dashboard'])
@@ -189,7 +189,7 @@ export class ProfileComponent implements OnInit {
       this.loginService.updateUserProfile(this.userId, { familyMember: this.familyMember }).subscribe(res => { });
       this.router.navigate(['/dashboard'])
     }
-    else if (this.edit && this.familyMemberForm.valid) {
+    else if (this.Id && this.familyMemberForm.valid) {
       this.loginService.updateUserProfile(this.Id, { familyMember: this.familyMember }).subscribe();
       this.familyMemberForm.reset();
       this.router.navigate(['/dashboard'])
@@ -200,20 +200,14 @@ export class ProfileComponent implements OnInit {
   }
 
   getUserDetail() {
-    if (this.edit) {
+    if (this.Id) {
       this.loginService.getUserDetail(this.Id).subscribe((res: any) => {
         this.userDetail = res;
-        this.firstName = this.userDetail.firstName;
-        this.lastName = this.userDetail.lastName;
-        this.email = this.userDetail.email;
-        this.number = this.userDetail.number;
-        this.DOB = new Date(this.userDetail.DOB);
-        this.gender = this.userDetail.gender;
-        this.password = this.userDetail.password;
-        this.confirmPassword = this.userDetail.password;
-        this.addressDetail = this.userDetail.address;
-        this.familyMemberProfile = this.userDetail.familyMember;
-        this.familyMemberDOB = new Date(this.familyMemberProfile?.memberDOB)
+        this.userDetail.DOB= new Date (this.userDetail.DOB)
+        this.profileForm.patchValue(this.userDetail)
+        this.addressForm.patchValue(this.userDetail.address)
+        this.userDetail.familyMember.memberDOB= new Date (this.userDetail.familyMember?.memberDOB)
+        this.familyMemberForm.patchValue(this.userDetail.familyMember);
       });
     }
   }

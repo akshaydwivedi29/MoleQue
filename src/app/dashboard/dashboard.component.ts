@@ -22,7 +22,7 @@ export class DashboardComponent implements OnInit {
   }
 
   editInfo(ev: Event) {
-    this.router.navigate(['/profile', { edit: ev.type, id: this.userDetail._id }])
+    this.router.navigate(['/profile'])
   }
 
 }
