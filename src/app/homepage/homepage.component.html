@@ -74,19 +74,24 @@
 
     <section class="mobile_report">
 
-        <div class="row">
-            <div class="col text-center" (click)="showClipBoard()">
+        <div class="d-flex align-items-center justify-content-around">
+            <div class="text-center bg-white" (click)="showClipBoard()">
                 <i class="bi bi-file-earmark-text"></i><br>
-                <span>Download Reports</span>
+                <p>Download Reports</p>
             </div>
-            <div class="col text-center mx-2">
+            <div class="text-center bg-white" (click)="openPopup()">
                 <i class="bi bi-house-fill"></i><br>
-                <span>Book Home Collection</span>
+                <p>Book Home Collection</p>
             </div>
-            <div class="col text-center">
+            <div class="text-center bg-white">
                 <i class="bi bi-person-lines-fill"></i><br>
-                <span>Popular Packages</span>
+                <p>Popular Packages</p>
             </div>
+            <div class="text-center bg-white">
+                <i class="bi bi-file-earmark-medical"></i>
+                <p>Upload Prescription</p>
+            </div>
+
         </div>
 
 
@@ -156,7 +161,8 @@
     <!-- HOME COLLECTION SECTION ENDS  -->
 
     <!-- Start of .about -->
-    <section class="about" id="about">
+    <section class="about">
+
         <div class="about__bg">
             <div class="icon">
                 <svg width="830" height="1013" viewBox="0 0 830 1013">
@@ -168,7 +174,8 @@
         </div>
 
         <div class="container">
-            <div class="about__our-misson wow fadeInLeft" data-wow-duration="1s">
+
+            <div class="about__our-misson">
                 <div class="about__our-misson-text">
                     <div class="icon">
                         <svg width="43" height="35" viewBox="0 0 43 35">
@@ -189,7 +196,7 @@
                 </div>
             </div>
 
-            <div class="about__text wow fadeInRight" data-wow-duration="1s">
+            <div class="about__text">
                 <h4>Book Your's</h4>
                 <h1 class="section-title">
                     Test By<br /><span>Condition</span>
@@ -198,16 +205,56 @@
                     Browse & book Medical Tests as per your Health Conditions
                 </h2>
 
-                <button href="#" class="btntestcon">Allergy</button>
-                <button href="#" class="btntestcon mx-2">Diabetes</button>
-                <button href="#" class="btntestcon">HIV</button>
-                <br>
-                <button href="#" class="btntestcon my-2">Viral Infections</button>
-                <button href="#" class="btntestcon my-2 mx-2">Fever</button>
-                <button href="#" class="btntestcon my-2">Heart Diseases</button>
-                <br>
-                <button href="#" class="btntestcon">Hypertension</button>
-                <button href="#" class="btntestcon mx-2">Infertility</button>
+                <div class="testcon_btn">
+                    <div class="testcon_btn_row">
+                        <div class="card">
+                            <div class="card-body">
+                                <p>Allergy</p>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-body">
+                                <p>Diabetes</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testcon_btn_row my-2">
+                        <div class="card">
+                            <div class="card-body">
+                                <p>HIV</p>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-body">
+                                <p>Viral Infections</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testcon_btn_row">
+                        <div class="card">
+                            <div class="card-body">
+                                <p>Fever</p>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-body">
+                                <p>Heart Diseases</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testcon_btn_row mt-2">
+                        <div class="card">
+                            <div class="card-body">
+                                <p>Hypertension</p>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-body">
+                                <p>Infertility</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>

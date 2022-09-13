@@ -15353,44 +15353,7 @@ body {
   }
 
   /*---------- End .header-bottom responsive ----------*/
-  /*---------- Start .about section responsive ----------*/
-  .about {
-    padding-top: 130px;
-    padding-bottom: 100px;
-  }
 
-  .about>.container {
-    -ms-flex-pack: distribute;
-    justify-content: space-around;
-  }
-
-  .about__our-misson {
-    text-align: center;
-    padding-left: 0px;
-    max-width: 450px;
-    -webkit-box-flex: 0;
-    -ms-flex: 0 0 450px;
-    flex: 0 0 450px;
-  }
-
-  .about__our-misson-text {
-    left: 50%;
-    -webkit-transform: translateX(-50%);
-    transform: translateX(-50%);
-  }
-
-  .about__our-misson-img {
-    width: 100%;
-  }
-
-  .about__text {
-    max-width: 450px;
-    -webkit-box-flex: 0;
-    -ms-flex: 0 0 450px;
-    flex: 0 0 450px;
-  }
-
-  /*---------- End .about section responsive ----------*/
   /*---------- Start .why-choose-us responsive ----------*/
   .why-choose-us {
     padding-top: 100px;
@@ -17537,43 +17500,7 @@ body {
   }
 
   /*---------- End .why-choose-us responsive ----------*/
-  /*---------- Start .about section responsive ----------*/
-  .about {
-    padding-top: 460px;
-  }
 
-  .about .container {
-    text-align: center;
-  }
-
-  .about__our-misson {
-    display: none;
-  }
-
-  .about__text {
-    padding-top: 0px;
-  }
-
-  .about__text>h4 {
-    margin-bottom: 30px;
-  }
-
-  .about__text>h2 {
-    margin-top: 30px;
-  }
-
-  .about__text>p {
-    margin-top: 40px;
-  }
-
-  .about__text-signature {
-    margin-top: 40px;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-  }
-
-  /*---------- End .about section responsive ----------*/
   /*****************************************************/
   /************** Start of index3.html *****************/
   /*****************************************************/
@@ -17786,47 +17713,7 @@ body {
   }
 
   /*---------- End .header-bottom responsive ----------*/
-  /*---------- Start .about section responsive ----------*/
-  .about {
-    padding-top: 420px;
-    padding-bottom: 70px;
-  }
 
-  .about .container {
-    text-align: center;
-  }
-
-  .about__our-misson {
-    display: none;
-  }
-
-  .about__text {
-    max-width: 100%;
-    padding-top: 0px;
-  }
-
-  .about__text>h1 {
-    margin-top: 30px;
-  }
-
-  .about__text>h2 {
-    margin-top: 30px;
-    font-size: 20px;
-  }
-
-  .about__text>p {
-    margin-top: 30px;
-    font-size: 16px;
-  }
-
-  .about__text-signature {
-    margin-top: 40px;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-  }
-
-  /*---------- End .about section responsive ----------*/
   /*---------- Start .why-choose-us responsive ----------*/
   .why-choose-us {
     padding-top: 70px;
@@ -19304,12 +19191,7 @@ body {
   }
 
   /*---------- End .header-bottom responsive ----------*/
-  /*---------- Start .about section responsive ----------*/
-  .about {
-    padding-top: 390px;
-  }
 
-  /*---------- End .about section responsive ----------*/
   /*---------- Start .appointments responsive ----------*/
   .appointments .container .company-numbers__item {
     -webkit-box-orient: vertical;
@@ -19879,9 +19761,7 @@ body {
   }
 
   /*---------- End .header-bottom responsive ----------*/
-  .about {
-    padding-top: 490px;
-  }
+
 }
 
 /*# sourceMappingURL=main.css.map */
@@ -19893,5 +19773,12 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

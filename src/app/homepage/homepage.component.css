@@ -421,7 +421,6 @@
 .about {
     position: relative;
     padding: 40px 0;
-    z-index: 9;
 }
 
 .about__bg {
@@ -518,9 +517,6 @@
 }
 
 .about__text {
-    -webkit-box-flex: 0;
-    -ms-flex: 0 0 545px;
-    flex: 0 0 545px;
     max-width: 545px;
     padding-top: 20px;
 }
@@ -583,16 +579,18 @@
     color: #333333;
 }
 
-.btntestcon {
+.testcon_btn_row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.testcon_btn_row button {
     background: #F22283;
-    color: #fff;
-    text-transform: uppercase;
-    padding: 15px;
-    border-radius: 10px;
+    color: #FFF;
     border: none;
-    width: 169px;
-    text-align: left;
-    font-weight: bold;
+    border-radius: 5px;
+    padding: 10px 20px;
 }
 
 
@@ -982,7 +980,7 @@
     }
 }
 
-@media only screen and (max-width: 767.98px) {
+@media only screen and (max-width: 576px) {
 
     .main_carousel .card {
         margin-right: -500px;
@@ -995,15 +993,15 @@
 
     .mobile_report {
         display: block !important;
-        padding: 20px 0;
+        padding: 0 0 20px 0;
         background: #EEEEEE;
     }
 
-    .mobile_report .row .col {
-        background: #fff;
+    .mobile_report div div {
         border-radius: 5px;
-        box-shadow: 0px 6px 7px 0px rgb(0 0 0 / 20%);
-
+        box-shadow: 1px 6px 7px 0px rgb(0 0 0 / 20%);
+        padding: 5px 10px;
+        cursor: pointer;
     }
 
     .clip:before {
@@ -1015,7 +1013,7 @@
         font-size: 40px;
     }
 
-    .mobile_report span {
+    .mobile_report p {
         color: #1f3d9d;
         font-weight: 600;
     }
@@ -1026,4 +1024,17 @@
     .main_carousel .banner4 {
         min-height: 150px !important;
     }
+
+    .home_collection {
+        display: none;
+    }
+
+    /*---------- Start .about section responsive ----------*/
+
+
+    .about__our-misson {
+        display: none;
+    }
+
+    /*---------- End .about section responsive ----------*/
 }
