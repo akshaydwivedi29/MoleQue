@@ -2,7 +2,6 @@
 
 .main_carousel {
     position: relative;
-    margin-top: 80px;
 }
 
 .main_carousel .banner1,
@@ -984,9 +983,6 @@
 }
 
 @media only screen and (max-width: 767.98px) {
-    .main_carousel {
-        margin-top: 60px;
-    }
 
     .main_carousel .card {
         margin-right: -500px;
@@ -1022,5 +1018,12 @@
     .mobile_report span {
         color: #1f3d9d;
         font-weight: 600;
+    }
+
+    .main_carousel .banner1,
+    .main_carousel .banner2,
+    .main_carousel .banner3,
+    .main_carousel .banner4 {
+        min-height: 150px !important;
     }
 }

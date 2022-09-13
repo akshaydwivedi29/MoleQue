@@ -19,14 +19,19 @@ export class ProfileComponent implements OnInit {
   userId: string = '';
   userDetail: any;
   Id: any;
-  passwordError: boolean = false;
+  passwordError = false;
   profileDetail: any;
   address: any;
   addressArray:[]=[];
   familyMemberValue: any;
   datePickerConfig: Partial<BsDatepickerConfig>;
 
-  constructor(private fb: FormBuilder, private loginService: LoginServiceService, private route: ActivatedRoute, private router: Router) {
+  constructor(
+    private fb: FormBuilder,
+    private loginService: LoginServiceService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {
     // Datepicker starts
     this.datePickerConfig = Object.assign(
       {},
@@ -51,28 +56,34 @@ export class ProfileComponent implements OnInit {
           Validators.pattern('[a-zA-Z0-9]*'),
         ],
       ],
-      email: [
-        '',
-        [
-          Validators.required,
-          Validators.email,
-        ],
-      ],
+      email: ['', [Validators.required, Validators.email]],
       number: ['', [Validators.required, Validators.maxLength(10)]],
       gender: ['', [Validators.required]],
       DOB: ['', [Validators.required]],
-      password: ['', [Validators.required, Validators.pattern('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$'),],],
-      confirm_password: ['', [Validators.required, Validators.pattern('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$'),],],
-      acceptCheckbox: ['', [Validators.required,]],
+      password: [
+        '',
+        [
+          Validators.required,
+          Validators.pattern('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$'),
+        ],
+      ],
+      confirm_password: [
+        '',
+        [
+          Validators.required,
+          Validators.pattern('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$'),
+        ],
+      ],
+      acceptCheckbox: ['', [Validators.required]],
     });
 
     this.addressForm = this.fb.group({
-      addressLine1: ['', [Validators.required,]],
-      addressLine2: ['', [Validators.required,]],
-      city: ['', [Validators.required,]],
-      state: ['', [Validators.required,]],
-      pinCode: ['', [Validators.required,]],
-      landmark: ['', [Validators.required,]]
+      addressLine1: ['', [Validators.required]],
+      addressLine2: ['', [Validators.required]],
+      city: ['', [Validators.required]],
+      state: ['', [Validators.required]],
+      pinCode: ['', [Validators.required]],
+      landmark: ['', [Validators.required]],
     });
 
     this.familyMemberForm = this.fb.group({
@@ -95,12 +106,11 @@ export class ProfileComponent implements OnInit {
       relation: ['', [Validators.required]],
       memberMobile: ['', [Validators.required, Validators.maxLength(10)]],
       memberGender: ['', [Validators.required]],
-      memberDOB: ['', [Validators.required]]
+      memberDOB: ['', [Validators.required]],
     });
 
     this.Id = localStorage.getItem('id')
     this.getUserDetail();
-
   }
 
   ngOnInit(): void {
@@ -135,39 +145,40 @@ export class ProfileComponent implements OnInit {
       setTimeout(() => {
         this.passwordError = false;
       }, 5000);
-    }
-
-    else if (this.userId && this.profileForm.valid) {
-      this.loginService.updateUserProfile(this.userId, this.profileDetail).subscribe(res => { });
-      this.tabChange(add)
+    } else if (this.userId && this.profileForm.valid) {
+      this.loginService
+        .updateUserProfile(this.userId, this.profileDetail)
+        .subscribe((res) => {});
+      this.tabChange(add);
       this.profileForm.reset();
       // this.router.navigate(['/login'])
-    }
-
-    else if (this.Id && this.profileForm.valid) {
-      this.loginService.updateUserProfile(this.Id, this.profileDetail).subscribe();
+    } else if (this.Id && this.profileForm.valid) {
+      this.loginService
+        .updateUserProfile(this.Id, this.profileDetail)
+        .subscribe();
       this.profileForm.reset();
-      this.tabChange(add)
+      this.tabChange(add);
       // this.router.navigate(['/dashboard'])
-    }
-    else {
-      alert('Something went wrong!')
+    } else {
+      alert('Something went wrong!');
     }
   }
 
   saveAddress() {
     this.address = this.addressForm.value;
     if (this.userId && this.addressForm.valid) {
-      this.loginService.updateUserProfile(this.userId, { address: this.address }).subscribe(res => { });
-      this.router.navigate(['/login'])
-    }
-    else if (this.Id && this.addressForm.valid) {
-      this.loginService.updateUserProfile(this.Id, { address: this.address }).subscribe();
+      this.loginService
+        .updateUserProfile(this.userId, { address: this.address })
+        .subscribe((res) => {});
+      this.router.navigate(['/login']);
+    } else if (this.Id && this.addressForm.valid) {
+      this.loginService
+        .updateUserProfile(this.Id, { address: this.address })
+        .subscribe();
       this.addressForm.reset();
-      this.router.navigate(['/dashboard'])
-    }
-    else {
-      alert('Something went wrong!')
+      this.router.navigate(['/dashboard']);
+    } else {
+      alert('Something went wrong!');
     }
   }
 
@@ -182,10 +193,9 @@ export class ProfileComponent implements OnInit {
         
       });
       this.familyMemberForm.reset();
-      this.router.navigate(['/dashboard'])
-    }
-    else {
-      alert('Something went wrong!')
+      this.router.navigate(['/dashboard']);
+    } else {
+      alert('Something went wrong!');
     }
   }
 
