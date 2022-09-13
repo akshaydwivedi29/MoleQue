@@ -25,3 +25,10 @@
     font-size: 27px;
     margin-top: 20px;
 }
+
+/* Responsive */
+@media screen and (max-width:600px) {
+    .ppolicy {
+        margin-top: 60px;
+    }
+}
