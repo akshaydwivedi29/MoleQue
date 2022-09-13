@@ -21,8 +21,8 @@ export class ProfileComponent implements OnInit {
   Id: any;
   passwordError = false;
   profileDetail: any;
-  address: any;
-  addressArray:[]=[];
+  address: any ;
+  addressArray: {}[] = [];
   familyMemberValue: any;
   datePickerConfig: Partial<BsDatepickerConfig>;
 
@@ -70,7 +70,6 @@ export class ProfileComponent implements OnInit {
       confirm_password: [
         '',
         [
-          Validators.required,
           Validators.pattern('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$'),
         ],
       ],
@@ -83,7 +82,7 @@ export class ProfileComponent implements OnInit {
       city: ['', [Validators.required]],
       state: ['', [Validators.required]],
       pinCode: ['', [Validators.required]],
-      landmark: ['', [Validators.required]],
+      landmark: [''],
     });
 
     this.familyMemberForm = this.fb.group({
@@ -110,12 +109,12 @@ export class ProfileComponent implements OnInit {
     });
 
     this.Id = localStorage.getItem('id')
-    this.getUserDetail();
   }
-
+  
   ngOnInit(): void {
     this.number = this.route.snapshot.params['number'];
     this.userId = this.route.snapshot.params['userId'];
+    this.getUserDetail();
   }
 
   tabChange(ids: any) {
@@ -145,39 +144,47 @@ export class ProfileComponent implements OnInit {
       setTimeout(() => {
         this.passwordError = false;
       }, 5000);
-    } else if (this.userId && this.profileForm.valid) {
+    }
+
+    else if (this.userId && this.profileForm.valid) {
       this.loginService
         .updateUserProfile(this.userId, this.profileDetail)
-        .subscribe((res) => {});
+        .subscribe((res) => { });
       this.tabChange(add);
       this.profileForm.reset();
       // this.router.navigate(['/login'])
-    } else if (this.Id && this.profileForm.valid) {
+    }
+
+    else if (this.Id && this.profileForm.valid) {
       this.loginService
         .updateUserProfile(this.Id, this.profileDetail)
         .subscribe();
       this.profileForm.reset();
       this.tabChange(add);
       // this.router.navigate(['/dashboard'])
-    } else {
+    }
+
+    else {
       alert('Something went wrong!');
     }
   }
 
   saveAddress() {
     this.address = this.addressForm.value;
+   this.addressArray.push(this.address);
+    console.log(this.addressArray)
     if (this.userId && this.addressForm.valid) {
-      this.loginService
-        .updateUserProfile(this.userId, { address: this.address })
-        .subscribe((res) => {});
+      this.loginService.updateUserProfile(this.userId, { address: this.address }).subscribe((res) => { });
       this.router.navigate(['/login']);
-    } else if (this.Id && this.addressForm.valid) {
-      this.loginService
-        .updateUserProfile(this.Id, { address: this.address })
-        .subscribe();
+    }
+
+    else if (this.Id && this.addressForm.valid) {
+      this.loginService.updateUserProfile(this.Id, { address: this.address }).subscribe();
       this.addressForm.reset();
       this.router.navigate(['/dashboard']);
-    } else {
+    }
+
+    else {
       alert('Something went wrong!');
     }
   }
@@ -189,8 +196,9 @@ export class ProfileComponent implements OnInit {
       this.router.navigate(['/dashboard'])
     }
     else if (this.Id && this.familyMemberForm.valid) {
-      this.loginService.updateUserProfile(this.Id, { familyMember: this.familyMemberValue }).subscribe((res:any)=>{
-        
+      this.loginService.updateUserProfile(this.Id, { familyMember: this.familyMemberValue }).subscribe((res: any) => {
+
+
       });
       this.familyMemberForm.reset();
       this.router.navigate(['/dashboard']);
@@ -203,7 +211,7 @@ export class ProfileComponent implements OnInit {
     if (this.Id) {
       this.loginService.getUserDetail(this.Id).subscribe((res: any) => {
         this.userDetail = res;
-        this.userDetail.DOB= new Date (this.userDetail.DOB)
+        this.userDetail.DOB = new Date(this.userDetail.DOB)
         this.profileForm.patchValue(this.userDetail)
         this.addressForm.patchValue(this.userDetail.address)
       });

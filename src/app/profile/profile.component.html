@@ -19,7 +19,7 @@
 
                 <div class="d-flex align-items-center justify-content-evenly mb-5">
                     <img src="../../assets/images/icons/avatar.png" alt="Avatar">
-                    <div *ngIf="Id" class="user_name">Hi, {{userDetail?.firstName}}</div>
+                    <div class="user_name">Hi, {{Id? userDetail?.firstName:'Guest'}}</div>
                 </div>
 
                 <form [formGroup]="profileForm" (ngSubmit)="register('address')">
@@ -60,9 +60,9 @@
 
                         <div class="form-group col">
                             <label for="mobile" class="required">Mobile</label>
-                            <input type="tel" formControlName="number" class="form-control" placeholder="Enter Mobile">
+                            <input type="tel" formControlName="number" value={{number}} class="form-control" placeholder="Enter Mobile">
                             <div class="error"
-                                *ngIf="profileForm.controls['mobile']?.invalid && profileForm.controls['mobile'].touched ">
+                                *ngIf="profileForm.controls['number']?.invalid && profileForm.controls['number'].touched ">
                                 Please provide valid mobile number</div>
                         </div>
                     </div>
@@ -161,7 +161,7 @@
                                 <label for="relation" class="required">Relation</label>
                                 <select class="form-select" formControlName="relation"
                                     aria-label="Default select example">
-                                    <option selected disabled>Please Choose Relation</option>
+                                    <option selected disabled value="">Please Choose Relation</option>
                                     <option value="1">One</option>
                                     <option value="2">Two</option>
                                     <option value="3">Three</option>

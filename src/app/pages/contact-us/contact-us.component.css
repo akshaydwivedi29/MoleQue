@@ -87,3 +87,8 @@ form button {
     font-size: 25px;
     line-height: 35px;
 }
+
+.error {
+    font-size: 13px;
+    color: red;
+}

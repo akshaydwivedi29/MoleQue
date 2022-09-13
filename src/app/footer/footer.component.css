@@ -256,3 +256,38 @@
 }
 
 /* ANIMATION ENDS  */
+
+/* Responsive */
+
+@media screen and (max-width:400px) {
+    .footer .copyright {
+        padding: 0 10px 70px 10px;
+        font-size: 15px;
+    }
+
+    .footer .container div>h2::after {
+        left: 40%;
+    }
+}
+
+@media screen and (max-width:750px) and (min-width:401px) {
+    .footer .copyright {
+        padding: 0 10px 35px 10px;
+        font-size: 15px;
+    }
+
+    .footer .container div>h2::after {
+        left: 45%;
+    }
+
+    .col {
+        margin-bottom: 20px;
+    }
+}
+
+@media screen and (max-width:1280px) and (min-width:1200px) {
+    .row {
+        width: 100%;
+        justify-content: space-around;
+    }
+}
