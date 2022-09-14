@@ -60,9 +60,8 @@
 /* GET CALL STARTS */
 
 .get_call {
-    /* background: rgba(53, 80, 167, 0.8); */
     background: rgb(53, 80, 167);
-    min-height: 100px;
+    max-height: 108px;
     position: fixed;
     bottom: 0;
     left: 0;
@@ -81,7 +80,6 @@
     font-size: 15px;
     color: #fff;
     cursor: pointer;
-    /* background: rgba(53, 80, 167, 0.8); */
     background: rgb(53, 80, 167);
     padding: 3px 10px;
     border-radius: 3px;
@@ -105,8 +103,7 @@
     font-family: 'roboto bold';
     color: #fff;
     text-align: center;
-    text-transform: none;
-    margin: 10px 0px 10px 0px;
+    margin: 10px 0px;
 }
 
 .get_call_input {
@@ -148,6 +145,10 @@
     padding: 5px 2px;
     text-transform: none;
     border-radius: 0px 4px 4px 0px;
+}
+
+.get_call_input button:before {
+    content: 'Get a free call';
 }
 
 /* GET CALL ENDS */
@@ -259,7 +260,7 @@
 
 /* Responsive */
 
-@media screen and (max-width:400px) {
+@media only screen and (max-width:576px) {
     .footer .copyright {
         padding: 0 10px 70px 10px;
         font-size: 15px;
@@ -267,6 +268,39 @@
 
     .footer .container div>h2::after {
         left: 40%;
+    }
+
+    .get_call>.container>.get_call_text {
+        font-size: 16px;
+        margin: 10px 0px;
+    }
+
+    .get_call_input {
+        min-width: 300px;
+    }
+
+    .get_call_input input {
+        text-indent: 20px;
+    }
+
+    .get_call_input input::placeholder {
+        font-size: 14px;
+    }
+
+    .get_call_hide {
+        bottom: -100px;
+    }
+
+    .get_call_input button {
+        width: 50px;
+    }
+
+    .get_call_input button:before {
+        content: url(../../assets/images/icons/phone.png);
+        position: absolute;
+        top: 15%;
+        left: 27%;
+        zoom: 0.4;
     }
 }
 

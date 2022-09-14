@@ -40,6 +40,34 @@ export class HomepageComponent implements OnInit {
     items: 1,
     nav: false,
   };
+  testConOptions: OwlOptions = {
+    loop: true,
+    autoplay: true,
+    autoplaySpeed: 1500,
+    autoplayTimeout: 7000,
+    autoplayHoverPause: false,
+    mouseDrag: true,
+    touchDrag: true,
+    pullDrag: true,
+    dots: true,
+    navSpeed: 300,
+    navText: ['', ''],
+    // items: 3,
+    nav: false,
+    margin: 5,
+    responsive: {
+      0: {
+        items: 2,
+        margin: 15,
+      },
+      500: {
+        items: 3,
+      },
+      1000: {
+        items: 3,
+      },
+    },
+  };
   serviceOptions: OwlOptions = {
     loop: true,
     autoplay: true,

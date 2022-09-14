@@ -15356,8 +15356,7 @@ body {
 
   /*---------- Start .why-choose-us responsive ----------*/
   .why-choose-us {
-    padding-top: 100px;
-    padding-bottom: 50px;
+    padding: 30px 0;
   }
 
   .why-choose-us__bg>svg {
@@ -17716,8 +17715,7 @@ body {
 
   /*---------- Start .why-choose-us responsive ----------*/
   .why-choose-us {
-    padding-top: 70px;
-    padding-bottom: 40px;
+    padding: 30px 0;
   }
 
   .why-choose-us>.container .difference {

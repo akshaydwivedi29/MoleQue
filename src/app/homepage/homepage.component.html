@@ -184,7 +184,7 @@
                                 transform="translate(-3934 -1869.72)" />
                         </svg>
                     </div>
-                    <h1 class="title">our mission</h1>
+                    <h2 class="title">our mission</h2>
                     <p class="text">
                         Our mission is to care for patients,<br />families, communities,
                         and one another.
@@ -198,62 +198,78 @@
 
             <div class="about__text">
                 <h4>Book Your's</h4>
-                <h1 class="section-title">
+                <h2 class="section-title">
                     Test By<br /><span>Condition</span>
-                </h1>
+                </h2>
                 <h2>
-                    Browse & book Medical Tests as per your Health Conditions
+                    Select & book Medical Tests as per your Health Conditions
                 </h2>
 
                 <div class="testcon_btn">
-                    <div class="testcon_btn_row">
-                        <div class="card">
-                            <div class="card-body">
-                                <p>Allergy</p>
+
+                    <owl-carousel-o [options]="testConOptions">
+
+                        <ng-template carouselSlide>
+                            <div class="card">
+                                <div class="card-body">
+                                    <img src="../../assets/images/icons/allergy.png" alt="Allergy">
+                                    <span>Allergy</span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-body">
-                                <p>Diabetes</p>
+                            <div class="card mt-3">
+                                <div class="card-body">
+                                    <img src="../../assets/images/icons/glucometer.png" alt="Diabetes">
+                                    <span>Diabetes</span>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="testcon_btn_row my-2">
-                        <div class="card">
-                            <div class="card-body">
-                                <p>HIV</p>
+
+                        </ng-template>
+
+                        <ng-template carouselSlide>
+                            <div class="card">
+                                <div class="card-body">
+                                    <img src="../../assets/images/icons/hiv.png" alt="HIV">
+                                    <span>HIV</span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-body">
-                                <p>Viral Infections</p>
+                            <div class="card mt-3">
+                                <div class="card-body">
+                                    <img src="../../assets/images/icons/infection.png" alt="Viral Infections">
+                                    <span>Viral Infections</span>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="testcon_btn_row">
-                        <div class="card">
-                            <div class="card-body">
-                                <p>Fever</p>
+                        </ng-template>
+
+                        <ng-template carouselSlide>
+                            <div class="card">
+                                <div class="card-body">
+                                    <img src="../../assets/images/icons/fever.png" alt="Fever">
+                                    <span>Fever</span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-body">
-                                <p>Heart Diseases</p>
+                            <div class="card mt-3">
+                                <div class="card-body">
+                                    <img src="../../assets/images/icons/cardiology1.png" alt="Heart Diseases">
+                                    <span>Heart Diseases</span>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="testcon_btn_row mt-2">
-                        <div class="card">
-                            <div class="card-body">
-                                <p>Hypertension</p>
+                        </ng-template>
+
+                        <ng-template carouselSlide>
+                            <div class="card">
+                                <div class="card-body">
+                                    <img src="../../assets/images/icons/Hypertension.png" alt="Hypertension">
+                                    <span>Hypertension</span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-body">
-                                <p>Infertility</p>
+                            <div class="card mt-3">
+                                <div class="card-body">
+                                    <img src="../../assets/images/icons/infertility1.png" alt="Infertility">
+                                    <span>Infertility</span>
+                                </div>
                             </div>
-                        </div>
-                    </div>
+                        </ng-template>
+                    </owl-carousel-o>
                 </div>
             </div>
         </div>
@@ -274,12 +290,12 @@
         </div>
         <div class="container">
             <h5>See the Difference</h5>
-            <h1 class="section-title">Why <span>Choose Us?</span></h1>
+            <h2 class="section-title">Why <span>Choose Us?</span></h2>
             <div class="difference">
                 <div class="difference__item wow fadeInLeft" data-wow-duration="1s">
-                    <h1 class="difference__item-number">01</h1>
+                    <h2 class="difference__item-number">01</h2>
                     <div class="difference__item-content">
-                        <h1 class="difference__item-title">Patient-Centred</h1>
+                        <h2 class="difference__item-title">Patient-Centred</h2>
                         <p class="difference__item-text">
                             While our team brings important experience and knowledge, we
                             know that each patient is the expert in their own life
@@ -288,9 +304,9 @@
                 </div>
 
                 <div class="difference__item wow fadeInLeft" data-wow-duration="1s">
-                    <h1 class="difference__item-number">02</h1>
+                    <h2 class="difference__item-number">02</h2>
                     <div class="difference__item-content">
-                        <h1 class="difference__item-title">Comprehensive</h1>
+                        <h2 class="difference__item-title">Comprehensive</h2>
                         <p class="difference__item-text">
                             We offer comprehensive health care focusing on the whole
                             person, at all ages and stages of life
@@ -299,9 +315,9 @@
                 </div>
 
                 <div class="difference__item wow fadeInLeft" data-wow-duration="1s">
-                    <h1 class="difference__item-number">03</h1>
+                    <h2 class="difference__item-number">03</h2>
                     <div class="difference__item-content">
-                        <h1 class="difference__item-title">New Technology</h1>
+                        <h2 class="difference__item-title">New Technology</h2>
                         <p class="difference__item-text">
                             We have flexible hours and are open on certain evenings and
                             during the weekend, to accommodate your schedule
@@ -310,9 +326,9 @@
                 </div>
 
                 <div class="difference__item wow fadeInLeft" data-wow-duration="1s">
-                    <h1 class="difference__item-number">04</h1>
+                    <h2 class="difference__item-number">04</h2>
                     <div class="difference__item-content">
-                        <h1 class="difference__item-title">24 years experiens</h1>
+                        <h2 class="difference__item-title">24 years experiens</h2>
                         <p class="difference__item-text">
                             While our team brings important experience and knowledge, we
                             know that each patient is the expert in their own life
@@ -334,7 +350,7 @@
         </div>
         <div class="other-services__bg-2"></div>
         <div class="container">
-            <h1 class="section-title">our other <span>services</span></h1>
+            <h2 class="section-title">our other <span>services</span></h2>
             <div class="other-services__cards">
                 <div class="card-item">
                     <div class="icon">
@@ -363,7 +379,7 @@
                     <div class="icon">
                         <svg width="65" height="65" viewBox="0 0 65 65">
                             <path id="icon2.svg" class="cls-1"
-                                d="M2461.17,1553.5a1.926,1.926,0,0,1-.7-0.13,2.032,2.032,0,0,1-1.21-2.6,25.678,25.678,0,0,0,1.68-8.81c0-5.08-1.59-16.9-16.25-16.9-4.94,0-6.71,1.72-8.75,3.7a25.126,25.126,0,0,1-2.2,1.97,2.012,2.012,0,0,1-2.48,0,24.825,24.825,0,0,1-2.19-1.95c-2.07-1.99-3.86-3.72-8.76-3.72-14.14,0-16.25,10.59-16.25,16.9a25.841,25.841,0,0,0,1.67,8.8,2.03,2.03,0,1,1-3.81,1.4,29.805,29.805,0,0,1-1.92-10.2c0-13.12,7.59-20.96,20.31-20.96,6.54,0,9.33,2.69,11.58,4.86l0.61,0.58c0.2-.19.4-0.39,0.61-0.59,2.22-2.16,4.99-4.85,11.58-4.85,12.53,0,20.31,8.03,20.31,20.96a29.86,29.86,0,0,1-1.92,10.21A2.043,2.043,0,0,1,2461.17,1553.5Zm-59.14,4.06h14.91l5.57-12.99a1.92,1.92,0,0,1,1.95-1.23,2.033,2.033,0,0,1,1.84,1.39l5.92,17.76,6.43-25.73a2.039,2.039,0,0,1,1.95-1.54h0.02a2.023,2.023,0,0,1,1.96,1.5l5.69,20.84h14.7a2.03,2.03,0,1,1,0,4.06h-16.25a2.025,2.025,0,0,1-1.96-1.49l-4.05-14.85-6.24,24.96a2.036,2.036,0,0,1-1.89,1.54h-0.08a2.043,2.043,0,0,1-1.93-1.39l-6.43-19.31-3.99,9.31a2.032,2.032,0,0,1-1.87,1.23h-16.25A2.03,2.03,0,0,1,2402.03,1557.56Zm13.72,8.83a103.6,103.6,0,0,0,16.75,15.1,104.3,104.3,0,0,0,16.75-15.11,2.031,2.031,0,0,1,3.06,2.67,105.8,105.8,0,0,1-18.68,16.61,2.046,2.046,0,0,1-1.13.34,2.022,2.022,0,0,1-1.13-.34,105.99,105.99,0,0,1-18.68-16.6A2.031,2.031,0,1,1,2415.75,1566.39Z"
+                                d="M2461.17,1553.5a1.926,1.926,0,0,1-.7-0.13,2.032,2.032,0,0,1-1.21-2.6,25.678,25.678,0,0,0,1.68-8.81c0-5.08-1.59-16.9-16.25-16.9-4.94,0-6.71,1.72-8.75,3.7a25.126,25.126,0,0,1-2.2,1.97,2.012,2.012,0,0,1-2.48,0,24.825,24.825,0,0,1-2.19-1.95c-2.07-1.99-3.86-3.72-8.76-3.72-14.14,0-16.25,10.59-16.25,16.9a25.841,25.841,0,0,0,1.67,8.8,2.03,2.03,0,1,1-3.81,1.4,29.805,29.805,0,0,1-1.92-10.2c0-13.12,7.59-20.96,20.31-20.96,6.54,0,9.33,2.69,11.58,4.86l0.61,0.58c0.2-.19.4-0.39,0.61-0.59,2.22-2.16,4.99-4.85,11.58-4.85,12.53,0,20.31,8.03,20.31,20.96a29.86,29.86,0,0,1-1.92,10.21A2.043,2.043,0,0,1,2461.17,1553.5Zm-59.14,4.06h24.91l5.57-12.99a1.92,1.92,0,0,1,1.95-1.23,2.033,2.033,0,0,1,1.84,1.39l5.92,17.76,6.43-25.73a2.039,2.039,0,0,1,1.95-1.54h0.02a2.023,2.023,0,0,1,1.96,1.5l5.69,20.84h14.7a2.03,2.03,0,1,1,0,4.06h-16.25a2.025,2.025,0,0,1-1.96-1.49l-4.05-14.85-6.24,24.96a2.036,2.036,0,0,1-1.89,1.54h-0.08a2.043,2.043,0,0,1-1.93-1.39l-6.43-19.31-3.99,9.31a2.032,2.032,0,0,1-1.87,1.23h-16.25A2.03,2.03,0,0,1,2402.03,1557.56Zm13.72,8.83a103.6,103.6,0,0,0,16.75,15.1,104.3,104.3,0,0,0,16.75-15.11,2.031,2.031,0,0,1,3.06,2.67,105.8,105.8,0,0,1-18.68,16.61,2.046,2.046,0,0,1-1.13.34,2.022,2.022,0,0,1-1.13-.34,105.99,105.99,0,0,1-18.68-16.6A2.031,2.031,0,1,1,2415.75,1566.39Z"
                                 transform="translate(-2400 -1521)" />
                         </svg>
                     </div>
@@ -429,9 +445,9 @@
 
         <div class="container">
             <div class="form__block">
-                <h1 class="section-title">
+                <h2 class="section-title">
                     Looking for<br /><span>a Certified Doctor?</span>
-                </h1>
+                </h2>
                 <p class="subtitle">
                     We believe in providing the best possible care to all our existing
                     patients and welcome new patients to sample
@@ -465,12 +481,12 @@
                     <div class="icon">
                         <svg width="42" height="42" viewBox="0 0 42 42">
                             <path id="icon4.svg" class="cls-2"
-                                d="M2140.64,3491.34a1.351,1.351,0,0,1-1.36-1.34v-5.68a9.658,9.658,0,0,0-2.06-5.41c-2.85-3.63-7.52-9.53-8.02-10.05-1.28-1.27-1.79-1.64-4.82-1.64h-18.81a2.587,2.587,0,0,0-2.85,2.6c0,1.66-.01,20.18-0.01,20.18a1.36,1.36,0,0,1-2.72,0s0.01-18.52.01-20.18a5.251,5.251,0,0,1,5.57-5.28h18.81c3.67,0,4.9.6,6.74,2.42,0.67,0.67,6.96,8.67,8.22,10.27a12.275,12.275,0,0,1,2.66,7.09V3490A1.351,1.351,0,0,1,2140.64,3491.34Zm-19.79-27.55a1.342,1.342,0,0,1-1.35-1.34,2.28,2.28,0,0,0-4.56,0,1.355,1.355,0,0,1-2.71,0,4.99,4.99,0,0,1,9.98,0A1.351,1.351,0,0,1,2120.85,3463.79Zm-7.64,7.27a1.359,1.359,0,0,1,1.36,1.35v2.79h2.82a1.345,1.345,0,1,1,0,2.69h-2.82v2.79a1.355,1.355,0,0,1-2.71,0v-2.79h-2.82a1.345,1.345,0,1,1,0-2.69h2.82v-2.79A1.351,1.351,0,0,1,2113.21,3471.06Zm11.09,12.31a1.342,1.342,0,0,1-1.35-1.34v-12.51a1.355,1.355,0,0,1,2.71,0v11.17h10.58a1.34,1.34,0,1,1,0,2.68H2124.3Zm-22.95,8.92h2.26a5.924,5.924,0,0,1,11.51,0h11.17a5.924,5.924,0,0,1,11.51,0h2.84a1.345,1.345,0,1,1,0,2.69h-2.84a5.924,5.924,0,0,1-11.51,0h-11.17a5.924,5.924,0,0,1-11.51,0h-2.26A1.345,1.345,0,1,1,2101.35,3492.29Zm30.7,4.52a3.175,3.175,0,1,0-3.21-3.18A3.2,3.2,0,0,0,2132.05,3496.81Zm-22.69,0a3.175,3.175,0,1,0-3.2-3.18A3.2,3.2,0,0,0,2109.36,3496.81Z"
+                                d="M2140.64,3491.34a1.351,1.351,0,0,1-1.36-1.34v-5.68a9.658,9.658,0,0,0-2.06-5.41c-2.85-3.63-7.52-9.53-8.02-10.05-1.28-1.27-1.79-1.64-4.82-1.64h-18.81a2.587,2.587,0,0,0-2.85,2.6c0,1.66-.01,20.18-0.01,20.18a1.36,1.36,0,0,1-2.72,0s0.01-18.52.01-20.18a5.251,5.251,0,0,1,5.57-5.28h28.81c3.67,0,4.9.6,6.74,2.42,0.67,0.67,6.96,8.67,8.22,10.27a12.275,12.275,0,0,1,2.66,7.09V3490A1.351,1.351,0,0,1,2140.64,3491.34Zm-19.79-27.55a1.342,1.342,0,0,1-1.35-1.34,2.28,2.28,0,0,0-4.56,0,1.355,1.355,0,0,1-2.71,0,4.99,4.99,0,0,1,9.98,0A1.351,1.351,0,0,1,2120.85,3463.79Zm-7.64,7.27a1.359,1.359,0,0,1,1.36,1.35v2.79h2.82a1.345,1.345,0,1,1,0,2.69h-2.82v2.79a1.355,1.355,0,0,1-2.71,0v-2.79h-2.82a1.345,1.345,0,1,1,0-2.69h2.82v-2.79A1.351,1.351,0,0,1,2113.21,3471.06Zm11.09,12.31a1.342,1.342,0,0,1-1.35-1.34v-12.51a1.355,1.355,0,0,1,2.71,0v11.17h20.58a1.34,1.34,0,1,1,0,2.68H2124.3Zm-22.95,8.92h2.26a5.924,5.924,0,0,1,11.51,0h21.17a5.924,5.924,0,0,1,11.51,0h2.84a1.345,1.345,0,1,1,0,2.69h-2.84a5.924,5.924,0,0,1-11.51,0h-11.17a5.924,5.924,0,0,1-11.51,0h-2.26A1.345,1.345,0,1,1,2101.35,3492.29Zm30.7,4.52a3.175,3.175,0,1,0-3.21-3.18A3.2,3.2,0,0,0,2132.05,3496.81Zm-22.69,0a3.175,3.175,0,1,0-3.2-3.18A3.2,3.2,0,0,0,2109.36,3496.81Z"
                                 transform="translate(-2100 -3457.5)" />
                         </svg>
                     </div>
                     <div class="content">
-                        <h1>24 Hour Emergency</h1>
+                        <h2>24 Hour Emergency</h2>
                         <p>
                             Open round the clock for conve-nience, quick and easy access
                         </p>
@@ -481,12 +497,12 @@
                     <div class="icon">
                         <svg width="33" height="42" viewBox="0 0 33 42">
                             <path id="icon5.svg" class="cls-2"
-                                d="M2537.62,3499.46c-0.39.76-1.46,2.04-4.15,2.04h-23.92c-2.69,0-3.76-1.28-4.15-2.04s-0.83-2.36.72-4.54l4.16-5.85a2.076,2.076,0,0,1,.24-0.34l5.48-7.7v-16.17a1.349,1.349,0,0,1,1.35-1.34h8.32a1.349,1.349,0,0,1,1.35,1.34v16.17l5.48,7.7a1.609,1.609,0,0,1,.24.34l4.16,5.85C2538.45,3497.1,2538.02,3498.7,2537.62,3499.46Zm-13.06-17.23a1.312,1.312,0,0,1-.25-0.77v-15.25h-5.6v15.25a1.312,1.312,0,0,1-.25.77l-4.34,6.11h14.78Zm10.13,14.24-3.88-5.45h-18.6l-3.88,5.45a1.94,1.94,0,0,0-.53,1.76,1.973,1.973,0,0,0,1.75.58h23.92a1.973,1.973,0,0,0,1.75-.58A1.91,1.91,0,0,0,2534.69,3496.47Zm-11.75-9.05a1.82,1.82,0,1,1,1.84-1.82A1.822,1.822,0,0,1,2522.94,3487.42Zm-1.52-5.35a1.455,1.455,0,1,1,1.47-1.45A1.46,1.46,0,0,1,2521.42,3482.07Zm4.29-19.87h-8.4a1.345,1.345,0,1,1,0-2.69h8.4A1.345,1.345,0,1,1,2525.71,3462.2Z"
+                                d="M2537.62,3499.46c-0.39.76-1.46,2.04-4.15,2.04h-23.92c-2.69,0-3.76-1.28-4.15-2.04s-0.83-2.36.72-4.54l4.16-5.85a2.076,2.076,0,0,1,.24-0.34l5.48-7.7v-16.17a1.349,1.349,0,0,1,1.35-1.34h8.32a1.349,1.349,0,0,1,1.35,1.34v16.17l5.48,7.7a1.609,1.609,0,0,1,.24.34l4.16,5.85C2538.45,3497.1,2538.02,3498.7,2537.62,3499.46Zm-13.06-17.23a1.312,1.312,0,0,1-.25-0.77v-15.25h-5.6v15.25a1.312,1.312,0,0,1-.25.77l-4.34,6.11h24.78Zm10.13,14.24-3.88-5.45h-18.6l-3.88,5.45a1.94,1.94,0,0,0-.53,1.76,1.973,1.973,0,0,0,1.75.58h23.92a1.973,1.973,0,0,0,1.75-.58A1.91,1.91,0,0,0,2534.69,3496.47Zm-11.75-9.05a1.82,1.82,0,1,1,1.84-1.82A1.822,1.822,0,0,1,2522.94,3487.42Zm-1.52-5.35a1.455,1.455,0,1,1,1.47-1.45A1.46,1.46,0,0,1,2521.42,3482.07Zm4.29-19.87h-8.4a1.345,1.345,0,1,1,0-2.69h8.4A1.345,1.345,0,1,1,2525.71,3462.2Z"
                                 transform="translate(-2505 -3459.5)" />
                         </svg>
                     </div>
                     <div class="content">
-                        <h1>Complete Lab Services</h1>
+                        <h2>Complete Lab Services</h2>
                         <p>
                             Cost-efficient, comprehensive and clinical laboratory services
                         </p>
@@ -497,12 +513,12 @@
                     <div class="icon">
                         <svg width="38" height="42" viewBox="0 0 38 42">
                             <path id="icon6.svg" class="cls-2"
-                                d="M2937.66,3501.5h-35.31a1.345,1.345,0,0,1,0-2.69h33.96c-0.04-5.67-.39-9.4-1.03-11.08-0.86-2.24-4.54-4.26-6.79-5.26-1.97,3.47-5.08,5.5-8.51,5.5h0c-3.38,0-6.46-2.03-8.43-5.49-2.24.99-5.93,3.02-6.78,5.25a19.374,19.374,0,0,0-.75,7.06c0.01,0.49.02,0.96,0.02,1.41a1.34,1.34,0,1,1-2.68,0c0-.43-0.01-0.89-0.02-1.36a21.394,21.394,0,0,1,.93-8.07c1.63-4.27,8.66-6.97,9.45-7.27a1.345,1.345,0,0,1,1.68.7c1.48,3.23,3.88,5.09,6.58,5.09h0c2.72,0,5.21-1.9,6.67-5.09a1.337,1.337,0,0,1,1.67-.7c0.8,0.3,7.83,3,9.46,7.27,1.09,2.86,1.22,9.01,1.22,13.39A1.34,1.34,0,0,1,2937.66,3501.5Zm-7.37-31.3h-0.06a9.755,9.755,0,0,1-.11,1.57,14.718,14.718,0,0,1-1.28,3.86,1.44,1.44,0,0,1-.2.39c-2.12,4.02-5.79,6.53-8.66,8.17a1.311,1.311,0,0,1-.66.18,1.33,1.33,0,0,1-1.16-.67,1.35,1.35,0,0,1,.49-1.84,21.175,21.175,0,0,0,6.45-5.29h-10.06a9.782,9.782,0,0,0,2.69,1.76,1.346,1.346,0,0,1,.68,1.77,1.312,1.312,0,0,1-1.76.69,11.578,11.578,0,0,1-7.12-10.61,1.332,1.332,0,0,1-1.11-1.56l1.42-8a1.331,1.331,0,0,1,1.31-1.11h17.71a1.34,1.34,0,0,1,1.32,1.11l1.38,7.81a1.213,1.213,0,0,1,.07.43A1.34,1.34,0,0,1,2930.29,3470.2Zm-17.24,3.69h13.64a11.666,11.666,0,0,0,.79-2.6,6.468,6.468,0,0,0,.07-1.09h-15.34A8.747,8.747,0,0,0,2913.05,3473.89Zm14.69-11.69h-15.46l-0.95,5.31h17.35Z"
+                                d="M2937.66,3501.5h-35.31a1.345,1.345,0,0,1,0-2.69h33.96c-0.04-5.67-.39-9.4-1.03-11.08-0.86-2.24-4.54-4.26-6.79-5.26-1.97,3.47-5.08,5.5-8.51,5.5h0c-3.38,0-6.46-2.03-8.43-5.49-2.24.99-5.93,3.02-6.78,5.25a19.374,19.374,0,0,0-.75,7.06c0.01,0.49.02,0.96,0.02,1.41a1.34,1.34,0,1,1-2.68,0c0-.43-0.01-0.89-0.02-1.36a21.394,21.394,0,0,1,.93-8.07c1.63-4.27,8.66-6.97,9.45-7.27a1.345,1.345,0,0,1,1.68.7c1.48,3.23,3.88,5.09,6.58,5.09h0c2.72,0,5.21-1.9,6.67-5.09a1.337,1.337,0,0,1,1.67-.7c0.8,0.3,7.83,3,9.46,7.27,1.09,2.86,1.22,9.01,1.22,13.39A1.34,1.34,0,0,1,2937.66,3501.5Zm-7.37-31.3h-0.06a9.755,9.755,0,0,1-.11,1.57,14.718,14.718,0,0,1-1.28,3.86,1.44,1.44,0,0,1-.2.39c-2.12,4.02-5.79,6.53-8.66,8.17a1.311,1.311,0,0,1-.66.18,1.33,1.33,0,0,1-1.16-.67,1.35,1.35,0,0,1,.49-1.84,21.175,21.175,0,0,0,6.45-5.29h-10.06a9.782,9.782,0,0,0,2.69,1.76,1.346,1.346,0,0,1,.68,1.77,1.312,1.312,0,0,1-1.76.69,11.578,11.578,0,0,1-7.12-10.61,1.332,1.332,0,0,1-1.11-1.56l1.42-8a1.331,1.331,0,0,1,1.31-1.11h27.71a1.34,1.34,0,0,1,1.32,1.11l1.38,7.81a1.213,1.213,0,0,1,.07.43A1.34,1.34,0,0,1,2930.29,3470.2Zm-17.24,3.69h23.64a11.666,11.666,0,0,0,.79-2.6,6.468,6.468,0,0,0,.07-1.09h-15.34A8.747,8.747,0,0,0,2913.05,3473.89Zm14.69-11.69h-15.46l-0.95,5.31h27.35Z"
                                 transform="translate(-2901 -3459.5)" />
                         </svg>
                     </div>
                     <div class="content">
-                        <h1>Medical Professionals</h1>
+                        <h2>Medical Professionals</h2>
                         <p>
                             Qualified and certified physicians for qulity medical care
                         </p>
