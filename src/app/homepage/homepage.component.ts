@@ -14,11 +14,12 @@ export class HomepageComponent implements OnInit {
   finalCaptcha: string = '';
   testReportForm!: FormGroup;
   testReportValue: any;
-  showAlert: boolean = false;
-  blur_bg: boolean = false;
-  secure_login: boolean = false;
-  invalidOtp: boolean = false;
-  unregMobile: boolean = false;
+  showAlert = false;
+  blur_bg = false;
+  blur_mobile_report = false;
+  secure_login = false;
+  invalidOtp = false;
+  unregMobile = false;
   mobileNumber: FormGroup;
   otpForm: FormGroup;
   number: string = '';
@@ -280,5 +281,11 @@ export class HomepageComponent implements OnInit {
 
   showClipBoard() {
     this.mobileReport = !this.mobileReport;
+    this.blur_mobile_report = true;
+  }
+
+  hideClipBoard() {
+    this.mobileReport = !this.mobileReport;
+    this.blur_mobile_report = false;
   }
 }

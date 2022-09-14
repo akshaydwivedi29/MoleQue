@@ -34,6 +34,9 @@
                 <div class="circle"></div>
             </div>
             <div class="card-body">
+                <div class="hide_card" (click)="hideClipBoard()">
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                </div>
                 <div class="card-title">
                     <h4>QUICK VIEW TEST REPORTS</h4>
                 </div>
@@ -72,7 +75,7 @@
 
     <!-- HOME COLLECTION MOBILE  -->
 
-    <section class="mobile_report">
+    <section class="mobile_report" [ngClass]="blur_mobile_report ? 'blur_body' : ''">
 
         <div class="d-flex align-items-center justify-content-around">
             <div class="text-center bg-white" (click)="showClipBoard()">
