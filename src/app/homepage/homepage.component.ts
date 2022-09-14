@@ -68,22 +68,6 @@ export class HomepageComponent implements OnInit {
       },
     },
   };
-  serviceOptions: OwlOptions = {
-    loop: true,
-    autoplay: true,
-    autoplaySpeed: 1500,
-    autoplayTimeout: 7000,
-    autoplayHoverPause: false,
-    mouseDrag: true,
-    touchDrag: true,
-    pullDrag: true,
-    dots: true,
-    navSpeed: 700,
-    navText: ['', ''],
-    items: 4,
-    nav: false,
-    margin: 0,
-  };
 
   constructor(
     private fb: FormBuilder,
