@@ -46,7 +46,6 @@ export class HeaderComponent implements OnInit {
   async getCart() {
     this.cartCount = this.cartService.getItemsLS();
     this.itemCount = this.cartCount.length;
-    console.log(this.itemCount);
   }
 
   close() {

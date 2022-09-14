@@ -67,7 +67,7 @@
 }
 
 .required:after {
-    content: '*';
+    content: ' *';
     color: #f22283;
     font-size: 15px;
 }
@@ -145,4 +145,51 @@
 button:disabled {
     background-color: grey !important;
     cursor: not-allowed;
+}
+
+/* Responsive */
+@media screen and (max-width:600px) {
+    .profile {
+        margin-top: 50px;
+    }
+
+    .profile .container .tab_content .my_profile,
+    .profile .container .tab_content .family,
+    .profile .container .tab_content .address {
+        width: 100%;
+    }
+
+    .profile .container .tabs ul {
+        font-size: 15px;
+    }
+
+}
+
+@media screen and (max-width:950px) and (min-width:601px) {
+
+    .profile .container .tab_content .my_profile,
+    .profile .container .tab_content .family,
+    .profile .container .tab_content .address {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width:576px) {
+    .profile .container .tab_content .space {
+        margin-bottom: 15px;
+    }
+}
+
+@media screen and (max-width:320px) {
+    .profile .container .tabs ul {
+        font-size: 13px;
+    }
+
+    .profile .container .tab_content .my_profile .user_name {
+        font-size: 18px;
+    }
+
+    #checkTerms{
+        font-size:13px ;
+    }
 }

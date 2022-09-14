@@ -21,7 +21,7 @@ export class ProfileComponent implements OnInit {
   Id: any;
   passwordError = false;
   profileDetail: any;
-  address: any ;
+  address: any;
   addressArray: {}[] = [];
   familyMemberValue: any;
   datePickerConfig: Partial<BsDatepickerConfig>;
@@ -81,7 +81,7 @@ export class ProfileComponent implements OnInit {
       addressLine2: ['', [Validators.required]],
       city: ['', [Validators.required]],
       state: ['', [Validators.required]],
-      pinCode: ['', [Validators.required]],
+      pinCode: ['', [Validators.required,Validators.maxLength(6),]],
       landmark: [''],
     });
 
@@ -110,7 +110,7 @@ export class ProfileComponent implements OnInit {
 
     this.Id = localStorage.getItem('id')
   }
-  
+
   ngOnInit(): void {
     this.number = this.route.snapshot.params['number'];
     this.userId = this.route.snapshot.params['userId'];
@@ -171,15 +171,15 @@ export class ProfileComponent implements OnInit {
 
   saveAddress() {
     this.address = this.addressForm.value;
-   this.addressArray.push(this.address);
+    this.addressArray.push(this.address);
     console.log(this.addressArray)
     if (this.userId && this.addressForm.valid) {
-      this.loginService.updateUserProfile(this.userId, { address: this.address }).subscribe((res) => { });
+      this.loginService.updateUserProfile(this.userId, {address:this.addressArray.push(this.address)} ).subscribe((res) => { });
       this.router.navigate(['/login']);
     }
 
     else if (this.Id && this.addressForm.valid) {
-      this.loginService.updateUserProfile(this.Id, { address: this.address }).subscribe();
+      this.loginService.updateUserProfile(this.Id, {address:this.addressArray} ).subscribe();
       this.addressForm.reset();
       this.router.navigate(['/dashboard']);
     }
@@ -213,7 +213,7 @@ export class ProfileComponent implements OnInit {
         this.userDetail = res;
         this.userDetail.DOB = new Date(this.userDetail.DOB)
         this.profileForm.patchValue(this.userDetail)
-        this.addressForm.patchValue(this.userDetail.address)
+        // this.addressForm.patchValue(this.userDetail.address)
       });
     }
   }

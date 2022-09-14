@@ -24,7 +24,7 @@
 
                 <form [formGroup]="profileForm" (ngSubmit)="register('address')">
                     <div class="row my-4">
-                        <div class="form-group col">
+                        <div class="form-group col-sm-6 col-xs-12 space">
                             <label for="firstname" class="required">First Name</label>
                             <input type="text" formControlName="firstName" class="form-control"
                                 placeholder="Enter First name">
@@ -33,7 +33,7 @@
                                 Please provide valid first name</div>
                         </div>
 
-                        <div class="form-group col">
+                        <div class="form-group col-sm-6 col-xs-12">
                             <label for="lastname" class="required">Last Name</label>
                             <input type="text" formControlName="lastName" class="form-control"
                                 placeholder="Enter Last name">
@@ -44,7 +44,7 @@
                     </div>
 
                     <div class="row">
-                        <div class="form-group col">
+                        <div class="form-group col-sm-6 col-xs-12 space">
                             <label for="email" class="required">Email</label>
                             <input type="email" formControlName="email" class="form-control" placeholder="Enter email">
                             <div class="error"
@@ -58,7 +58,7 @@
                                 something like 'you@yours.com'</div>
                         </div>
 
-                        <div class="form-group col">
+                        <div class="form-group col-sm-6 col-xs-12">
                             <label for="mobile" class="required">Mobile</label>
                             <input type="tel" formControlName="number" value={{number}} class="form-control" placeholder="Enter Mobile">
                             <div class="error"
@@ -69,7 +69,7 @@
 
                     <div class="row my-4">
 
-                        <div class="form-group col">
+                        <div class="form-group col-sm-6 col-xs-12 space">
                             <label for="gender" class="required">Gender</label>
                             <div class="d-flex align-items-center">
                                 <div class="form-check">
@@ -89,7 +89,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group col">
+                        <div class="form-group col-sm-6 col-xs-12">
                             <label for="dob" class="required">Date Of Birth</label>
                             <input type="text" bsDatepicker [bsConfig]="datePickerConfig" class="form-control"
                                 placeholder="MM/DD/YYYY" formControlName="DOB">
@@ -99,7 +99,7 @@
                     </div>
 
                     <div class="row">
-                        <div class="form-group col">
+                        <div class="form-group col-sm-6 col-xs-12 space">
                             <label for="password" class="required">{{Id ? 'Change Password' : 'Password'}}</label>
                             <input type="password" formControlName="password" class="form-control"
                                 placeholder="Enter Password">
@@ -109,7 +109,7 @@
                                 letter and 1 number)</div>
                         </div>
 
-                        <div class="form-group col">
+                        <div class="form-group col-sm-6 col-xs-12">
                             <label for="confirm_password" class="required">Confirm Password</label>
                             <input type="password" formControlName="confirm_password" class="form-control"
                                 placeholder="Re-enter Password">
@@ -126,7 +126,7 @@
                         <div class="col-12">
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" formControlName="acceptCheckbox">
-                                <label class="form-check-label required" for="flexCheckDefault">
+                                <label class="form-check-label required" id="checkTerms" for="flexCheckDefault">
                                     Accept Terms & Conditons
                                 </label>
                             </div>
@@ -145,19 +145,19 @@
                 <div class="family_form" *ngIf="open === 'f_form'">
                     <form [formGroup]="familyMemberForm" (ngSubmit)="addMember()">
                         <div class="row my-4">
-                            <div class="form-group col">
+                            <div class="form-group col-sm-6 col-xs-12 space">
                                 <label for="memberfirstname" class="required">First Name</label>
                                 <input type="text" class="form-control" formControlName="memberFirstName"
                                     placeholder="Enter First name">
                             </div>
-                            <div class="form-group col">
+                            <div class="form-group col-sm-6 col-xs-12">
                                 <label for="memberlastname" class="required">Last Name</label>
                                 <input type="text" class="form-control" formControlName="memberLastName"
                                     placeholder="Enter Last name">
                             </div>
                         </div>
                         <div class="row">
-                            <div class="form-group col">
+                            <div class="form-group col-sm-6 col-xs-12 space">
                                 <label for="relation" class="required">Relation</label>
                                 <select class="form-select" formControlName="relation"
                                     aria-label="Default select example">
@@ -168,15 +168,15 @@
                                 </select>
                             </div>
 
-                            <div class="form-group col">
+                            <div class="form-group col-sm-6 col-xs-12">
                                 <label for="relativemobile" class="required">Mobile</label>
                                 <input type="tel" class="form-control" formControlName="memberMobile"
                                     placeholder="Enter Mobile">
                             </div>
                         </div>
 
-                        <div class="row my-4">
-                            <div class="form-group col">
+                        <div class="row my-4 ">
+                            <div class="form-group col-sm-6 col-xs-12 space">
                                 <label for="membergender" class="required">Gender</label>
                                 <div class="d-flex align-items-center">
                                     <div class="form-check">
@@ -196,7 +196,7 @@
                                 </div>
                             </div>
 
-                            <div class="form-group col">
+                            <div class="form-group col-sm-6 col-xs-12">
                                 <label for="dob" class="required">Date Of Birth</label>
                                 <input type="text" bsDatepicker [bsConfig]="datePickerConfig" class="form-control"
                                     placeholder="MM/DD/YYYY" formControlName="memberDOB">
@@ -230,11 +230,11 @@
                         </div>
 
                         <div class="row my-4">
-                            <div class="form-group col">
+                            <div class="form-group col-sm-6 col-xs-12 space">
                                 <label for="city" class="required">City</label>
                                 <input type="text" class="form-control" formControlName="city" placeholder="City">
                             </div>
-                            <div class="form-group col">
+                            <div class="form-group col-sm-6 col-xs-12">
                                 <label for="state" class="required">State</label>
                                 <input type="text" class="form-control" formControlName="state" placeholder="State">
                             </div>
@@ -243,13 +243,13 @@
 
                         <div class="row">
 
-                            <div class="form-group col">
+                            <div class="form-group col-sm-6 col-xs-12 space">
                                 <label for="pincode" class="required">PIN Code</label>
-                                <input type="number" class="form-control" formControlName="pinCode"
-                                    placeholder="PIN Code">
+                                <input type="number" class="form-control" maxlength="6" formControlName="pinCode"
+                                    placeholder="PIN Code" >
                             </div>
 
-                            <div class="form-group col">
+                            <div class="form-group col-sm-6 col-xs-12">
                                 <label for="landmark">Nearby Landmark</label>
                                 <input type="text" class="form-control" formControlName="landmark"
                                     placeholder="Nearby Landmark (optional)">
