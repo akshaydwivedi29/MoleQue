@@ -16,11 +16,11 @@
             <div class="login_item_top" *ngIf="showOTP">
                 <img src="../../assets/images/logo.png" alt="MoleQue Diagnostics">
                 <h4>OTP Verification</h4>
-                <p class="message">We've sent a verification code to your mobile {{number}}</p>
+                <p class="alert alert-success">We've sent a verification code to your mobile {{number}}</p>
             </div>
 
-            <p class="alertError" *ngIf="showSignUpError">User already exists</p>
-            <p class="alertError" *ngIf="invalidOtp">Invalid OTP. Please enter valid OTP code.</p>
+            <p class="alert alert-danger" *ngIf="showSignUpError">User already exists</p>
+            <p class="alert alert-danger" *ngIf="invalidOtp">Invalid OTP. Please enter valid OTP code.</p>
 
             <div class="login_item_form" *ngIf="!showOTP">
                 <form [formGroup]="signUpForm" (ngSubmit)="register()">
