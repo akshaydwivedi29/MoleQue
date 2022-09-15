@@ -1,6 +1,10 @@
-.top_section {
-    margin-top: 120px;
-    padding: 30px 0;
+.book_test {
+    padding: 42px 0;
+}
+
+.book_test .offer_carousel {
+    width: 900px;
+    height: 150px;
 }
 
 .offer_carousel,

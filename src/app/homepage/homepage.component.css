@@ -1044,6 +1044,12 @@
         padding: 20px 0;
     }
 
+    .about__bg>.icon>svg {
+        height: initial;
+        width: 100%;
+        max-width: 500px;
+    }
+
     .about__our-misson {
         display: none;
     }

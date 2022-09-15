@@ -1,10 +1,16 @@
 <app-header></app-header>
 
-<section class="container top_section d-flex justify-content-between">
+<section class="book_test d-flex align-items-center justify-content-around">
 
     <div class="offer_carousel">
-
         <owl-carousel-o [options]="offerOptions">
+            <ng-template carouselSlide>
+                <img src="../../assets/images/banner/offer1.jpg" alt="Offer1">
+            </ng-template>
+
+            <ng-template carouselSlide>
+                <img src="../../assets/images/banner/offer2.jpg" alt="Offer1">
+            </ng-template>
 
             <ng-template carouselSlide>
                 <img src="../../assets/images/banner/offer1.jpg" alt="Offer1">
@@ -12,23 +18,7 @@
 
             <ng-template carouselSlide>
                 <img src="../../assets/images/banner/offer2.jpg" alt="Offer1">
-
             </ng-template>
-
-            <ng-template carouselSlide>
-                <img src="../../assets/images/banner/offer1.jpg" alt="Offer1">
-            </ng-template>
-
-            <ng-template carouselSlide>
-                <img src="../../assets/images/banner/offer2.jpg" alt="Offer1">
-
-            </ng-template>
-
-
-
-
-
-
         </owl-carousel-o>
     </div>
 
@@ -40,7 +30,9 @@
 
 </section>
 
-<section class="packages">
+
+
+<!-- <section class="packages">
     <div class="container d-block">
         <h5>Top Packages</h5>
         <div class="card">
@@ -85,5 +77,5 @@
 
 
 
-</section>
+</section> -->
 <app-footer></app-footer>

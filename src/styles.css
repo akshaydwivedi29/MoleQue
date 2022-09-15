@@ -17925,8 +17925,7 @@ body {
   /*---------- End .testimonials responsive ----------*/
   /*---------- Start .emergency-call responsive ----------*/
   .emergency-call {
-    padding-top: 70px;
-    padding-bottom: 70px;
+    padding: 40px 0;
   }
 
   .emergency-call__item {
