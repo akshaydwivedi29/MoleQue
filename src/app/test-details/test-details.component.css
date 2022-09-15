@@ -48,6 +48,11 @@
     color: rgb(242, 34, 131);
 }
 
+.test_code, .test_name {
+    display: flex;
+    align-items: center;
+}
+
 .card_item>.card_item_text>.question>a:hover {
     color: #1f3d9d;
 }
@@ -76,7 +81,7 @@
     background: #f22283;
 }
 
-i {
+.card_item_icon i {
     color: #1f3d9d;
 }
 
@@ -84,41 +89,45 @@ i {
 
 @media only screen and (max-width: 576px) {
 
+    .test_details {
+        padding: 20px 0;
+    }
+
     .test_details .test_info>.card {
         width: 100%;
     }
 
-}
-
-@media only screen and (max-width: 1400px) {
-
     .toggle_btn {
-        background: #fff;
-        width: 25%;
-        height: 40px;
-        border-radius: 20px;
+        width: 75%;
     }
 
-}
-
-@media only screen and (max-width: 1210px) {
-
-    .toggle_btn {
-        background: #fff;
-        width: 30%;
-        height: 40px;
-        border-radius: 20px;
+    .card_item_icon i {
+        display: none;
     }
 
-}
-
-@media only screen and (max-width: 1030px) {
-
-    .toggle_btn {
-        background: #fff;
-        width: 40%;
-        height: 40px;
-        border-radius: 20px;
+    .test_code, .test_name {
+        display: block;
     }
 
+    .card-title {
+        justify-content: space-around;
+    }
+
+    .test_code .answer, .test_name .answer {
+        margin-left: 0 !important;
+        margin-top: 5px;
+    }
+
+    .toggle_content .test_info:nth-child(1) .card .card-body div:nth-child(3) div .card_item_text,
+    .toggle_content .test_info:nth-child(2) .card .card-body div:nth-child(3) div .card_item_text,
+    .toggle_content .test_info:nth-child(2) .card .card-body div:nth-child(4) div .card_item_text {
+        margin-left: 0 !important;
+        padding: 0 5px;
+    }
+
+    .toggle_content .test_info:nth-child(1) .card .card-body div:nth-child(3) .card_item,
+    .toggle_content .test_info:nth-child(2) .card .card-body div:nth-child(3) .card_item,
+    .toggle_content .test_info:nth-child(2) .card .card-body div:nth-child(4) .card_item {
+        width: 48%;
+    }
 }

@@ -19,11 +19,11 @@
                     <div class="card-body">
 
                         <div class="card-title d-flex align-items-center mb-3">
-                            <div class="test_name d-flex align-items-center">
+                            <div class="test_name">
                                 <div class="question">Test Name:&nbsp;</div>
                                 <div class="answer ms-2">{{obj?.testname}}</div>
                             </div>
-                            <div class="test_code d-flex align-items-center ms-5">
+                            <div class="test_code ms-5">
                                 <div class="question">Test Code:</div>
                                 <div class="answer ms-2">{{obj?.testcode}}</div>
                             </div>
@@ -41,7 +41,7 @@
 
                         <div class="d-flex align-items-center justify-content-between my-3">
 
-                            <div class="card_item d-flex align-items-center justify-content-start w-50">
+                            <div class="card_item d-flex align-items-center justify-content-start">
                                 <div class="card_item_icon">
                                     <i class="bi bi-alarm-fill fa-2x"></i>
                                 </div>
@@ -92,11 +92,11 @@
                     <div class="card-body">
 
                         <div class="card-title d-flex align-items-center mb-3">
-                            <div class="test_name d-flex align-items-center">
+                            <div class="test_name">
                                 <div class="question">Test Name:&nbsp;</div>
                                 <div class="answer ms-2">{{obj?.testname}}</div>
                             </div>
-                            <div class="test_code d-flex align-items-center ms-5">
+                            <div class="test_code ms-5">
                                 <div class="question">Test Code:</div>
                                 <div class="answer ms-2">{{obj?.testcode}}</div>
                             </div>
@@ -114,7 +114,7 @@
 
                         <div class="d-flex align-items-center justify-content-between my-3">
 
-                            <div class="card_item d-flex align-items-center justify-content-start w-50">
+                            <div class="card_item d-flex align-items-center justify-content-start">
                                 <div class="card_item_icon">
                                     <i class="bi bi-alarm-fill fa-2x"></i>
                                 </div>
@@ -142,7 +142,7 @@
 
                         <div class="d-flex align-items-center justify-content-between my-3">
 
-                            <div class="card_item d-flex align-items-center justify-content-start w-50">
+                            <div class="card_item d-flex align-items-center justify-content-start">
                                 <div class="card_item_text ms-3">
                                     <div class="question mb-1">Stability</div>
                                     <div class="answer">{{obj?.stability}}</div>
@@ -198,7 +198,6 @@
 
     </div>
 
-    <app-cart-modal #popup *ngIf="modal"></app-cart-modal>
 
 
     <div class="container">
@@ -224,4 +223,5 @@
 
     </div>
 </section>
+<app-cart-modal #popup *ngIf="modal"></app-cart-modal>
 <app-footer></app-footer>
