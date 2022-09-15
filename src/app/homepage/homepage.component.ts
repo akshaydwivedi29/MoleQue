@@ -227,6 +227,9 @@ export class HomepageComponent implements OnInit {
       },
       (err) => {
         this.unregMobile = true;
+        setTimeout(() => {
+          this.unregMobile = false;
+        }, 5000);
       }
     );
   }

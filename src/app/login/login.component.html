@@ -17,9 +17,9 @@
                 <p *ngIf="showOTP">Please check the OTP sent to {{number}}</p>
             </div>
 
-            <p class="alertError" *ngIf="logInError">Wrong credentials. Invalid Mobile number or password</p>
-            <p class="alertError" *ngIf="unregMobile">Mobile number is not registered</p>
-            <p class="alertError" *ngIf="invalidOtp">Invalid OTP. Please enter valid OTP code.</p>
+            <p class="alert alert-danger" *ngIf="logInError">Wrong credentials. Invalid Mobile number or password</p>
+            <p class="alert alert-danger" *ngIf="unregMobile">Mobile number is not registered</p>
+            <p class="alert alert-danger" *ngIf="invalidOtp">Invalid OTP. Please enter valid OTP code.</p>
 
             <div class="login_item_form" *ngIf="!showOTP">
                 <form [formGroup]="logInForm" (ngSubmit)="login()">
