@@ -6,15 +6,16 @@
         </div>
 
         <div class="login_item">
-            <div class="login_item_top" *ngIf="!showOTP">
-                <img src="../../assets/images/logo.png" alt="MoleQue Diagnostics">
-                <h5>SIGN UP</h5>
+            <div class="login_item_top">
+                <img id="img" src="../../assets/images/logo.png" alt="MoleQue Diagnostics">
                 <h4>Get started with your health check now.</h4>
-                <p>Already an existing User? Please Sign-in with your registered credentials.</p>
+                <div class="login_img1">
+                    <img src="../../assets/images/jpg/login.jpg" alt="Login / Sign Up">
+                </div>
+                <h5 *ngIf="!showOTP">SIGN UP</h5>
             </div>
 
             <div class="login_item_top" *ngIf="showOTP">
-                <img src="../../assets/images/logo.png" alt="MoleQue Diagnostics">
                 <h4>OTP Verification</h4>
                 <p class="alert alert-success">We've sent a verification code to your mobile {{number}}</p>
             </div>

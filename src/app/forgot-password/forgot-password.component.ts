@@ -15,14 +15,14 @@ export class ForgotPasswordComponent implements OnInit {
   mobile: string = '';
   otp!: FormGroup;
   code: string = '';
-  number: string = '';
+  number: any;
   newPassword: string = '';
 
   constructor(
     private forgotPwdService: ForgotPswdService,
     private fb: FormBuilder,
     private router: Router,
-    private route :ActivatedRoute
+    private route: ActivatedRoute
   ) {
     this.mobileNumber = this.fb.group({
       number: ['', [Validators.required, Validators.maxLength(10)]],
@@ -43,11 +43,12 @@ export class ForgotPasswordComponent implements OnInit {
 
   ngOnInit(): void {
     this.number = this.route.snapshot.params['number'];
-   }
+    this.mobileNumber.patchValue({ number: this.number });
+  }
 
   verify() {
     this.mobile = this.mobileNumber.value.number;
-    this.number = this.mobile;
+    this.number = this.mobile
     this.forgotPwdService.generateOTP(this.mobile).subscribe(
       (res) => { },
       (err) => { }
@@ -65,7 +66,7 @@ export class ForgotPasswordComponent implements OnInit {
         this.showError = true;
         setTimeout(() => {
           this.showError = false;
-        }, 10000);
+        }, 5000);
       });
   }
 

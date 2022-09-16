@@ -7,10 +7,13 @@
 
         <div class="login_item">
             <div class="login_item_top">
-                <img src="../../assets/images/logo.png" alt="MoleQue Diagnostics">
+                <img id="img" src="../../assets/images/logo.png" alt="MoleQue Diagnostics">
+                <!-- <h5>SIGN IN</h5> -->
+                <h4>Get started with your health check now.</h4>
+                <div class="login_img1">
+                    <img src="../../assets/images/jpg/login.jpg" alt="Login / Sign Up">
+                </div>
                 <div *ngIf="!showOTP">
-                    <h5>SIGN IN</h5>
-                    <h4>Get started with your health check now.</h4>
                     <p>Already an existing User? Please Sign-in with your registered credentials.</p>
                 </div>
                 <h5 *ngIf="showOTP">OTP verification</h5>
@@ -98,3 +101,4 @@
 
     </div>
 </section>
+

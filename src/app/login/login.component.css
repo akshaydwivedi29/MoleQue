@@ -3,7 +3,11 @@
     height: 100vh;
 }
 
-.login .login_item .login_item_top img {
+.login_img1 img {
+    display: none;
+}
+
+.login .login_item .login_item_top #img {
     width: 300px;
     height: auto;
     background: #1f3d9d;
@@ -86,7 +90,7 @@
     letter-spacing: 2px;
 }
 
-.login_btn_otp{
+.login_btn_otp {
     margin-bottom: 20px;
 }
 
@@ -100,7 +104,7 @@ button:disabled {
     cursor: not-allowed;
 }
 
-#forgotPswd{
+#forgotPswd {
     cursor: pointer;
     color: #466df0;
 }
@@ -113,7 +117,7 @@ button:disabled {
     text-indent: 35px;
 }
 
-.error{
+.error {
     color: red;
 }
 
@@ -121,4 +125,31 @@ button:disabled {
 #signUp {
     display: flex;
     justify-content: center;
+}
+
+/* Responsive */
+
+@media screen and (max-width:576px) {
+
+    .login .login_img img {
+        display: none;
+    }
+
+    .login_img1 img {
+        display: inline-block;
+        width: 100%;
+        height: auto;
+        margin-bottom: 10px;
+    }
+    
+    .login .login_item {
+        overflow: hidden;
+        margin: 10px;
+        padding: 10px;
+    } 
+
+    .login .login_item .login_item_top h4 {
+        margin-top: 10px;
+        font-size: 17px;
+    }
 }
