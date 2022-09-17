@@ -13,11 +13,9 @@
                     <img src="../../assets/images/jpg/login.jpg" alt="Login / Sign Up">
                 </div>
                 <h5 *ngIf="!showOTP">SIGN UP</h5>
-            </div>
-
-            <div class="login_item_top" *ngIf="showOTP">
-                <h4>OTP Verification</h4>
-                <p class="alert alert-success">We've sent a verification code to your mobile {{number}}</p>
+                <h4 *ngIf="showOTP">OTP Verification</h4>
+                <p *ngIf="showOTP" class="alert alert-success">We've sent a verification code to your mobile {{number}}
+                </p>
             </div>
 
             <p class="alert alert-danger" *ngIf="showSignUpError">User already exists</p>

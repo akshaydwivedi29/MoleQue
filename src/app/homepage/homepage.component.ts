@@ -201,7 +201,7 @@ export class HomepageComponent implements OnInit {
   openPopup() {
     const userId = localStorage.getItem('id');
     if (userId) {
-      this.router.navigate(['/book-test']);
+      this.router.navigate(['/book-test-page']);
     } else {
       this.displayStyle = 'flex';
       this.blurBody();

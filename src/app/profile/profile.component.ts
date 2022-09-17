@@ -171,15 +171,15 @@ export class ProfileComponent implements OnInit {
 
   saveAddress() {
     this.address = this.addressForm.value;
-    this.addressArray.push(this.address);
-    console.log(this.addressArray)
     if (this.userId && this.addressForm.valid) {
-      this.loginService.updateUserProfile(this.userId, {address:this.addressArray.push(this.address)} ).subscribe((res) => { });
+      this.loginService.updateUserProfile(this.userId, {address:this.address} ).subscribe((res) => {
+       });
       this.router.navigate(['/login']);
     }
 
     else if (this.Id && this.addressForm.valid) {
-      this.loginService.updateUserProfile(this.Id, {address:this.addressArray} ).subscribe();
+      this.loginService.updateUserProfile(this.Id, {address:this.address} ).subscribe((res) => {
+       });
       this.addressForm.reset();
       this.router.navigate(['/dashboard']);
     }
