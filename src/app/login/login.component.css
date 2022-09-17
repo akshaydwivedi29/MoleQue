@@ -36,7 +36,7 @@
 
 .login .login_item .login_item_top h4 {
     font-size: 20px;
-    margin-top: 60px;
+    margin-top: 30px;
 }
 
 .login .login_item .login_item_top p {
@@ -151,5 +151,9 @@ button:disabled {
     .login .login_item .login_item_top h4 {
         margin-top: 10px;
         font-size: 17px;
+    }
+
+    .col{
+        padding: 0 5px;
     }
 }

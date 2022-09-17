@@ -25,6 +25,7 @@ import { TestListComponent } from './test-list/test-list.component';
 import { BookTestComponent } from './book-test/book-test.component';
 import { ProfileComponent } from './profile/profile.component';
 import { CartModalComponent } from './cart-modal/cart-modal.component';
+import { BookTestPageComponent } from './book-test-page/book-test-page.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,6 +46,7 @@ import { CartModalComponent } from './cart-modal/cart-modal.component';
     BookTestComponent,
     ProfileComponent,
     CartModalComponent,
+    BookTestPageComponent,
   ],
   imports: [
     BrowserModule,
