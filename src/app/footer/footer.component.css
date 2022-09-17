@@ -261,6 +261,12 @@
 /* Responsive */
 
 @media only screen and (max-width:576px) {
+
+    .footer {
+        background-size: 100% auto;
+        background-position: bottom;
+    }
+
     .footer .copyright {
         padding: 0 10px 35px 10px;
         font-size: 15px;
