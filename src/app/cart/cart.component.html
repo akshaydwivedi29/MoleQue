@@ -10,16 +10,19 @@
 
             <div class="table" *ngFor='let obj of testlist;'>
                 <div class="code_name">
-                    <div class="fw-bold">{{obj?.testcode}}</div>
+                    <div>{{obj?.testcode}}</div>
                     <div>{{obj?.testname}}</div>
                 </div>
                 <div class="price_remove">
-                    <div class="px-3">₹ {{obj?.price}}</div>
-                    <div class="ms-1" (click)="removeItemLS(obj); loadDataLS()"><i class="bi bi-trash3-fill"></i></div>
+                    <div>₹ {{obj?.price}}</div>
+                    <div (click)="removeItemLS(obj); loadDataLS()"><i class="bi bi-trash3-fill"></i></div>
                 </div>
             </div>
-            <button type="button" (click)="clearCartLS(); loadDataLS()">Clear
-                Cart</button>
+            <div class="clear_btn">
+                <button type="button" (click)="clearCartLS(); loadDataLS()">Clear
+                    Cart</button>
+            </div>
+
         </div>
 
 
