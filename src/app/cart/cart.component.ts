@@ -8,18 +8,27 @@ import { CartService } from '../services/cart.service';
 })
 export class CartComponent implements OnInit {
   testlist: any;
-  toggleTab: boolean = false;
-  totalCartValue: number = 0;
+  totalCartValue = 0;
   userId: any;
   data: any;
+  itemCount = 0;
+  cartCount: any;
 
   constructor(private cartService: CartService) {
+    this.cartService.events.subscribe((res: any) => {
+      this.itemCount = parseInt(res);
+    });
     this.userId = localStorage.getItem('id');
   }
 
   ngOnInit(): void {
-    // this.loadData();
     this.loadDataLS();
+    this.getCart();
+  }
+
+  async getCart() {
+    this.cartCount = this.cartService.getItemsLS();
+    this.itemCount = this.cartCount.length;
   }
 
   loadData() {
@@ -53,9 +62,7 @@ export class CartComponent implements OnInit {
   }
 
   clearCartLS() {
-    // this.cartService.clearCart(this.userId).subscribe(res => {
-    //   console.log(res)
-    // });
     this.cartService.clearCartLS();
+    this.getCart();
   }
 }

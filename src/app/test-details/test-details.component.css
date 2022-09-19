@@ -1,6 +1,6 @@
 .toggle_btn {
     background: #fff;
-    width: 22%;
+    width: fit-content;
     height: 40px;
     border-radius: 20px;
 }
