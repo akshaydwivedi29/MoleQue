@@ -32,14 +32,14 @@
                     Upload Prescription</li>
 
                 <div *ngIf="id==='allTest'" class="sideDisplay">
-                    <span class="mx-2">Showing 1-50 of 101 results</span>
-                    <div class="form-group">
+                    <span class="mx-2">Showing 1-20 of {{testList?.length}} results</span>
+                    <div class="form-group" (click)="sort($event)">
                         <select class="form-select">
                             <option selected disabled hidden>Sort By...</option>
-                            <option>Price:Low to High</option>
-                            <option>Price:High to Low</option>
-                            <option>Title:A to Z</option>
-                            <option>Title:Z to A</option>
+                            <option value="l2h">Price:Low to High</option>
+                            <option value="h2l">Price:High to Low</option>
+                            <option value="a2z">Title:A to Z</option>
+                            <option value="z2a">Title:Z to A</option>
                         </select>
                     </div>
 
@@ -48,11 +48,17 @@
         </div>
 
         <div class="tab_content">
+            <div class="d-flex justify-content-center" *ngIf="loader && id==='allTest'">
+                <div class="spinner-border" role="status">
+                    <span class="sr-only"></span>
+                </div>
+
+            </div>
 
             <div class="all_test row my-4" *ngIf="id === 'allTest'">
                 <div class="card col-3" *ngFor="let list of testList">
                     <div class="card-body">
-                        <h5 class="card-title" id="testName">{{list.testname | uppercase}}</h5>
+                        <h5 class="card-title" id="testName">{{(list.testname.length>35)? (list.testname|uppercase | slice:0:35)+'...':list.testname| uppercase}}</h5>
                         <p class="card-text">No special preparation required</p>
                         <p class="card-text">26 Parameter(s) Covered</p>
                         <p class="card-text">Daily</p>
@@ -86,61 +92,83 @@
             </div>
 
             <div class="prescription my-4" *ngIf="id === 'prescription'">
-                <form>
+                <form [formGroup]="prescriptionForm" (ngSubmit)="submitForm()">
                     <div class="row">
-                        <div class="form-group col-sm-6 col-xs-12">
+                        <div class="form-group col-sm-6 col-xs-12 space">
                             <label for="name" class="required">Name</label>
                             <input type="text" class="form-control" formControlName="name" placeholder="Enter Name">
+                            <div class="error"
+                                *ngIf="prescriptionForm.controls['name']?.invalid && prescriptionForm.controls['name'].touched ">
+                                Please provide valid first name</div>
                         </div>
 
                         <div class="form-group col-sm-6 col-xs-12">
                             <label for="mobile" class="required">Mobile</label>
                             <input type="tel" class="form-control" formControlName="mobile" placeholder="Enter Mobile">
+                            <div class="error"
+                                *ngIf="prescriptionForm.controls['mobile']?.invalid && prescriptionForm.controls['mobile'].touched ">
+                                Please provide valid mobile number</div>
                         </div>
                     </div>
 
                     <div class="row my-4">
-                        <div class="form-group col-sm-6 col-xs-12">
+                        <div class="form-group col-sm-6 col-xs-12 space">
                             <label for="email" class="required">Email</label>
                             <input type="tel" class="form-control" formControlName="email" placeholder="Enter email">
+                            <div class="error"
+                                *ngIf="prescriptionForm.controls['email']?.invalid && prescriptionForm.controls['email'].touched ">
+                                Please provide valid email address</div>
+                            <div class="error"
+                                *ngIf="prescriptionForm.controls['email'].touched && prescriptionForm.controls['email'].errors?.['email']">
+                                Email address is not
+                                in the correct format, try
+                                something like 'you@yours.com'</div>
                         </div>
 
                         <div class="form-group col-sm-6 col-xs-12">
-                            <label for="membergender" class="required">Gender</label>
+                            <label for="gender" class="required">Gender</label>
                             <div class="d-flex align-items-center">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" value="Male" name="memberGender"
-                                        id="flexRadioDefault1" formControlName="gender">
+                                    <input class="form-check-input" type="radio" value="Male" id="flexRadioDefault1"
+                                        formControlName="gender">
                                     <label class="form-check-label" for="flexRadioDefault3">
                                         Male
                                     </label>
                                 </div>
 
                                 <div class="form-check ms-4">
-                                    <input class="form-check-input" type="radio" value="Female" name="memberGender"
-                                        id="flexRadioDefault2" formControlName="gender">
+                                    <input class="form-check-input" type="radio" value="Female" id="flexRadioDefault2"
+                                        formControlName="gender">
                                     <label class="form-check-label" for="flexRadioDefault4">
                                         Female
                                     </label>
                                 </div>
                             </div>
-
+                            <div class="error"
+                                *ngIf="prescriptionForm.controls['gender']?.invalid && prescriptionForm.controls['gender'].touched ">
+                                Please select gender</div>
                         </div>
                         <div class="row my-4">
-                            <div class="form-group col-sm-6 col-xs-12">
+                            <div class="form-group col-sm-6 col-xs-12 space">
                                 <label for="dob" class="required">Date Of Birth</label>
                                 <input type="text" bsDatepicker [bsConfig]="datePickerConfig" class="form-control"
                                     placeholder="MM/DD/YYYY" formControlName="DOB">
+                                <div class="error"
+                                    *ngIf="prescriptionForm.controls['DOB']?.invalid && prescriptionForm.controls['DOB'].touched ">
+                                    Please provide valid date of Birth</div>
                             </div>
 
                             <div class="form-group col-sm-6 col-xs-12">
                                 <label for="dob" class="required">Upload Prescription</label>
                                 <input type="file" class="form-control" formControlName="upload">
+                                <div class="error"
+                                    *ngIf="prescriptionForm.controls['upload']?.invalid && prescriptionForm.controls['upload'].touched ">
+                                    Please upload prescription file.</div>
                             </div>
 
                         </div>
-                        <div class="d-flex align-items-center justify-content-center mt-5">
-                            <button class="btn" type="submit">Submit</button>
+                        <div class="d-flex align-items-center justify-content-center">
+                            <button class="btn" type="submit" [disabled]="prescriptionForm.invalid">Submit</button>
                         </div>
 
 

@@ -219,6 +219,14 @@ export class HomepageComponent implements OnInit {
     this.blur_bg = false;
   }
 
+  openPrescription(event:Event){
+    this.router.navigate(['/book-test-page', {pre: event.type}])
+  }
+
+  openPackage(event:Event){
+    this.router.navigate(['/book-test-page', {pack: event.type}])
+  }
+
   getOTP() {
     this.number = this.mobileNumber.value.mobile;
     this.loginService.generateOTP(this.number).subscribe(

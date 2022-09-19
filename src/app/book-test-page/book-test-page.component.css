@@ -157,3 +157,80 @@
     border: 1px solid #f22283;
     margin-top: 5px;
 }
+
+.error {
+    font-size: 13px;
+    margin-left: 5px;
+    color: red;
+}
+
+/* Responsive */
+@media only screen and (max-width:576px) {
+    .test {
+        padding: 0;
+    }
+    
+    .test .container {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+    
+    .test .offer_carousel {
+        width: 95vw;
+        height: auto;
+    }
+
+    .card {
+        width: 20rem;
+        margin: 10px auto;
+    }
+
+    .test .container .tab_content .prescription {
+        width: 100%;
+    }
+    
+    .test .container .tabs ul li:nth-child(2) {
+        margin: 0 5px;
+    }
+    
+    .test .container .tabs ul .sideDisplay {
+        display: flex;
+        position: static;
+        margin-top: 10px;
+        font-size: 14px;
+    }
+
+    .test .container .tabs ul .sideDisplay .form-select {
+        font-size: 14px;
+    }
+
+    .space {
+        margin-bottom: 15px;
+    }
+
+}
+
+@media only screen and (max-width:320px) {
+
+    .card {
+        width: 18rem;
+        margin: 10px auto;
+    }
+    
+    .test .container .tabs ul .sideDisplay {
+        display: flex;
+        position: static;
+        margin-top: 10px;
+        font-size: 12px;
+    }
+
+    .test .container .tabs ul .sideDisplay .form-select {
+        font-size: 13px;
+    }
+
+    .test .container .tabs ul li {
+        font-size: 13px;
+    }
+
+}

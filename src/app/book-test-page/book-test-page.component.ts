@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { CartService } from '../services/cart.service';
@@ -15,8 +16,11 @@ export class BookTestPageComponent implements OnInit {
   id: any = 'allTest';
   userId: any;
   testList: any;
+  prescriptionForm: FormGroup;
   canAddToCart: boolean[] = [false];
   datePickerConfig: Partial<BsDatepickerConfig>;
+  loader: boolean = true;
+  prescriptionFormValue: any;
 
   offerOptions: OwlOptions = {
     loop: true,
@@ -53,7 +57,9 @@ export class BookTestPageComponent implements OnInit {
   constructor(
     private testService: TestsService,
     private router: Router,
-    private cartService: CartService
+    private route :ActivatedRoute,
+    private cartService: CartService,
+    private fb: FormBuilder
   ) {
     // Datepicker starts
     this.datePickerConfig = Object.assign(
@@ -62,11 +68,29 @@ export class BookTestPageComponent implements OnInit {
     );
     // Datepicker ends
 
+    this.prescriptionForm = this.fb.group({
+      name: ['', [Validators.required, Validators.minLength(3), Validators.pattern('[a-zA-Z0-9]*')]],
+      mobile: ['', [Validators.required, Validators.maxLength(10)]],
+      email: ['', [Validators.required, Validators.email]],
+      gender: ['', [Validators.required]],
+      DOB: ['', [Validators.required]],
+      upload: ['', [Validators.required]],
+    });
+
     this.userId = localStorage.getItem('id');
     this.getTestList();
   }
 
   ngOnInit(): void {
+    const pre = this.route.snapshot.params['pre'];
+    const pack = this.route.snapshot.params['pack'];
+    if(pre){
+      this.id = 'prescription';
+    }
+    else if(pack){
+      this.id = 'packages';
+
+    }
   }
 
   tabChange(ids: any) {
@@ -96,8 +120,38 @@ export class BookTestPageComponent implements OnInit {
 
   getTestList() {
     this.cartService.getAllTestDetail().subscribe((res) => {
+      if (res) {
+        this.loader = false;
+      }
       this.testList = res;
     });
+  }
+
+  submitForm() {
+    this.prescriptionFormValue = this.prescriptionForm.value;
+  }
+
+  sort(event: any) {
+    if (event.target.value === 'l2h') {
+      this.testList.sort((a: any, b: any) => {
+        return a.price - b.price
+      });
+    }
+    else if (event.target.value === 'h2l') {
+      this.testList.sort((a: any, b: any) => {
+        return b.price - a.price
+      });
+    }
+    else if (event.target.value === 'a2z') {
+      this.testList.sort((a: any, b: any) => {
+        return a.testname.toLowerCase().localeCompare(b.testname.toLowerCase())
+      });
+    }
+    else if (event.target.value === 'z2a') {
+      this.testList.sort((a: any, b: any) => {
+        return b.testname.toLowerCase().localeCompare(a.testname.toLowerCase())
+      });
+    }
   }
 
 }
