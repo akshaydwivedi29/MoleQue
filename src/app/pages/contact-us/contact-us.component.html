@@ -2,41 +2,31 @@
 
 <section class="contact_us">
 
-    <div class="top_div">
-        <img src="../../../assets/images/banner/contact_banner.jpg" alt="Contact Us">
-        <div class="contact_details">
-            <h2>Need to Connect ?</h2>
-            <p>Call Us At:&nbsp; <span>
-                    <a class="text-dark" href="tel:+918826350303">+91-995-555-0855</a>
-                </span></p>
+    <div class="container">
 
-            <p>Write Us:&nbsp; <span>
-                    <a class="text-dark" href="mailto:care@molequediagnostics.com">care@moleque.ai</a>
-                </span></p>
-        </div>
-    </div>
-
-    <div class="container d-flex justify-content-around py-5">
         <div class="full_details">
-            <h3>MoleQue.ai &nbsp; C/O<br>Technotrant Healthcare LLP</h3>
-            <p class="mt-3">304, RPS, Sheikh Sarai, Phase-1, New Delhi-110017</p>
-            <div class="d-flex align-items-center my-4">
-                <div class="question">Mobile</div>
-                <div class="colon1">:</div>
-                <div class="answer1">+91-995-555-0855</div>
+            <h3>MoleQue.ai C/O Technotrant Healthcare LLP</h3>
+
+            <div class="contact_detail my-4">
+                <div><i class="bi bi-geo-alt-fill"></i></div>
+                <div class="ms-4">304, RPS, Sheikh Sarai, Phase-1, New Delhi-110017</div>
             </div>
-            <div class="d-flex justify-content-between">
-                <div class="question">Email</div>
-                <div class="colon">:</div>
-                <div class="answer">
+
+            <div class="contact_detail">
+                <div><i class="bi bi-telephone-fill"></i></div>
+                <div class="ms-4">+91-995-555-0855</div>
+            </div>
+            <div class="contact_detail mt-3">
+                <div><i class=" bi bi-envelope-fill"></i></div>
+                <div class="ms-4">
                     <ul>
                         <li>Customer Support</li>
                         <li>care@moleque.ai</li>
-                        <li>Corporate Tie-ups</li>
+                        <li class="mt-3">Corporate Tie-ups</li>
                         <li>healthcare@technotrant.com</li>
-                        <li>Become a Franchisee Partner</li>
+                        <li class="mt-3">Become a Franchisee Partner</li>
                         <li>healthcare@technotrant.com</li>
-                        <li>Career</li>
+                        <li class="mt-3">Career</li>
                         <li>careers@technotrant.com</li>
 
                     </ul>
@@ -50,26 +40,26 @@
                 <div class="form-group">
                     <input type="text" class="form-control mt-4" placeholder="Name" formControlName="name">
                     <div class="error"
-                                *ngIf="queryForm.controls['name']?.invalid && queryForm.controls['name'].touched ">
-                                Please provide valid name</div>
+                        *ngIf="queryForm.controls['name']?.invalid && queryForm.controls['name'].touched ">
+                        Please provide valid name</div>
                 </div>
                 <div class="form-group">
                     <input type="email" class="form-control my-4" placeholder="Email Address" formControlName="email">
                     <div class="error"
-                                *ngIf="queryForm.controls['email']?.invalid && queryForm.controls['email'].touched ">
-                                Please provide valid email address</div>
+                        *ngIf="queryForm.controls['email']?.invalid && queryForm.controls['email'].touched ">
+                        Please provide valid email address</div>
 
-                            <div class="error"
-                                *ngIf="queryForm.controls['email'].touched && queryForm.controls['email'].errors?.['email']">
-                                Email address is not
-                                in the correct format, try
-                                something like 'you@yours.com'</div>
+                    <div class="error"
+                        *ngIf="queryForm.controls['email'].touched && queryForm.controls['email'].errors?.['email']">
+                        Email address is not
+                        in the correct format, try
+                        something like 'you@yours.com'</div>
                 </div>
                 <div class="form-group">
-                    <input type="tel" class="form-control" placeholder="Mobile Number" formControlName="number" >
+                    <input type="tel" class="form-control" placeholder="Mobile Number" formControlName="number">
                     <div class="error"
-                                *ngIf="queryForm.controls['number']?.invalid && queryForm.controls['number'].touched ">
-                                Please provide valid mobile number</div>
+                        *ngIf="queryForm.controls['number']?.invalid && queryForm.controls['number'].touched ">
+                        Please provide valid mobile number</div>
                 </div>
                 <div class="form-group">
                     <select name="roles" id="roles" class="form-control my-4" formControlName="option">
@@ -81,14 +71,14 @@
                         <option value="others">Others</option>
                     </select>
                     <div class="error"
-                                *ngIf="queryForm.controls['option']?.invalid && queryForm.controls['option'].touched ">
-                                Please select one option</div>
+                        *ngIf="queryForm.controls['option']?.invalid && queryForm.controls['option'].touched ">
+                        Please select one option</div>
                 </div>
                 <div class="form-group">
                     <textarea class="form-control" rows="4" formControlName="message"></textarea>
                     <div class="error"
-                                *ngIf="queryForm.controls['mobile']?.invalid && queryForm.controls['mobile'].touched ">
-                                Please Enter some message</div>
+                        *ngIf="queryForm.controls['mobile']?.invalid && queryForm.controls['mobile'].touched ">
+                        Please Enter some message</div>
                 </div>
                 <div class="d-flex align-items-center justify-content-center">
                     <button type="submit">SUBMIT</button>

@@ -1,36 +1,55 @@
-.contact_us .top_div {
-    position: relative;
+.contact_us {
+    background: rgba(31, 61, 157, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 0 20px 0;
 }
 
-.contact_us .top_div img {
-    width: 100%;
-    height: auto;
+.contact_us .container {
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0;
+    margin: 0 200px;
+    border-radius: 10px;
+    width: auto;
 }
 
-.contact_us .top_div .contact_details {
-    position: absolute;
-    top: 43%;
-    left: 45%;
-    transform: rotate(-9deg);
+.contact_us .container .full_details {
+    background: #1f3d9d;
+    padding: 30px;
+    border-radius: 10px 0 0 10px;
+    width: 40%;
 }
 
-.contact_us .top_div .contact_details h2 {
-    color: #1f3d9d;
-    font-size: 60px;
+.contact_us .container .full_details h3 {
+    color: #fff;
     font-family: 'BebasNeueBold';
+    font-size: 35px;
+    letter-spacing: 2px;
+    text-align: center;
 }
 
-.contact_us .top_div .contact_details p {
-    color: #F22283;
-    font-size: 30px;
-    font-family: 'BebasNeueBold';
+.contact_us .container .full_details .contact_detail {
+    display: flex;
+    justify-content: flex-start;
+    color: #fff;
 }
 
-.contact_us .container .full_details h3,
-.form_title {
-    color: #1f3d9d;
-    font-family: 'BebasNeueBold';
-    font-size: 45px;
+.contact_us .container .full_details .contact_detail div i {
+    font-size: 25px;
+}
+
+.contact_us .container .full_details .contact_detail div ul {
+    padding: 0;
+    margin: 0;
+}
+
+.contact_us .container .full_details .contact_detail div ul li:nth-child(odd) {
+    font-weight: bold;
+    font-size: 20px;
 }
 
 .contact_us .container .full_details h3::after {
@@ -42,31 +61,7 @@
     border-bottom: 3px solid #f22283;
 }
 
-.contact_us .container .full_details p,
-.contact_us .container .full_details .question,
-.contact_us .container .full_details .answer1,
-.contact_us .container .full_details .colon,
-.contact_us .container .full_details .colon1,
-.contact_us .container .full_details .answer ul li:nth-child(odd) {
-    font-size: 20px;
-    font-weight: 600;
-    color: #555555;
-}
-
-.contact_us .container .full_details .answer1 {
-    margin-left: 70px;
-}
-
-.contact_us .container .full_details .colon1 {
-    margin-left: 40px;
-}
-
-.contact_us .container .full_details .answer ul li:nth-child(even) {
-    margin-bottom: 10px;
-}
-
 .contact_form {
-    background: #eeeeee;
     height: min-content;
     padding: 30px;
 }
@@ -105,11 +100,6 @@ form button {
     .contact_us .top_div .contact_details h2 {
         font-size: 40px;
     }
-
-    .contact_us .top_div .contact_details p {
-        font-size: 25px;
-        margin: 0;
-    }
 }
 
 @media screen and (max-width:600px) and (min-width:501px) {
@@ -121,27 +111,9 @@ form button {
     .contact_us .top_div .contact_details h2 {
         font-size: 30px;
     }
-
-    .contact_us .top_div .contact_details p {
-        font-size: 20px;
-        margin: 0;
-    }
 }
 
 @media screen and (max-width:500px) {
-
-    .contact_us .top_div .contact_details {
-        top: 10%;
-    }
-
-    .contact_us .top_div .contact_details h2 {
-        font-size: 20px;
-    }
-
-    .contact_us .top_div .contact_details p {
-        font-size: 15px;
-        margin: 0;
-    }
 
     .contact_us .container .full_details h3 {
         font-size: 35px;
@@ -149,10 +121,6 @@ form button {
 
     .contact_us .container .full_details .answer1 {
         margin-left: 20px;
-    }
-
-    .contact_us .container .full_details .colon1 {
-        margin-left: 0;
     }
 }
 
