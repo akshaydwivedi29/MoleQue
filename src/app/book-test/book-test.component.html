@@ -32,8 +32,16 @@
                     Upload Prescription</li>
 
                 <div *ngIf="id==='allTest'" class="sideDisplay">
-                    <span class="mx-2">Showing 1-50 of 101 results</span>
-                    <div class="form-group">
+                    <div class="search">
+                        <div class="search_input">
+                            <i class="fa fa-search"></i>
+                            <input type="text" class="form-control" placeholder="Search for a Test, Health Package" name="testList"
+                            id="searchText" (keyup)="searchTest($event)" >
+                            <button class="btn">Search</button>
+                        </div>
+                    </div>
+                    <span>Showing 1-50 of 101 results</span>
+                    <!-- <div class="form-group">
                         <select class="form-select">
                             <option selected disabled hidden>Sort By...</option>
                             <option>Price:Low to High</option>
@@ -41,9 +49,9 @@
                             <option>Title:A to Z</option>
                             <option>Title:Z to A</option>
                         </select>
-                    </div>
+                    </div> -->
 
-                </div>
+                </div> 
             </ul>
         </div>
 
