@@ -34,4 +34,18 @@ export class TestsService {
   getTestDetail(testId:string){
     return this.http.get(`${environment.serverURL}search/testDetails/${testId}`)
   }
+
+  sortAsc(){
+    return this.http.get(`${environment.serverURL}search/testLists/sortAsc`)
+  }
+
+  sortDesc(){
+    return this.http.get(`${environment.serverURL}search/testLists/sort/sortDesc`)
+  }
+
+  sortHtoL(){
+    return this.http.get(`${environment.serverURL}search/testLists/sortByPrice/highToLow`)
+  }
+
+  
 }

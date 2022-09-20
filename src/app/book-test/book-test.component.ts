@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { CartService } from '../services/cart.service';
@@ -12,6 +12,7 @@ import { TestsService } from '../services/tests.service';
 })
 export class BookTestComponent implements OnInit {
   id: any = 'allTest';
+  test:any;
   userId: any;
   testList: any;
   canAddToCart: boolean[] = [false];
@@ -52,7 +53,8 @@ export class BookTestComponent implements OnInit {
   constructor(
     private testService: TestsService,
     private router: Router,
-    private cartService: CartService
+    private cartService: CartService,
+    private route: ActivatedRoute
   ) {
     // Datepicker starts
     this.datePickerConfig = Object.assign(
@@ -65,7 +67,26 @@ export class BookTestComponent implements OnInit {
     this.getTestList();
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    const pre = this.route.snapshot.params['pre'];
+    const pack = this.route.snapshot.params['pack'];
+    if (pre) {
+      this.id = 'prescription';
+    }
+    else if (pack) {
+      this.id = 'packages';
+    }
+  }
+
+  searchTest(event: any) {
+    let query = event.target.value;
+    if (!query || query.length < 1) {
+      return;
+    }
+    this.testService.searchTestList(query).subscribe((res: any) => {
+      this.testList = res;
+    });
+  }
 
   tabChange(ids: any) {
     this.id = ids;
@@ -95,6 +116,7 @@ export class BookTestComponent implements OnInit {
   getTestList() {
     this.cartService.getAllTestDetail().subscribe((res) => {
       this.testList = res;
+      this.test = res;
     });
   }
 }

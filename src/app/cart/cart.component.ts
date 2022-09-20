@@ -35,8 +35,6 @@ export class CartComponent implements OnInit {
   loadData() {
     this.cartService.getItems(this.userId).subscribe((res: any) => {
       this.testlist = res;
-      this.data = res;
-      console.log('loadData', this.testlist);
       this.testlist.forEach((element: any) => {
         this.totalCartValue += parseFloat(element.testDetail.price);
       });
@@ -45,8 +43,6 @@ export class CartComponent implements OnInit {
 
   loadDataLS() {
     this.testlist = this.cartService.getItemsLS();
-    console.log('loadDataLS', this.testlist);
-    console.log(this.testlist.length);
     this.totalCartValue = this.cartService.getTotalCartValue();
   }
 
@@ -68,6 +64,6 @@ export class CartComponent implements OnInit {
   }
 
   openPrescription(event:Event){
-    this.router.navigate(['/book-test-page', {pre: event.type}])
+    this.router.navigate(['/book-test', {pre: event.type}])
   }
 }

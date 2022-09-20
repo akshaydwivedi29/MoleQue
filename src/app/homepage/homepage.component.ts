@@ -201,7 +201,7 @@ export class HomepageComponent implements OnInit {
   openPopup() {
     const userId = localStorage.getItem('id');
     if (userId) {
-      this.router.navigate(['/book-test-page']);
+      this.router.navigate(['/book-test']);
     } else {
       this.displayStyle = 'flex';
       this.blurBody();
@@ -220,11 +220,11 @@ export class HomepageComponent implements OnInit {
   }
 
   openPrescription(event:Event){
-    this.router.navigate(['/book-test-page', {pre: event.type}])
+    this.router.navigate(['/book-test', {pre: event.type}])
   }
 
   openPackage(event:Event){
-    this.router.navigate(['/book-test-page', {pack: event.type}])
+    this.router.navigate(['/book-test', {pack: event.type}])
   }
 
   getOTP() {
