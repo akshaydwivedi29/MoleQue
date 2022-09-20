@@ -9,8 +9,9 @@
 
 .contact_us .top_div .contact_details {
     position: absolute;
-    top: 32%;
-    left: 27%;
+    top: 43%;
+    left: 45%;
+    transform: rotate(-9deg);
 }
 
 .contact_us .top_div .contact_details h2 {
@@ -127,7 +128,7 @@ form button {
     }
 }
 
-@media screen and (max-width:500px)  {
+@media screen and (max-width:500px) {
 
     .contact_us .top_div .contact_details {
         top: 10%;
@@ -149,13 +150,13 @@ form button {
     .contact_us .container .full_details .answer1 {
         margin-left: 20px;
     }
-    
+
     .contact_us .container .full_details .colon1 {
         margin-left: 0;
     }
 }
 
-@media screen and (max-width:321px)  {
+@media screen and (max-width:321px) {
 
     .contact_us .container .full_details h3 {
         font-size: 30px;

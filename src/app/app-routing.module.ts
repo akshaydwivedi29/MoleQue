@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { BookTestPageComponent } from './book-test-page/book-test-page.component';
 import { BookTestComponent } from './book-test/book-test.component';
 import { CartModalComponent } from './cart-modal/cart-modal.component';
 import { CartComponent } from './cart/cart.component';
@@ -77,10 +76,6 @@ const routes: Routes = [
   {
     path: 'cart-modal',
     component: CartModalComponent,
-  },
-  {
-    path: 'book-test-page',
-    component: BookTestPageComponent,
   },
 ];
 

@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
+import { OwlOptions } from 'ngx-owl-carousel-o';
 import { CartService } from '../services/cart.service';
 import { TestsService } from '../services/tests.service';
-import { OwlOptions } from 'ngx-owl-carousel-o';
 
 @Component({
   selector: 'app-book-test',
@@ -10,9 +11,11 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
   styleUrls: ['./book-test.component.css'],
 })
 export class BookTestComponent implements OnInit {
+  id: any = 'allTest';
   userId: any;
   testList: any;
   canAddToCart: boolean[] = [false];
+  datePickerConfig: Partial<BsDatepickerConfig>;
 
   offerOptions: OwlOptions = {
     loop: true,
@@ -51,11 +54,22 @@ export class BookTestComponent implements OnInit {
     private router: Router,
     private cartService: CartService
   ) {
+    // Datepicker starts
+    this.datePickerConfig = Object.assign(
+      {},
+      { containerClass: 'theme-dark-blue' }
+    );
+    // Datepicker ends
+
     this.userId = localStorage.getItem('id');
     this.getTestList();
   }
 
   ngOnInit(): void {}
+
+  tabChange(ids: any) {
+    this.id = ids;
+  }
 
   openRequestPage(test: any) {
     this.testService.getTestDetail(test._id).subscribe();
