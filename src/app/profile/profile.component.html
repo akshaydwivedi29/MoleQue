@@ -60,7 +60,8 @@
 
                         <div class="form-group col-sm-6 col-xs-12">
                             <label for="mobile" class="required">Mobile</label>
-                            <input type="tel" formControlName="number" value={{number}} class="form-control" placeholder="Enter Mobile">
+                            <input type="tel" formControlName="number" value={{number}} class="form-control"
+                                placeholder="Enter Mobile">
                             <div class="error"
                                 *ngIf="profileForm.controls['number']?.invalid && profileForm.controls['number'].touched ">
                                 Please provide valid mobile number</div>
@@ -73,26 +74,32 @@
                             <label for="gender" class="required">Gender</label>
                             <div class="d-flex align-items-center">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" value="Male" name="gender"
-                                        id="flexRadioDefault1" formControlName="gender">
+                                    <input class="form-check-input" type="radio" value="Male" id="flexRadioDefault1"
+                                        formControlName="gender">
                                     <label class="form-check-label" for="flexRadioDefault1">
                                         Male
                                     </label>
                                 </div>
                                 <div class="form-check ms-4">
-                                    <input class="form-check-input" type="radio" value="Female" name="gender"
-                                        id="flexRadioDefault2" formControlName="gender">
+                                    <input class="form-check-input" type="radio" value="Female" id="flexRadioDefault2"
+                                        formControlName="gender">
                                     <label class="form-check-label" for="flexRadioDefault2">
                                         Female
                                     </label>
                                 </div>
                             </div>
+                            <div class="error"
+                                *ngIf="profileForm.controls['gender']?.invalid && profileForm.controls['gender'].touched ">
+                                Please select gender</div>
                         </div>
 
                         <div class="form-group col-sm-6 col-xs-12">
                             <label for="dob" class="required">Date Of Birth</label>
                             <input type="text" bsDatepicker [bsConfig]="datePickerConfig" class="form-control"
                                 placeholder="MM/DD/YYYY" formControlName="DOB">
+                            <div class="error"
+                                *ngIf="profileForm.controls['DOB']?.invalid && profileForm.controls['DOB'].touched ">
+                                Please provide valid date of Birth</div>
 
                         </div>
 
@@ -130,6 +137,9 @@
                                     Accept Terms & Conditons
                                 </label>
                             </div>
+                            <div class="error"
+                                *ngIf="profileForm.controls['acceptCheckbox'].invalid && profileForm.controls['acceptCheckbox'].touched">
+                                Please accept Terms & Conditions</div>
                         </div><br><br>
                         <div class="col-12">
                             <button type="button" class="me-3">Cancel</button>
@@ -149,11 +159,17 @@
                                 <label for="memberfirstname" class="required">First Name</label>
                                 <input type="text" class="form-control" formControlName="memberFirstName"
                                     placeholder="Enter First name">
+                                <div class="error"
+                                    *ngIf="familyMemberForm.controls['memberFirstName'].invalid && familyMemberForm.controls['memberFirstName'].touched ">
+                                    Please provide valid first name</div>
                             </div>
                             <div class="form-group col-sm-6 col-xs-12">
                                 <label for="memberlastname" class="required">Last Name</label>
                                 <input type="text" class="form-control" formControlName="memberLastName"
                                     placeholder="Enter Last name">
+                                    <div class="error"
+                                    *ngIf="familyMemberForm.controls['memberLastName'].invalid && familyMemberForm.controls['memberLastName'].touched ">
+                                    Please provide valid last name</div>
                             </div>
                         </div>
                         <div class="row">
@@ -166,12 +182,18 @@
                                     <option value="2">Two</option>
                                     <option value="3">Three</option>
                                 </select>
+                                <div class="error"
+                                    *ngIf="familyMemberForm.controls['relation'].invalid && familyMemberForm.controls['relation'].touched ">
+                                    Please select relation</div>
                             </div>
 
                             <div class="form-group col-sm-6 col-xs-12">
                                 <label for="relativemobile" class="required">Mobile</label>
                                 <input type="tel" class="form-control" formControlName="memberMobile"
                                     placeholder="Enter Mobile">
+                                    <div class="error"
+                                    *ngIf="familyMemberForm.controls['memberMobile'].invalid && familyMemberForm.controls['memberMobile'].touched ">
+                                    Please provide valid mobile number</div>
                             </div>
                         </div>
 
@@ -180,30 +202,36 @@
                                 <label for="membergender" class="required">Gender</label>
                                 <div class="d-flex align-items-center">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" value="Male" name="memberGender"
-                                            id="flexRadioDefault1" formControlName="memberGender">
+                                        <input class="form-check-input" type="radio" value="Male" id="flexRadioDefault1"
+                                            formControlName="memberGender">
                                         <label class="form-check-label" for="flexRadioDefault3">
                                             Male
                                         </label>
                                     </div>
                                     <div class="form-check ms-4">
-                                        <input class="form-check-input" type="radio" value="Female" name="memberGender"
+                                        <input class="form-check-input" type="radio" value="Female"
                                             id="flexRadioDefault2" formControlName="memberGender">
                                         <label class="form-check-label" for="flexRadioDefault4">
                                             Female
                                         </label>
                                     </div>
                                 </div>
+                                <div class="error"
+                                    *ngIf="familyMemberForm.controls['memberGender'].invalid && familyMemberForm.controls['memberGender'].touched ">
+                                    Please select gender</div>
                             </div>
 
                             <div class="form-group col-sm-6 col-xs-12">
                                 <label for="dob" class="required">Date Of Birth</label>
                                 <input type="text" bsDatepicker [bsConfig]="datePickerConfig" class="form-control"
                                     placeholder="MM/DD/YYYY" formControlName="memberDOB">
+                                    <div class="error"
+                                    *ngIf="familyMemberForm.controls['memberDOB'].invalid && familyMemberForm.controls['memberDOB'].touched ">
+                                    Please provide valid date of birth</div>
                             </div>
 
                             <div class="d-flex align-items-center justify-content-center mt-5">
-                                <button type="submit">Add Member</button>
+                                <button type="submit" [disabled]="familyMemberForm.invalid">Add Member</button>
                             </div>
                         </div>
                     </form>
@@ -219,6 +247,9 @@
                                 <label for="AddressLine1" class="required">Address Line 1</label>
                                 <input type="text" class="form-control" formControlName="addressLine1"
                                     placeholder="Address Line 1">
+                                    <div class="error"
+                                    *ngIf="addressForm.controls['addressLine1'].invalid && addressForm.controls['addressLine1'].touched ">
+                                    Please provide valid address</div>
                             </div>
                         </div>
                         <div class="row">
@@ -226,6 +257,9 @@
                                 <label for="AddressLine2" class="required">Address Line 2</label>
                                 <input type="text" class="form-control" formControlName="addressLine2"
                                     placeholder="Address Line 2">
+                                    <div class="error"
+                                    *ngIf="addressForm.controls['addressLine2'].invalid && addressForm.controls['addressLine2'].touched ">
+                                    Please provide valid address</div>
                             </div>
                         </div>
 
@@ -233,10 +267,16 @@
                             <div class="form-group col-sm-6 col-xs-12 space">
                                 <label for="city" class="required">City</label>
                                 <input type="text" class="form-control" formControlName="city" placeholder="City">
+                                <div class="error"
+                                    *ngIf="addressForm.controls['city'].invalid && addressForm.controls['city'].touched ">
+                                    Please provide valid city</div>
                             </div>
                             <div class="form-group col-sm-6 col-xs-12">
                                 <label for="state" class="required">State</label>
                                 <input type="text" class="form-control" formControlName="state" placeholder="State">
+                                <div class="error"
+                                    *ngIf="addressForm.controls['state'].invalid && addressForm.controls['state'].touched ">
+                                    Please provide valid state</div>
                             </div>
                         </div>
 
@@ -246,7 +286,10 @@
                             <div class="form-group col-sm-6 col-xs-12 space">
                                 <label for="pincode" class="required">PIN Code</label>
                                 <input type="number" class="form-control" maxlength="6" formControlName="pinCode"
-                                    placeholder="PIN Code" >
+                                    placeholder="PIN Code">
+                                    <div class="error"
+                                    *ngIf="addressForm.controls['pinCode'].invalid && addressForm.controls['pinCode'].touched ">
+                                    Please provide valid pinCode</div>
                             </div>
 
                             <div class="form-group col-sm-6 col-xs-12">
@@ -257,7 +300,8 @@
                         </div>
 
                         <div class="d-flex align-items-center justify-content-center mt-5">
-                            <button type="submit">{{!Id ? 'Save Address' : 'Update Address'}}</button>
+                            <button type="submit" [disabled]="addressForm.invalid">{{!Id ? 'Save Address' : 'Update
+                                Address'}}</button>
                         </div>
                     </form>
                 </div>
@@ -266,13 +310,6 @@
 
     </div>
 
-
-
 </section>
-
-
-
-
-
 
 <app-footer></app-footer>

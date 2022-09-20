@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { CartService } from '../services/cart.service';
 
 @Component({
@@ -14,7 +15,7 @@ export class CartComponent implements OnInit {
   itemCount = 0;
   cartCount: any;
 
-  constructor(private cartService: CartService) {
+  constructor(private cartService: CartService,private router:Router) {
     this.cartService.events.subscribe((res: any) => {
       this.itemCount = parseInt(res);
     });
@@ -64,5 +65,9 @@ export class CartComponent implements OnInit {
   clearCartLS() {
     this.cartService.clearCartLS();
     this.getCart();
+  }
+
+  openPrescription(event:Event){
+    this.router.navigate(['/book-test-page', {pre: event.type}])
   }
 }
