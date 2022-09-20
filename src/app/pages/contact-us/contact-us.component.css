@@ -61,6 +61,22 @@
     border-bottom: 3px solid #f22283;
 }
 
+.contact_us .container .full_details .social_media {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    margin-top: 20px;
+}
+
+.contact_us .container .full_details .social_media a {
+    color: #fff;
+}
+
+.contact_us .container .full_details .social_media a:hover {
+    color: #f22283;
+}
+
 .contact_form {
     height: min-content;
     padding: 30px;
