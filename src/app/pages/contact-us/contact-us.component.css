@@ -7,14 +7,10 @@
 }
 
 .contact_us .container {
-    background: #fff;
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
     padding: 0;
-    margin: 0 200px;
-    border-radius: 10px;
-    width: auto;
 }
 
 .contact_us .container .full_details {
@@ -80,6 +76,8 @@
 .contact_form {
     height: min-content;
     padding: 30px;
+    background: #fff;
+    border-radius: 0 10px 10px 0;
 }
 
 .form_title {

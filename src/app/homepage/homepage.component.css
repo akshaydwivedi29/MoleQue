@@ -396,6 +396,10 @@
     border-radius: 1em;
 }
 
+.switch:after {
+    background: #1f3d9d;
+}
+
 .switch div {
     height: 1em;
     width: 1em;
