@@ -41,52 +41,54 @@
         <div class="contact_form">
             <form [formGroup]="queryForm" (ngSubmit)="submitForm()">
                 <div class="form_title">For any query fill the form below.</div>
-                <div class="form-group">
-                    <input type="text" class="form-control mt-4" placeholder="Name" formControlName="name">
-                    <div class="error"
-                        *ngIf="queryForm.controls['name']?.invalid && queryForm.controls['name'].touched ">
+                <div class="form-group mb-4">
+                    <input type="text" class="form-control mt-4" placeholder="Name" formControlName="name"
+                        [ngClass]="{'is-invalid': submitted && (queryForm.controls['name'].errors)}">
+                    <div class="error" *ngIf="submitted && queryForm.controls['name'].errors">
                         Please provide valid name</div>
                 </div>
-                <div class="form-group">
-                    <input type="email" class="form-control my-4" placeholder="Email Address" formControlName="email">
-                    <div class="error"
-                        *ngIf="queryForm.controls['email']?.invalid && queryForm.controls['email'].touched ">
-                        Please provide valid email address</div>
+                <div class=" form-group mb-4">
+                        <input type="email" class="form-control" placeholder="Email Address"
+                            formControlName="email"
+                            [ngClass]="{'is-invalid': submitted && (queryForm.controls['email'].errors)}">
+                        <div class="error" *ngIf="submitted && queryForm.controls['email'].errors">
+                            Please provide valid email address</div>
 
-                    <div class="error"
-                        *ngIf="queryForm.controls['email'].touched && queryForm.controls['email'].errors?.['email']">
-                        Email address is not
-                        in the correct format, try
-                        something like 'you@yours.com'</div>
-                </div>
-                <div class="form-group">
-                    <input type="tel" class="form-control" placeholder="Mobile Number" formControlName="number">
-                    <div class="error"
-                        *ngIf="queryForm.controls['number']?.invalid && queryForm.controls['number'].touched ">
-                        Please provide valid mobile number</div>
-                </div>
-                <div class="form-group">
-                    <select name="roles" id="roles" class="form-control my-4" formControlName="option">
-                        <option selected disabled value="">--Please choose an option--</option>
-                        <option value="career">Career</option>
-                        <option value="feedback">Feedback</option>
-                        <option value="marketing">Marketing</option>
-                        <option value="compliance">Compliance</option>
-                        <option value="others">Others</option>
-                    </select>
-                    <div class="error"
-                        *ngIf="queryForm.controls['option']?.invalid && queryForm.controls['option'].touched ">
-                        Please select one option</div>
-                </div>
-                <div class="form-group">
-                    <textarea class="form-control" rows="4" formControlName="message"></textarea>
-                    <div class="error"
-                        *ngIf="queryForm.controls['mobile']?.invalid && queryForm.controls['mobile'].touched ">
-                        Please Enter some message</div>
-                </div>
-                <div class="d-flex align-items-center justify-content-center">
-                    <button type="submit">SUBMIT</button>
-                </div>
+                        <div class="error"
+                            *ngIf="queryForm.controls['email'].touched && queryForm.controls['email'].errors?.['email']">
+                            Email address is not
+                            in the correct format, try
+                            something like 'you@yours.com'</div>
+                    </div>
+                    <div class="form-group mb-4">
+                        <input type="tel" class="form-control" placeholder="Mobile Number" formControlName="number"
+                            maxlength="10" (keypress)="keyPress($event)"
+                            [ngClass]="{'is-invalid': submitted && (queryForm.controls['number'].errors)}">
+                        <div class="error" *ngIf="submitted && queryForm.controls['number'].errors">
+                            Please provide valid mobile number</div>
+                    </div>
+                    <div class="form-group mb-4">
+                        <select name="roles" id="roles" class="form-control" formControlName="option"
+                            [ngClass]="{'is-invalid': submitted && (queryForm.controls['option'].errors)}">
+                            <option selected disabled value="">--Please choose an option--</option>
+                            <option value="career">Career</option>
+                            <option value="feedback">Feedback</option>
+                            <option value="marketing">Marketing</option>
+                            <option value="compliance">Compliance</option>
+                            <option value="others">Others</option>
+                        </select>
+                        <div class="error" *ngIf="submitted && queryForm.controls['option'].errors">
+                            Please choose an option</div>
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" rows="4" formControlName="message"
+                            [ngClass]="{'is-invalid': submitted && queryForm.controls['message'].errors}"></textarea>
+                        <div class="error" *ngIf="submitted && queryForm.controls['message'].errors">
+                            Please choose an option</div>
+                    </div>
+                    <div class="d-flex align-items-center justify-content-center">
+                        <button type="submit">SUBMIT</button>
+                    </div>
             </form>
         </div>
     </div>
