@@ -46,10 +46,11 @@
     margin: 0 10px;
 }
 
-.test .container .tabs ul .sideDisplay {
-    display: inline-flex;
+.test .container .tabs .sideDisplay {
+    display: flex;
     position: absolute;
-    right: 50px;
+    top: 0;
+    right: 0;
     align-items: center;
 }
 
@@ -198,12 +199,6 @@
         padding: 0;
     }
 
-    .test .container {
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-    }
-
     .test .offer_carousel {
         width: 95vw;
         height: auto;
@@ -218,45 +213,46 @@
         width: 100%;
     }
 
+    .test .container .tabs ul li {
+        font-size: 13px;
+    }
+
     .test .container .tabs ul li:nth-child(2) {
         margin: 0 5px;
     }
 
-    .test .container .tabs ul .sideDisplay {
-        display: flex;
-        position: absolute;
-        margin: 10px 0;
+    .test .container .tabs .sideDisplay {
+        flex-direction: column;
+        position: relative;
     }
 
-    .test .container .tabs ul .sideDisplay span {
-        display: none;
+    .test .container .tabs .sideDisplay span {
+       position: absolute;
+       bottom: -30px;
+       right: 0;
+       font-size: 12px;
     }
-
+    
     .search {
-        position: static;
-        min-width: 300px;
-        margin-right: 0;
+        min-width: 340px;
+        margin: 20px auto 0 auto;
     }
-
+    
     .search>.search_input input {
-        height: 40px;
         text-indent: 15px;
-        border: 2px solid #d6d4d4;
-        font-size: 12px;
+        font-size: 13px;
     }
-
+    
     .search>.search_input i {
-        position: absolute;
-        top: 12px;
-        left: 8px;
+        left: 10px;
     }
-
+    
     .search>.search_input button {
         position: absolute;
         top: 1px;
         right: 1px;
         height: 38px;
-        width: 80px;
+        width: 70px;
         background: #F22283;
         color: #fff;
     }
@@ -270,19 +266,7 @@
         margin: 10px auto;
     }
 
-    /* .test .container .tabs ul .sideDisplay {
-        display: flex;
-        position: static;
-        margin-top: 10px;
-        font-size: 12px;
-    } */
-
-    /* .test .container .tabs ul .sideDisplay .form-select {
-        font-size: 13px;
-    } */
-
-    .test .container .tabs ul li {
-        font-size: 13px;
+    .search {
+        min-width: 300px;
     }
-
 }
