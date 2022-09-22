@@ -10,6 +10,7 @@ import { LoginServiceService } from 'src/app/services/login-service.service';
 export class ContactUsComponent implements OnInit {
   queryForm: FormGroup;
   queryValue: any;
+  submitted:boolean = false;
 
   constructor(
     private fb: FormBuilder,
@@ -31,22 +32,31 @@ export class ContactUsComponent implements OnInit {
     });
   }
 
+  keyPress(event: KeyboardEvent) {
+    const pattern = /[0-9]/;
+    const inputChar = String.fromCharCode(event.charCode);
+    if (!pattern.test(inputChar)) {
+        event.preventDefault();
+    }
+}
+
   ngOnInit(): void {}
 
   submitForm() {
+    this.submitted = true;
     this.queryValue = this.queryForm.value;
     const userId = localStorage.getItem('id');
+    this.queryValue.userId = userId;
     if (userId && this.queryForm.valid) {
-      this.queryValue.userId = userId;
       this.loginService.queryForm(this.queryValue).subscribe((res) => {
         this.queryForm.reset();
+        this.submitted = false;
       });
     } else if (this.queryForm.valid) {
       this.loginService.queryForm(this.queryValue).subscribe((res) => {
         this.queryForm.reset();
+        this.submitted = false; 
       });
-    } else {
-      alert('something went wrong');
-    }
+    } 
   }
 }
