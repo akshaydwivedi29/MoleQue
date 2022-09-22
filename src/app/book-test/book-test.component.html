@@ -1,26 +1,32 @@
 <app-header></app-header>
-<section class="test d-flex align-items-center justify-content-center">
+
+<section class="book_test">
+
+    <div class="offer_carousel">
+        <owl-carousel-o [options]="offerOptions">
+            <ng-template carouselSlide>
+                <img src="../../assets/images/banner/offer1.jpg" alt="Offer1">
+                <div class="carousel_bg"></div>
+            </ng-template>
+
+            <ng-template carouselSlide>
+                <img src="../../assets/images/banner/offer2.jpg" alt="Offer1">
+                <div class="carousel_bg"></div>
+            </ng-template>
+
+            <ng-template carouselSlide>
+                <img src="../../assets/images/banner/offer1.jpg" alt="Offer1">
+                <div class="carousel_bg"></div>
+            </ng-template>
+
+            <ng-template carouselSlide>
+                <img src="../../assets/images/banner/offer2.jpg" alt="Offer1">
+                <div class="carousel_bg"></div>
+            </ng-template>
+        </owl-carousel-o>
+    </div>
+
     <div class="container">
-
-        <div class="offer_carousel my-4">
-            <owl-carousel-o [options]="offerOptions">
-                <ng-template carouselSlide>
-                    <img src="../../assets/images/banner/offer1.jpg" alt="Offer1">
-                </ng-template>
-
-                <ng-template carouselSlide>
-                    <img src="../../assets/images/banner/offer2.jpg" alt="Offer1">
-                </ng-template>
-
-                <ng-template carouselSlide>
-                    <img src="../../assets/images/banner/offer1.jpg" alt="Offer1">
-                </ng-template>
-
-                <ng-template carouselSlide>
-                    <img src="../../assets/images/banner/offer2.jpg" alt="Offer1">
-                </ng-template>
-            </owl-carousel-o>
-        </div>
 
         <div class="tabs">
             <ul>
@@ -35,8 +41,8 @@
                     <div class="search">
                         <div class="search_input">
                             <i class="fa fa-search"></i>
-                            <input type="text" class="form-control" placeholder="Search for a Test, Health Package" name="testList"
-                            id="searchText" (keyup)="searchTest($event)" >
+                            <input type="text" class="form-control" placeholder="Search for a Test, Health Package"
+                                name="testList" id="searchText" (keyup)="searchTest($event)">
                             <button class="btn">Search</button>
                         </div>
                     </div>
@@ -51,7 +57,7 @@
                         </select>
                     </div> -->
 
-                </div> 
+                </div>
             </ul>
         </div>
 
@@ -93,71 +99,13 @@
                 </div>
             </div>
 
-            <div class="prescription my-4" *ngIf="id === 'prescription'">
+            <div class="prescription" *ngIf="id === 'prescription'">
                 <form>
-                    <div class="row">
-                        <div class="form-group col-sm-6 col-xs-12">
-                            <label for="name" class="required">Name</label>
-                            <input type="text" class="form-control" formControlName="name" placeholder="Enter Name">
-                        </div>
-
-                        <div class="form-group col-sm-6 col-xs-12">
-                            <label for="mobile" class="required">Mobile</label>
-                            <input type="tel" class="form-control" formControlName="mobile" placeholder="Enter Mobile">
-                        </div>
-                    </div>
-
-                    <div class="row my-4">
-                        <div class="form-group col-sm-6 col-xs-12">
-                            <label for="email" class="required">Email</label>
-                            <input type="tel" class="form-control" formControlName="email" placeholder="Enter email">
-                        </div>
-
-                        <div class="form-group col-sm-6 col-xs-12">
-                            <label for="membergender" class="required">Gender</label>
-                            <div class="d-flex align-items-center">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" value="Male" name="memberGender"
-                                        id="flexRadioDefault1" formControlName="gender">
-                                    <label class="form-check-label" for="flexRadioDefault3">
-                                        Male
-                                    </label>
-                                </div>
-
-                                <div class="form-check ms-4">
-                                    <input class="form-check-input" type="radio" value="Female" name="memberGender"
-                                        id="flexRadioDefault2" formControlName="gender">
-                                    <label class="form-check-label" for="flexRadioDefault4">
-                                        Female
-                                    </label>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="row my-4">
-                            <div class="form-group col-sm-6 col-xs-12">
-                                <label for="dob" class="required">Date Of Birth</label>
-                                <input type="text" bsDatepicker [bsConfig]="datePickerConfig" class="form-control"
-                                    placeholder="MM/DD/YYYY" formControlName="DOB">
-                            </div>
-
-                            <div class="form-group col-sm-6 col-xs-12">
-                                <label for="dob" class="required">Upload Prescription</label>
-                                <input type="file" class="form-control" formControlName="upload">
-                            </div>
-
-                        </div>
-                        <div class="d-flex align-items-center justify-content-center mt-5">
-                            <button class="btn" type="submit">Submit</button>
-                        </div>
-
-
-                    </div>
-
-
+                    <input type="file" class="form-control" />
                 </form>
             </div>
         </div>
     </div>
+
 </section>
 <app-footer></app-footer>
