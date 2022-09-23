@@ -12,7 +12,6 @@ import { TestsService } from '../services/tests.service';
 })
 export class BookTestComponent implements OnInit {
   id: any = 'allTest';
-  test:any;
   userId: any;
   testList: any;
   canAddToCart: boolean[] = [false];
@@ -116,7 +115,6 @@ export class BookTestComponent implements OnInit {
   getTestList() {
     this.cartService.getAllTestDetail().subscribe((res) => {
       this.testList = res;
-      this.test = res;
     });
   }
 }

@@ -10,11 +10,11 @@
 
             <div class="table" *ngFor='let obj of testlist;'>
                 <div class="code_name">
-                    <div>{{obj?.testDetail?.testcode}}</div>
-                    <div>{{obj?.testDetail?.testname}}</div>
+                    <div>{{obj?.testcode}}</div>
+                    <div>{{obj?.testname}}</div>
                 </div>
                 <div class="price_remove">
-                    <div>₹ {{obj?.testDetail?.price}}</div>
+                    <div>₹ {{obj?.price}}</div>
                     <div (click)="removeItem(obj); loadData()"><i class="bi bi-trash3-fill"></i></div>
                 </div>
             </div>
