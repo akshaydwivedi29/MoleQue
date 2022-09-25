@@ -29,11 +29,18 @@
     </div>
 
     <div class="container d-flex align-items-center justify-content-center">
-        <div class="get_call_input">
-            <i class="bi bi-phone-fill"></i>
-            <input type="tel" class="form-control" placeholder="Enter your 10 digit mobile number" name="getCall">
-            <button class="btn"></button>
-        </div>
+        <form [formGroup]="getCallForm" (ngSubmit)="submitNumber()">
+            <div class="get_call_input">
+                <i class="bi bi-phone-fill"></i>
+                <input type="tel" class="form-control" placeholder="Enter your 10 digit mobile number"
+                    formControlName="number" maxlength="10" (keypress)="keyPress($event)"
+                    [ngClass]="{'is-invalid': submitted && (getCallForm.controls['number'].errors)}">
+                <div class="error" *ngIf="submitted && getCallForm.controls['number'].errors">
+                    Please provide valid mobile number</div>
+                <button type="submit" class="btn"></button>
+            </div>
+
+        </form>
     </div>
 </footer>
 

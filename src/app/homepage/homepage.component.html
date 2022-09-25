@@ -455,17 +455,39 @@
                     We believe in providing the best possible care to all our existing
                     patients and welcome new patients to sample
                 </p>
-                <form action="test.html" method="POST">
-                    <input class="form__block-input" type="text" placeholder="Your Name*" />
-                    <select class="form__block-input">
+                <form [formGroup]="inquiryForm" (ngSubmit)="submitInquiryForm()">
+
+                    <input class="form__block-input" type="text" placeholder="Your Name*" formControlName="name"
+                        [ngClass]="{'is-invalid': submitted && (inquiryForm.controls['name'].errors)}">
+                    <div class="error" *ngIf="submitted && inquiryForm.controls['name'].errors">
+                        Please provide valid name</div>
+
+                    <select class="form__block-input" formControlName="department"
+                        [ngClass]="{'is-invalid': submitted && (inquiryForm.controls['department'].errors)}">>
                         <option selected>Choose department</option>
                         <option>Choose department2</option>
                         <option>Choose department3</option>
                         <option>Choose department4</option>
                     </select>
-                    <input class="form__block-input" type="text" placeholder="+1 123 465 78 99" />
-                    <input class="form__block-input" type="text" placeholder="Email*" />
-                    <textarea placeholder="Message"></textarea>
+                    <div class="error" *ngIf="submitted && inquiryForm.controls['department'].errors">
+                        Please choose department</div>
+
+                    <input class="form__block-input" type="text" placeholder="Mobile Number" formControlName="number"
+                        maxlength="10" (keypress)="keyPress($event)"
+                        [ngClass]="{'is-invalid': submitted && (inquiryForm.controls['number'].errors)}">
+                    <div class="error" *ngIf="submitted && inquiryForm.controls['number'].errors">
+                        Please provide valid mobile number</div>
+
+                    <input class="form__block-input" type="text" placeholder="Email*" formControlName="email"
+                        [ngClass]="{'is-invalid': submitted && (inquiryForm.controls['email'].errors)}">
+                    <div class="error" *ngIf="submitted && inquiryForm.controls['email'].errors">
+                        Please provide valid email address</div>
+
+                    <textarea placeholder="Message" formControlName="message"
+                        [ngClass]="{'is-invalid': submitted && inquiryForm.controls['message'].errors}"></textarea>
+                    <div class="error" *ngIf="submitted && inquiryForm.controls['message'].errors">
+                        Type Message Here...</div>
+
                     <button type="submit" class="btn btn_blue">SEND REQUEST</button>
                     <label>* Personal data will be encrypted</label>
                 </form>

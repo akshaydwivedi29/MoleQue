@@ -33,7 +33,5 @@ export class LoginServiceService {
     return this.http.get(`${environment.serverURL}users/userById/${userId}`)
   }
 
-  queryForm(data: any) {
-    return this.http.post(`${environment.serverURL}queryForm/form/`, data)
-  }
+
 }
