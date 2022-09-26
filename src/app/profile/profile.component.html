@@ -61,7 +61,7 @@
                         <div class="form-group col-sm-6 col-xs-12">
                             <label for="mobile" class="required">Mobile</label>
                             <input type="tel" formControlName="number" value={{number}} class="form-control"
-                                placeholder="Enter Mobile">
+                                placeholder="Enter Mobile" (keypress)="keyPress($event)" maxlength="10" minlength="10">
                             <div class="error"
                                 *ngIf="profileForm.controls['number']?.invalid && profileForm.controls['number'].touched ">
                                 Please provide valid mobile number</div>
@@ -190,7 +190,7 @@
                             <div class="form-group col-sm-6 col-xs-12">
                                 <label for="relativemobile" class="required">Mobile</label>
                                 <input type="tel" class="form-control" formControlName="memberMobile"
-                                    placeholder="Enter Mobile">
+                                    placeholder="Enter Mobile" (keypress)="keyPress($event)" maxlength="10" minlength="10">
                                     <div class="error"
                                     *ngIf="familyMemberForm.controls['memberMobile'].invalid && familyMemberForm.controls['memberMobile'].touched ">
                                     Please provide valid mobile number</div>

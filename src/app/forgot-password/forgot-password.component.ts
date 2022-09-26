@@ -25,11 +25,11 @@ export class ForgotPasswordComponent implements OnInit {
     private route: ActivatedRoute
   ) {
     this.mobileNumber = this.fb.group({
-      number: ['', [Validators.required, Validators.maxLength(10)]],
+      number: ['', [Validators.required, Validators.maxLength(10),Validators.minLength(10)]],
     });
 
     this.otp = this.fb.group({
-      otpCode: ['', [Validators.required, Validators.maxLength(6)]],
+      otpCode: ['', [Validators.required, Validators.maxLength(6),Validators.minLength(6)]],
       newPassword: [
         '',
         [
@@ -40,6 +40,14 @@ export class ForgotPasswordComponent implements OnInit {
     });
 
   }
+
+  keyPress(event: KeyboardEvent) {
+    const pattern = /[0-9]/;
+    const inputChar = String.fromCharCode(event.charCode);
+    if (!pattern.test(inputChar)) {
+        event.preventDefault();
+    }
+}
 
   ngOnInit(): void {
     this.number = this.route.snapshot.params['number'];

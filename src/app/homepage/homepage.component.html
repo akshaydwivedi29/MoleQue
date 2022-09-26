@@ -473,7 +473,7 @@
                         Please choose department</div>
 
                     <input class="form__block-input" type="text" placeholder="Mobile Number" formControlName="number"
-                        maxlength="10" (keypress)="keyPress($event)"
+                        maxlength="10" minlength="10" (keypress)="keyPress($event)"
                         [ngClass]="{'is-invalid': submitted && (inquiryForm.controls['number'].errors)}">
                     <div class="error" *ngIf="submitted && inquiryForm.controls['number'].errors">
                         Please provide valid mobile number</div>

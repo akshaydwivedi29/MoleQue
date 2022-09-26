@@ -104,8 +104,8 @@ export class HomepageComponent implements OnInit {
         ],
       ],
       department: ['', [Validators.required]],
-      number: ['', [Validators.required, Validators.maxLength(10)]],
-      email: ['', [Validators.required, Validators.email]],
+      number: ['', [Validators.required, Validators.maxLength(10),Validators.minLength(10)]],
+      email: ['', [Validators.required,Validators.email]],
       message: ['', [Validators.required]],
     });
   }

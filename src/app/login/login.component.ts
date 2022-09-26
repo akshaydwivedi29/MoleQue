@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
     private router: Router
   ) {
     this.logInForm = this.formBuilder.group({
-      number: ['', [Validators.required, Validators.maxLength(10)]],
+      number: ['', [Validators.required, Validators.maxLength(10),Validators.minLength(10)]],
       password: [
         '',
         [
@@ -41,6 +41,14 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void { }
+
+  keyPress(event: KeyboardEvent) {
+    const pattern = /[0-9]/;
+    const inputChar = String.fromCharCode(event.charCode);
+    if (!pattern.test(inputChar)) {
+        event.preventDefault();
+    }
+}
 
   login() {
     this.loginData = this.logInForm.value;
