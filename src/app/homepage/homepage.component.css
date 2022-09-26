@@ -590,6 +590,119 @@
     margin-left: 10px;
 }
 
+/**************************************************/
+/* .emergency-call */
+/**************************************************/
+.emergency-call {
+    padding: 50px 0 30px 0;
+    background-color: #f4f4f4;
+}
+
+.emergency-call .container {
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+
+.emergency-call .container .content h2 {
+    text-align: center;
+    font-weight: 400;
+    color: #333333;
+    text-transform: uppercase;
+    font-size: 27px;
+    margin-top: 20px;
+}
+
+.emergency-call__items {
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+
+.emergency-call__item {
+    max-width: 370px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.emergency-call__item>.icon {
+    min-width: 100px;
+    height: 100px;
+    width: 100px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    background-color: #1f3d9d;
+    border: 9px solid #1f3d9d;
+    border-radius: 50%;
+    position: relative;
+    z-index: 1;
+    -webkit-box-shadow: 8.135px 18.271px 51px 0px rgba(31, 61, 157, 0.5);
+    box-shadow: 8.135px 18.271px 51px 0px rgba(31, 61, 157, 0.5);
+}
+
+.emergency-call__item>.icon:before {
+    border-radius: 50%;
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    width: 118px;
+    height: 118px;
+    background-color: #1f3d9d;
+    opacity: .4;
+    z-index: -1;
+}
+
+.emergency-call__item:nth-child(1)>.icon img {
+    width: 70px;
+    margin-top: 10px;
+}
+
+.emergency-call__item:nth-child(2)>.icon img {
+    width: 60px;
+}
+
+.emergency-call__item:nth-child(3)>.icon img {
+    width: 55px;
+    margin-top: -5px;
+}
+
+.emergency-call__item>.content {
+    margin-top: 12px;
+}
+
+.emergency-call__item>.content p {
+    letter-spacing: -0.3px;
+    color: #333333;
+    margin-top: 8px;
+    line-height: 1.5;
+    text-align: center;
+}
+
 
 /**************************************************/
 /* animations */

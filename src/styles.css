@@ -5031,163 +5031,7 @@ a:hover {
 
 
 
-/**************************************************/
-/* .emergency-call */
-/**************************************************/
-.emergency-call {
-  padding: 60px 0;
-  background-color: #f4f4f4;
-}
 
-.emergency-call .container {
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
-}
-
-.emergency-call .container>h2 {
-  text-align: center;
-  font-weight: 400;
-  color: #333333;
-  text-transform: uppercase;
-  font-size: 27px;
-}
-
-.emergency-call .container>.call {
-  margin-top: 11px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
-.emergency-call .container>.call>.icon {
-  background-color: #f22283;
-  width: 58px;
-  height: 58px;
-  border-radius: 50%;
-  margin-right: 25px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  position: relative;
-  z-index: 1;
-  -webkit-box-shadow: 8.135px 18.271px 51px 0px rgba(242, 34, 131, 0.5);
-  box-shadow: 8.135px 18.271px 51px 0px rgba(242, 34, 131, 0.5);
-}
-
-.emergency-call .container>.call>.icon:before {
-  content: "";
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  width: 72px;
-  height: 72px;
-  background-color: rgba(242, 34, 131, 0.4);
-  border-radius: 50%;
-  z-index: -1;
-}
-
-.emergency-call .container>.call>a {
-  font-family: "BebasNeueBold";
-  color: #f22283;
-  font-size: 64px;
-}
-
-.emergency-call__items {
-  width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-}
-
-.emergency-call__item {
-  -webkit-box-flex: 0;
-  -ms-flex: 0 0 370px;
-  flex: 0 0 370px;
-  max-width: 370px;
-  margin-bottom: 73px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.emergency-call__item>.icon {
-  margin-right: 25px;
-  min-width: 100px;
-  height: 100px;
-  width: 100px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  background-color: #1f3d9d;
-  border: 9px solid #1f3d9d;
-  border-radius: 50%;
-  position: relative;
-  z-index: 1;
-  -webkit-box-shadow: 8.135px 18.271px 51px 0px rgba(31, 61, 157, 0.5);
-  box-shadow: 8.135px 18.271px 51px 0px rgba(31, 61, 157, 0.5);
-}
-
-.emergency-call__item>.icon:before {
-  border-radius: 50%;
-  content: "";
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  width: 118px;
-  height: 118px;
-  background-color: #1f3d9d;
-  opacity: .4;
-  z-index: -1;
-}
-
-.emergency-call__item>.content {
-  margin-top: 12px;
-}
-
-.emergency-call__item>.content h1 {
-  color: #333333;
-  font-size: 21.5px;
-  font-family: "Roboto Bold";
-}
-
-.emergency-call__item>.content p {
-  letter-spacing: -0.3px;
-  color: #333333;
-  margin-top: 8px;
-  line-height: 1.5;
-}
 
 /**************************************************/
 /* .specialists */
@@ -7239,100 +7083,6 @@ a:hover {
   -webkit-transition: all .3s ease;
   transition: all .3s ease;
   background-color: #f22283 !important;
-}
-
-/**************************************************/
-/* .emergency-call-2 */
-/**************************************************/
-.emergency-call-2 {
-  z-index: 10;
-  position: relative;
-  background-image: url("assets/images/jpg/emergency.jpg");
-  background-position: center 70%;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-  background-size: cover;
-  padding-top: 120px;
-  padding-bottom: 120px;
-}
-
-.emergency-call-2__bg {
-  z-index: -1;
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(31, 61, 157, 0.5);
-}
-
-.emergency-call-2>.container {
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-box-align: start;
-  -ms-flex-align: start;
-  align-items: flex-start;
-}
-
-.emergency-call-2>.container h3 {
-  font-weight: 400;
-  font-size: 26px;
-  color: #ffffff;
-  margin-bottom: 35px;
-}
-
-.emergency-call-2>.container>.call {
-  margin-top: 20px;
-  margin-bottom: 30px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
-.emergency-call-2>.container>.call>.icon {
-  background-color: #f22283;
-  width: 58px;
-  height: 58px;
-  border-radius: 50%;
-  margin-right: 25px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  position: relative;
-  z-index: 1;
-  -webkit-box-shadow: 8.135px 18.271px 51px 0px rgba(242, 34, 131, 0.5);
-  box-shadow: 8.135px 18.271px 51px 0px rgba(242, 34, 131, 0.5);
-  animation: 1s animatePinkShadow linear alternate-reverse infinite;
-}
-
-.emergency-call-2>.container>.call>.icon:before {
-  content: "";
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  width: 72px;
-  height: 72px;
-  background-color: rgba(242, 34, 131, 0.4);
-  border-radius: 50%;
-  z-index: -1;
-}
-
-.emergency-call-2>.container>.call>a {
-  color: #ffffff;
-  font-size: 28px;
 }
 
 /**************************************************/
@@ -15652,43 +15402,6 @@ body {
   }
 
   /*---------- End .testimonials responsive ----------*/
-  /*---------- Start .emergency-call responsive ----------*/
-  .emergency-call {
-    padding-top: 100px;
-    padding-bottom: 100px;
-  }
-
-  .emergency-call__items {
-    -ms-flex-pack: distribute;
-    justify-content: space-around;
-    text-align: center;
-  }
-
-  .emergency-call__item {
-    -webkit-box-flex: 0;
-    -ms-flex: 0 0 300px;
-    flex: 0 0 300px;
-    max-width: 300px;
-    width: 100%;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    margin-bottom: 50px;
-  }
-
-  .emergency-call__item p {
-    margin-bottom: 0;
-  }
-
-  .emergency-call__item>.icon {
-    margin: 0 0 20px 0;
-  }
-
-  /*---------- End .emergency-call responsive ----------*/
   /*---------- Start .specialists responsive ----------*/
   .specialists .container {
     padding-top: 100px;
@@ -16354,41 +16067,7 @@ body {
   }
 
   /*---------- End .latest-news-2 responsive ----------*/
-  /*---------- Start .emergency-call-2 responsive ----------*/
-  .emergency-call-2 {
-    background-position: center 90%;
-    padding-top: 100px;
-    padding-bottom: 100px;
-  }
 
-  .emergency-call-2>.container {
-    text-align: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-  }
-
-  .emergency-call-2>.container h3 {
-    font-size: 20px;
-    margin-bottom: 30px;
-  }
-
-  .emergency-call-2>.container>.call {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-  }
-
-  .emergency-call-2>.container>.call>.icon {
-    margin: 0 0 20px 0;
-  }
-
-  /*---------- End .emergency-call-2 responsive ----------*/
-  /*****************************************************/
   /************** Start of index3.html *****************/
   /*****************************************************/
   /*---------- Start .our-departments-2 section responsive ----------*/
@@ -17923,16 +17602,6 @@ body {
   }
 
   /*---------- End .testimonials responsive ----------*/
-  /*---------- Start .emergency-call responsive ----------*/
-  .emergency-call {
-    padding: 40px 0;
-  }
-
-  .emergency-call__item {
-    margin-bottom: 30px;
-  }
-
-  /*---------- End .emergency-call responsive ----------*/
   /*---------- Start .specialists responsive ----------*/
   .specialists .container {
     padding-top: 70px;
@@ -18298,16 +17967,6 @@ body {
   }
 
   /*---------- End .latest-news-2 responsive ----------*/
-  /*---------- Start .emergency-call-2 responsive ----------*/
-  .emergency-call-2 {
-    background-position: center 70%;
-    background-size: auto 100%;
-    background-attachment: initial;
-    padding-top: 70px;
-    padding-bottom: 70px;
-  }
-
-  /*---------- End .emergency-call-2 responsive ----------*/
   /*****************************************************/
   /************** Start of index3.html *****************/
   /*****************************************************/
@@ -19247,47 +18906,7 @@ body {
 
   /*---------- End .form responsive ----------*/
   /*---------- Start .faq responsive ----------*/
-  .emergency-call .container>.call {
-    margin-top: 30px;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: column;
-    flex-direction: column;
-  }
 
-  .emergency-call .container>.call>.icon {
-    margin-right: 0;
-    margin-bottom: 20px;
-  }
-
-  .emergency-call .container>.call>a {
-    font-size: 40px;
-  }
-
-  .emergency-call__item {
-    -webkit-box-flex: 0;
-    -ms-flex: 0 0 300px;
-    flex: 0 0 300px;
-    max-width: 300px;
-    width: 100%;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-  }
-
-  .emergency-call__item h1 {
-    font-size: 20px;
-  }
-
-  .emergency-call__item>.icon {
-    margin-bottom: 15px;
-  }
-
-  /*---------- End .emergency-call responsive ----------*/
   /*---------- Start .specialists responsive ----------*/
   .specialists .container {
     padding-bottom: 105px;
@@ -19458,12 +19077,6 @@ body {
   }
 
   /*---------- End .our-clients responsive ----------*/
-  /*---------- Start .emergency-call-2 responsive ----------*/
-  .emergency-call-2 {
-    background-position: center right 40%;
-  }
-
-  /*---------- End .emergency-call-2 responsive ----------*/
   /*****************************************************/
   /************** Start of index3.html *****************/
   /*****************************************************/

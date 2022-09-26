@@ -1,12 +1,50 @@
+.topbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: 0px 0px 8px 2px #000000;
+    height: 35px;
+}
+
+.topbar .login_signup span,
+.topbar .location span,
+.topbar .location span select,
+.topbar .free_call a span {
+    font-weight: 600;
+    cursor: pointer;
+    color: #000000;
+}
+
+.topbar .location span .city_name {
+    border: none;
+    background: none;
+}
+
+.topbar .login_signup span i,
+.topbar .location span i,
+.topbar .free_call span i {
+    font-size: 20px;
+    margin-left: 10px;
+    color: gray;
+}
+
+
 /* Top Header Starts */
 
 .topgap {
-    height: 80px;
+    height: 115px;
+    background: transparent;
 }
 
 .top_header {
     position: fixed;
-    top: 0;
+    top: 35px;
     left: 0;
     right: 0;
     z-index: 999;
@@ -144,7 +182,7 @@
 
 .nav_header {
     position: fixed;
-    top: 80px;
+    top: 115px;
     left: 0;
     right: 0;
     display: flex;
