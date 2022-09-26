@@ -30,7 +30,7 @@
                     <div class="form-group">
                         <span id="countryCode">+91</span>
                         <input type="tel" class="form-control" formControlName="number" id="mobile"
-                            placeholder="10 digit mobile number">
+                            placeholder="10 digit mobile number" (keypress)="keyPress($event)" maxlength="10" minlength="10">
                         <p class="error"
                             *ngIf="logInForm.controls['number'].invalid && logInForm.controls['number'].touched ">
                             Please provide valid mobile number</p>

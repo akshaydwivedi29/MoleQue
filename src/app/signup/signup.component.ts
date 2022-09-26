@@ -33,7 +33,7 @@ export class SignupComponent implements OnInit {
       //     Validators.pattern('[a-zA-Z0-9]*'),
       //   ],
       // ],
-      number: ['', [Validators.required, Validators.maxLength(10)]],
+      number: ['', [Validators.required, Validators.maxLength(10),Validators.minLength(10)]],
       // password: [
       //   '',
       //   [
@@ -44,17 +44,19 @@ export class SignupComponent implements OnInit {
     });
 
     this.otpForm = this.fb.group({
-      otpCode: ['', [Validators.required]],
+      otpCode: ['', [Validators.required,Validators.minLength(6),Validators.maxLength(6)]],
     });
   }
 
   ngOnInit(): void { }
 
-  // register() {
-  //   this.number = this.signUpForm.value.number;
-  //   this.loginService.generateOTP(this.number).subscribe((res: any) => {});
-  //     this.showOTP = true;
-  // }
+  keyPress(event: KeyboardEvent) {
+    const pattern = /[0-9]/;
+    const inputChar = String.fromCharCode(event.charCode);
+    if (!pattern.test(inputChar)) {
+        event.preventDefault();
+    }
+}
 
   register() {
     this.number = this.signUpForm.value.number;

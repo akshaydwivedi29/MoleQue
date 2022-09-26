@@ -57,7 +57,7 @@ export class ProfileComponent implements OnInit {
         ],
       ],
       email: ['', [Validators.required, Validators.email]],
-      number: ['', [Validators.required, Validators.maxLength(10)]],
+      number: ['', [Validators.required, Validators.maxLength(10),Validators.minLength(10)]],
       gender: ['', [Validators.required]],
       DOB: ['', [Validators.required]],
       password: [
@@ -103,7 +103,7 @@ export class ProfileComponent implements OnInit {
         ],
       ],
       relation: ['', [Validators.required]],
-      memberMobile: ['', [Validators.required, Validators.maxLength(10)]],
+      memberMobile: ['', [Validators.required, Validators.maxLength(10),Validators.minLength(10)]],
       memberGender: ['', [Validators.required]],
       memberDOB: ['', [Validators.required]],
     });
@@ -124,15 +124,14 @@ export class ProfileComponent implements OnInit {
   toggleForm(opened: any) {
     this.open = opened;
   }
-  // onSubmit() {
-  //   this.submitted = true;
-
-  //   // stop the process here if form is invalid
-  //   if (this.profileForm.invalid) {
-  //     return;
-  //   }
-  //   alert('SUCCESS!!');
-  // }
+ 
+  keyPress(event: KeyboardEvent) {
+    const pattern = /[0-9]/;
+    const inputChar = String.fromCharCode(event.charCode);
+    if (!pattern.test(inputChar)) {
+        event.preventDefault();
+    }
+}
 
   register(add: any) {
     this.profileDetail = this.profileForm.value;
