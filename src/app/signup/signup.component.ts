@@ -44,7 +44,7 @@ export class SignupComponent implements OnInit {
     });
 
     this.otpForm = this.fb.group({
-      otpCode: ['', [Validators.required,Validators.minLength(6),Validators.maxLength(6)]],
+      otpCode: ['', [Validators.required]],
     });
   }
 
