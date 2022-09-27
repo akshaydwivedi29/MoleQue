@@ -13,6 +13,9 @@ import { LoginServiceService } from '../services/login-service.service';
 export class HomepageComponent implements OnInit {
   finalCaptcha: string = '';
   testReportForm!: FormGroup;
+  inquiryForm: FormGroup;
+  inquiryValue: any;
+  submitted: boolean = false;
   testReportValue: any;
   showAlert = false;
   blur_bg = false;
@@ -90,6 +93,55 @@ export class HomepageComponent implements OnInit {
     this.otpForm = this.fb.group({
       otpCode: ['', [Validators.required]],
     });
+
+    this.inquiryForm = this.fb.group({
+      name: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(3),
+          Validators.pattern('[a-zA-Z0-9]*'),
+        ],
+      ],
+      department: ['', [Validators.required]],
+      number: [
+        '',
+        [
+          Validators.required,
+          Validators.maxLength(10),
+          Validators.minLength(10),
+        ],
+      ],
+      email: ['', [Validators.required, Validators.email]],
+      age: ['', [Validators.required]],
+      sex: ['', [Validators.required]],
+    });
+  }
+
+  keyPress(event: KeyboardEvent) {
+    const pattern = /[0-9]/;
+    const inputChar = String.fromCharCode(event.charCode);
+    if (!pattern.test(inputChar)) {
+      event.preventDefault();
+    }
+  }
+
+  submitInquiryForm() {
+    this.submitted = true;
+    this.inquiryValue = this.inquiryForm.value;
+    const userId = localStorage.getItem('id');
+    this.inquiryValue.userId = userId;
+    if (userId && this.inquiryForm.valid) {
+      this.homeService.inquiryForm(this.inquiryValue).subscribe((res) => {
+        this.inquiryForm.reset();
+        this.submitted = false;
+      });
+    } else if (this.inquiryForm.valid) {
+      this.homeService.inquiryForm(this.inquiryValue).subscribe((res) => {
+        this.inquiryForm.reset();
+        this.submitted = false;
+      });
+    }
   }
 
   ngOnInit(): void {
@@ -219,12 +271,12 @@ export class HomepageComponent implements OnInit {
     this.blur_bg = false;
   }
 
-  openPrescription(event:Event){
-    this.router.navigate(['/book-test', {pre: event.type}])
+  openPrescription(event: Event) {
+    this.router.navigate(['/book-test', { pre: event.type }]);
   }
 
-  openPackage(event:Event){
-    this.router.navigate(['/book-test', {pack: event.type}])
+  openPackage(event: Event) {
+    this.router.navigate(['/book-test', { pack: event.type }]);
   }
 
   getOTP() {

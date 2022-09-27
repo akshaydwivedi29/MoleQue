@@ -29,10 +29,31 @@
     </div>
 
     <div class="container d-flex align-items-center justify-content-center">
-        <div class="get_call_input">
-            <i class="bi bi-phone-fill"></i>
-            <input type="tel" class="form-control" placeholder="Enter your 10 digit mobile number" name="getCall">
-            <button class="btn"></button>
+        <form [formGroup]="getCallForm" (ngSubmit)="submitNumber()">
+            <div class="get_call_input">
+                <i class="bi bi-phone-fill"></i>
+                <input type="tel" class="form-control" placeholder="Enter your 10 digit mobile number"
+                    formControlName="number" maxlength="10" minlength="10" (keypress)="keyPress($event)"
+                    [ngClass]="{'is-invalid': submitted && (getCallForm.controls['number'].errors)}">
+                <div class="error" *ngIf="submitted && getCallForm.controls['number'].errors">
+                    Please provide valid mobile number</div>
+                <button type="submit" class="btn"></button>
+            </div>
+
+        </form>
+    </div>
+    <div class="modal align-items-center justify-content-center" tabindex="-1" role="dialog"
+        [ngStyle]="{'display':displayStyle}">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h6 class="modal-title">Thank you for contacting us. One of our representatives will get in touch with you shortly regarding your inquiry.</h6>
+                    <button type="button" (click)="closePopup()">
+                        <i class="fa fa-times" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
 </footer>
@@ -61,9 +82,9 @@
                     <a href="mailto:care@moleque.ai">care@moleque.ai</a>
                 </li>
                 <li class="social_media">
-                    <a href="#"><i class="bi bi-facebook"></i></a>
+                    <a href="https://www.facebook.com/ai.moleque"><i class="bi bi-facebook"></i></a>
                     <a href="#"><i class="bi bi-instagram mx-3"></i></a>
-                    <a href="#"><i class="bi bi-linkedin"></i></a>
+                    <a href="https://www.linkedin.com/showcase/moleque-ai"><i class="bi bi-linkedin"></i></a>
                 </li>
             </ul>
         </div>

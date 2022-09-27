@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { HomeServiceService } from 'src/app/services/home-service.service';
 import { LoginServiceService } from 'src/app/services/login-service.service';
 
 @Component({
@@ -14,7 +15,8 @@ export class ContactUsComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private loginService: LoginServiceService
+    private loginService: LoginServiceService,
+    private homeService:HomeServiceService
   ) {
     this.queryForm = this.fb.group({
       name: [
@@ -26,7 +28,7 @@ export class ContactUsComponent implements OnInit {
         ],
       ],
       email: ['', [Validators.required, Validators.email]],
-      number: ['', [Validators.required, Validators.maxLength(10)]],
+      number: ['', [Validators.required, Validators.minLength(10),Validators.maxLength(10)]],
       option: ['', [Validators.required]],
       message: ['', [Validators.required]],
     });
@@ -48,12 +50,12 @@ export class ContactUsComponent implements OnInit {
     const userId = localStorage.getItem('id');
     this.queryValue.userId = userId;
     if (userId && this.queryForm.valid) {
-      this.loginService.queryForm(this.queryValue).subscribe((res) => {
+      this.homeService.queryForm(this.queryValue).subscribe((res) => {
         this.queryForm.reset();
         this.submitted = false;
       });
     } else if (this.queryForm.valid) {
-      this.loginService.queryForm(this.queryValue).subscribe((res) => {
+      this.homeService.queryForm(this.queryValue).subscribe((res) => {
         this.queryForm.reset();
         this.submitted = false; 
       });

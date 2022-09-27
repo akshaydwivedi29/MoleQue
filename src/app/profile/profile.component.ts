@@ -11,19 +11,25 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class ProfileComponent implements OnInit {
   open: any;
   id: any = 'profile';
-  profileForm!: FormGroup;
-  addressForm!: FormGroup;
-  familyMemberForm!: FormGroup;
+  profileForm: FormGroup;
+  addressForm: FormGroup;
+  familyMemberForm: FormGroup;
   submitted: boolean = false;
+  show: boolean = false;
+  showPassword: boolean = true;
   number: string = '';
   userId: string = '';
   userDetail: any;
   Id: any;
-  passwordError = false;
+  familyMemberIndex!: number;
+  addressIndex!: number;
+  passwordError: boolean = false;
   profileDetail: any;
-  address: any;
-  addressArray: {}[] = [];
+  addressValue: any;
   familyMemberValue: any;
+  familyMember: any;
+  address: any;
+  blur_bg = false;
   datePickerConfig: Partial<BsDatepickerConfig>;
 
   constructor(
@@ -57,13 +63,12 @@ export class ProfileComponent implements OnInit {
         ],
       ],
       email: ['', [Validators.required, Validators.email]],
-      number: ['', [Validators.required, Validators.maxLength(10)]],
+      number: ['', [Validators.required, Validators.maxLength(10), Validators.minLength(10)]],
       gender: ['', [Validators.required]],
       DOB: ['', [Validators.required]],
       password: [
         '',
         [
-          Validators.required,
           Validators.pattern('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$'),
         ],
       ],
@@ -81,7 +86,7 @@ export class ProfileComponent implements OnInit {
       addressLine2: ['', [Validators.required]],
       city: ['', [Validators.required]],
       state: ['', [Validators.required]],
-      pinCode: ['', [Validators.required,Validators.maxLength(6),]],
+      pinCode: ['', [Validators.required, Validators.maxLength(6),]],
       landmark: [''],
     });
 
@@ -103,7 +108,7 @@ export class ProfileComponent implements OnInit {
         ],
       ],
       relation: ['', [Validators.required]],
-      memberMobile: ['', [Validators.required, Validators.maxLength(10)]],
+      memberMobile: ['', [Validators.required, Validators.maxLength(10), Validators.minLength(10)]],
       memberGender: ['', [Validators.required]],
       memberDOB: ['', [Validators.required]],
     });
@@ -115,6 +120,9 @@ export class ProfileComponent implements OnInit {
     this.number = this.route.snapshot.params['number'];
     this.userId = this.route.snapshot.params['userId'];
     this.getUserDetail();
+    if (this.Id) {
+      this.showPassword = false;
+    }
   }
 
   tabChange(ids: any) {
@@ -124,22 +132,26 @@ export class ProfileComponent implements OnInit {
   toggleForm(opened: any) {
     this.open = opened;
   }
-  // onSubmit() {
-  //   this.submitted = true;
 
-  //   // stop the process here if form is invalid
-  //   if (this.profileForm.invalid) {
-  //     return;
-  //   }
-  //   alert('SUCCESS!!');
-  // }
+  hideForm() {
+    this.open = '';
+    this.show = false;
+  }
+
+  keyPress(event: KeyboardEvent) {
+    const pattern = /[0-9]/;
+    const inputChar = String.fromCharCode(event.charCode);
+    if (!pattern.test(inputChar)) {
+      event.preventDefault();
+    }
+  }
 
   register(add: any) {
     this.profileDetail = this.profileForm.value;
     const password = this.profileDetail.password;
     const confirmPassword = this.profileDetail.confirm_password;
 
-    if (password !== confirmPassword) {
+    if (this.userId && password !== confirmPassword) {
       this.passwordError = true;
       setTimeout(() => {
         this.passwordError = false;
@@ -150,8 +162,8 @@ export class ProfileComponent implements OnInit {
       this.loginService
         .updateUserProfile(this.userId, this.profileDetail)
         .subscribe((res) => { });
-      this.tabChange(add);
       this.profileForm.reset();
+      this.tabChange(add);
       // this.router.navigate(['/login'])
     }
 
@@ -169,17 +181,17 @@ export class ProfileComponent implements OnInit {
     }
   }
 
-  saveAddress() {
-    this.address = this.addressForm.value;
+  addAddress() {
+    this.addressValue = this.addressForm.value;
     if (this.userId && this.addressForm.valid) {
-      this.loginService.updateUserProfile(this.userId, {address:this.address} ).subscribe((res) => {
-       });
+      this.loginService.addAddress(this.userId, this.addressValue).subscribe((res) => {
+      });
       this.router.navigate(['/login']);
     }
 
     else if (this.Id && this.addressForm.valid) {
-      this.loginService.updateUserProfile(this.Id, {address:this.address} ).subscribe((res) => {
-       });
+      this.loginService.addAddress(this.Id, this.addressValue).subscribe((res) => {
+      });
       this.addressForm.reset();
       this.router.navigate(['/dashboard']);
     }
@@ -189,17 +201,35 @@ export class ProfileComponent implements OnInit {
     }
   }
 
+  showAddressForm(opened: any, address: any, index: number) {
+    this.show = true;
+    this.open = opened;
+    this.addressForm.patchValue(address);
+    this.addressIndex = index;
+  }
+
+  updateAddress() {
+    this.addressValue = this.addressForm.value;
+    this.loginService.updateAddress(this.Id, this.addressValue, this.addressIndex).subscribe(res => { });
+    this.addressForm.reset();
+    this.show = false;
+    this.open = ''
+  }
+
+  deleteAddress(add: any, index: number, event: Event) {
+    event.stopPropagation();
+    console.log(add, index)
+    this.loginService.deleteAddress(this.Id,index).subscribe(res => { })
+  }
+
   addMember() {
     this.familyMemberValue = this.familyMemberForm.value;
     if (this.userId && this.familyMemberForm.valid) {
-      this.loginService.updateUserProfile(this.userId, { familyMember: this.familyMemberValue }).subscribe(res => { });
+      this.loginService.addFamilyMember(this.userId, this.familyMemberValue).subscribe(res => { });
       this.router.navigate(['/dashboard'])
     }
     else if (this.Id && this.familyMemberForm.valid) {
-      this.loginService.updateUserProfile(this.Id, { familyMember: this.familyMemberValue }).subscribe((res: any) => {
-
-
-      });
+      this.loginService.addFamilyMember(this.Id, this.familyMemberValue).subscribe(res => { });
       this.familyMemberForm.reset();
       this.router.navigate(['/dashboard']);
     } else {
@@ -207,14 +237,33 @@ export class ProfileComponent implements OnInit {
     }
   }
 
+  showFamilyMemberForm(opened: any, member: any, index: number) {
+    this.show = true;
+    this.open = opened;
+    member.memberDOB = new Date(member.memberDOB)
+    this.familyMemberForm.patchValue(member)
+    this.familyMemberIndex = index;
+  }
+
+  updateMember() {
+    this.familyMemberValue = this.familyMemberForm.value;
+    this.loginService.updateFamilyMember(this.Id, this.familyMemberValue, this.familyMemberIndex).subscribe(res => { });
+    this.familyMemberForm.reset();
+    this.show = false;
+    this.open = ''
+  }
+
   getUserDetail() {
     if (this.Id) {
       this.loginService.getUserDetail(this.Id).subscribe((res: any) => {
         this.userDetail = res;
         this.userDetail.DOB = new Date(this.userDetail.DOB)
-        this.profileForm.patchValue(this.userDetail)
-        // this.addressForm.patchValue(this.userDetail.address)
+        this.profileForm.patchValue(this.userDetail);
+        this.familyMember = this.userDetail.familyMember;
+        this.address = this.userDetail.address;
       });
     }
   }
+
+
 }

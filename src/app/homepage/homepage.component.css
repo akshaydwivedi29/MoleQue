@@ -169,29 +169,28 @@
 
 /* HOME COLLECTION SECTION STARTS  */
 
-.home_collection {
-    background: #EEEEEE;
-}
-
-.home_collection>.container>.card {
+.home_collection>.card {
     width: 100%;
     height: auto;
-    box-shadow: 0px 6px 7px 0px rgb(0 0 0 / 20%);
-    border-radius: 10px;
-    margin: 20px 0;
 }
 
-.home_collection .container .card .card-title>h4 {
-    letter-spacing: 2px;
+.home_collection>.card .card-title>h4 {
+    letter-spacing: 1px;
     text-align: center;
-    font-weight: 600;
-    font-size: 24px;
+    font-family: "BebasNeueBold";
+    font-size: 40px;
     color: #1f3d9d;
-    padding: 10px 0;
+}
+
+.home_collection>.card .card-body .hc_item:nth-child(even) {
+    border-left: 3px solid gray;
+    border-right: 3px solid gray;
+    padding-left: 40px;
+    padding-right: 40px;
 }
 
 .hc_item img {
-    width: 100px;
+    width: 150px;
     height: auto;
 }
 
@@ -220,24 +219,26 @@
     cursor: pointer;
 }
 
-.home_collection .container:nth-child(2) {
-    margin-top: -25px;
+.home_collection .packages {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.home_collection .container:nth-child(2) .card {
+.home_collection .packages .card {
     width: 33%;
     min-height: 150px;
 
 }
 
-.home_collection .container:nth-child(2) .card:nth-child(1) {
+.home_collection .packages .card:nth-child(1) {
     background-image: url(../../assets/images/icons/infertility.png);
     background-repeat: no-repeat;
     background-size: 155px auto;
     background-position-x: 30px;
 }
 
-.home_collection .container:nth-child(2) .card:nth-child(2) {
+.home_collection .packages .card:nth-child(2) {
     background-image: url(../../assets/images/icons/diabetes.png);
     background-repeat: no-repeat;
     background-size: 426px auto;
@@ -245,20 +246,20 @@
     position: relative;
 }
 
-.home_collection .container:nth-child(2) .card:nth-child(3) {
+.home_collection .packages .card:nth-child(3) {
     background-image: url(../../assets/images/icons/family.png);
     background-repeat: no-repeat;
     background-size: 230px auto;
     background-position: right;
 }
 
-.home_collection .container:nth-child(2) .card .card-body p {
+.home_collection .packages .card .card-body p {
     font-size: 25px;
     font-weight: 600;
 
 }
 
-.home_collection .container:nth-child(2) .card:nth-child(1) .card-body p {
+.home_collection .packages .card:nth-child(1) .card-body p {
     color: #1f3d9d;
     text-align: right;
     position: absolute;
@@ -266,14 +267,14 @@
     right: 10%;
 }
 
-.home_collection .container:nth-child(2) .card:nth-child(2) .card-body p {
+.home_collection .packages .card:nth-child(2) .card-body p {
     color: #F22283;
     position: absolute;
     top: 4%;
     left: 4%;
 }
 
-.home_collection .container:nth-child(2) .card:nth-child(3) .card-body p {
+.home_collection .packages .card:nth-child(3) .card-body p {
     color: #1f3d9d;
     position: absolute;
     bottom: 0;
@@ -523,7 +524,7 @@
 }
 
 .about__text {
-    max-width: 545px;
+    max-width: 620px;
     padding-top: 20px;
 }
 
@@ -559,7 +560,7 @@
 
 .testcon_btn .card {
     width: 100%;
-    height: 70px;
+    height: 100px;
     position: relative;
     background: #F22283;
     border: none;
@@ -578,16 +579,129 @@
 }
 
 .testcon_btn .card .card-body img {
-    width: 45px;
+    width: 50px;
     height: auto;
-    padding-left: 15px;
+    padding-left: 2px;
 }
 
 .testcon_btn .card .card-body span {
     color: #fff;
     font-weight: 600;
     text-transform: uppercase;
-    margin-left: 10px;
+    margin-left: 7px;
+}
+
+/**************************************************/
+/* .emergency-call */
+/**************************************************/
+.emergency-call {
+    padding: 50px 0 30px 0;
+    background-color: #f4f4f4;
+}
+
+.emergency-call .container {
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+
+.emergency-call .container .content h2 {
+    text-align: center;
+    font-weight: 400;
+    color: #333333;
+    text-transform: uppercase;
+    font-size: 27px;
+    margin-top: 20px;
+}
+
+.emergency-call__items {
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+
+.emergency-call__item {
+    max-width: 370px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.emergency-call__item>.icon {
+    min-width: 100px;
+    height: 100px;
+    width: 100px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    background-color: #1f3d9d;
+    border: 9px solid #1f3d9d;
+    border-radius: 50%;
+    position: relative;
+    z-index: 1;
+    -webkit-box-shadow: 8.135px 18.271px 51px 0px rgba(31, 61, 157, 0.5);
+    box-shadow: 8.135px 18.271px 51px 0px rgba(31, 61, 157, 0.5);
+}
+
+.emergency-call__item>.icon:before {
+    border-radius: 50%;
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    width: 118px;
+    height: 118px;
+    background-color: #1f3d9d;
+    opacity: .4;
+    z-index: -1;
+}
+
+.emergency-call__item:nth-child(1)>.icon img {
+    width: 70px;
+    margin-top: 10px;
+}
+
+.emergency-call__item:nth-child(2)>.icon img {
+    width: 60px;
+}
+
+.emergency-call__item:nth-child(3)>.icon img {
+    width: 55px;
+    margin-top: -5px;
+}
+
+.emergency-call__item>.content {
+    margin-top: 12px;
+}
+
+.emergency-call__item>.content p {
+    letter-spacing: -0.3px;
+    color: #333333;
+    margin-top: 8px;
+    line-height: 1.5;
+    text-align: center;
 }
 
 
