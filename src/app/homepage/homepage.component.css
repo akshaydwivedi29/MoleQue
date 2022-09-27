@@ -169,29 +169,28 @@
 
 /* HOME COLLECTION SECTION STARTS  */
 
-.home_collection {
-    background: #EEEEEE;
-}
-
-.home_collection>.container>.card {
+.home_collection>.card {
     width: 100%;
     height: auto;
-    box-shadow: 0px 6px 7px 0px rgb(0 0 0 / 20%);
-    border-radius: 10px;
-    margin: 20px 0;
 }
 
-.home_collection .container .card .card-title>h4 {
-    letter-spacing: 2px;
+.home_collection>.card .card-title>h4 {
+    letter-spacing: 1px;
     text-align: center;
-    font-weight: 600;
-    font-size: 24px;
+    font-family: "BebasNeueBold";
+    font-size: 40px;
     color: #1f3d9d;
-    padding: 10px 0;
+}
+
+.home_collection>.card .card-body .hc_item:nth-child(even) {
+    border-left: 3px solid gray;
+    border-right: 3px solid gray;
+    padding-left: 40px;
+    padding-right: 40px;
 }
 
 .hc_item img {
-    width: 100px;
+    width: 150px;
     height: auto;
 }
 
@@ -220,24 +219,26 @@
     cursor: pointer;
 }
 
-.home_collection .container:nth-child(2) {
-    margin-top: -25px;
+.home_collection .packages {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.home_collection .container:nth-child(2) .card {
+.home_collection .packages .card {
     width: 33%;
     min-height: 150px;
 
 }
 
-.home_collection .container:nth-child(2) .card:nth-child(1) {
+.home_collection .packages .card:nth-child(1) {
     background-image: url(../../assets/images/icons/infertility.png);
     background-repeat: no-repeat;
     background-size: 155px auto;
     background-position-x: 30px;
 }
 
-.home_collection .container:nth-child(2) .card:nth-child(2) {
+.home_collection .packages .card:nth-child(2) {
     background-image: url(../../assets/images/icons/diabetes.png);
     background-repeat: no-repeat;
     background-size: 426px auto;
@@ -245,20 +246,20 @@
     position: relative;
 }
 
-.home_collection .container:nth-child(2) .card:nth-child(3) {
+.home_collection .packages .card:nth-child(3) {
     background-image: url(../../assets/images/icons/family.png);
     background-repeat: no-repeat;
     background-size: 230px auto;
     background-position: right;
 }
 
-.home_collection .container:nth-child(2) .card .card-body p {
+.home_collection .packages .card .card-body p {
     font-size: 25px;
     font-weight: 600;
 
 }
 
-.home_collection .container:nth-child(2) .card:nth-child(1) .card-body p {
+.home_collection .packages .card:nth-child(1) .card-body p {
     color: #1f3d9d;
     text-align: right;
     position: absolute;
@@ -266,14 +267,14 @@
     right: 10%;
 }
 
-.home_collection .container:nth-child(2) .card:nth-child(2) .card-body p {
+.home_collection .packages .card:nth-child(2) .card-body p {
     color: #F22283;
     position: absolute;
     top: 4%;
     left: 4%;
 }
 
-.home_collection .container:nth-child(2) .card:nth-child(3) .card-body p {
+.home_collection .packages .card:nth-child(3) .card-body p {
     color: #1f3d9d;
     position: absolute;
     bottom: 0;
