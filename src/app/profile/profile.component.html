@@ -19,7 +19,7 @@
 
                 <div class="d-flex align-items-center justify-content-evenly mb-5">
                     <img src="../../assets/images/icons/avatar.png" alt="Avatar">
-                    <div class="user_name">Hi, {{Id? userDetail?.firstName:'Guest'}}</div>
+                    <div class="user_name">Hi, {{Id? (userDetail?.firstName | titlecase) :'Guest'}}</div>
                 </div>
 
                 <form [formGroup]="profileForm" (ngSubmit)="register('address')">
@@ -105,9 +105,9 @@
 
                     </div>
 
-                    <div class="row">
+                    <div class="row" *ngIf="showPassword">
                         <div class="form-group col-sm-6 col-xs-12 space">
-                            <label for="password" class="required">{{Id ? 'Change Password' : 'Password'}}</label>
+                            <label for="password" class="required">Password</label>
                             <input type="password" formControlName="password" class="form-control"
                                 placeholder="Enter Password">
                             <div class="error"
@@ -151,8 +151,19 @@
             </div>
 
             <div class="family" *ngIf="id === 'family'">
-                <p id="f_form" (click)="toggleForm('f_form')">+ Add New Family Member</p>
+                <div class="card" *ngFor="let member of familyMember; let i =index"
+                    (click)="showFamilyMemberForm('f_form',member,i)">
+                    <div class="card-body">
+                        <img src="../../assets/images/icons/avatar.png" alt="Avatar">
+                        <h5 class="card-title">{{member.memberFirstName | titlecase}}</h5>
+                        <p class="card-text">{{member.relation}}</p>
+                        <p class="card-text">{{member.memberGender}}</p>
+                        <p class="card-text">{{member.memberDOB | date}}</p>
+                    </div>
+                </div>
+                <p id="f_form" (click)="toggleForm('f_form')" *ngIf="!show">+ Add New Family Member</p>
                 <div class="family_form" *ngIf="open === 'f_form'">
+                    <i class="fa fa-times" (click)="hideForm()" aria-hidden="true"></i>
                     <form [formGroup]="familyMemberForm" (ngSubmit)="addMember()">
                         <div class="row my-4">
                             <div class="form-group col-sm-6 col-xs-12 space">
@@ -167,7 +178,7 @@
                                 <label for="memberlastname" class="required">Last Name</label>
                                 <input type="text" class="form-control" formControlName="memberLastName"
                                     placeholder="Enter Last name">
-                                    <div class="error"
+                                <div class="error"
                                     *ngIf="familyMemberForm.controls['memberLastName'].invalid && familyMemberForm.controls['memberLastName'].touched ">
                                     Please provide valid last name</div>
                             </div>
@@ -178,9 +189,12 @@
                                 <select class="form-select" formControlName="relation"
                                     aria-label="Default select example">
                                     <option selected disabled value="">Please Choose Relation</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
+                                    <option value="Spouse">Spouse</option>
+                                    <option value="Daughter">Daughter</option>
+                                    <option value="Son">Son</option>
+                                    <option value="Father">Father</option>
+                                    <option value="Mother">Mother</option>
+                                    <option value="Family">Family</option>
                                 </select>
                                 <div class="error"
                                     *ngIf="familyMemberForm.controls['relation'].invalid && familyMemberForm.controls['relation'].touched ">
@@ -190,8 +204,9 @@
                             <div class="form-group col-sm-6 col-xs-12">
                                 <label for="relativemobile" class="required">Mobile</label>
                                 <input type="tel" class="form-control" formControlName="memberMobile"
-                                    placeholder="Enter Mobile" (keypress)="keyPress($event)" maxlength="10" minlength="10">
-                                    <div class="error"
+                                    placeholder="Enter Mobile" (keypress)="keyPress($event)" maxlength="10"
+                                    minlength="10">
+                                <div class="error"
                                     *ngIf="familyMemberForm.controls['memberMobile'].invalid && familyMemberForm.controls['memberMobile'].touched ">
                                     Please provide valid mobile number</div>
                             </div>
@@ -225,13 +240,15 @@
                                 <label for="dob" class="required">Date Of Birth</label>
                                 <input type="text" bsDatepicker [bsConfig]="datePickerConfig" class="form-control"
                                     placeholder="MM/DD/YYYY" formControlName="memberDOB">
-                                    <div class="error"
+                                <div class="error"
                                     *ngIf="familyMemberForm.controls['memberDOB'].invalid && familyMemberForm.controls['memberDOB'].touched ">
                                     Please provide valid date of birth</div>
                             </div>
 
                             <div class="d-flex align-items-center justify-content-center mt-5">
-                                <button type="submit" [disabled]="familyMemberForm.invalid">Add Member</button>
+                                <button type="submit" *ngIf="!show" [disabled]="familyMemberForm.invalid">Add
+                                    Member</button>
+                                <button type="button" (click)="updateMember()" *ngIf="show">Update Member</button>
                             </div>
                         </div>
                     </form>
@@ -239,15 +256,26 @@
             </div>
 
             <div class="address" *ngIf="id === 'address'">
-                <p id="a_form" (click)="toggleForm('a_form')">+ Add New Address</p>
+                <div class="card" *ngFor="let add of address; let i =index" (click)="showAddressForm('a_form',add,i)">
+                    <div class="card-body">
+                        <h5 class="card-title">{{add.addressLine1}}</h5>
+                        <p class="card-text">{{add.addressLine2}}</p>
+                        <p class="card-text">{{add.city}}</p>
+                        <p class="card-text">{{add.state}}</p>
+                        <p class="card-text">{{add.pinCode}}</p>
+                        <i class="fa fa-trash" (click)="deleteAddress(add,i,$event)" aria-hidden="true"></i>
+                    </div>
+                </div>
+                <p id="a_form" (click)="toggleForm('a_form')" *ngIf="!show">+ Add New Address</p>
                 <div class="address_form" *ngIf="open === 'a_form'">
-                    <form [formGroup]="addressForm" (ngSubmit)="saveAddress()">
+                    <i class="fa fa-times" (click)="hideForm()" aria-hidden="true"></i>
+                    <form [formGroup]="addressForm" (ngSubmit)="addAddress()">
                         <div class="row my-4">
                             <div class="form-group col">
                                 <label for="AddressLine1" class="required">Address Line 1</label>
                                 <input type="text" class="form-control" formControlName="addressLine1"
                                     placeholder="Address Line 1">
-                                    <div class="error"
+                                <div class="error"
                                     *ngIf="addressForm.controls['addressLine1'].invalid && addressForm.controls['addressLine1'].touched ">
                                     Please provide valid address</div>
                             </div>
@@ -257,7 +285,7 @@
                                 <label for="AddressLine2" class="required">Address Line 2</label>
                                 <input type="text" class="form-control" formControlName="addressLine2"
                                     placeholder="Address Line 2">
-                                    <div class="error"
+                                <div class="error"
                                     *ngIf="addressForm.controls['addressLine2'].invalid && addressForm.controls['addressLine2'].touched ">
                                     Please provide valid address</div>
                             </div>
@@ -287,7 +315,7 @@
                                 <label for="pincode" class="required">PIN Code</label>
                                 <input type="number" class="form-control" maxlength="6" formControlName="pinCode"
                                     placeholder="PIN Code">
-                                    <div class="error"
+                                <div class="error"
                                     *ngIf="addressForm.controls['pinCode'].invalid && addressForm.controls['pinCode'].touched ">
                                     Please provide valid pinCode</div>
                             </div>
@@ -300,8 +328,8 @@
                         </div>
 
                         <div class="d-flex align-items-center justify-content-center mt-5">
-                            <button type="submit" [disabled]="addressForm.invalid">{{!Id ? 'Save Address' : 'Update
-                                Address'}}</button>
+                            <button type="submit" *ngIf="!show" [disabled]="addressForm.invalid">Add Address</button>
+                            <button type="button" (click)="updateAddress()" *ngIf="show">Update Address</button>
                         </div>
                     </form>
                 </div>
