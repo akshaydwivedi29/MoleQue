@@ -1,50 +1,12 @@
-.topbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 999;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    background: rgba(255, 255, 255, 0.8);
-    box-shadow: 0px 0px 8px 2px #000000;
-    height: 35px;
-}
-
-.topbar .login_signup span,
-.topbar .location span,
-.topbar .location span select,
-.topbar .free_call a span {
-    font-weight: 600;
-    cursor: pointer;
-    color: #000000;
-}
-
-.topbar .location span .city_name {
-    border: none;
-    background: none;
-}
-
-.topbar .login_signup span i,
-.topbar .location span i,
-.topbar .free_call span i {
-    font-size: 20px;
-    margin-left: 10px;
-    color: gray;
-}
-
-
 /* Top Header Starts */
 
 .topgap {
-    height: 115px;
-    background: transparent;
+    height: 80px;
 }
 
 .top_header {
     position: fixed;
-    top: 35px;
+    top: 0px;
     left: 0;
     right: 0;
     z-index: 999;
@@ -182,12 +144,12 @@
 
 .nav_header {
     position: fixed;
-    top: 115px;
+    top: 80px;
     left: 0;
     right: 0;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
     height: 40px;
     padding: 10px 0;
     background: rgba(255, 255, 255, 0.8);
@@ -200,7 +162,8 @@
     margin: 0;
 }
 
-.menu ul li {
+.menu ul li,
+.nav_header .call_us a {
     list-style-type: none;
     font-family: roboto light;
     font-weight: 700;
