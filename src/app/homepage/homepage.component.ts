@@ -15,7 +15,7 @@ export class HomepageComponent implements OnInit {
   testReportForm!: FormGroup;
   inquiryForm: FormGroup;
   inquiryValue: any;
-  submitted:boolean = false;
+  submitted: boolean = false;
   testReportValue: any;
   showAlert = false;
   blur_bg = false;
@@ -104,9 +104,17 @@ export class HomepageComponent implements OnInit {
         ],
       ],
       department: ['', [Validators.required]],
-      number: ['', [Validators.required, Validators.maxLength(10),Validators.minLength(10)]],
-      email: ['', [Validators.required,Validators.email]],
-      message: ['', [Validators.required]],
+      number: [
+        '',
+        [
+          Validators.required,
+          Validators.maxLength(10),
+          Validators.minLength(10),
+        ],
+      ],
+      email: ['', [Validators.required, Validators.email]],
+      age: ['', [Validators.required]],
+      sex: ['', [Validators.required]],
     });
   }
 
@@ -114,27 +122,27 @@ export class HomepageComponent implements OnInit {
     const pattern = /[0-9]/;
     const inputChar = String.fromCharCode(event.charCode);
     if (!pattern.test(inputChar)) {
-        event.preventDefault();
+      event.preventDefault();
     }
-}
+  }
 
-submitInquiryForm() {
-  this.submitted = true;
-  this.inquiryValue = this.inquiryForm.value;
-  const userId = localStorage.getItem('id');
-  this.inquiryValue.userId = userId;
-  if (userId && this.inquiryForm.valid) {
-    this.homeService.inquiryForm(this.inquiryValue).subscribe((res) => {
-      this.inquiryForm.reset();
-      this.submitted = false;
-    });
-  } else if (this.inquiryForm.valid) {
-    this.homeService.inquiryForm(this.inquiryValue).subscribe((res) => {
-      this.inquiryForm.reset();
-      this.submitted = false; 
-    });
-  } 
-}
+  submitInquiryForm() {
+    this.submitted = true;
+    this.inquiryValue = this.inquiryForm.value;
+    const userId = localStorage.getItem('id');
+    this.inquiryValue.userId = userId;
+    if (userId && this.inquiryForm.valid) {
+      this.homeService.inquiryForm(this.inquiryValue).subscribe((res) => {
+        this.inquiryForm.reset();
+        this.submitted = false;
+      });
+    } else if (this.inquiryForm.valid) {
+      this.homeService.inquiryForm(this.inquiryValue).subscribe((res) => {
+        this.inquiryForm.reset();
+        this.submitted = false;
+      });
+    }
+  }
 
   ngOnInit(): void {
     this.generateCaptcha();
@@ -263,12 +271,12 @@ submitInquiryForm() {
     this.blur_bg = false;
   }
 
-  openPrescription(event:Event){
-    this.router.navigate(['/book-test', {pre: event.type}])
+  openPrescription(event: Event) {
+    this.router.navigate(['/book-test', { pre: event.type }]);
   }
 
-  openPackage(event:Event){
-    this.router.navigate(['/book-test', {pack: event.type}])
+  openPackage(event: Event) {
+    this.router.navigate(['/book-test', { pack: event.type }]);
   }
 
   getOTP() {

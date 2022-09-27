@@ -4835,11 +4835,12 @@ a:hover {
 }
 
 .form__block>.subtitle {
-  margin-top: 28px;
-  font-size: 16px;
+  margin-top: 20px;
+  font-size: 20px;
   color: #333333;
   line-height: 1.5;
   letter-spacing: -.3px;
+  font-weight: bold;
 }
 
 .form__block textarea,
@@ -4851,11 +4852,11 @@ a:hover {
   -webkit-box-flex: 0;
   -ms-flex: 0 0 276px;
   flex: 0 0 276px;
-  margin-bottom: 20px;
+  margin-top: 20px;
   padding: 24px 26px;
   font-size: 20px;
   outline: none;
-  color: #333333;
+  color: #1f3d9d;
   font-weight: 600;
   border: 1px solid #e0e0e0;
   border-radius: 8px;
