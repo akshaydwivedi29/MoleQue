@@ -1,6 +1,6 @@
 <app-header></app-header>
 
-<section class="contact_us">
+<section class="contact_us" [ngClass]="blur_bg ? 'blur_body' : ''">
 
     <div class="container">
 
@@ -93,5 +93,20 @@
     </div>
 
 </section>
+
+<div class="modal align-items-center justify-content-center" tabindex="-1" role="dialog"
+        [ngStyle]="{'display':displayStyle}">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h6 class="modal-title">Thank you for contacting us. One of our representatives will get in touch
+                        with you shortly regarding your query.</h6>
+                    <button type="button" (click)="closePopup()">
+                        <i class="fa fa-times" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 <app-footer></app-footer>

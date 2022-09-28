@@ -136,13 +136,11 @@ export class HomepageComponent implements OnInit {
     if (this.userId && this.inquiryForm.valid) {
       this.inquiryValue.userId = this.userId;
       this.homeService.inquiryForm(this.inquiryValue).subscribe((res) => {
-        console.log(res)
         this.inquiryForm.reset();
         this.submitted = false;
       });
     } else if (this.inquiryForm.valid) {
       this.homeService.inquiryForm(this.inquiryValue).subscribe((res) => {
-        console.log('withoutUserID', res)
         this.inquiryForm.reset();
         this.submitted = false;
       });
@@ -243,7 +241,6 @@ export class HomepageComponent implements OnInit {
       this.finalCaptcha === this.testReportValue.captcha && this.userId
     ) {
       this.homeService.checkReport(this.testReportValue).subscribe((res) => {
-        console.log(res)
         this.testReportForm.reset();
       });
     }
@@ -252,7 +249,6 @@ export class HomepageComponent implements OnInit {
       this.finalCaptcha === this.testReportValue.captcha
     ) {
       this.homeService.checkReport(this.testReportValue).subscribe((res) => {
-        console.log('without',res)
         this.testReportForm.reset();
       });
     }
@@ -326,7 +322,6 @@ export class HomepageComponent implements OnInit {
       .loginWithOtp({ mobile: this.number, otp: this.otpCode })
       .subscribe(
         (res: any) => {
-          console.log(res);
           if (res) {
             this.router.navigate(['/book-test'], {
               replaceUrl: true,
