@@ -11,12 +11,13 @@ import { LoginServiceService } from 'src/app/services/login-service.service';
 export class ContactUsComponent implements OnInit {
   queryForm: FormGroup;
   queryValue: any;
-  submitted:boolean = false;
+  submitted: boolean = false;
+  blur_bg = false;
 
   constructor(
     private fb: FormBuilder,
     private loginService: LoginServiceService,
-    private homeService:HomeServiceService
+    private homeService: HomeServiceService
   ) {
     this.queryForm = this.fb.group({
       name: [
@@ -28,7 +29,7 @@ export class ContactUsComponent implements OnInit {
         ],
       ],
       email: ['', [Validators.required, Validators.email]],
-      number: ['', [Validators.required, Validators.minLength(10),Validators.maxLength(10)]],
+      number: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
       option: ['', [Validators.required]],
       message: ['', [Validators.required]],
     });
@@ -38,11 +39,11 @@ export class ContactUsComponent implements OnInit {
     const pattern = /[0-9]/;
     const inputChar = String.fromCharCode(event.charCode);
     if (!pattern.test(inputChar)) {
-        event.preventDefault();
+      event.preventDefault();
     }
-}
+  }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   submitForm() {
     this.submitted = true;
@@ -51,14 +52,35 @@ export class ContactUsComponent implements OnInit {
     this.queryValue.userId = userId;
     if (userId && this.queryForm.valid) {
       this.homeService.queryForm(this.queryValue).subscribe((res) => {
+        this.openPopup();
         this.queryForm.reset();
         this.submitted = false;
       });
     } else if (this.queryForm.valid) {
       this.homeService.queryForm(this.queryValue).subscribe((res) => {
+        this.openPopup();
         this.queryForm.reset();
-        this.submitted = false; 
+        this.submitted = false;
       });
-    } 
+    }
+  }
+
+  displayStyle = 'none';
+
+  openPopup() {
+    this.displayStyle = 'flex';
+    this.blurBody();
+  }
+
+  closePopup() {
+    this.displayStyle = 'none';
+    this.sharpBody();
+  }
+
+  blurBody() {
+    this.blur_bg = true;
+  }
+  sharpBody() {
+    this.blur_bg = false;
   }
 }

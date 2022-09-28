@@ -37,8 +37,8 @@ export class LoginServiceService {
     return this.http.patch(`${environment.serverURL}users/${userId}/address/${index}`, address)
   }
 
-  deleteAddress(userId: string,index:number){
-    return this.http.delete(`${environment.serverURL}users/${userId}/deleteAddress/${index}`)
+  deleteAddress(userId: string, index:number){
+    return this.http.delete(`${environment.serverURL}users/${userId}/address/${index}`)
   }
 
   addFamilyMember(userId: string, member: any) {
@@ -47,6 +47,10 @@ export class LoginServiceService {
 
   updateFamilyMember(userId: string, member: any,index:any) {
     return this.http.patch(`${environment.serverURL}users/${userId}/familyMember/${index}`, member)
+  }
+
+  deleteFamilyMember(userId: string, index:number){
+    return this.http.delete(`${environment.serverURL}users/${userId}/familyMember/${index}`)
   }
 
   getUserDetail(userId: string) {

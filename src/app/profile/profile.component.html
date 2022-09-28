@@ -159,6 +159,7 @@
                         <p class="card-text">{{member.relation}}</p>
                         <p class="card-text">{{member.memberGender}}</p>
                         <p class="card-text">{{member.memberDOB | date}}</p>
+                        <i class="fa fa-trash" (click)="deleteFamilyMember(i,$event)" aria-hidden="true"></i>
                     </div>
                 </div>
                 <p id="f_form" (click)="toggleForm('f_form')" *ngIf="!show">+ Add New Family Member</p>
@@ -263,7 +264,7 @@
                         <p class="card-text">{{add.city}}</p>
                         <p class="card-text">{{add.state}}</p>
                         <p class="card-text">{{add.pinCode}}</p>
-                        <i class="fa fa-trash" (click)="deleteAddress(add,i,$event)" aria-hidden="true"></i>
+                        <i class="fa fa-trash" (click)="deleteAddress(i,$event); getUserDetail()" aria-hidden="true"></i>
                     </div>
                 </div>
                 <p id="a_form" (click)="toggleForm('a_form')" *ngIf="!show">+ Add New Address</p>
@@ -329,7 +330,7 @@
 
                         <div class="d-flex align-items-center justify-content-center mt-5">
                             <button type="submit" *ngIf="!show" [disabled]="addressForm.invalid">Add Address</button>
-                            <button type="button" (click)="updateAddress()" *ngIf="show">Update Address</button>
+                            <button type="button" (click)="updateAddress(); getUserDetail()" *ngIf="show">Update Address</button>
                         </div>
                     </form>
                 </div>

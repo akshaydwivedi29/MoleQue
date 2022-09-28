@@ -193,12 +193,14 @@ export class ProfileComponent implements OnInit {
       this.loginService.addAddress(this.Id, this.addressValue).subscribe((res) => {
       });
       this.addressForm.reset();
-      this.router.navigate(['/dashboard']);
+      // this.router.navigate(['/dashboard']);
     }
 
     else {
       alert('Something went wrong!');
     }
+    this.open = ''
+    this.getUserDetail();
   }
 
   showAddressForm(opened: any, address: any, index: number) {
@@ -213,25 +215,27 @@ export class ProfileComponent implements OnInit {
     this.loginService.updateAddress(this.Id, this.addressValue, this.addressIndex).subscribe(res => { });
     this.addressForm.reset();
     this.show = false;
-    this.open = ''
+    this.open = '';
   }
 
-  deleteAddress(add: any, index: number, event: Event) {
+  deleteAddress(index: number, event: Event) {
     event.stopPropagation();
-    console.log(add, index)
-    this.loginService.deleteAddress(this.Id,index).subscribe(res => { })
+    this.loginService.deleteAddress(this.Id, index).subscribe(res => {
+    })
   }
 
   addMember() {
     this.familyMemberValue = this.familyMemberForm.value;
     if (this.userId && this.familyMemberForm.valid) {
       this.loginService.addFamilyMember(this.userId, this.familyMemberValue).subscribe(res => { });
-      this.router.navigate(['/dashboard'])
+      // this.router.navigate(['/dashboard']);
+      this.getUserDetail();
     }
     else if (this.Id && this.familyMemberForm.valid) {
       this.loginService.addFamilyMember(this.Id, this.familyMemberValue).subscribe(res => { });
       this.familyMemberForm.reset();
-      this.router.navigate(['/dashboard']);
+      // this.router.navigate(['/dashboard']);
+      this.getUserDetail();
     } else {
       alert('Something went wrong!');
     }
@@ -251,6 +255,13 @@ export class ProfileComponent implements OnInit {
     this.familyMemberForm.reset();
     this.show = false;
     this.open = ''
+    this.getUserDetail();
+  }
+
+  deleteFamilyMember(index: number, event: Event) {
+    event.stopPropagation();
+    this.loginService.deleteFamilyMember(this.Id, index).subscribe(res => { })
+    this.getUserDetail();
   }
 
   getUserDetail() {
