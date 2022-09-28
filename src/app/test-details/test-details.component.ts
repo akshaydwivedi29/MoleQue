@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { CartService } from '../services/cart.service';
-import { TestsService } from '../services/tests.service';
+import { TestList, TestsService } from '../services/tests.service';
 
 @Component({
   selector: 'app-test-details',
@@ -15,12 +15,13 @@ import { TestsService } from '../services/tests.service';
   styleUrls: ['./test-details.component.css'],
 })
 export class TestDetailsComponent implements OnInit {
-  testId: any;
-  userId: any;
-  obj: any;
+  testId: string='';
+  userId: string = '';
+  obj!: TestList;
   toggleTab = false;
   canAddToCart = true;
   modal = false;
+
   @ViewChild('popup') popup!: ElementRef;
   @ViewChild('patient') patient!: ElementRef;
   @ViewChild('analytics') analytics!: ElementRef;
@@ -32,10 +33,10 @@ export class TestDetailsComponent implements OnInit {
     private renderer: Renderer2
   ) {
     this.route.paramMap.subscribe((params: ParamMap) => {
-      this.testId = params.get('Id');
+      this.testId = params.get('Id') || '';
       this.getData();
     });
-    this.userId = localStorage.getItem('id');
+    this.userId = localStorage.getItem('id') || '';
 
     this.renderer.listen('window', 'click', (e: Event) => {
       if (
@@ -66,7 +67,6 @@ export class TestDetailsComponent implements OnInit {
       this.cartService
         .addToCart({ userId: this.userId, testDetail: item })
         .subscribe((res) => {
-          console.log(res);
         });
       this.canAddToCart = !this.cartService.isAlreadyAddedInCart(item);
     } else {
