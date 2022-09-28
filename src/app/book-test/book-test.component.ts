@@ -29,7 +29,7 @@ export class BookTestComponent implements OnInit {
     dots: false,
     navSpeed: 700,
     navText: ['', ''],
-    items: 1,
+    items: 2,
     nav: false,
   };
 
@@ -71,8 +71,7 @@ export class BookTestComponent implements OnInit {
     const pack = this.route.snapshot.params['pack'];
     if (pre) {
       this.id = 'prescription';
-    }
-    else if (pack) {
+    } else if (pack) {
       this.id = 'packages';
     }
   }

@@ -150,6 +150,91 @@
                 </form>
             </div>
 
+            <div class="address" *ngIf="id === 'address'">
+                <div class="card" *ngFor="let add of address; let i =index" (click)="showAddressForm('a_form',add,i)">
+                    <div class="card-body">
+                        <h5 class="card-title">{{add.addressLine1}}</h5>
+                        <p class="card-text">{{add.addressLine2}}</p>
+                        <p class="card-text">{{add.city}}</p>
+                        <p class="card-text">{{add.state}}</p>
+                        <p class="card-text">{{add.pinCode}}</p>
+                        <i class="fa fa-trash" (click)="deleteAddress(i,$event); getUserDetail()"
+                            aria-hidden="true"></i>
+                    </div>
+                </div>
+                <div class="d-flex align-items-center justify-content-between">
+                    <p id="a_form" (click)="toggleForm('a_form')" *ngIf="!show">+ Add New Address</p>
+                    <p (click)="tabChange('family')">Skip <i class="fa fa-angle-double-right"></i></p>
+                </div>
+                <div class="address_form" *ngIf="open === 'a_form'">
+                    <i class="fa fa-times" (click)="hideForm()" aria-hidden="true"></i>
+                    <form [formGroup]="addressForm" (ngSubmit)="addAddress()">
+                        <div class="row my-4">
+                            <div class="form-group col">
+                                <label for="AddressLine1" class="required">Address Line 1</label>
+                                <input type="text" class="form-control" formControlName="addressLine1"
+                                    placeholder="Address Line 1">
+                                <div class="error"
+                                    *ngIf="addressForm.controls['addressLine1'].invalid && addressForm.controls['addressLine1'].touched ">
+                                    Please provide valid address</div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col">
+                                <label for="AddressLine2" class="required">Address Line 2</label>
+                                <input type="text" class="form-control" formControlName="addressLine2"
+                                    placeholder="Address Line 2">
+                                <div class="error"
+                                    *ngIf="addressForm.controls['addressLine2'].invalid && addressForm.controls['addressLine2'].touched ">
+                                    Please provide valid address</div>
+                            </div>
+                        </div>
+
+                        <div class="row my-4">
+                            <div class="form-group col-sm-6 col-xs-12 space">
+                                <label for="city" class="required">City</label>
+                                <input type="text" class="form-control" formControlName="city" placeholder="City">
+                                <div class="error"
+                                    *ngIf="addressForm.controls['city'].invalid && addressForm.controls['city'].touched ">
+                                    Please provide valid city</div>
+                            </div>
+                            <div class="form-group col-sm-6 col-xs-12">
+                                <label for="state" class="required">State</label>
+                                <input type="text" class="form-control" formControlName="state" placeholder="State">
+                                <div class="error"
+                                    *ngIf="addressForm.controls['state'].invalid && addressForm.controls['state'].touched ">
+                                    Please provide valid state</div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+
+                            <div class="form-group col-sm-6 col-xs-12 space">
+                                <label for="pincode" class="required">PIN Code</label>
+                                <input type="number" class="form-control" maxlength="6" formControlName="pinCode"
+                                    placeholder="PIN Code">
+                                <div class="error"
+                                    *ngIf="addressForm.controls['pinCode'].invalid && addressForm.controls['pinCode'].touched ">
+                                    Please provide valid pinCode</div>
+                            </div>
+
+                            <div class="form-group col-sm-6 col-xs-12">
+                                <label for="landmark">Nearby Landmark</label>
+                                <input type="text" class="form-control" formControlName="landmark"
+                                    placeholder="Nearby Landmark (optional)">
+                            </div>
+                        </div>
+
+                        <div class="d-flex align-items-center justify-content-center mt-5">
+                            <button type="submit" *ngIf="!show" [disabled]="addressForm.invalid">Add Address</button>
+                            <button type="button" (click)="updateAddress(); getUserDetail()" *ngIf="show">Update
+                                Address</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
             <div class="family" *ngIf="id === 'family'">
                 <div class="card" *ngFor="let member of familyMember; let i =index"
                     (click)="showFamilyMemberForm('f_form',member,i)">
@@ -159,9 +244,13 @@
                         <p class="card-text">{{member.relation}}</p>
                         <p class="card-text">{{member.memberGender}}</p>
                         <p class="card-text">{{member.memberDOB | date}}</p>
+                        <i class="fa fa-trash" (click)="deleteFamilyMember(i,$event)" aria-hidden="true"></i>
                     </div>
                 </div>
-                <p id="f_form" (click)="toggleForm('f_form')" *ngIf="!show">+ Add New Family Member</p>
+                <div class="d-flex align-items-center justify-content-between">
+                    <p id="f_form" (click)="toggleForm('f_form')" *ngIf="!show">+ Add New Family Member</p>
+                    <p routerLink="/dashboard">Skip <i class="fa fa-angle-double-right"></i></p>
+                </div>
                 <div class="family_form" *ngIf="open === 'f_form'">
                     <i class="fa fa-times" (click)="hideForm()" aria-hidden="true"></i>
                     <form [formGroup]="familyMemberForm" (ngSubmit)="addMember()">
@@ -250,86 +339,6 @@
                                     Member</button>
                                 <button type="button" (click)="updateMember()" *ngIf="show">Update Member</button>
                             </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-
-            <div class="address" *ngIf="id === 'address'">
-                <div class="card" *ngFor="let add of address; let i =index" (click)="showAddressForm('a_form',add,i)">
-                    <div class="card-body">
-                        <h5 class="card-title">{{add.addressLine1}}</h5>
-                        <p class="card-text">{{add.addressLine2}}</p>
-                        <p class="card-text">{{add.city}}</p>
-                        <p class="card-text">{{add.state}}</p>
-                        <p class="card-text">{{add.pinCode}}</p>
-                        <i class="fa fa-trash" (click)="deleteAddress(add,i,$event)" aria-hidden="true"></i>
-                    </div>
-                </div>
-                <p id="a_form" (click)="toggleForm('a_form')" *ngIf="!show">+ Add New Address</p>
-                <div class="address_form" *ngIf="open === 'a_form'">
-                    <i class="fa fa-times" (click)="hideForm()" aria-hidden="true"></i>
-                    <form [formGroup]="addressForm" (ngSubmit)="addAddress()">
-                        <div class="row my-4">
-                            <div class="form-group col">
-                                <label for="AddressLine1" class="required">Address Line 1</label>
-                                <input type="text" class="form-control" formControlName="addressLine1"
-                                    placeholder="Address Line 1">
-                                <div class="error"
-                                    *ngIf="addressForm.controls['addressLine1'].invalid && addressForm.controls['addressLine1'].touched ">
-                                    Please provide valid address</div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="form-group col">
-                                <label for="AddressLine2" class="required">Address Line 2</label>
-                                <input type="text" class="form-control" formControlName="addressLine2"
-                                    placeholder="Address Line 2">
-                                <div class="error"
-                                    *ngIf="addressForm.controls['addressLine2'].invalid && addressForm.controls['addressLine2'].touched ">
-                                    Please provide valid address</div>
-                            </div>
-                        </div>
-
-                        <div class="row my-4">
-                            <div class="form-group col-sm-6 col-xs-12 space">
-                                <label for="city" class="required">City</label>
-                                <input type="text" class="form-control" formControlName="city" placeholder="City">
-                                <div class="error"
-                                    *ngIf="addressForm.controls['city'].invalid && addressForm.controls['city'].touched ">
-                                    Please provide valid city</div>
-                            </div>
-                            <div class="form-group col-sm-6 col-xs-12">
-                                <label for="state" class="required">State</label>
-                                <input type="text" class="form-control" formControlName="state" placeholder="State">
-                                <div class="error"
-                                    *ngIf="addressForm.controls['state'].invalid && addressForm.controls['state'].touched ">
-                                    Please provide valid state</div>
-                            </div>
-                        </div>
-
-
-                        <div class="row">
-
-                            <div class="form-group col-sm-6 col-xs-12 space">
-                                <label for="pincode" class="required">PIN Code</label>
-                                <input type="number" class="form-control" maxlength="6" formControlName="pinCode"
-                                    placeholder="PIN Code">
-                                <div class="error"
-                                    *ngIf="addressForm.controls['pinCode'].invalid && addressForm.controls['pinCode'].touched ">
-                                    Please provide valid pinCode</div>
-                            </div>
-
-                            <div class="form-group col-sm-6 col-xs-12">
-                                <label for="landmark">Nearby Landmark</label>
-                                <input type="text" class="form-control" formControlName="landmark"
-                                    placeholder="Nearby Landmark (optional)">
-                            </div>
-                        </div>
-
-                        <div class="d-flex align-items-center justify-content-center mt-5">
-                            <button type="submit" *ngIf="!show" [disabled]="addressForm.invalid">Add Address</button>
-                            <button type="button" (click)="updateAddress()" *ngIf="show">Update Address</button>
                         </div>
                     </form>
                 </div>

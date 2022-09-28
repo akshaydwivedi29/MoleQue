@@ -61,7 +61,7 @@
                         <div class="d-flex align-items-center">
                             <button type="button" class="captchabtn">{{finalCaptcha}}</button>
                             <input type="text" formControlName="captcha" class="form-control ms-3" id="captcha"
-                                placeholder="Captcha Here">
+                                placeholder="Captcha Here" maxlength="6">
                         </div>
 
                     </div>
@@ -141,7 +141,7 @@
             </div>
         </div>
 
-        <div class="packages">
+        <div class="container py-5 packages">
 
             <div class="card">
                 <div class="card-body">
@@ -471,14 +471,14 @@
                             Please provide valid Age</div>
                     </div>
                     <div>
-                        <select class="form__block-input" formControlName="sex"
-                            [ngClass]="{'is-invalid': submitted && (inquiryForm.controls['sex'].errors)}">>
+                        <select class="form__block-input" formControlName="gender"
+                            [ngClass]="{'is-invalid': submitted && (inquiryForm.controls['gender'].errors)}">>
                             <option selected value="">-Choose Your Gender-</option>
                             <option value="Male">Male</option>
                             <option value="Female">Female</option>
                             <option value="Others">Others</option>
                         </select>
-                        <div class="error" *ngIf="submitted && inquiryForm.controls['sex'].errors">
+                        <div class="error" *ngIf="submitted && inquiryForm.controls['gender'].errors">
                             Please choose an option</div>
                     </div>
                     <div>
@@ -495,8 +495,8 @@
                             Please provide valid mobile number</div>
                     </div>
                     <div>
-                        <select class="form__block-input" formControlName="department"
-                            [ngClass]="{'is-invalid': submitted && (inquiryForm.controls['department'].errors)}">>
+                        <select class="form__block-input" formControlName="criticalIllness"
+                            [ngClass]="{'is-invalid': submitted && (inquiryForm.controls['criticalIllness'].errors)}">>
                             <option selected value="">-- Any Critical Illness --</option>
                             <option value="Diabetes">Diabetes</option>
                             <option value="Hypertension">Hypertension</option>
@@ -504,7 +504,7 @@
                             <option value="HIV">HIV</option>
                             <option value="Others">Others</option>
                         </select>
-                        <div class="error" *ngIf="submitted && inquiryForm.controls['department'].errors">
+                        <div class="error" *ngIf="submitted && inquiryForm.controls['criticalIllness'].errors">
                             Please choose an option</div>
                     </div>
 
