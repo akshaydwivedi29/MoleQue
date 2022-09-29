@@ -12,25 +12,25 @@ import { InquiryForm, TestReport } from './homepage.model';
   styleUrls: ['./homepage.component.css'],
 })
 export class HomepageComponent implements OnInit {
-  finalCaptcha: string = '';
-  testReportForm!: FormGroup;
+  testReportForm: FormGroup;
   inquiryForm: FormGroup;
-  inquiryValue!: InquiryForm;
-  submitted: boolean = false;
-  testReportValue!: TestReport;
-  showAlert:boolean = false;
-  blur_bg = false;
-  blur_mobile_report = false;
-  secure_login = false;
-  invalidOtp:boolean = false;
-  unregMobile:boolean = false;
   mobileNumber: FormGroup;
   otpForm: FormGroup;
+  inquiryValue!: InquiryForm;
+  testReportValue!: TestReport;
+  submitted: boolean = false;
+  showAlert: boolean = false;
+  blur_bg: boolean = false;
+  blur_mobile_report: boolean = false;
+  secure_login: boolean = false;
+  invalidOtp: boolean = false;
+  unregMobile: boolean = false;
+  mobileReport: boolean = true;
+  finalCaptcha: string = '';
   number: string = '';
   otpCode: string = '';
-  mobileReport = true;
   userId: string = '';
-
+  
   customOptions: OwlOptions = {
     loop: true,
     autoplay: true,

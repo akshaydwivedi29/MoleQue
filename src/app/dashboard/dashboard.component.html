@@ -11,7 +11,7 @@
         <div class="card edit_info">
             <div class="card-body">
                 <div class="info_avtar">M</div>
-                <div class="info_name">{{userDetail?.firstName}}</div>
+                <div class="info_name">{{userDetail?.firstName | titlecase}}</div>
                 <div class="info_email">{{userDetail?.email}}</div>
                 <div class="info_number">+91 {{userDetail?.number}}</div>
                 <button type="button" (click)="editInfo($event)">EDIT INFO</button>

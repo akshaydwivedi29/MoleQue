@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
   invalidOtp: boolean = false;
   logInForm: FormGroup;
   otpForm: FormGroup;
-  loginData: {} = {};
+  loginData!: { number: string; password: string; };
   number: string = '';
   otpCode: string = '';
 
@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
     private router: Router
   ) {
     this.logInForm = this.formBuilder.group({
-      number: ['', [Validators.required, Validators.maxLength(10),Validators.minLength(10)]],
+      number: ['', [Validators.required, Validators.maxLength(10), Validators.minLength(10)]],
       password: [
         '',
         [
@@ -46,9 +46,9 @@ export class LoginComponent implements OnInit {
     const pattern = /[0-9]/;
     const inputChar = String.fromCharCode(event.charCode);
     if (!pattern.test(inputChar)) {
-        event.preventDefault();
+      event.preventDefault();
     }
-}
+  }
 
   login() {
     this.loginData = this.logInForm.value;
@@ -85,7 +85,7 @@ export class LoginComponent implements OnInit {
 
   submitOtp(otp1: any, otp2: any, otp3: any, otp4: any, otp5: any, otp6: any) {
     this.otpCode = otp1.value + otp2.value + otp3.value + otp4.value + otp5.value + otp6.value;
-    this.loginService.loginWithOtp({mobile: this.number, otp: this.otpCode }).subscribe((res: any) => {
+    this.loginService.loginWithOtp({ mobile: this.number, otp: this.otpCode }).subscribe((res: any) => {
       if (res) {
         this.router.navigate(['dashboard'], {
           replaceUrl: true,
@@ -103,7 +103,7 @@ export class LoginComponent implements OnInit {
 
   forgotPage() {
     this.number = this.logInForm.value.number;
-    this.router.navigate(['/forgot-password',{number:this.number}]);
+    this.router.navigate(['/forgot-password', { number: this.number }]);
   }
 
   move(event: any, previous: any, current: any, next: any) {
