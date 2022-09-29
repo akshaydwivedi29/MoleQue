@@ -164,7 +164,7 @@
                 </div>
                 <div class="d-flex align-items-center justify-content-between">
                     <p id="a_form" (click)="toggleForm('a_form')" *ngIf="!show">+ Add New Address</p>
-                    <p (click)="tabChange('family')">Skip <i class="fa fa-angle-double-right"></i></p>
+                    <button (click)="tabChange('family')">Skip <i class="fa fa-angle-double-right"></i></button>
                 </div>
                 <div class="address_form" *ngIf="open === 'a_form'">
                     <i class="fa fa-times" (click)="hideForm()" aria-hidden="true"></i>
@@ -249,7 +249,7 @@
                 </div>
                 <div class="d-flex align-items-center justify-content-between">
                     <p id="f_form" (click)="toggleForm('f_form')" *ngIf="!show">+ Add New Family Member</p>
-                    <p routerLink="/dashboard">Skip <i class="fa fa-angle-double-right"></i></p>
+                    <button routerLink="/dashboard">Skip <i class="fa fa-angle-double-right"></i></button>
                 </div>
                 <div class="family_form" *ngIf="open === 'f_form'">
                     <i class="fa fa-times" (click)="hideForm()" aria-hidden="true"></i>

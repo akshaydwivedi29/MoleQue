@@ -12,7 +12,7 @@
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
-    min-height: 570px;
+    min-height: 350px;
 }
 
 .banner1 {
@@ -101,13 +101,14 @@
 
 .main_carousel .card {
     position: absolute;
-    top: 20%;
+    top: 25%;
     right: 5%;
     z-index: 1;
     max-width: 320px;
     border: 8px solid #1f3d9d;
     border-radius: 35px;
     background: transparent;
+    zoom: 0.6;
 }
 
 .main_carousel .card .hide_card {
@@ -169,24 +170,65 @@
 
 /* HOME COLLECTION SECTION STARTS  */
 
-.home_collection>.card {
-    width: 100%;
-    height: auto;
+.home_collection {
+    background: url(../../assets/images/banner/hc_bg.png);
+    background-size: cover;
 }
 
-.home_collection>.card .card-title>h4 {
+.home_collection>.card,
+.home_collection>.card>.card-body,
+.home_collection .packages .card,
+.home_collection .packages .card .card-body {
+    width: 100%;
+    height: auto;
+    position: relative;
+    padding: 0;
+    background: rgba(255, 255, 255, 0.4);
+}
+
+.home_collection>.card,
+.home_collection>.card>.card-body {
+    border-radius: 0;
+}
+
+/* .home_collection>.card .card-title>h4 {
+    position: absolute;
+    top: -25px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    z-index: 699;
     letter-spacing: 1px;
     text-align: center;
     font-family: "BebasNeueBold";
     font-size: 40px;
-    color: #1f3d9d;
-}
+    color: #fff;
+    background: #F22283;
+    border-radius: 10px;
+    width: fit-content;
+    padding: 5px 10px;
+} */
 
 .home_collection>.card .card-body .hc_item:nth-child(even) {
-    border-left: 3px solid gray;
+    /* border-left: 3px solid gray;
     border-right: 3px solid gray;
     padding-left: 40px;
-    padding-right: 40px;
+    padding-right: 40px; */
+    padding: 0 40px;
+}
+
+.home_collection>.card .card-body .hc_item h5 {
+    color: #1f3d9d;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.home_collection>.card>.card-body div:nth-child(2) h4 {
+    color: #f22283;
+    margin-bottom: 0 !important;
+    font-family: "BebasNeueBold";
+    font-size: 30px;
+    margin-right: 20px;
 }
 
 .hc_item img {
@@ -228,11 +270,16 @@
 .home_collection .packages .card {
     width: 33%;
     min-height: 150px;
+    border-radius: 10px;
 
 }
 
+.home_collection .packages .card .card-body {
+    border-radius: 10px;
+}
+
 .home_collection .packages .card:nth-child(1) {
-    background-image: url(../../assets/images/icons/infertility.png);
+    background-image: url(../../assets/images/icons/pregnancy.png);
     background-repeat: no-repeat;
     background-size: 155px auto;
     background-position-x: 30px;

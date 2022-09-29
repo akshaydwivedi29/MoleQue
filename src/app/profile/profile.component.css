@@ -111,6 +111,7 @@
 }
 
 .profile .container .tab_content .my_profile button:nth-child(2):hover,
+.profile .container .tab_content .address button:hover,
 .profile .container .tab_content .family button:hover {
     background: #1f3d9d;
 }
