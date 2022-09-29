@@ -3,33 +3,34 @@ import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoginServiceService } from '../services/login-service.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Address, FamilyMember, userProfile } from '../dashboard/dashboard.model';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css'],
 })
 export class ProfileComponent implements OnInit {
-  open: any;
-  id: any = 'profile';
+  open: string = '';
+  id: string = 'profile';
+  userId: string = '';
+  number: string = '';
+  Id: string = '';
   profileForm: FormGroup;
   addressForm: FormGroup;
   familyMemberForm: FormGroup;
   submitted: boolean = false;
   show: boolean = false;
   showPassword: boolean = true;
-  number: string = '';
-  userId: string = '';
-  userDetail: any;
-  Id: any;
   familyMemberIndex!: number;
   addressIndex!: number;
   passwordError: boolean = false;
-  profileDetail: any;
-  addressValue: any;
-  familyMemberValue: any;
-  familyMember: any;
-  address: any;
-  blur_bg = false;
+  blur_bg: boolean = false;
+  userDetail!: userProfile;
+  profileDetail!: userProfile;
+  addressValue!: Address;
+  familyMemberValue!: FamilyMember;
+  familyMember: FamilyMember[] = [];
+  address: Address[] = [];
   datePickerConfig: Partial<BsDatepickerConfig>;
 
   constructor(
@@ -113,12 +114,13 @@ export class ProfileComponent implements OnInit {
       memberDOB: ['', [Validators.required]],
     });
 
-    this.Id = localStorage.getItem('id')
+    this.Id = localStorage.getItem('id') || '';
   }
 
   ngOnInit(): void {
     this.number = this.route.snapshot.params['number'];
     this.userId = this.route.snapshot.params['userId'];
+    this.profileForm.patchValue({number:this.number})
     this.getUserDetail();
     if (this.Id) {
       this.showPassword = false;
@@ -229,12 +231,14 @@ export class ProfileComponent implements OnInit {
     if (this.userId && this.familyMemberForm.valid) {
       this.loginService.addFamilyMember(this.userId, this.familyMemberValue).subscribe(res => { });
       // this.router.navigate(['/dashboard']);
+      this.open = ''
       this.getUserDetail();
     }
     else if (this.Id && this.familyMemberForm.valid) {
       this.loginService.addFamilyMember(this.Id, this.familyMemberValue).subscribe(res => { });
       this.familyMemberForm.reset();
       // this.router.navigate(['/dashboard']);
+      this.open = ''
       this.getUserDetail();
     } else {
       alert('Something went wrong!');
@@ -253,9 +257,9 @@ export class ProfileComponent implements OnInit {
     this.familyMemberValue = this.familyMemberForm.value;
     this.loginService.updateFamilyMember(this.Id, this.familyMemberValue, this.familyMemberIndex).subscribe(res => { });
     this.familyMemberForm.reset();
+    this.getUserDetail();
     this.show = false;
     this.open = ''
-    this.getUserDetail();
   }
 
   deleteFamilyMember(index: number, event: Event) {

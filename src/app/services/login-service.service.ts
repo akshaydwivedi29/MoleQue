@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { userProfile } from '../dashboard/dashboard.model';
 
 @Injectable({
   providedIn: 'root'
@@ -54,7 +55,7 @@ export class LoginServiceService {
   }
 
   getUserDetail(userId: string) {
-    return this.http.get(`${environment.serverURL}users/userById/${userId}`)
+    return this.http.get<userProfile>(`${environment.serverURL}users/userById/${userId}`)
   }
 
 

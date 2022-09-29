@@ -2,12 +2,13 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { TestList } from './tests.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CartService {
-  items: any = [];
+  items: TestList[] = [];
   totalCartValue = 0;
   protected _eventSubject = new Subject();
   public events = this._eventSubject.asObservable();
@@ -18,14 +19,6 @@ export class CartService {
 
   addToCart(item: any) {
     return this.http.post(`${environment.serverURL}cart/`, item);
-  }
-
-  Cart(item: any) {
-    return this.http
-      .post(`${environment.serverURL}cart/`, item)
-      .subscribe((res) => {
-        this.items = res;
-      });
   }
 
   addToCartLS(item: any) {
@@ -65,7 +58,7 @@ export class CartService {
   }
 
   getAllTestDetail() {
-    return this.http.get(`${environment.serverURL}search`);
+    return this.http.get<TestList[]>(`${environment.serverURL}search`);
   }
 
   saveCartLS() {
