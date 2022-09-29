@@ -456,61 +456,72 @@
                     Meet Sushruta<br /><span>Your Virtual Advisor</span>
                 </h2>
                 <p class="subtitle">Know Your Health Score</p>
+
                 <form [formGroup]="inquiryForm" (ngSubmit)="submitInquiryForm()">
 
-                    <div>
-                        <input class="form__block-input" type="text" placeholder="Your Name*" formControlName="name"
-                            [ngClass]="{'is-invalid': submitted && (inquiryForm.controls['name'].errors)}">
-                        <div class="error" *ngIf="submitted && inquiryForm.controls['name'].errors">
-                            Please provide valid name</div>
-                    </div>
-                    <div>
-                        <input class="form__block-input" type="text" placeholder="Enter Your Age" formControlName="age"
-                            maxlength="3" (keypress)="keyPress($event)"
-                            [ngClass]="{'is-invalid': submitted && (inquiryForm.controls['age'].errors)}">
-                        <div class="error" *ngIf="submitted && inquiryForm.controls['age'].errors">
-                            Please provide valid Age</div>
-                    </div>
-                    <div>
-                        <select class="form__block-input" formControlName="gender"
-                            [ngClass]="{'is-invalid': submitted && (inquiryForm.controls['gender'].errors)}">>
-                            <option selected value="">-Choose Your Gender-</option>
-                            <option value="Male">Male</option>
-                            <option value="Female">Female</option>
-                            <option value="Others">Others</option>
-                        </select>
-                        <div class="error" *ngIf="submitted && inquiryForm.controls['gender'].errors">
-                            Please choose an option</div>
-                    </div>
-                    <div>
-                        <input class="form__block-input" type="text" placeholder="Email*" formControlName="email"
-                            [ngClass]="{'is-invalid': submitted && (inquiryForm.controls['email'].errors)}">
-                        <div class="error" *ngIf="submitted && inquiryForm.controls['email'].errors">
-                            Please provide valid email address</div>
-                    </div>
-                    <div>
-                        <input class="form__block-input" type="text" placeholder="Mobile Number"
-                            formControlName="number" maxlength="10" minlength="10" (keypress)="keyPress($event)"
-                            [ngClass]="{'is-invalid': submitted && (inquiryForm.controls['number'].errors)}">
-                        <div class="error" *ngIf="submitted && inquiryForm.controls['number'].errors">
-                            Please provide valid mobile number</div>
-                    </div>
-                    <div>
-                        <select class="form__block-input" formControlName="criticalIllness"
-                            [ngClass]="{'is-invalid': submitted && (inquiryForm.controls['criticalIllness'].errors)}">>
-                            <option selected value="">-- Any Critical Illness --</option>
-                            <option value="Diabetes">Diabetes</option>
-                            <option value="Hypertension">Hypertension</option>
-                            <option value="Heart Disease">Heart Disease</option>
-                            <option value="HIV">HIV</option>
-                            <option value="Others">Others</option>
-                        </select>
-                        <div class="error" *ngIf="submitted && inquiryForm.controls['criticalIllness'].errors">
-                            Please choose an option</div>
+                    <div class="d-flex align-items-center justify-content-between">
+                        <div>
+                            <input class="form__block-input" type="text" placeholder="Your Name*" formControlName="name"
+                                [ngClass]="{'is-invalid': submitted && (inquiryForm.controls['name'].errors)}">
+                            <div class="error" *ngIf="submitted && inquiryForm.controls['name'].errors">
+                                Please provide valid name</div>
+                        </div>
+
+                        <div>
+                            <input class="form__block-input" type="text" placeholder="Enter Your Age*"
+                                formControlName="age" maxlength="3" (keypress)="keyPress($event)"
+                                [ngClass]="{'is-invalid': submitted && (inquiryForm.controls['age'].errors)}">
+                            <div class="error" *ngIf="submitted && inquiryForm.controls['age'].errors">
+                                Please provide valid Age</div>
+                        </div>
                     </div>
 
-                    <button type="submit" class="btn btn_blue mt-5">Get Evaluated</button>
-                    <label class="mt-5">* Personal data will be encrypted</label>
+                    <div class="d-flex align-items-center justify-content-between">
+                        <div>
+                            <input class="form__block-input" type="text" placeholder="Email*" formControlName="email"
+                                [ngClass]="{'is-invalid': submitted && (inquiryForm.controls['email'].errors)}">
+                            <div class="error" *ngIf="submitted && inquiryForm.controls['email'].errors">
+                                Please provide valid email address</div>
+                        </div>
+
+                        <div>
+                            <input class="form__block-input" type="text" placeholder="Mobile Number*"
+                                formControlName="number" maxlength="10" minlength="10" (keypress)="keyPress($event)"
+                                [ngClass]="{'is-invalid': submitted && (inquiryForm.controls['number'].errors)}">
+                            <div class="error" *ngIf="submitted && inquiryForm.controls['number'].errors">
+                                Please provide valid mobile number</div>
+                        </div>
+                    </div>
+
+                    <div class="d-flex align-items-center justify-content-between">
+                        <div>
+                            <select class="form__block-input" formControlName="gender"
+                                [ngClass]="{'is-invalid': submitted && (inquiryForm.controls['gender'].errors)}">>
+                                <option selected value="">-Choose Your Gender-</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                                <option value="Others">Others</option>
+                            </select>
+                            <div class="error" *ngIf="submitted && inquiryForm.controls['gender'].errors">
+                                Please choose an option</div>
+                        </div>
+                        <div>
+                            <select class="form__block-input" formControlName="criticalIllness"
+                                [ngClass]="{'is-invalid': submitted && (inquiryForm.controls['criticalIllness'].errors)}">>
+                                <option selected value="">-- Any Critical Illness --</option>
+                                <option value="Diabetes">Diabetes</option>
+                                <option value="Hypertension">Hypertension</option>
+                                <option value="Heart Disease">Heart Disease</option>
+                                <option value="HIV">HIV</option>
+                                <option value="Others">Others</option>
+                            </select>
+                            <div class="error" *ngIf="submitted && inquiryForm.controls['criticalIllness'].errors">
+                                Please choose an option</div>
+                        </div>
+                    </div>
+
+                    <button type="submit">Get Evaluated</button>
+                    <label>* Personal data will be encrypted</label>
                 </form>
             </div>
         </div>

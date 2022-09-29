@@ -4547,7 +4547,8 @@ a:hover {
 }
 
 .form__block>.subtitle {
-  margin-top: 20px;
+  margin-top: 15px;
+  margin-bottom: 0;
   font-size: 20px;
   color: #333333;
   line-height: 1.5;
@@ -4557,19 +4558,19 @@ a:hover {
 
 .form__block textarea,
 .form__block-input {
-  background-image: -webkit-gradient(linear, left bottom, right top, from(#efefef), to(#fff));
-  background-image: linear-gradient(to top right, #efefef, #fff);
+  /* background-image: -webkit-gradient(linear, left bottom, right top, from(#efefef), to(#fff));
+  background-image: linear-gradient(to top right, #efefef, #fff); */
   display: inline-block;
   max-width: 276px;
   -webkit-box-flex: 0;
   -ms-flex: 0 0 276px;
   flex: 0 0 276px;
   margin-top: 20px;
-  padding: 24px 26px;
+  padding: 5px 20px;
   font-size: 20px;
   outline: none;
   color: #1f3d9d;
-  font-weight: 600;
+  /* font-weight: 600; */
   border: 1px solid #e0e0e0;
   border-radius: 8px;
   -webkit-transition: all .3s linear;
@@ -4610,9 +4611,8 @@ a:hover {
 }
 
 .form__block>form {
-  margin-left: -1px;
   width: 100%;
-  margin-top: 40px;
+  margin-top: 25px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -4623,7 +4623,19 @@ a:hover {
   align-items: center;
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
-  justify-content: space-between;
+  justify-content: center;
+}
+
+.form__block button {
+  border: none;
+  background: #1f3d9d;
+  color: #fff;
+  padding: 5px 20px;
+  border-radius: 5px;
+}
+
+.form__block button:hover {
+  background: #f22283;
 }
 
 .form__block>form>textarea {
