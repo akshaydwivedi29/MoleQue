@@ -4487,7 +4487,7 @@ a:hover {
   -webkit-transform: translateX(50%);
   transform: translateX(50%);
   margin-right: 440px;
-  top: 227px;
+  top: 50px;
   z-index: 2;
   width: 573px;
   height: 573px;
@@ -4499,7 +4499,7 @@ a:hover {
   -webkit-transform: translateX(50%);
   transform: translateX(50%);
   margin-right: 550px;
-  top: 185px;
+  top: 25px;
   z-index: 3;
   width: 144px;
   height: 144px;
@@ -4513,6 +4513,8 @@ a:hover {
   margin-right: 315px;
   top: 40px;
   z-index: 4;
+  width: 425px;
+  height: auto;
 }
 
 .form__bg>.icon {
@@ -4532,7 +4534,7 @@ a:hover {
 .form .container {
   position: relative;
   z-index: 10;
-  padding-bottom: 160px;
+  padding-bottom: 50px;
   -webkit-box-pack: end;
   -ms-flex-pack: end;
   justify-content: flex-end;
@@ -4571,7 +4573,7 @@ a:hover {
   outline: none;
   color: #1f3d9d;
   /* font-weight: 600; */
-  border: 1px solid #e0e0e0;
+  border: 1px solid #1f3d9d;
   border-radius: 8px;
   -webkit-transition: all .3s linear;
   transition: all .3s linear;
@@ -4630,8 +4632,12 @@ a:hover {
   border: none;
   background: #1f3d9d;
   color: #fff;
-  padding: 5px 20px;
+  padding: 8px 20px;
   border-radius: 5px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 20px;
+  font-weight: bold;
 }
 
 .form__block button:hover {

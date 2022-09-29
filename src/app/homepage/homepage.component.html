@@ -460,14 +460,14 @@
                 <form [formGroup]="inquiryForm" (ngSubmit)="submitInquiryForm()">
 
                     <div class="d-flex align-items-center justify-content-between">
-                        <div>
+                        <div class="me-2">
                             <input class="form__block-input" type="text" placeholder="Your Name*" formControlName="name"
                                 [ngClass]="{'is-invalid': submitted && (inquiryForm.controls['name'].errors)}">
                             <div class="error" *ngIf="submitted && inquiryForm.controls['name'].errors">
                                 Please provide valid name</div>
                         </div>
 
-                        <div>
+                        <div class="ms-2">
                             <input class="form__block-input" type="text" placeholder="Enter Your Age*"
                                 formControlName="age" maxlength="3" (keypress)="keyPress($event)"
                                 [ngClass]="{'is-invalid': submitted && (inquiryForm.controls['age'].errors)}">
@@ -477,14 +477,14 @@
                     </div>
 
                     <div class="d-flex align-items-center justify-content-between">
-                        <div>
+                        <div class="me-2">
                             <input class="form__block-input" type="text" placeholder="Email*" formControlName="email"
                                 [ngClass]="{'is-invalid': submitted && (inquiryForm.controls['email'].errors)}">
                             <div class="error" *ngIf="submitted && inquiryForm.controls['email'].errors">
                                 Please provide valid email address</div>
                         </div>
 
-                        <div>
+                        <div class="ms-2">
                             <input class="form__block-input" type="text" placeholder="Mobile Number*"
                                 formControlName="number" maxlength="10" minlength="10" (keypress)="keyPress($event)"
                                 [ngClass]="{'is-invalid': submitted && (inquiryForm.controls['number'].errors)}">
@@ -494,7 +494,7 @@
                     </div>
 
                     <div class="d-flex align-items-center justify-content-between">
-                        <div>
+                        <div class="me-3">
                             <select class="form__block-input" formControlName="gender"
                                 [ngClass]="{'is-invalid': submitted && (inquiryForm.controls['gender'].errors)}">>
                                 <option selected value="">-Choose Your Gender-</option>
@@ -505,7 +505,7 @@
                             <div class="error" *ngIf="submitted && inquiryForm.controls['gender'].errors">
                                 Please choose an option</div>
                         </div>
-                        <div>
+                        <div class="ms-3">
                             <select class="form__block-input" formControlName="criticalIllness"
                                 [ngClass]="{'is-invalid': submitted && (inquiryForm.controls['criticalIllness'].errors)}">>
                                 <option selected value="">-- Any Critical Illness --</option>
@@ -520,8 +520,10 @@
                         </div>
                     </div>
 
-                    <button type="submit">Get Evaluated</button>
-                    <label>* Personal data will be encrypted</label>
+                    <div class="d-flex align-items-center justify-content-between mt-4">
+                        <button class="me-5" type="submit">Get Evaluated</button>
+                        <label class="ms-5">* Personal data will be encrypted</label>
+                    </div>
                 </form>
             </div>
         </div>
