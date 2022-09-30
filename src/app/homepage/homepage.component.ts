@@ -102,7 +102,7 @@ export class HomepageComponent implements OnInit {
         [
           Validators.required,
           Validators.minLength(3),
-          Validators.pattern('[a-zA-Z0-9]*'),
+          Validators.pattern(/^[a-zA-Z]+[a-zA-Z]/),
         ],
       ],
       criticalIllness: ['', [Validators.required]],

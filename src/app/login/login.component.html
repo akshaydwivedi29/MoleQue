@@ -30,7 +30,8 @@
                     <div class="form-group">
                         <span id="countryCode">+91</span>
                         <input type="tel" class="form-control" formControlName="number" id="mobile"
-                            placeholder="10 digit mobile number" (keypress)="keyPress($event)" maxlength="10" minlength="10">
+                            placeholder="10 digit mobile number" (keypress)="keyPress($event)" maxlength="10"
+                            minlength="10">
                         <p class="error"
                             *ngIf="logInForm.controls['number'].invalid && logInForm.controls['number'].touched ">
                             Please provide valid mobile number</p>
@@ -49,17 +50,20 @@
                         <button type="submit" class="login_btn_1" [disabled]="!logInForm.valid">LOGIN</button>
                         <p class="text-center my-2">or</p>
                         <button type="button" (click)="loginWithOtp()" [disabled]="logInForm.controls['number'].invalid"
-                            class="login_btn_otp">LOGIN WITH OTP</button>
+                            class="login_btn_otp">LOGIN WITH
+                            OTP</button>
                     </div>
-                    <a (click)="forgotPage()" id="forgotPswd"
-                        [class.disabled]="logInForm.controls['number'].invalid">Forgot Password?</a><br>
-                    <span id="signUp">New User? &nbsp;<a routerLink="/signup">Create an account.</a></span>
-
+                    <div class="btn">
+                        <button type="button" (click)="forgotPage()" id="forgotPswd"
+                            [disabled]="logInForm.controls['number'].invalid">Forgot Password?</button><br>
+                        <span id="signUp">New User? &nbsp;<a routerLink="/signup">Create an account.</a></span>
+                    </div>
                 </form>
             </div>
 
             <div class="login_item_form" *ngIf="showOTP">
-                <form [formGroup]="otpForm" (ngSubmit)="submitOtp(otpCode1,otpCode2,otpCode3,otpCode4,otpCode5,otpCode6)">
+                <form [formGroup]="otpForm"
+                    (ngSubmit)="submitOtp(otpCode1,otpCode2,otpCode3,otpCode4,otpCode5,otpCode6)">
                     <div class="row">
                         <div class="col">
                             <input type="tel" class="form-control" formControlName="otpCode" #otpCode1 maxlength="1"
@@ -89,8 +93,7 @@
 
 
                     <div class="login_buttons mt-3">
-                        <button type="submit" class="login_btn_1" [disabled]="otpForm.invalid"
-                            >Submit</button>
+                        <button type="submit" class="login_btn_1" [disabled]="otpForm.invalid">Submit</button>
                     </div>
 
                 </form>
@@ -101,4 +104,3 @@
 
     </div>
 </section>
-

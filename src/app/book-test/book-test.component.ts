@@ -81,7 +81,7 @@ export class BookTestComponent implements OnInit {
     if (!query || query.length < 1) {
       return;
     }
-    this.testService.searchTestList(query).subscribe((res: any) => {
+    this.testService.searchTestList(query).subscribe((res: TestList[]) => {
       this.testList = res;
     });
   }

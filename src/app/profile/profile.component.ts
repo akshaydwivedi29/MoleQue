@@ -87,7 +87,7 @@ export class ProfileComponent implements OnInit {
       addressLine2: ['', [Validators.required]],
       city: ['', [Validators.required]],
       state: ['', [Validators.required]],
-      pinCode: ['', [Validators.required, Validators.maxLength(6),]],
+      pinCode: ['', [Validators.required]],
       landmark: [''],
     });
 

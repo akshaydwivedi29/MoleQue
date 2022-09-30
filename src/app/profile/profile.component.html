@@ -129,8 +129,8 @@
                     </div><br>
 
 
-                    <div class="row">
-                        <div class="col-12">
+                    <div class="row" >
+                        <div class="col-12" *ngIf="showPassword">
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" formControlName="acceptCheckbox">
                                 <label class="form-check-label required" id="checkTerms" for="flexCheckDefault">
@@ -212,7 +212,7 @@
 
                             <div class="form-group col-sm-6 col-xs-12 space">
                                 <label for="pincode" class="required">PIN Code</label>
-                                <input type="number" class="form-control" maxlength="6" formControlName="pinCode"
+                                <input type="tel" class="form-control" minlength="6" maxlength="6" formControlName="pinCode" (keypress)="keyPress($event)"
                                     placeholder="PIN Code">
                                 <div class="error"
                                     *ngIf="addressForm.controls['pinCode'].invalid && addressForm.controls['pinCode'].touched ">
