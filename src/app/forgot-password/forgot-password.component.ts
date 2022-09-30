@@ -11,11 +11,11 @@ import { ForgotPswdService } from '../services/forgot-pswd.service';
 export class ForgotPasswordComponent implements OnInit {
   show: boolean = false;
   showError: boolean = false;
-  mobileNumber!: FormGroup;
+  mobileNumber: FormGroup;
   mobile: string = '';
-  otp!: FormGroup;
+  otp: FormGroup;
   code: string = '';
-  number: any;
+  number: string='';
   newPassword: string = '';
 
   constructor(
@@ -29,7 +29,7 @@ export class ForgotPasswordComponent implements OnInit {
     });
 
     this.otp = this.fb.group({
-      otpCode: ['', [Validators.required, Validators.maxLength(6),Validators.minLength(6)]],
+      otpCode: ['', [Validators.required]],
       newPassword: [
         '',
         [

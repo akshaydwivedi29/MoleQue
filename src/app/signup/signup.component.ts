@@ -9,10 +9,10 @@ import { LoginServiceService } from '../services/login-service.service';
   styleUrls: ['./signup.component.css'],
 })
 export class SignupComponent implements OnInit {
+  signUpForm: FormGroup;
+  otpForm: FormGroup;
+  signUpData!: {number:string};
   showSignUpError: boolean = false;
-  signUpForm!: FormGroup;
-  otpForm!: FormGroup;
-  signUpData: any;
   showOTP: boolean = false;
   invalidOtp: boolean = false;
   number: string = '';

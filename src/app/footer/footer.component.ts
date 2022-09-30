@@ -9,15 +9,18 @@ import { HomeServiceService } from '../services/home-service.service';
   styleUrls: ['./footer.component.css'],
 })
 export class FooterComponent implements OnInit {
-  open = true;
-  toggler = true;
+  open: boolean = true;
+  toggler: boolean = true;
   getCallForm: FormGroup;
   submitted: boolean = false;
-  getNumber: any;
+  getNumber: {number:string,userId:string} = {
+    number: '',
+    userId: ''
+  };
 
   constructor(private fb: FormBuilder, private homeService: HomeServiceService, private router: Router) {
     this.getCallForm = this.fb.group({
-      number: ['', [Validators.required, Validators.maxLength(10),Validators.minLength(10)]]
+      number: ['', [Validators.required, Validators.maxLength(10), Validators.minLength(10)]]
     });
   }
 
@@ -25,13 +28,13 @@ export class FooterComponent implements OnInit {
     this.open = !this.open;
     this.toggler = !this.toggler;
   }
-  
-  ngOnInit(): void {}
+
+  ngOnInit(): void { }
 
   displayStyle = 'none';
 
   openPopup() {
-      this.displayStyle = 'flex';
+    this.displayStyle = 'flex';
   }
 
   closePopup() {
@@ -50,9 +53,10 @@ export class FooterComponent implements OnInit {
     this.submitted = true;
     this.getNumber = this.getCallForm.value;
     const userId = localStorage.getItem('id');
-    this.getNumber.userId = userId;
+    this.getNumber.userId = userId || '';
     if (userId && this.getCallForm.valid) {
       this.homeService.getNumber(this.getNumber).subscribe((res) => {
+        console.log(res)
         this.openPopup();
         setTimeout(() => {
           this.displayStyle = 'none';
