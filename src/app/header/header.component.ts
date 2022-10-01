@@ -10,8 +10,9 @@ declare var $: any;
 })
 export class HeaderComponent implements OnInit {
   testlist: Array<TestList> = [];
-  cartCount:any;
+  cartCount: any;
   hasQuery: boolean = false;
+  showLogout: boolean = false;
   itemCount: number = 0;
   userId: string = '';
   mobileMenu: boolean = true;
@@ -41,6 +42,9 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCart();
+    if (this.userId) {
+      this.showLogout = true;
+    }
   }
 
   async getCart() {

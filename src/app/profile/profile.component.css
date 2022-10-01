@@ -131,6 +131,10 @@
     cursor: pointer;
 }
 
+.name{
+    text-transform: capitalize;
+}
+
 .profile .container .tab_content .family button,
 .profile .container .tab_content .address button {
     background: #f22283;

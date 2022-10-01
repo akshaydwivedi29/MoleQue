@@ -26,7 +26,7 @@
                     <div class="row my-4">
                         <div class="form-group col-sm-6 col-xs-12 space">
                             <label for="firstname" class="required">First Name</label>
-                            <input type="text" formControlName="firstName" class="form-control"
+                            <input type="text" formControlName="firstName" class="form-control name"
                                 placeholder="Enter First name">
                             <div class="error"
                                 *ngIf="profileForm.controls['firstName']?.invalid && profileForm.controls['firstName'].touched ">
@@ -35,7 +35,7 @@
 
                         <div class="form-group col-sm-6 col-xs-12">
                             <label for="lastname" class="required">Last Name</label>
-                            <input type="text" formControlName="lastName" class="form-control"
+                            <input type="text" formControlName="lastName" class="form-control name"
                                 placeholder="Enter Last name">
                             <div class="error"
                                 *ngIf="profileForm.controls['lastName']?.invalid && profileForm.controls['lastName'].touched ">
@@ -261,7 +261,7 @@
                         <div class="row my-4">
                             <div class="form-group col-sm-6 col-xs-12 space">
                                 <label for="memberfirstname" class="required">First Name</label>
-                                <input type="text" class="form-control" formControlName="memberFirstName"
+                                <input type="text" class="form-control name" formControlName="memberFirstName"
                                     placeholder="Enter First name">
                                 <div class="error"
                                     *ngIf="familyMemberForm.controls['memberFirstName'].invalid && familyMemberForm.controls['memberFirstName'].touched ">
@@ -269,7 +269,7 @@
                             </div>
                             <div class="form-group col-sm-6 col-xs-12">
                                 <label for="memberlastname" class="required">Last Name</label>
-                                <input type="text" class="form-control" formControlName="memberLastName"
+                                <input type="text" class="form-control name" formControlName="memberLastName"
                                     placeholder="Enter Last name">
                                 <div class="error"
                                     *ngIf="familyMemberForm.controls['memberLastName'].invalid && familyMemberForm.controls['memberLastName'].touched ">

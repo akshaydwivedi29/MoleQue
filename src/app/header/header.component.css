@@ -102,6 +102,12 @@
     margin-left: 4px;
 }
 
+.login_cart .logout i:after {
+    content: 'Logout';
+    font-style: normal;
+    margin-left: 4px;
+}
+
 .login_cart .cart i:after {
     content: 'Cart';
     font-style: normal;

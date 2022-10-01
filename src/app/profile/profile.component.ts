@@ -140,6 +140,8 @@ export class ProfileComponent implements OnInit {
   hideForm() {
     this.open = '';
     this.show = false;
+    this.addressForm.reset();
+    this.familyMemberForm.reset();
   }
 
   keyPress(event: KeyboardEvent) {
