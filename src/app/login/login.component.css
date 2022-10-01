@@ -99,6 +99,13 @@
     cursor: not-allowed;
 }
 
+.passwordField i {
+    position: absolute;
+    right: 8px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
 .btn {
     border: none;
     display: flex;

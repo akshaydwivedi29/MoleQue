@@ -12,6 +12,7 @@ export class LoginComponent implements OnInit {
   logInError: boolean = false;
   unregMobile: boolean = false;
   showOTP: boolean = false;
+  showPassword: boolean = false;
   invalidOtp: boolean = false;
   logInForm: FormGroup;
   otpForm: FormGroup;
@@ -41,6 +42,10 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void { }
+
+  password() {
+    this.showPassword = !this.showPassword;
+  }
 
   keyPress(event: KeyboardEvent) {
     const pattern = /[0-9]/;

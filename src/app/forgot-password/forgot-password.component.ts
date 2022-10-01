@@ -11,6 +11,7 @@ import { ForgotPswdService } from '../services/forgot-pswd.service';
 export class ForgotPasswordComponent implements OnInit {
   show: boolean = false;
   showError: boolean = false;
+  showPassword: boolean = false;
   mobileNumber: FormGroup;
   mobile: string = '';
   otp: FormGroup;
@@ -47,6 +48,10 @@ export class ForgotPasswordComponent implements OnInit {
     if (!pattern.test(inputChar)) {
         event.preventDefault();
     }
+}
+
+password() {
+  this.showPassword = !this.showPassword;
 }
 
   ngOnInit(): void {

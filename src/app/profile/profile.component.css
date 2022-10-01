@@ -120,6 +120,17 @@
     background-color: #f22283;
 }
 
+.passwordField {
+    position: relative;
+}
+
+#togglePassword {
+    position: absolute;
+    top: 40px;
+    right: 18px;
+    cursor: pointer;
+}
+
 .profile .container .tab_content .family button,
 .profile .container .tab_content .address button {
     background: #f22283;
