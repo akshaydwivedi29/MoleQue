@@ -94,19 +94,35 @@
     margin-bottom: 20px;
 }
 
-button:disabled {
+.login .login_item .login_item_form .login_buttons button:disabled {
     background-color: grey !important;
     cursor: not-allowed;
 }
 
-#forgotPswd.disabled {
-    color: gray;
-    cursor: not-allowed;
+.passwordField i {
+    position: absolute;
+    right: 8px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.btn {
+    border: none;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.btn button:disabled {
+    color: gray !important;
+    cursor: not-allowed !important;
 }
 
 #forgotPswd {
     cursor: pointer;
+    border: none;
     color: #466df0;
+    background: none;
 }
 
 .login .login_item .login_item_form .login_buttons p {
@@ -119,12 +135,6 @@ button:disabled {
 
 .error {
     color: red;
-}
-
-#forgotPswd,
-#signUp {
-    display: flex;
-    justify-content: center;
 }
 
 /* Responsive */
@@ -141,19 +151,19 @@ button:disabled {
         height: auto;
         margin-bottom: 10px;
     }
-    
+
     .login .login_item {
         overflow: hidden;
         margin: 10px;
         padding: 10px;
-    } 
+    }
 
     .login .login_item .login_item_top h4 {
         margin-top: 10px;
         font-size: 17px;
     }
 
-    .col{
+    .col {
         padding: 0 5px;
     }
 }

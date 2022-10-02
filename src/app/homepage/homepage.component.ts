@@ -26,6 +26,7 @@ export class HomepageComponent implements OnInit {
   invalidOtp: boolean = false;
   unregMobile: boolean = false;
   mobileReport: boolean = true;
+  showPassword: boolean = false;
   finalCaptcha: string = '';
   number: string = '';
   otpCode: string = '';
@@ -102,7 +103,7 @@ export class HomepageComponent implements OnInit {
         [
           Validators.required,
           Validators.minLength(3),
-          Validators.pattern('[a-zA-Z0-9]*'),
+          Validators.pattern(/^[a-zA-Z]+[a-zA-Z]/),
         ],
       ],
       criticalIllness: ['', [Validators.required]],
@@ -128,6 +129,10 @@ export class HomepageComponent implements OnInit {
     if (!pattern.test(inputChar)) {
       event.preventDefault();
     }
+  }
+
+  password() {
+    this.showPassword = !this.showPassword;
   }
 
   submitInquiryForm() {

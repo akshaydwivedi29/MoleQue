@@ -20,7 +20,9 @@ export class ProfileComponent implements OnInit {
   familyMemberForm: FormGroup;
   submitted: boolean = false;
   show: boolean = false;
-  showPassword: boolean = true;
+  showPassword: boolean = false;
+  showConfirmPassword: boolean = false;
+  showPasswordField: boolean = true;
   familyMemberIndex!: number;
   addressIndex!: number;
   passwordError: boolean = false;
@@ -87,7 +89,7 @@ export class ProfileComponent implements OnInit {
       addressLine2: ['', [Validators.required]],
       city: ['', [Validators.required]],
       state: ['', [Validators.required]],
-      pinCode: ['', [Validators.required, Validators.maxLength(6),]],
+      pinCode: ['', [Validators.required]],
       landmark: [''],
     });
 
@@ -123,7 +125,7 @@ export class ProfileComponent implements OnInit {
     this.profileForm.patchValue({number:this.number})
     this.getUserDetail();
     if (this.Id) {
-      this.showPassword = false;
+      this.showPasswordField = false;
     }
   }
 
@@ -138,6 +140,8 @@ export class ProfileComponent implements OnInit {
   hideForm() {
     this.open = '';
     this.show = false;
+    this.addressForm.reset();
+    this.familyMemberForm.reset();
   }
 
   keyPress(event: KeyboardEvent) {
@@ -146,6 +150,14 @@ export class ProfileComponent implements OnInit {
     if (!pattern.test(inputChar)) {
       event.preventDefault();
     }
+  }
+
+  password() {
+    this.showPassword = !this.showPassword;
+  }
+
+  ConfirmPassword() {
+    this.showConfirmPassword = !this.showConfirmPassword;
   }
 
   register(add: any) {
