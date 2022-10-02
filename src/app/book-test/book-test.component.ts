@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { CartService } from '../services/cart.service';
-import { TestsService } from '../services/tests.service';
+import { TestList, TestsService } from '../services/tests.service';
 
 @Component({
   selector: 'app-book-test',
@@ -12,7 +12,7 @@ import { TestsService } from '../services/tests.service';
 })
 export class BookTestComponent implements OnInit {
   id: any = 'allTest';
-  userId: any;
+  userId: string = '';
   testList: any;
   canAddToCart: boolean[] = [false];
   datePickerConfig: Partial<BsDatepickerConfig>;
@@ -29,7 +29,7 @@ export class BookTestComponent implements OnInit {
     dots: false,
     navSpeed: 700,
     navText: ['', ''],
-    items: 1,
+    items: 2,
     nav: false,
   };
 
@@ -62,7 +62,7 @@ export class BookTestComponent implements OnInit {
     );
     // Datepicker ends
 
-    this.userId = localStorage.getItem('id');
+    this.userId = localStorage.getItem('id') || '';
     this.getTestList();
   }
 
@@ -71,8 +71,7 @@ export class BookTestComponent implements OnInit {
     const pack = this.route.snapshot.params['pack'];
     if (pre) {
       this.id = 'prescription';
-    }
-    else if (pack) {
+    } else if (pack) {
       this.id = 'packages';
     }
   }
@@ -82,7 +81,7 @@ export class BookTestComponent implements OnInit {
     if (!query || query.length < 1) {
       return;
     }
-    this.testService.searchTestList(query).subscribe((res: any) => {
+    this.testService.searchTestList(query).subscribe((res: TestList[]) => {
       this.testList = res;
     });
   }
@@ -113,7 +112,7 @@ export class BookTestComponent implements OnInit {
   }
 
   getTestList() {
-    this.cartService.getAllTestDetail().subscribe((res) => {
+    this.cartService.getAllTestDetail().subscribe((res: TestList[]) => {
       this.testList = res;
     });
   }

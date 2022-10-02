@@ -6,7 +6,7 @@
 
 .top_header {
     position: fixed;
-    top: 0;
+    top: 0px;
     left: 0;
     right: 0;
     z-index: 999;
@@ -102,6 +102,12 @@
     margin-left: 4px;
 }
 
+.login_cart .logout i:after {
+    content: 'Logout';
+    font-style: normal;
+    margin-left: 4px;
+}
+
 .login_cart .cart i:after {
     content: 'Cart';
     font-style: normal;
@@ -149,7 +155,7 @@
     right: 0;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
     height: 40px;
     padding: 10px 0;
     background: rgba(255, 255, 255, 0.8);
@@ -162,7 +168,8 @@
     margin: 0;
 }
 
-.menu ul li {
+.menu ul li,
+.nav_header .call_us a {
     list-style-type: none;
     font-family: roboto light;
     font-weight: 700;

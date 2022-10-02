@@ -46,7 +46,7 @@
                             <button class="btn">Search</button>
                         </div>
                     </div>
-                    <span>Showing 1-50 of 101 results</span>
+                    <span>Showing 1-50 of {{testList?.length}} results</span>
                     <!-- <div class="form-group">
                         <select class="form-select">
                             <option selected disabled hidden>Sort By...</option>
@@ -64,9 +64,10 @@
         <div class="tab_content">
 
             <div class="all_test row my-4" *ngIf="id === 'allTest'">
-                <div class="card col-3" *ngFor="let list of testList">
+                <div class="card col-3" *ngFor="let list of testList.slice(0, 15);">
                     <div class="card-body">
-                        <h5 class="card-title" id="testName">{{list.testname | uppercase}}</h5>
+                        <h5 class="card-title" id="testName">{{(list.testname.length>35)? (list.testname|uppercase |
+                            slice:0:35)+'...':list.testname| uppercase}}</h5>
                         <p class="card-text">No special preparation required</p>
                         <p class="card-text">26 Parameter(s) Covered</p>
                         <p class="card-text">Daily</p>
@@ -77,10 +78,10 @@
                         </div>
                         <div class="button">
                             <button class="btn" type="button" (click)="addToCart(list)"
-                                [disabled]="canAddToCart[list._id]"><i
-                                    class="bi bi-cart-fill mx-2"></i>{{canAddToCart[list._id]?'Added To Cart' :'Add
-                                To
-                                Cart'}}</button>
+                                [disabled]="canAddToCart[list._id]">
+                                <i class="bi bi-cart-fill mx-2"></i>
+                                {{canAddToCart[list._id]? 'Added To Cart' :'Add To Cart'}}
+                            </button>
                         </div>
                     </div>
                 </div>

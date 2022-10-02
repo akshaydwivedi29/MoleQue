@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginServiceService } from '../services/login-service.service';
+import { userProfile } from './dashboard.model';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,13 +9,13 @@ import { LoginServiceService } from '../services/login-service.service';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  userId: any;
-  userDetail: any;
+  userId: string = '';
+  userDetail!: userProfile;
 
   constructor(private loginService: LoginServiceService, private router: Router) {
-    this.userId = localStorage.getItem('id')
-    this.loginService.getUserDetail(this.userId).subscribe(res => {
-      this.userDetail = res
+    this.userId = localStorage.getItem('id') || '';
+    this.loginService.getUserDetail(this.userId).subscribe((res:userProfile) => {
+      this.userDetail = res;
     })
   }
 

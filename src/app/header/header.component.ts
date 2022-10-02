@@ -11,11 +11,12 @@ declare var $: any;
 export class HeaderComponent implements OnInit {
   testlist: Array<TestList> = [];
   cartCount: any;
-  hasQuery = false;
-  itemCount = 0;
-  userId: any;
-  mobileMenu = true;
-  topHeader = true;
+  hasQuery: boolean = false;
+  showLogout: boolean = false;
+  itemCount: number = 0;
+  userId: string = '';
+  mobileMenu: boolean = true;
+  topHeader: boolean = true;
 
   constructor(
     private testsService: TestsService,
@@ -26,7 +27,7 @@ export class HeaderComponent implements OnInit {
       this.itemCount = parseInt(res);
     });
 
-    this.userId = localStorage.getItem('id');
+    this.userId = localStorage.getItem('id') || '';
   }
 
   sendData(event: any) {
@@ -41,6 +42,9 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCart();
+    if (this.userId) {
+      this.showLogout = true;
+    }
   }
 
   async getCart() {
@@ -72,7 +76,7 @@ export class HeaderComponent implements OnInit {
     this.topHeader = true;
   }
 
-  login(){
+  login() {
     localStorage.removeItem('id')
     this.router.navigate(['/login'])
   }

@@ -28,7 +28,7 @@ export class TestsService {
   constructor(private http: HttpClient) {}
 
   searchTestList(testName:TestList){
-    return this.http.get(`${environment.serverURL}search/${testName}`)
+    return this.http.get<TestList[]>(`${environment.serverURL}search/${testName}`)
   }
 
   getTestDetail(testId:string){

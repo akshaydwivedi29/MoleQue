@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { HomeServiceService } from '../services/home-service.service';
 import { LoginServiceService } from '../services/login-service.service';
+import { InquiryForm, TestReport } from './homepage.model';
 
 @Component({
   selector: 'app-homepage',
@@ -11,21 +12,26 @@ import { LoginServiceService } from '../services/login-service.service';
   styleUrls: ['./homepage.component.css'],
 })
 export class HomepageComponent implements OnInit {
-  finalCaptcha: string = '';
-  testReportForm!: FormGroup;
-  testReportValue: any;
-  showAlert = false;
-  blur_bg = false;
-  blur_mobile_report = false;
-  secure_login = false;
-  invalidOtp = false;
-  unregMobile = false;
+  testReportForm: FormGroup;
+  inquiryForm: FormGroup;
   mobileNumber: FormGroup;
   otpForm: FormGroup;
+  inquiryValue!: InquiryForm;
+  testReportValue!: TestReport;
+  submitted: boolean = false;
+  showAlert: boolean = false;
+  blur_bg: boolean = false;
+  blur_mobile_report: boolean = false;
+  secure_login: boolean = false;
+  invalidOtp: boolean = false;
+  unregMobile: boolean = false;
+  mobileReport: boolean = true;
+  showPassword: boolean = false;
+  finalCaptcha: string = '';
   number: string = '';
   otpCode: string = '';
-  mobileReport = true;
-
+  userId: string = '';
+  
   customOptions: OwlOptions = {
     loop: true,
     autoplay: true,
@@ -90,6 +96,60 @@ export class HomepageComponent implements OnInit {
     this.otpForm = this.fb.group({
       otpCode: ['', [Validators.required]],
     });
+
+    this.inquiryForm = this.fb.group({
+      name: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(3),
+          Validators.pattern(/^[a-zA-Z]+[a-zA-Z]/),
+        ],
+      ],
+      criticalIllness: ['', [Validators.required]],
+      number: [
+        '',
+        [
+          Validators.required,
+          Validators.maxLength(10),
+          Validators.minLength(10),
+        ],
+      ],
+      email: ['', [Validators.required, Validators.email]],
+      age: ['', [Validators.required]],
+      gender: ['', [Validators.required]],
+    });
+
+    this.userId = localStorage.getItem('id') || '';
+  }
+
+  keyPress(event: KeyboardEvent) {
+    const pattern = /[0-9]/;
+    const inputChar = String.fromCharCode(event.charCode);
+    if (!pattern.test(inputChar)) {
+      event.preventDefault();
+    }
+  }
+
+  password() {
+    this.showPassword = !this.showPassword;
+  }
+
+  submitInquiryForm() {
+    this.submitted = true;
+    this.inquiryValue = this.inquiryForm.value;
+    if (this.userId && this.inquiryForm.valid) {
+      this.inquiryValue.userId = this.userId;
+      this.homeService.inquiryForm(this.inquiryValue).subscribe((res) => {
+        this.inquiryForm.reset();
+        this.submitted = false;
+      });
+    } else if (this.inquiryForm.valid) {
+      this.homeService.inquiryForm(this.inquiryValue).subscribe((res) => {
+        this.inquiryForm.reset();
+        this.submitted = false;
+      });
+    }
   }
 
   ngOnInit(): void {
@@ -183,12 +243,22 @@ export class HomepageComponent implements OnInit {
     this.testReportValue = this.testReportForm.value;
     if (
       this.testReportValue &&
+      this.finalCaptcha === this.testReportValue.captcha && this.userId
+    ) {
+      this.homeService.checkReport(this.testReportValue).subscribe((res) => {
+        this.testReportForm.reset();
+      });
+    }
+    else if (
+      this.testReportValue &&
       this.finalCaptcha === this.testReportValue.captcha
     ) {
       this.homeService.checkReport(this.testReportValue).subscribe((res) => {
         this.testReportForm.reset();
       });
-    } else if (this.finalCaptcha != this.testReportValue.captcha) {
+    }
+
+    else if (this.finalCaptcha != this.testReportValue.captcha) {
       this.showAlert = true;
       setTimeout(() => {
         this.showAlert = false;
@@ -199,8 +269,7 @@ export class HomepageComponent implements OnInit {
   displayStyle = 'none';
 
   openPopup() {
-    const userId = localStorage.getItem('id');
-    if (userId) {
+    if (this.userId) {
       this.router.navigate(['/book-test']);
     } else {
       this.displayStyle = 'flex';
@@ -219,12 +288,12 @@ export class HomepageComponent implements OnInit {
     this.blur_bg = false;
   }
 
-  openPrescription(event:Event){
-    this.router.navigate(['/book-test', {pre: event.type}])
+  openPrescription(event: Event) {
+    this.router.navigate(['/book-test', { pre: event.type }]);
   }
 
-  openPackage(event:Event){
-    this.router.navigate(['/book-test', {pack: event.type}])
+  openPackage(event: Event) {
+    this.router.navigate(['/book-test', { pack: event.type }]);
   }
 
   getOTP() {
@@ -258,7 +327,6 @@ export class HomepageComponent implements OnInit {
       .loginWithOtp({ mobile: this.number, otp: this.otpCode })
       .subscribe(
         (res: any) => {
-          console.log(res);
           if (res) {
             this.router.navigate(['/book-test'], {
               replaceUrl: true,

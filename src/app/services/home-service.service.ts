@@ -11,4 +11,16 @@ export class HomeServiceService {
   checkReport(data: any) {
     return this.http.post(`${environment.serverURL}testReport`, data);
   }
+
+  queryForm(data: any) {
+    return this.http.post(`${environment.serverURL}queryForm/form`, data)
+  }
+
+  inquiryForm(data: any) {
+    return this.http.post(`${environment.serverURL}Form/inquiryForm`, data)
+  }
+
+  getNumber(data: any) {
+    return this.http.post(`${environment.serverURL}getCall/number`, data)
+  }
 }

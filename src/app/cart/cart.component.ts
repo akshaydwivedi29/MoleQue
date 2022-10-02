@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CartService } from '../services/cart.service';
+import { TestList } from '../services/tests.service';
 
 @Component({
   selector: 'app-cart',
@@ -8,18 +9,17 @@ import { CartService } from '../services/cart.service';
   styleUrls: ['./cart.component.css'],
 })
 export class CartComponent implements OnInit {
-  testlist: any;
-  totalCartValue = 0;
-  userId: any;
-  data: any;
-  itemCount = 0;
+  testlist: TestList[] = [];
+  totalCartValue: number = 0;
+  userId: string = '';
+  itemCount: number = 0;
   cartCount: any;
 
-  constructor(private cartService: CartService,private router:Router) {
+  constructor(private cartService: CartService, private router: Router) {
     this.cartService.events.subscribe((res: any) => {
       this.itemCount = parseInt(res);
     });
-    this.userId = localStorage.getItem('id');
+    this.userId = localStorage.getItem('id') || '';
   }
 
   ngOnInit(): void {
@@ -63,7 +63,7 @@ export class CartComponent implements OnInit {
     this.getCart();
   }
 
-  openPrescription(event:Event){
-    this.router.navigate(['/book-test', {pre: event.type}])
+  openPrescription(event: Event) {
+    this.router.navigate(['/book-test', { pre: event.type }])
   }
 }

@@ -32,9 +32,14 @@
             <i class="fa fa-search"></i>
         </div>
 
-        <div class="login" (click)="login()">
+        <div class="login" (click)="login()" *ngIf="!showLogout">
             <i class="bi bi-person-fill"></i>
         </div>
+
+        <div class="login logout" (click)="login()" *ngIf="showLogout">
+            <i class="bi bi-person-fill"></i>
+        </div>
+       
         <div class="cart" routerLink="/cart">
             <i class="bi bi-cart-fill"></i>
             <span *ngIf="cartCount?.length >= 1">{{itemCount}}</span>
@@ -52,7 +57,7 @@
     <div class="menu">
         <ul>
             <li routerLink="/">Home</li>
-            <li>Features</li>
+            <!-- <li>Features</li>
             <li class="dropdown">
                 Services
                 <div class="dropdown-content">
@@ -60,9 +65,17 @@
                     <a href="#">Radiology & Scan</a>
                     <a href="#">Consult A Doctor</a>
                 </div>
-            </li>
+            </li> -->
             <li>About Us</li>
             <li routerLink="/contact-us">Contact Us</li>
+            <li>
+                <a href="tel:+919955550855">
+                    <span>Call Us :
+                        <i class="bi bi-telephone-fill"></i>
+                        +91-995-555-085-5
+                    </span>
+                </a>
+            </li>
         </ul>
     </div>
 </header>

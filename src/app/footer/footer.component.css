@@ -151,6 +151,30 @@
     content: 'Get a free call';
 }
 
+.modal-header {
+    background: #6887eb;
+    padding: 5px 25px;
+}
+
+.modal-header .modal-title {
+    color: #FFF;
+    font-size: 15px;
+}
+
+.modal-header button {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 20px;
+    position: absolute;
+    top: 0;
+    right: 5px;
+}
+
+.error {
+    color: red;
+}
+
 /* GET CALL ENDS */
 
 /* FOOTER STARTS  */
