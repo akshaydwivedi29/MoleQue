@@ -1,6 +1,31 @@
-.login .login_img img {
-    width: 60vw;
+.login {
+    background: url(../../assets/images/banner/login-banner.webp);
+    background-size: cover;
+    background-repeat: no-repeat;
     height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.login .login_item {
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 10px;
+    padding: 50px;
+    width: 30%;
+    margin-right: 70px;
+}
+
+.login .login_item .login_item_top {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.login .login_img img {
+    height: 100vh;
+    width: auto;
 }
 
 .login_img1 img {
@@ -41,10 +66,6 @@
 
 .login .login_item .login_item_top p {
     font-size: 13px;
-}
-
-.login .login_item {
-    padding: 20px 100px;
 }
 
 .login .login_item .login_item_form {
