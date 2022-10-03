@@ -12,7 +12,7 @@
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
-    min-height: 350px;
+    min-height: 580px;
 }
 
 .banner1 {
@@ -108,7 +108,7 @@
     border: 8px solid #1f3d9d;
     border-radius: 35px;
     background: transparent;
-    zoom: 0.6;
+    /* zoom: 0.6; */
 }
 
 .main_carousel .card .hide_card {
@@ -192,23 +192,24 @@
     border-radius: 0;
 }
 
-/* .home_collection>.card .card-title>h4 {
-    position: absolute;
+.home_collection>.card .card-title>h4 {
+    /* position: absolute;
     top: -25px;
     left: 0;
     right: 0;
     margin: 0 auto;
-    z-index: 699;
+    z-index: 699; */
     letter-spacing: 1px;
     text-align: center;
     font-family: "BebasNeueBold";
     font-size: 40px;
-    color: #fff;
-    background: #F22283;
+    color: #F22283;
+    /* background: #F22283;
     border-radius: 10px;
-    width: fit-content;
-    padding: 5px 10px;
-} */
+    width: fit-content; */
+    padding-top: 5px;
+    animation: 1s ease-out 0s 1 slideInLeft;
+}
 
 .home_collection>.card .card-body .hc_item:nth-child(even) {
     /* border-left: 3px solid gray;
@@ -1211,11 +1212,16 @@
 
 }
 
-/* @keyframes colorchange {
-    50% {
-        border-color: #F22283;
+
+@keyframes slideInLeft {
+    0% {
+        transform: translateX(-100%);
     }
-} */
+
+    100% {
+        transform: translateX(0);
+    }
+}
 
 
 /**************************************************/
