@@ -39,7 +39,7 @@
         <div class="login logout" (click)="login()" *ngIf="showLogout">
             <i class="bi bi-person-fill"></i>
         </div>
-       
+
         <div class="cart" routerLink="/cart">
             <i class="bi bi-cart-fill"></i>
             <span *ngIf="cartCount?.length >= 1">{{itemCount}}</span>
@@ -54,7 +54,7 @@
 
 <!-- Navbar Starts -->
 <header class="nav_header" [ngClass]="mobileMenu ? 'nav_header_hide' : 'nav_header_show'">
-    <div class="menu">
+    <div class="container menu">
         <ul>
             <li routerLink="/">Home</li>
             <!-- <li>Features</li>
@@ -72,7 +72,7 @@
                 <a href="tel:+919955550855">
                     <span>Call Us :
                         <i class="bi bi-telephone-fill"></i>
-                        +91-995-555-085-5
+                        +91-9955550855
                     </span>
                 </a>
             </li>
