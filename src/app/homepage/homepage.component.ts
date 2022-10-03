@@ -26,6 +26,7 @@ export class HomepageComponent implements OnInit {
   invalidOtp: boolean = false;
   unregMobile: boolean = false;
   mobileReport: boolean = true;
+  showPassword: boolean = false;
   finalCaptcha: string = '';
   number: string = '';
   otpCode: string = '';
@@ -128,6 +129,10 @@ export class HomepageComponent implements OnInit {
     if (!pattern.test(inputChar)) {
       event.preventDefault();
     }
+  }
+
+  password() {
+    this.showPassword = !this.showPassword;
   }
 
   submitInquiryForm() {

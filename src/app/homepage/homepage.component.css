@@ -168,6 +168,17 @@
     color: red;
 }
 
+.passwordField {
+    position: relative;
+}
+
+#togglePassword {
+    position: absolute;
+    top: 56%;
+    right: 10px;
+    cursor: pointer;
+}
+
 /* HOME COLLECTION SECTION STARTS  */
 
 .home_collection {

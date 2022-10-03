@@ -26,7 +26,7 @@
                     <div class="row my-4">
                         <div class="form-group col-sm-6 col-xs-12 space">
                             <label for="firstname" class="required">First Name</label>
-                            <input type="text" formControlName="firstName" class="form-control"
+                            <input type="text" formControlName="firstName" class="form-control name"
                                 placeholder="Enter First name">
                             <div class="error"
                                 *ngIf="profileForm.controls['firstName']?.invalid && profileForm.controls['firstName'].touched ">
@@ -35,7 +35,7 @@
 
                         <div class="form-group col-sm-6 col-xs-12">
                             <label for="lastname" class="required">Last Name</label>
-                            <input type="text" formControlName="lastName" class="form-control"
+                            <input type="text" formControlName="lastName" class="form-control name"
                                 placeholder="Enter Last name">
                             <div class="error"
                                 *ngIf="profileForm.controls['lastName']?.invalid && profileForm.controls['lastName'].touched ">
@@ -60,8 +60,8 @@
 
                         <div class="form-group col-sm-6 col-xs-12">
                             <label for="mobile" class="required">Mobile</label>
-                            <input type="tel" formControlName="number" class="form-control"
-                                placeholder="Enter Mobile" (keypress)="keyPress($event)" maxlength="10" minlength="10">
+                            <input type="tel" formControlName="number" class="form-control" placeholder="Enter Mobile"
+                                (keypress)="keyPress($event)" maxlength="10" minlength="10">
                             <div class="error"
                                 *ngIf="profileForm.controls['number']?.invalid && profileForm.controls['number'].touched ">
                                 Please provide valid mobile number</div>
@@ -105,21 +105,25 @@
 
                     </div>
 
-                    <div class="row" *ngIf="showPassword">
-                        <div class="form-group col-sm-6 col-xs-12 space">
+                    <div class="row" *ngIf="showPasswordField">
+                        <div class="form-group col-sm-6 col-xs-12 space passwordField">
                             <label for="password" class="required">Password</label>
-                            <input type="password" formControlName="password" class="form-control"
-                                placeholder="Enter Password">
+                            <input [type]="showPassword ? 'text' : 'password'" formControlName="password"
+                                class="form-control" placeholder="Enter Password">
+                            <i id="togglePassword" [ngClass]="showPassword ? 'fa fa-eye' : 'fa fa-eye-slash'"
+                                aria-hidden="true" (click)="password()"></i>
                             <div class="error"
                                 *ngIf="profileForm.controls['password']?.invalid && profileForm.controls['password'].touched ">
                                 Password should have minimum 6 characters, at least 1 uppercase letter, 1 lowercase
                                 letter and 1 number)</div>
                         </div>
 
-                        <div class="form-group col-sm-6 col-xs-12">
+                        <div class="form-group col-sm-6 col-xs-12 passwordField">
                             <label for="confirm_password" class="required">Confirm Password</label>
-                            <input type="password" formControlName="confirm_password" class="form-control"
-                                placeholder="Re-enter Password">
+                            <input [type]="showConfirmPassword ? 'text' : 'password'" formControlName="confirm_password"
+                                class="form-control" placeholder="Re-enter Password">
+                            <i id="togglePassword" [ngClass]="showConfirmPassword ? 'fa fa-eye' : 'fa fa-eye-slash'"
+                                aria-hidden="true" (click)="ConfirmPassword()"></i>
                             <div class="error"
                                 *ngIf="profileForm.controls['confirm_password']?.invalid && profileForm.controls['confirm_password'].touched ">
                                 Password should have minimum 6 characters, at least 1 uppercase letter, 1 lowercase
@@ -129,8 +133,8 @@
                     </div><br>
 
 
-                    <div class="row" >
-                        <div class="col-12" *ngIf="showPassword">
+                    <div class="row">
+                        <div class="col-12" *ngIf="showPasswordField">
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" formControlName="acceptCheckbox">
                                 <label class="form-check-label required" id="checkTerms" for="flexCheckDefault">
@@ -212,8 +216,8 @@
 
                             <div class="form-group col-sm-6 col-xs-12 space">
                                 <label for="pincode" class="required">PIN Code</label>
-                                <input type="tel" class="form-control" minlength="6" maxlength="6" formControlName="pinCode" (keypress)="keyPress($event)"
-                                    placeholder="PIN Code">
+                                <input type="tel" class="form-control" minlength="6" maxlength="6"
+                                    formControlName="pinCode" (keypress)="keyPress($event)" placeholder="PIN Code">
                                 <div class="error"
                                     *ngIf="addressForm.controls['pinCode'].invalid && addressForm.controls['pinCode'].touched ">
                                     Please provide valid pinCode</div>
@@ -257,7 +261,7 @@
                         <div class="row my-4">
                             <div class="form-group col-sm-6 col-xs-12 space">
                                 <label for="memberfirstname" class="required">First Name</label>
-                                <input type="text" class="form-control" formControlName="memberFirstName"
+                                <input type="text" class="form-control name" formControlName="memberFirstName"
                                     placeholder="Enter First name">
                                 <div class="error"
                                     *ngIf="familyMemberForm.controls['memberFirstName'].invalid && familyMemberForm.controls['memberFirstName'].touched ">
@@ -265,7 +269,7 @@
                             </div>
                             <div class="form-group col-sm-6 col-xs-12">
                                 <label for="memberlastname" class="required">Last Name</label>
-                                <input type="text" class="form-control" formControlName="memberLastName"
+                                <input type="text" class="form-control name" formControlName="memberLastName"
                                     placeholder="Enter Last name">
                                 <div class="error"
                                     *ngIf="familyMemberForm.controls['memberLastName'].invalid && familyMemberForm.controls['memberLastName'].touched ">
