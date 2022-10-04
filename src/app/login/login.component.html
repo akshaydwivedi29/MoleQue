@@ -22,7 +22,7 @@
         </div>
 
         <p class="error" *ngIf="logInError">Sorry! Invalid credentials. Authentication failed.
-            </p>
+        </p>
         <p class="alert alert-danger" *ngIf="unregMobile">Mobile number is not registered</p>
         <p class="alert alert-danger" *ngIf="invalidOtp">Invalid OTP. Please enter valid OTP code.</p>
 
@@ -39,16 +39,16 @@
                         Please provide valid mobile number</p>
                 </div>
 
-                    <div class="form-group mt-3 passwordField">
-                        <i [ngClass]="showPassword ? 'fa fa-eye' : 'fa fa-eye-slash'" aria-hidden="true"
-                            (click)="password()"></i>
-                        <input [type]="showPassword ? 'text' : 'password'" class="form-control"
-                            formControlName="password" id="password" placeholder="Password">
+                <div class="form-group mt-3 passwordField">
+                    <i [ngClass]="showPassword ? 'fa fa-eye' : 'fa fa-eye-slash'" aria-hidden="true"
+                        (click)="password()"></i>
+                    <input [type]="showPassword ? 'text' : 'password'" class="form-control" formControlName="password"
+                        id="password" placeholder="Password">
 
-                        <p class="error"
-                            *ngIf="logInForm.controls['password'].invalid && logInForm.controls['password'].touched">
-                            Password is invaild.</p>
-                    </div>
+                    <p class="error"
+                        *ngIf="logInForm.controls['password'].invalid && logInForm.controls['password'].touched">
+                        Password is invaild.</p>
+                </div>
 
 
                 <div class="login_buttons mt-3">
@@ -104,15 +104,5 @@
         </div>
 
     </div>
-<<<<<<< HEAD
 </section>
 <div *ngIf="showSpinner" class="spinner spinner-border text-primary" role="status"></div>
-=======
-
-
-    <!-- </div> -->
-</section>
->>>>>>> 5a1f6f2a87b4a2f7ac9b9eb04be0ea881deeb58e
-
-    </div>
-</section>
