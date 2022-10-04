@@ -1,4 +1,5 @@
-<section class="login">
+<section [ngClass]="blur_bg ? 'blur_body login' : 'login'">
+
     <div class="d-flex align-items-center justify-content-between">
 
         <div class="login_img">
@@ -20,7 +21,8 @@
                 <p *ngIf="showOTP">Please check the OTP sent to {{number}}</p>
             </div>
 
-            <p class="alert alert-danger" *ngIf="logInError">Wrong credentials. Invalid Mobile number or password</p>
+            <p class="error" *ngIf="logInError">Sorry! Invalid credentials. Authentication failed.
+            </p>
             <p class="alert alert-danger" *ngIf="unregMobile">Mobile number is not registered</p>
             <p class="alert alert-danger" *ngIf="invalidOtp">Invalid OTP. Please enter valid OTP code.</p>
 
@@ -40,9 +42,9 @@
                     <div class="form-group mt-3 passwordField">
                         <i [ngClass]="showPassword ? 'fa fa-eye' : 'fa fa-eye-slash'" aria-hidden="true"
                             (click)="password()"></i>
-                        <input  [type]="showPassword ? 'text' : 'password'" class="form-control"
+                        <input [type]="showPassword ? 'text' : 'password'" class="form-control"
                             formControlName="password" id="password" placeholder="Password">
-                        
+
                         <p class="error"
                             *ngIf="logInForm.controls['password'].invalid && logInForm.controls['password'].touched">
                             Password is invaild.</p>
@@ -107,3 +109,4 @@
 
     </div>
 </section>
+<div *ngIf="showSpinner" class="spinner spinner-border text-primary" role="status"></div>

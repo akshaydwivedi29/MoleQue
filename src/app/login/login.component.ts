@@ -13,7 +13,9 @@ export class LoginComponent implements OnInit {
   unregMobile: boolean = false;
   showOTP: boolean = false;
   showPassword: boolean = false;
+  showSpinner: boolean = false;
   invalidOtp: boolean = false;
+  blur_bg: boolean = false;
   logInForm: FormGroup;
   otpForm: FormGroup;
   loginData!: { number: string; password: string; };
@@ -57,9 +59,12 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.loginData = this.logInForm.value;
+    this.showSpinner = true;
+    this.blur_bg = true;
     this.loginService.login(this.loginData).subscribe((res: any) => {
-      console.log(res)
       if (res.length == 1) {
+        this.showSpinner = false;
+        this.blur_bg = false;
         this.router.navigate(['dashboard'], {
           replaceUrl: true,
         });
