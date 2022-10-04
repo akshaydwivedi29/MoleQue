@@ -101,9 +101,10 @@
 
 .main_carousel .card {
     position: absolute;
-    top: 25%;
+    top: 50%;
     right: 5%;
     z-index: 1;
+    transform: translate(0, -40%);
     max-width: 320px;
     border: 8px solid #1f3d9d;
     border-radius: 35px;
