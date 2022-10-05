@@ -16,6 +16,14 @@
     justify-content: space-around;
 }
 
+.user{
+    position: absolute;
+    bottom: 0;
+    right: 70px;
+    color: #fff;
+    font-size: 15px;
+}
+
 .top_header_search .mobile_header,
 .top_header_search .header_logo,
 .top_header_search .login_cart,

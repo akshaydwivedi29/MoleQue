@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
         '',
         [
           Validators.required,
-          Validators.pattern('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$'),
+          Validators.pattern('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{6,}$'),
         ],
       ],
     });
@@ -41,6 +41,7 @@ export class LoginComponent implements OnInit {
     this.otpForm = this.formBuilder.group({
       otpCode: ['', [Validators.required]],
     });
+
   }
 
   ngOnInit(): void { }
@@ -63,8 +64,6 @@ export class LoginComponent implements OnInit {
     this.blur_bg = true;
     this.loginService.login(this.loginData).subscribe((res: any) => {
       if (res.length == 1) {
-        this.showSpinner = false;
-        this.blur_bg = false;
         this.router.navigate(['dashboard'], {
           replaceUrl: true,
         });
@@ -73,10 +72,12 @@ export class LoginComponent implements OnInit {
     },
       (err) => {
         this.logInError = true;
+        this.showSpinner = false;
+        this.blur_bg = false;
         setTimeout(() => {
           this.logInError = false;
         }, 5000);
-      })
+      });
   }
 
   loginWithOtp() {

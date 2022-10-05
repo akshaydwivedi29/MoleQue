@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { userProfile } from '../dashboard/dashboard.model';
 import { CartService } from '../services/cart.service';
+import { LoginServiceService } from '../services/login-service.service';
 import { TestsService, TestList } from '../services/tests.service';
 declare var $: any;
 @Component({
@@ -17,17 +19,23 @@ export class HeaderComponent implements OnInit {
   userId: string = '';
   mobileMenu: boolean = true;
   topHeader: boolean = true;
+  userDetail!: userProfile;
 
   constructor(
     private testsService: TestsService,
     private router: Router,
-    private cartService: CartService
+    private cartService: CartService,
+    private loginService: LoginServiceService
   ) {
     this.cartService.events.subscribe((res: any) => {
       this.itemCount = parseInt(res);
     });
 
     this.userId = localStorage.getItem('id') || '';
+
+    this.loginService.getUserDetail(this.userId).subscribe((res: userProfile) => {
+      this.userDetail = res;
+    })
   }
 
   sendData(event: any) {
@@ -80,4 +88,5 @@ export class HeaderComponent implements OnInit {
     localStorage.removeItem('id')
     this.router.navigate(['/login'])
   }
+
 }
