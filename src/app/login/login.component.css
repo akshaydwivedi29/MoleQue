@@ -156,6 +156,18 @@
 
 .error {
     color: red;
+    font-size: 12px;
+}
+
+.spinner{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
+
+.blur_body {
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
 }
 
 /* Responsive */
