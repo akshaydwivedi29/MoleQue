@@ -57,7 +57,7 @@
                         <i id="togglePassword" [ngClass]="showPassword ? 'fa fa-eye' : 'fa fa-eye-slash'"
                             aria-hidden="true" (click)="password()"></i>
                     </div>
-
+<!-- 
                     <div class="form-group mt-3">
                         <label for="captcha">Captcha</label>
                         <div class="d-flex align-items-center">
@@ -66,7 +66,12 @@
                                 placeholder="Captcha Here" maxlength="6">
                         </div>
 
-                    </div>
+                    </div> -->
+
+                    <div class="form-group mt-3">
+                        <label for="captcha">Captcha</label>
+                        <div class="cf-turnstile d-flex align-items-center" data-sitekey="0x4AAAAAAAApKkrf1dzNL_8G" data-theme="light" ></div>
+                        </div>
 
                     <button type="submit" type="submit" id="checkReportBtn" [disabled]="testReportForm.invalid"
                         class="check_report mt-3">VIEW REPORT</button>
@@ -108,9 +113,9 @@
 
         <div class="card">
             <div class="card-body">
-                <!-- <div class="card-title">
+                <div class="card-title">
                     <h4>Book Home Collection</h4>
-                </div> -->
+                </div>
                 <div class="d-flex align-items-center justify-content-center pt-3">
                     <div class="hc_item text-center">
                         <img src="../../assets/images/icons/sandglass.png" alt="Time Saving">
@@ -461,45 +466,42 @@
 
                 <form [formGroup]="inquiryForm" (ngSubmit)="submitInquiryForm()">
 
-                    <div class="d-flex align-items-center justify-content-between">
-                        <div class="me-2">
-                            <input class="form__block-input" type="text" placeholder="Your Name*" formControlName="name"
-                                [ngClass]="{'is-invalid': submitted && (inquiryForm.controls['name'].errors)}">
-                            <div class="error" *ngIf="submitted && inquiryForm.controls['name'].errors">
-                                Please provide valid name</div>
-                        </div>
+                    <div class="">
+                        <input class="form__block-input" type="text" placeholder="Full Name*" formControlName="name"
+                            [ngClass]="{'is-invalid': submitted && (inquiryForm.controls['name'].errors)}">
+                        <div class="error" *ngIf="submitted && inquiryForm.controls['name'].errors">
+                            Please provide valid name</div>
+                    </div>
 
-                        <div class="ms-2">
+                    <div class="">
+                        <input class="form__block-input" type="text" placeholder="Email Address*"
+                            formControlName="email"
+                            [ngClass]="{'is-invalid': submitted && (inquiryForm.controls['email'].errors)}">
+                        <div class="error" *ngIf="submitted && inquiryForm.controls['email'].errors">
+                            Please provide valid email address</div>
+                    </div>
+
+                    <div class="">
+                        <input class="form__block-input" type="text" placeholder="Mobile Number*"
+                            formControlName="number" maxlength="10" minlength="10" (keypress)="keyPress($event)"
+                            [ngClass]="{'is-invalid': submitted && (inquiryForm.controls['number'].errors)}">
+                        <div class="error" *ngIf="submitted && inquiryForm.controls['number'].errors">
+                            Please provide valid mobile number</div>
+                    </div>
+
+                    <div class="d-flex align-items-center justify-content-between">
+                        <div class="">
                             <input class="form__block-input" type="text" placeholder="Enter Your Age*"
                                 formControlName="age" maxlength="3" (keypress)="keyPress($event)"
                                 [ngClass]="{'is-invalid': submitted && (inquiryForm.controls['age'].errors)}">
                             <div class="error" *ngIf="submitted && inquiryForm.controls['age'].errors">
                                 Please provide valid Age</div>
                         </div>
-                    </div>
 
-                    <div class="d-flex align-items-center justify-content-between">
-                        <div class="me-2">
-                            <input class="form__block-input" type="text" placeholder="Email*" formControlName="email"
-                                [ngClass]="{'is-invalid': submitted && (inquiryForm.controls['email'].errors)}">
-                            <div class="error" *ngIf="submitted && inquiryForm.controls['email'].errors">
-                                Please provide valid email address</div>
-                        </div>
-
-                        <div class="ms-2">
-                            <input class="form__block-input" type="text" placeholder="Mobile Number*"
-                                formControlName="number" maxlength="10" minlength="10" (keypress)="keyPress($event)"
-                                [ngClass]="{'is-invalid': submitted && (inquiryForm.controls['number'].errors)}">
-                            <div class="error" *ngIf="submitted && inquiryForm.controls['number'].errors">
-                                Please provide valid mobile number</div>
-                        </div>
-                    </div>
-
-                    <div class="d-flex align-items-center justify-content-between">
-                        <div class="me-3">
+                        <div class="">
                             <select class="form__block-input" formControlName="gender"
                                 [ngClass]="{'is-invalid': submitted && (inquiryForm.controls['gender'].errors)}">>
-                                <option selected value="">-Choose Your Gender-</option>
+                                <option selected value="">Gender</option>
                                 <option value="Male">Male</option>
                                 <option value="Female">Female</option>
                                 <option value="Others">Others</option>
@@ -507,10 +509,15 @@
                             <div class="error" *ngIf="submitted && inquiryForm.controls['gender'].errors">
                                 Please choose an option</div>
                         </div>
-                        <div class="ms-3">
+                    </div>
+
+
+                    <div class="d-flex align-items-center justify-content-between">
+
+                        <div class="">
                             <select class="form__block-input" formControlName="criticalIllness"
                                 [ngClass]="{'is-invalid': submitted && (inquiryForm.controls['criticalIllness'].errors)}">>
-                                <option selected value="">-- Any Critical Illness --</option>
+                                <option selected value="">Any Critical Illness</option>
                                 <option value="Diabetes">Diabetes</option>
                                 <option value="Hypertension">Hypertension</option>
                                 <option value="Heart Disease">Heart Disease</option>
@@ -520,11 +527,9 @@
                             <div class="error" *ngIf="submitted && inquiryForm.controls['criticalIllness'].errors">
                                 Please choose an option</div>
                         </div>
-                    </div>
 
-                    <div class="d-flex align-items-center justify-content-between mt-4">
-                        <button class="me-5" type="submit">Get Evaluated</button>
-                        <label class="ms-5">* Personal data will be encrypted</label>
+                        <button class="" type="submit">Get Evaluated</button>
+
                     </div>
                 </form>
             </div>
