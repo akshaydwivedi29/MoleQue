@@ -169,3 +169,15 @@ form button {
         font-size: 30px;
     }
 }
+
+@media screen and (max-width:1200px) {
+    .contact_us .container .full_details {
+        width: 100%;
+        border-radius: 10px 10px 0 0px;
+    }
+
+    .contact_form {
+        width: 100%;
+        border-radius: 0 0 10px 10px;
+    }
+}
