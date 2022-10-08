@@ -1,3 +1,4 @@
+import { TmplAstRecursiveVisitor } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
@@ -16,6 +17,7 @@ export class BookTestComponent implements OnInit {
   testList: any;
   canAddToCart: boolean[] = [false];
   datePickerConfig: Partial<BsDatepickerConfig>;
+  modal = false;
 
   offerOptions: OwlOptions = {
     loop: true,
@@ -109,6 +111,7 @@ export class BookTestComponent implements OnInit {
         item._id
       );
     }
+    this.modal = true;
   }
 
   getTestList() {

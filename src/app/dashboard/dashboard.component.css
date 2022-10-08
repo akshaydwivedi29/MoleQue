@@ -119,6 +119,14 @@
     transform: translate(-50%, 50%);
 }
 
+@media only screen and (min-width: 980px) and (max-width: 1400px) {
+
+
+    .dashboard .container .card {
+        min-width: 270px;
+    }
+}
+
 @media only screen and (max-width: 576px) {
 
     .dashboard {
