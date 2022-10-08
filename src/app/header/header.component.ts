@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { userProfile } from '../dashboard/dashboard.model';
 import { CartService } from '../services/cart.service';
@@ -14,12 +14,12 @@ export class HeaderComponent implements OnInit {
   testlist: Array<TestList> = [];
   cartCount: any;
   hasQuery: boolean = false;
-  showLogout: boolean = false;
   itemCount: number = 0;
   userId: string = '';
   mobileMenu: boolean = true;
   topHeader: boolean = true;
   userDetail!: userProfile;
+  gender: string = '';
 
   constructor(
     private testsService: TestsService,
@@ -32,10 +32,20 @@ export class HeaderComponent implements OnInit {
     });
 
     this.userId = localStorage.getItem('id') || '';
-
-    this.loginService.getUserDetail(this.userId).subscribe((res: userProfile) => {
-      this.userDetail = res;
-    })
+  }
+  
+  getUserDetail() {
+    if (this.userId) {
+      this.loginService.getUserDetail(this.userId).subscribe((res: userProfile) => {
+        this.userDetail = res;
+        if (this.userDetail.gender === 'Female') {
+          this.gender = 'Ms'
+        }
+        else {
+          this.gender = 'Mr'
+        }
+      })
+    }
   }
 
   sendData(event: any) {
@@ -47,12 +57,10 @@ export class HeaderComponent implements OnInit {
       this.testlist = res;
     });
   }
-
+  
   ngOnInit(): void {
     this.getCart();
-    if (this.userId) {
-      this.showLogout = true;
-    }
+    this.getUserDetail();
   }
 
   async getCart() {
@@ -84,7 +92,7 @@ export class HeaderComponent implements OnInit {
     this.topHeader = true;
   }
 
-  login() {
+  logout() {
     localStorage.removeItem('id')
     this.router.navigate(['/login'])
   }

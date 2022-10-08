@@ -95,6 +95,8 @@ export class SignupComponent implements OnInit {
   submitOtp(otp1: any, otp2: any, otp3: any, otp4: any, otp5: any, otp6: any) {
     this.otpCode = otp1.value + otp2.value + otp3.value + otp4.value + otp5.value + otp6.value;
     this.loginService.loginWithOtp({ otp: this.otpCode, mobile: this.number }).subscribe((res: any) => {
+      console.log(res)
+      localStorage.setItem('id',res._id)
       this.router.navigate(['/profile',{ number: this.number, userId: this.userId }
     ]);
     },

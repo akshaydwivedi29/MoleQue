@@ -20,13 +20,14 @@ export class ProfileComponent implements OnInit {
   familyMemberForm: FormGroup;
   submitted: boolean = false;
   show: boolean = false;
+  showAlert: boolean = false;
   showPassword: boolean = false;
   showConfirmPassword: boolean = false;
-  showPasswordField: boolean = true;
   familyMemberIndex!: number;
   addressIndex!: number;
   passwordError: boolean = false;
   blur_bg: boolean = false;
+  click: any;
   userDetail!: userProfile;
   profileDetail!: userProfile;
   addressValue!: Address;
@@ -72,16 +73,16 @@ export class ProfileComponent implements OnInit {
       password: [
         '',
         [
-          Validators.pattern('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$'),
+          Validators.pattern('^(?=.*?[a-z])(?=.*?[0-9]).{6,}$'),
         ],
       ],
       confirm_password: [
         '',
         [
-          Validators.pattern('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$'),
+          Validators.pattern('^(?=.*?[a-z])(?=.*?[0-9]).{6,}$'),
         ],
       ],
-      acceptCheckbox: ['', [Validators.required]],
+      acceptCheckbox: [''],
     });
 
     this.addressForm = this.fb.group({
@@ -122,11 +123,9 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
     this.number = this.route.snapshot.params['number'];
     this.userId = this.route.snapshot.params['userId'];
-    this.profileForm.patchValue({number:this.number})
+    this.click = this.route.snapshot.params['click'];
+    this.profileForm.patchValue({ number: this.number })
     this.getUserDetail();
-    if (this.Id) {
-      this.showPasswordField = false;
-    }
   }
 
   tabChange(ids: any) {
@@ -178,16 +177,16 @@ export class ProfileComponent implements OnInit {
         .subscribe((res) => { });
       this.profileForm.reset();
       this.tabChange(add);
-      // this.router.navigate(['/login'])
     }
 
     else if (this.Id && this.profileForm.valid) {
       this.loginService
-        .updateUserProfile(this.Id, this.profileDetail)
-        .subscribe();
-      this.profileForm.reset();
-      this.tabChange(add);
-      // this.router.navigate(['/dashboard'])
+        .updateUserProfile(this.Id, this.profileDetail).subscribe(res => {
+          this.showAlert = true;
+          setTimeout(() => {
+            this.showAlert = false;
+          }, 5000);
+        });
     }
 
     else {
@@ -195,19 +194,19 @@ export class ProfileComponent implements OnInit {
     }
   }
 
-  addAddress() {
+  addAddress(family: string) {
     this.addressValue = this.addressForm.value;
     if (this.userId && this.addressForm.valid) {
       this.loginService.addAddress(this.userId, this.addressValue).subscribe((res) => {
+        this.tabChange(family);
+        this.addressForm.reset();
       });
-      this.router.navigate(['/login']);
     }
 
     else if (this.Id && this.addressForm.valid) {
       this.loginService.addAddress(this.Id, this.addressValue).subscribe((res) => {
+        this.addressForm.reset();
       });
-      this.addressForm.reset();
-      // this.router.navigate(['/dashboard']);
     }
 
     else {
@@ -226,32 +225,36 @@ export class ProfileComponent implements OnInit {
 
   updateAddress() {
     this.addressValue = this.addressForm.value;
-    this.loginService.updateAddress(this.Id, this.addressValue, this.addressIndex).subscribe(res => { });
-    this.addressForm.reset();
-    this.show = false;
-    this.open = '';
+    this.loginService.updateAddress(this.Id, this.addressValue, this.addressIndex).subscribe(res => {
+      this.getUserDetail();
+      this.addressForm.reset();
+      this.show = false;
+      this.open = '';
+    });
   }
 
   deleteAddress(index: number, event: Event) {
     event.stopPropagation();
     this.loginService.deleteAddress(this.Id, index).subscribe(res => {
+      this.getUserDetail();
     })
   }
 
   addMember() {
     this.familyMemberValue = this.familyMemberForm.value;
     if (this.userId && this.familyMemberForm.valid) {
-      this.loginService.addFamilyMember(this.userId, this.familyMemberValue).subscribe(res => { });
-      // this.router.navigate(['/dashboard']);
-      this.open = ''
-      this.getUserDetail();
+      this.loginService.addFamilyMember(this.userId, this.familyMemberValue).subscribe(res => {
+        this.getUserDetail();
+        this.router.navigate(['/dashboard']);
+        this.open = ''
+      });
     }
     else if (this.Id && this.familyMemberForm.valid) {
-      this.loginService.addFamilyMember(this.Id, this.familyMemberValue).subscribe(res => { });
+      this.loginService.addFamilyMember(this.Id, this.familyMemberValue).subscribe(res => {
+        this.getUserDetail();
+      });
       this.familyMemberForm.reset();
-      // this.router.navigate(['/dashboard']);
       this.open = ''
-      this.getUserDetail();
     } else {
       alert('Something went wrong!');
     }
@@ -267,30 +270,34 @@ export class ProfileComponent implements OnInit {
 
   updateMember() {
     this.familyMemberValue = this.familyMemberForm.value;
-    this.loginService.updateFamilyMember(this.Id, this.familyMemberValue, this.familyMemberIndex).subscribe(res => { });
+    this.loginService.updateFamilyMember(this.Id, this.familyMemberValue, this.familyMemberIndex).subscribe(res => {
+      this.getUserDetail();
+
+    });
     this.familyMemberForm.reset();
-    this.getUserDetail();
     this.show = false;
     this.open = ''
   }
 
   deleteFamilyMember(index: number, event: Event) {
     event.stopPropagation();
-    this.loginService.deleteFamilyMember(this.Id, index).subscribe(res => { })
-    this.getUserDetail();
+    this.loginService.deleteFamilyMember(this.Id, index).subscribe(res => {
+      this.getUserDetail();
+    })
   }
 
   getUserDetail() {
     if (this.Id) {
       this.loginService.getUserDetail(this.Id).subscribe((res: any) => {
         this.userDetail = res;
-        this.userDetail.DOB = new Date(this.userDetail.DOB)
+        console.log(this.userDetail)
+        if (this.userDetail.DOB) {
+          this.userDetail.DOB = new Date(this.userDetail.DOB)
+        }
         this.profileForm.patchValue(this.userDetail);
         this.familyMember = this.userDetail.familyMember;
         this.address = this.userDetail.address;
       });
     }
   }
-
-
 }

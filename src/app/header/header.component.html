@@ -32,11 +32,11 @@
             <i class="fa fa-search"></i>
         </div>
 
-        <div class="login" (click)="login()" *ngIf="!showLogout">
+        <div class="login" (click)="logout()" *ngIf="!userId">
             <i class="bi bi-person-fill"></i>
         </div>
 
-        <div class="login logout" (click)="login()" *ngIf="showLogout">
+        <div class="login logout" (click)="logout()" *ngIf="userId">
             <i class="bi bi-person-fill"></i>
         </div>
 
@@ -50,8 +50,8 @@
         <i class="fa fa-times"></i>
     </div>
 
-    <marquee class="user" width="20%"  direction="left" *ngIf="userId">Hello, {{userDetail?.gender==='Female' ? 'Ms' :
-        'Mr'}}.{{userDetail?.firstName | titlecase}} {{userDetail?.lastName |titlecase}}</marquee>
+    <marquee class="user" width="20%" direction="left" *ngIf="userDetail?.firstName">Hello,
+        {{gender}}.{{userDetail?.firstName | titlecase}} {{userDetail?.lastName |titlecase}}</marquee>
 
 </header>
 <!-- Top Header Ends -->
