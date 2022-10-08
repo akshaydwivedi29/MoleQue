@@ -48,11 +48,15 @@
 /* CHECK REPORT  */
 
 /*Clip*/
-.clip, .circle {
+.clip,
+.circle {
     position: relative;
 }
 
-.clip:after, .clip:before, circle:after, .circle:before {
+.clip:after,
+.clip:before,
+circle:after,
+.circle:before {
     display: block;
     position: absolute;
     content: "";
@@ -756,6 +760,12 @@
     justify-content: space-between;
 }
 
+@media screen and (max-width:767px) {
+    .why-choose-us>.container .difference__item {
+        align-items: center;
+    }
+}
+
 .why-choose-us>.container .difference__item-content {
     padding-top: 5px;
 }
@@ -901,6 +911,13 @@
     transition: all 0.3s linear;
     -webkit-box-shadow: 9.548px 10.239px 35px rgba(0, 0, 0, 0.06);
     box-shadow: 9.548px 10.239px 35px rgba(0, 0, 0, 0.06);
+}
+
+@media screen and (max-width:575px) {
+    .other-services__cards>.card-item {
+        flex: 0 0 316px;
+    }
+
 }
 
 .other-services__cards>.card-item:hover {
