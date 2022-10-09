@@ -34,11 +34,11 @@ export class LoginServiceService {
     return this.http.post(`${environment.serverURL}users/${userId}/address`, address)
   }
 
-  updateAddress(userId: string, address: any,index:number) {
+  updateAddress(userId: string, address: any, index: number) {
     return this.http.patch(`${environment.serverURL}users/${userId}/address/${index}`, address)
   }
 
-  deleteAddress(userId: string, index:number){
+  deleteAddress(userId: string, index: number) {
     return this.http.delete(`${environment.serverURL}users/${userId}/address/${index}`)
   }
 
@@ -46,11 +46,11 @@ export class LoginServiceService {
     return this.http.post(`${environment.serverURL}users/${userId}/addFamilyMember`, member)
   }
 
-  updateFamilyMember(userId: string, member: any,index:any) {
+  updateFamilyMember(userId: string, member: any, index: any) {
     return this.http.patch(`${environment.serverURL}users/${userId}/familyMember/${index}`, member)
   }
 
-  deleteFamilyMember(userId: string, index:number){
+  deleteFamilyMember(userId: string, index: number) {
     return this.http.delete(`${environment.serverURL}users/${userId}/familyMember/${index}`)
   }
 

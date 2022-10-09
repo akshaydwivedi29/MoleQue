@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { CartService } from '../services/cart.service';
 import { LoginServiceService } from '../services/login-service.service';
 
 @Component({
@@ -11,7 +12,7 @@ import { LoginServiceService } from '../services/login-service.service';
 export class SignupComponent implements OnInit {
   signUpForm: FormGroup;
   otpForm: FormGroup;
-  signUpData!: {number:string};
+  signUpData!: { number: string };
   showSignUpError: boolean = false;
   showOTP: boolean = false;
   invalidOtp: boolean = false;
@@ -22,7 +23,8 @@ export class SignupComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private loginService: LoginServiceService,
-    private router: Router
+    private router: Router,
+    private cartService: CartService
   ) {
     this.signUpForm = this.fb.group({
       // name: [
@@ -33,7 +35,7 @@ export class SignupComponent implements OnInit {
       //     Validators.pattern('[a-zA-Z0-9]*'),
       //   ],
       // ],
-      number: ['', [Validators.required, Validators.maxLength(10),Validators.minLength(10)]],
+      number: ['', [Validators.required, Validators.maxLength(10), Validators.minLength(10)]],
       // password: [
       //   '',
       //   [
@@ -54,9 +56,9 @@ export class SignupComponent implements OnInit {
     const pattern = /[0-9]/;
     const inputChar = String.fromCharCode(event.charCode);
     if (!pattern.test(inputChar)) {
-        event.preventDefault();
+      event.preventDefault();
     }
-}
+  }
 
   register() {
     this.number = this.signUpForm.value.number;
@@ -95,8 +97,11 @@ export class SignupComponent implements OnInit {
   submitOtp(otp1: any, otp2: any, otp3: any, otp4: any, otp5: any, otp6: any) {
     this.otpCode = otp1.value + otp2.value + otp3.value + otp4.value + otp5.value + otp6.value;
     this.loginService.loginWithOtp({ otp: this.otpCode, mobile: this.number }).subscribe((res: any) => {
-      this.router.navigate(['/profile',{ number: this.number, userId: this.userId }
-    ]);
+      console.log(res)
+      localStorage.setItem('id', res._id);
+      this.cartService.loadCart()
+      this.router.navigate(['/profile', { number: this.number, userId: this.userId }
+      ]);
     },
       err => {
         this.invalidOtp = true;

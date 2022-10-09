@@ -30,19 +30,7 @@ export class TestListComponent implements OnInit {
   }
 
   addToCart(item: any) {
-    if (this.userId) {
-      this.cartService
-        .addToCart({ userId: this.userId, testDetail: item })
-        .subscribe();
-      this.canAddToCart[item._id] = !this.cartService.isAlreadyAddedInCart(
-        item._id
-      );
-    } else {
-      this.cartService.addToCartLS(item);
-      this.canAddToCart[item._id] = !this.cartService.isAlreadyAddedInCart(
-        item._id
-      );
-    }
+      this.cartService.addToCart(item);
   }
 
   getTestList() {

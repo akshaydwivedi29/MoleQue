@@ -14,63 +14,84 @@ export class CartService {
   public events = this._eventSubject.asObservable();
 
   constructor(private http: HttpClient) {
+    // server api call in future
     this.loadCart();
   }
 
   addToCart(item: any) {
-    return this.http.post(`${environment.serverURL}cart/`, item);
-  }
-
-  addToCartLS(item: any) {
     this.items.push(item);
-    this.saveCartLS();
+    this.saveCart();
+    // return this.http.post(`${environment.serverURL}cart/`, item);
   }
 
-  getItems(userId: string) {
+  /* getItems(userId: string) {
     return this.http.get(
       `${environment.serverURL}cart/getCartByUserId/${userId}`
     );
-  }
+  } */
 
-  getItemsLS() {
+  getItems() {
     return this.items;
   }
 
-  clearCart(userId: string) {
-    return this.http.delete(`${environment.serverURL}cart/removeAll/${userId}`);
-  }
 
-  clearCartLS() {
+
+  clearCart() {
     this.items = [];
     localStorage.removeItem('cart_items');
+    this.loadCart();
+    // return this.http.delete(`${environment.serverURL}cart/removeAll/${userId}`);
   }
 
-  removeItem(testId: any) {
-    return this.http.delete(`${environment.serverURL}cart/${testId}`);
-  }
 
-  removeItemLS(item: any) {
+
+  removeItem(item: any) {
     const index = this.items.findIndex((o: any) => o._id === item._id);
     if (index > -1) {
       this.items.splice(index, 1);
-      this.saveCartLS();
+      this.saveCart();
     }
+    // return this.http.delete(`${environment.serverURL}cart/${testId}`);
   }
 
   getAllTestDetail() {
     return this.http.get<TestList[]>(`${environment.serverURL}search`);
   }
 
-  saveCartLS() {
+  saveCart() {
     localStorage.setItem('cart_items', JSON.stringify(this.items));
     this.publishCartCount();
+    // synchronize user cart
+    const userId = localStorage.getItem('id');
+    if (userId) {
+      this.http.post(`${environment.serverURL}cart/synchronizeCart/${userId}`, this.items).subscribe();
+    }
   }
 
   loadCart() {
-    let cartItems = localStorage.getItem('cart_items');
-    if (cartItems) {
-      this.items = JSON.parse(cartItems);
+    // synchronize user cart
+    const userId = localStorage.getItem('id');
+    if (userId) {
+      this.http.get(`${environment.serverURL}cart/synchronizeCart/${userId}`).subscribe((res: any) => {
+        this.items = res.cart;
+        console.log(this.items);
+
+        localStorage.setItem('cart_items', JSON.stringify(this.items));
+        this.publishCartCount();
+      });
     }
+    else {
+      let cartItems = localStorage.getItem('cart_items');
+      if (cartItems) {
+        this.items = JSON.parse(cartItems);
+      }
+      else {
+        this.items = [];
+        this.totalCartValue = 0;
+        this.publishCartCount();
+      }
+    }
+
   }
 
   getCartCount() {

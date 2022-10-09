@@ -19,8 +19,11 @@
 
                 <div class="d-flex align-items-center justify-content-evenly mb-5">
                     <img src="../../assets/images/icons/avatar.png" alt="Avatar">
-                    <div class="user_name">Hi, {{Id? (userDetail?.firstName | titlecase) :'Guest'}}</div>
+                    <div class="user_name">Hi, {{userDetail?.firstName? (userDetail?.firstName | titlecase) :'Guest'}}
+                    </div>
                 </div>
+
+                <p *ngIf="showAlert" class="alert alert-primary">Profile Update Successfully.</p>
 
                 <form [formGroup]="profileForm" (ngSubmit)="register('address')">
                     <div class="row my-4">
@@ -100,41 +103,37 @@
                             <div class="error"
                                 *ngIf="profileForm.controls['DOB']?.invalid && profileForm.controls['DOB'].touched ">
                                 Please provide valid date of Birth</div>
-
                         </div>
-
                     </div>
 
-                    <div class="row" *ngIf="showPasswordField">
+                    <div class="row" *ngIf="!click">
                         <div class="form-group col-sm-6 col-xs-12 space passwordField">
                             <label for="password" class="required">Password</label>
                             <input [type]="showPassword ? 'text' : 'password'" formControlName="password"
                                 class="form-control" placeholder="Enter Password">
-                            <i id="togglePassword" [ngClass]="showPassword ? 'fa fa-eye' : 'fa fa-eye-slash'"
+                            <i id="togglePassword" [ngClass]="showPassword ? 'fa fa-eye-slash' : 'fa fa-eye'"
                                 aria-hidden="true" (click)="password()"></i>
                             <div class="error"
                                 *ngIf="profileForm.controls['password']?.invalid && profileForm.controls['password'].touched ">
-                                Password should have minimum 6 characters, at least 1 uppercase letter, 1 lowercase
-                                letter and 1 number)</div>
+                                Password should have minimum 6 characters, at least 1 number)</div>
                         </div>
 
                         <div class="form-group col-sm-6 col-xs-12 passwordField">
                             <label for="confirm_password" class="required">Confirm Password</label>
                             <input [type]="showConfirmPassword ? 'text' : 'password'" formControlName="confirm_password"
                                 class="form-control" placeholder="Re-enter Password">
-                            <i id="togglePassword" [ngClass]="showConfirmPassword ? 'fa fa-eye' : 'fa fa-eye-slash'"
+                            <i id="togglePassword" [ngClass]="showConfirmPassword ? 'fa fa-eye-slash' : 'fa fa-eye'"
                                 aria-hidden="true" (click)="ConfirmPassword()"></i>
                             <div class="error"
                                 *ngIf="profileForm.controls['confirm_password']?.invalid && profileForm.controls['confirm_password'].touched ">
-                                Password should have minimum 6 characters, at least 1 uppercase letter, 1 lowercase
-                                letter and 1 number)</div>
+                                Password should have minimum 6 characters, at least 1 number)</div>
                         </div>
                         <span class="error" *ngIf="passwordError">Those passwords didn’t match. Try again</span>
                     </div><br>
 
 
                     <div class="row">
-                        <div class="col-12" *ngIf="showPasswordField">
+                        <div class="col-12" *ngIf="!click">
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" formControlName="acceptCheckbox">
                                 <label class="form-check-label required" id="checkTerms" for="flexCheckDefault">
@@ -146,12 +145,13 @@
                                 Please accept Terms & Conditions</div>
                         </div><br><br>
                         <div class="col-12">
-                            <button type="button" class="me-3">Cancel</button>
+                            <button type="button" routerLink="/dashboard" class="me-3">Cancel</button>
                             <button type="submit" class="ms-3" [disabled]="profileForm.invalid">{{!Id ? 'Register' :
                                 'Update'}}</button>
                         </div>
                     </div>
                 </form>
+
             </div>
 
             <div class="address" *ngIf="id === 'address'">
@@ -172,7 +172,7 @@
                 </div>
                 <div class="address_form" *ngIf="open === 'a_form'">
                     <i class="fa fa-times" (click)="hideForm()" aria-hidden="true"></i>
-                    <form [formGroup]="addressForm" (ngSubmit)="addAddress()">
+                    <form [formGroup]="addressForm" (ngSubmit)="addAddress('family')">
                         <div class="row my-4">
                             <div class="form-group col">
                                 <label for="AddressLine1" class="required">Address Line 1</label>
