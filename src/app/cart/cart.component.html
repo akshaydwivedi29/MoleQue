@@ -2,7 +2,7 @@
 
 <section class="cart">
 
-    <div class="cart_items" *ngIf="cartCount?.length >= 1">
+    <div class="cart_items" *ngIf="testlist.length >= 1">
         <div class="items">
             <h6><i class="fa fa-long-arrow-left"></i> Continue Shopping</h6>
             <hr>
@@ -20,7 +20,7 @@
                 </div>
             </div>
             <div class="clear_btn">
-                <button type="button" (click)="clearCartLS(); loadData()">Clear
+                <button type="button" (click)="clearCart()">Clear
                     Cart</button>
             </div>
 
@@ -70,7 +70,7 @@
         </div> -->
     </div>
 
-    <div class="empty_cart" *ngIf="cartCount?.length < 1">
+    <div class="empty_cart" *ngIf="testlist.length < 1">
         <img src="../../assets/images/jpg/cart.jpg" alt="Empty cart">
         <div class="empty_cart_text">
             <h4 class="text-center">Your Cart is Empty !</h4>

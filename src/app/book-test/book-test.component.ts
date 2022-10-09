@@ -15,7 +15,6 @@ export class BookTestComponent implements OnInit {
   id: any = 'allTest';
   userId: string = '';
   testList: any;
-  canAddToCart: boolean[] = [false];
   datePickerConfig: Partial<BsDatepickerConfig>;
   modal = false;
 
@@ -98,25 +97,17 @@ export class BookTestComponent implements OnInit {
   }
 
   addToCart(item: any) {
-    if (this.userId) {
-      this.cartService
-        .addToCart({ userId: this.userId, testDetail: item })
-        .subscribe();
-      this.canAddToCart[item._id] = !this.cartService.isAlreadyAddedInCart(
-        item._id
-      );
-    } else {
-      this.cartService.addToCartLS(item);
-      this.canAddToCart[item._id] = !this.cartService.isAlreadyAddedInCart(
-        item._id
-      );
-    }
-    this.modal = true;
+
+    this.cartService.addToCart(item);
+
   }
 
   getTestList() {
     this.cartService.getAllTestDetail().subscribe((res: TestList[]) => {
       this.testList = res;
     });
+  }
+  canAddToCart(item: any) {
+    return this.cartService.isAlreadyAddedInCart(item);
   }
 }

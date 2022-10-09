@@ -18,49 +18,35 @@ export class CartComponent implements OnInit {
   constructor(private cartService: CartService, private router: Router) {
     this.cartService.events.subscribe((res: any) => {
       this.itemCount = parseInt(res);
+      this.loadData()
     });
     this.userId = localStorage.getItem('id') || '';
   }
 
   ngOnInit(): void {
-    this.loadDataLS();
-    this.getCart();
+    this.loadData();
   }
 
-  async getCart() {
-    this.cartCount = this.cartService.getItemsLS();
+  /* async getCart() {
+    this.cartCount = this.cartService.getItems();
     this.itemCount = this.cartCount.length;
-  }
+  } */
+
 
   loadData() {
-    this.cartService.getItems(this.userId).subscribe((res: any) => {
-      this.testlist = res;
-      this.testlist.forEach((element: any) => {
-        this.totalCartValue += parseFloat(element.testDetail.price);
-      });
-    });
-  }
-
-  loadDataLS() {
-    this.testlist = this.cartService.getItemsLS();
+    this.testlist = this.cartService.getItems();
     this.totalCartValue = this.cartService.getTotalCartValue();
   }
 
-  removeItem(testId: any) {
-    this.cartService.removeItem(testId._id).subscribe();
-    this.cartService.removeItemLS(testId);
-    this.testlist.forEach((element: any) => {
-      this.totalCartValue -= parseFloat(element.testDetail.price);
-    });
+  removeItem(test: any) {
+    this.cartService.removeItem(test);
+    this.loadData
   }
 
-  removeItemLS(item: any) {
-    this.cartService.removeItemLS(item);
-  }
 
-  clearCartLS() {
-    this.cartService.clearCartLS();
-    this.getCart();
+  clearCart() {
+    this.cartService.clearCart();
+    this.loadData();
   }
 
   openPrescription(event: Event) {

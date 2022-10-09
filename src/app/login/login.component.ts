@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { CartService } from '../services/cart.service';
 import { LoginServiceService } from '../services/login-service.service';
 
 @Component({
@@ -21,11 +22,13 @@ export class LoginComponent implements OnInit {
   loginData!: { number: string; password: string; };
   number: string = '';
   otpCode: string = '';
-
+  redirectURL: string = 'dashboard';
   constructor(
     private formBuilder: FormBuilder,
     private loginService: LoginServiceService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute,
+    private cartService: CartService
   ) {
     this.logInForm = this.formBuilder.group({
       number: ['', [Validators.required, Validators.maxLength(10), Validators.minLength(10)]],
@@ -41,10 +44,18 @@ export class LoginComponent implements OnInit {
     this.otpForm = this.formBuilder.group({
       otpCode: ['', [Validators.required]],
     });
+    this.route.queryParams.subscribe(params => {
+      this.redirectURL = params['redirectUrl'];
+      console.log(params);
 
+      if (this.redirectURL == '' || undefined) {
+        this.redirectURL = 'dashboard';
+      }
+    });
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+  }
 
   password() {
     this.showPassword = !this.showPassword;
@@ -64,10 +75,11 @@ export class LoginComponent implements OnInit {
     this.blur_bg = true;
     this.loginService.login(this.loginData).subscribe((res: any) => {
       if (res.length == 1) {
-        this.router.navigate(['dashboard'], {
+        this.router.navigate([this.redirectURL], {
           replaceUrl: true,
         });
         localStorage.setItem('id', res[0]?._id);
+        this.cartService.loadCart()
       }
     },
       (err) => {
@@ -102,6 +114,7 @@ export class LoginComponent implements OnInit {
           replaceUrl: true,
         });
         localStorage.setItem('id', res._id);
+        this.cartService.loadCart()
       }
     },
       (err) => {
