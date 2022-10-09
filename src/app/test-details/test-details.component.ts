@@ -15,7 +15,7 @@ import { TestList, TestsService } from '../services/tests.service';
   styleUrls: ['./test-details.component.css'],
 })
 export class TestDetailsComponent implements OnInit {
-  testId: string='';
+  testId: string = '';
   userId: string = '';
   obj!: TestList;
   toggleTab = false;
@@ -49,7 +49,7 @@ export class TestDetailsComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   getData() {
     this.testsService.getTestDetail(this.testId).subscribe((results: any) => {
@@ -63,16 +63,8 @@ export class TestDetailsComponent implements OnInit {
   }
 
   addToCart(item: any) {
-    if (this.userId) {
-      this.cartService
-        .addToCart({ userId: this.userId, testDetail: item })
-        .subscribe((res) => {
-        });
-      this.canAddToCart = !this.cartService.isAlreadyAddedInCart(item);
-    } else {
-      this.cartService.addToCartLS(item);
-      this.canAddToCart = !this.cartService.isAlreadyAddedInCart(item);
-    }
+    this.cartService.addToCart(item);
+
 
     this.modal = true;
   }

@@ -35,7 +35,7 @@ export class ForgotPasswordComponent implements OnInit {
         '',
         [
           Validators.required,
-          Validators.pattern('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$'),
+          Validators.pattern('^(?=.*?[a-z])(?=.*?[0-9]).{6,}$'),
         ],
       ],
     });

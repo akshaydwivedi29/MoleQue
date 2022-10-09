@@ -1,109 +1,108 @@
-<section class="login">
-    <div class="d-flex align-items-center justify-content-between">
+<section [ngClass]="blur_bg ? 'blur_body login' : 'login'">
 
-        <div class="login_img">
+    <!-- <div class="d-flex align-items-center justify-content-between"> -->
+
+    <!-- <div class="login_img">
             <img src="../../assets/images/jpg/login.jpg" alt="Login / Sign Up">
+        </div> -->
+
+    <div class="login_item">
+        <div class="login_item_top">
+            <img id="img" src="../../assets/images/logo.png" routerLink="/" alt="MoleQue Diagnostics">
+            <!-- <h5>SIGN IN</h5> -->
+            <h4>Get started with your health check now.</h4>
+            <div class="login_img1">
+                <img src="../../assets/images/jpg/login.jpg" alt="Login / Sign Up">
+            </div>
+            <div *ngIf="!showOTP">
+                <p>Already an existing User? Please Sign-in with your registered credentials.</p>
+            </div>
+            <h5 *ngIf="showOTP">OTP verification</h5>
+            <p *ngIf="showOTP">Please check the OTP sent to {{number}}</p>
         </div>
 
-        <div class="login_item">
-            <div class="login_item_top">
-                <img id="img" src="../../assets/images/logo.png" alt="MoleQue Diagnostics">
-                <!-- <h5>SIGN IN</h5> -->
-                <h4>Get started with your health check now.</h4>
-                <div class="login_img1">
-                    <img src="../../assets/images/jpg/login.jpg" alt="Login / Sign Up">
+        <p class="error" *ngIf="logInError">Sorry! Invalid credentials. Authentication failed.
+        </p>
+        <p class="alert alert-danger" *ngIf="unregMobile">Mobile number is not registered</p>
+        <p class="alert alert-danger" *ngIf="invalidOtp">Invalid OTP. Please enter valid OTP code.</p>
+
+        <div class="login_item_form" *ngIf="!showOTP">
+            <form [formGroup]="logInForm" (ngSubmit)="login()">
+
+                <div class="form-group">
+                    <span id="countryCode">+91</span>
+                    <input type="tel" class="form-control" formControlName="number" id="mobile"
+                        placeholder="10 digit mobile number" (keypress)="keyPress($event)" maxlength="10"
+                        minlength="10">
+                    <p class="error"
+                        *ngIf="logInForm.controls['number'].invalid && logInForm.controls['number'].touched ">
+                        Please provide valid mobile number</p>
                 </div>
-                <div *ngIf="!showOTP">
-                    <p>Already an existing User? Please Sign-in with your registered credentials.</p>
+
+                <div class="form-group mt-3 passwordField">
+                    <i [ngClass]="showPassword ? 'fa fa-eye-slash' : 'fa fa-eye'" aria-hidden="true"
+                        (click)="password()"></i>
+                    <input [type]="showPassword ? 'text' : 'password'" class="form-control" formControlName="password"
+                        id="password" placeholder="Password">
+
+                    <p class="error"
+                        *ngIf="logInForm.controls['password'].invalid && logInForm.controls['password'].touched">
+                        Password should have minimum 6 characters, at least 1 number.</p>
                 </div>
-                <h5 *ngIf="showOTP">OTP verification</h5>
-                <p *ngIf="showOTP">Please check the OTP sent to {{number}}</p>
-            </div>
-
-            <p class="alert alert-danger" *ngIf="logInError">Wrong credentials. Invalid Mobile number or password</p>
-            <p class="alert alert-danger" *ngIf="unregMobile">Mobile number is not registered</p>
-            <p class="alert alert-danger" *ngIf="invalidOtp">Invalid OTP. Please enter valid OTP code.</p>
-
-            <div class="login_item_form" *ngIf="!showOTP">
-                <form [formGroup]="logInForm" (ngSubmit)="login()">
-
-                    <div class="form-group">
-                        <span id="countryCode">+91</span>
-                        <input type="tel" class="form-control" formControlName="number" id="mobile"
-                            placeholder="10 digit mobile number" (keypress)="keyPress($event)" maxlength="10"
-                            minlength="10">
-                        <p class="error"
-                            *ngIf="logInForm.controls['number'].invalid && logInForm.controls['number'].touched ">
-                            Please provide valid mobile number</p>
-                    </div>
-
-                    <div class="form-group mt-3 passwordField">
-                        <i [ngClass]="showPassword ? 'fa fa-eye' : 'fa fa-eye-slash'" aria-hidden="true"
-                            (click)="password()"></i>
-                        <input  [type]="showPassword ? 'text' : 'password'" class="form-control"
-                            formControlName="password" id="password" placeholder="Password">
-                        
-                        <p class="error"
-                            *ngIf="logInForm.controls['password'].invalid && logInForm.controls['password'].touched">
-                            Password is invaild.</p>
-                    </div>
 
 
-                    <div class="login_buttons mt-3">
-                        <button type="submit" class="login_btn_1" [disabled]="!logInForm.valid">LOGIN</button>
-                        <p class="text-center my-2">or</p>
-                        <button type="button" (click)="loginWithOtp()" [disabled]="logInForm.controls['number'].invalid"
-                            class="login_btn_otp">LOGIN WITH
-                            OTP</button>
-                    </div>
-                    <div class="btn">
-                        <button type="button" (click)="forgotPage()" id="forgotPswd"
-                            [disabled]="logInForm.controls['number'].invalid">Forgot Password?</button><br>
-                        <span id="signUp">New User? &nbsp;<a routerLink="/signup">Create an account.</a></span>
-                    </div>
-                </form>
-            </div>
-
-            <div class="login_item_form" *ngIf="showOTP">
-                <form [formGroup]="otpForm"
-                    (ngSubmit)="submitOtp(otpCode1,otpCode2,otpCode3,otpCode4,otpCode5,otpCode6)">
-                    <div class="row">
-                        <div class="col">
-                            <input type="tel" class="form-control" formControlName="otpCode" #otpCode1 maxlength="1"
-                                (keyup)="move($event,'',otpCode1,otpCode2)">
-                        </div>
-                        <div class="col">
-                            <input type="tel" class="form-control" formControlName="otpCode" #otpCode2 maxlength="1"
-                                (keyup)="move($event,otpCode1,otpCode2,otpCode3)">
-                        </div>
-                        <div class="col">
-                            <input type="tel" class="form-control" formControlName="otpCode" #otpCode3 maxlength="1"
-                                (keyup)="move($event,otpCode2,otpCode3,otpCode4)">
-                        </div>
-                        <div class="col">
-                            <input type="tel" class="form-control" formControlName="otpCode" #otpCode4 maxlength="1"
-                                (keyup)="move($event,otpCode3,otpCode4,otpCode5)">
-                        </div>
-                        <div class="col">
-                            <input type="tel" class="form-control" formControlName="otpCode" #otpCode5 maxlength="1"
-                                (keyup)="move($event,otpCode4,otpCode5,otpCode6)">
-                        </div>
-                        <div class="col">
-                            <input type="tel" class="form-control" formControlName="otpCode" #otpCode6 maxlength="1"
-                                (keyup)="move($event,otpCode5,otpCode6,'')">
-                        </div>
-                    </div>
-
-
-                    <div class="login_buttons mt-3">
-                        <button type="submit" class="login_btn_1" [disabled]="otpForm.invalid">Submit</button>
-                    </div>
-
-                </form>
-            </div>
-
+                <div class="login_buttons mt-3">
+                    <button type="submit" class="login_btn_1" [disabled]="!logInForm.valid">LOGIN</button>
+                    <p class="text-center my-2">or</p>
+                    <button type="button" (click)="loginWithOtp()" [disabled]="logInForm.controls['number'].invalid"
+                        class="login_btn_otp">LOGIN WITH
+                        OTP</button>
+                </div>
+                <div class="btn">
+                    <button type="button" (click)="forgotPage()" id="forgotPswd"
+                        [disabled]="logInForm.controls['number'].invalid">Forgot Password?</button><br>
+                    <span id="signUp">New User? &nbsp;<a routerLink="/signup">Create an account.</a></span>
+                </div>
+            </form>
         </div>
 
+        <div class="login_item_form" *ngIf="showOTP">
+            <form [formGroup]="otpForm" (ngSubmit)="submitOtp(otpCode1,otpCode2,otpCode3,otpCode4,otpCode5,otpCode6)">
+                <div class="row">
+                    <div class="col">
+                        <input type="tel" class="form-control" formControlName="otpCode" #otpCode1 maxlength="1"
+                            (keyup)="move($event,'',otpCode1,otpCode2)">
+                    </div>
+                    <div class="col">
+                        <input type="tel" class="form-control" formControlName="otpCode" #otpCode2 maxlength="1"
+                            (keyup)="move($event,otpCode1,otpCode2,otpCode3)">
+                    </div>
+                    <div class="col">
+                        <input type="tel" class="form-control" formControlName="otpCode" #otpCode3 maxlength="1"
+                            (keyup)="move($event,otpCode2,otpCode3,otpCode4)">
+                    </div>
+                    <div class="col">
+                        <input type="tel" class="form-control" formControlName="otpCode" #otpCode4 maxlength="1"
+                            (keyup)="move($event,otpCode3,otpCode4,otpCode5)">
+                    </div>
+                    <div class="col">
+                        <input type="tel" class="form-control" formControlName="otpCode" #otpCode5 maxlength="1"
+                            (keyup)="move($event,otpCode4,otpCode5,otpCode6)">
+                    </div>
+                    <div class="col">
+                        <input type="tel" class="form-control" formControlName="otpCode" #otpCode6 maxlength="1"
+                            (keyup)="move($event,otpCode5,otpCode6,'')">
+                    </div>
+                </div>
+
+
+                <div class="login_buttons mt-3">
+                    <button type="submit" class="login_btn_1" [disabled]="otpForm.invalid">Submit</button>
+                </div>
+
+            </form>
+        </div>
 
     </div>
 </section>
+<div *ngIf="showSpinner" class="spinner spinner-border text-primary" role="status"></div>

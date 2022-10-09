@@ -23,7 +23,7 @@ export class DashboardComponent implements OnInit {
   }
 
   editInfo(ev: Event) {
-    this.router.navigate(['/profile'])
+    this.router.navigate(['/profile', {click: ev.type}])
   }
 
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { CartService } from '../services/cart.service';
 import { LoginServiceService } from '../services/login-service.service';
 
 @Component({
@@ -13,17 +14,21 @@ export class LoginComponent implements OnInit {
   unregMobile: boolean = false;
   showOTP: boolean = false;
   showPassword: boolean = false;
+  showSpinner: boolean = false;
   invalidOtp: boolean = false;
+  blur_bg: boolean = false;
   logInForm: FormGroup;
   otpForm: FormGroup;
   loginData!: { number: string; password: string; };
   number: string = '';
   otpCode: string = '';
-
+  redirectURL: string = 'dashboard';
   constructor(
     private formBuilder: FormBuilder,
     private loginService: LoginServiceService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute,
+    private cartService: CartService
   ) {
     this.logInForm = this.formBuilder.group({
       number: ['', [Validators.required, Validators.maxLength(10), Validators.minLength(10)]],
@@ -31,7 +36,7 @@ export class LoginComponent implements OnInit {
         '',
         [
           Validators.required,
-          Validators.pattern('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$'),
+          Validators.pattern('^(?=.*?[a-z])(?=.*?[0-9]).{6,}$'),
         ],
       ],
     });
@@ -39,9 +44,18 @@ export class LoginComponent implements OnInit {
     this.otpForm = this.formBuilder.group({
       otpCode: ['', [Validators.required]],
     });
+    this.route.queryParams.subscribe(params => {
+      this.redirectURL = params['redirectUrl'];
+      console.log(params);
+
+      if (this.redirectURL == '' || undefined) {
+        this.redirectURL = 'dashboard';
+      }
+    });
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+  }
 
   password() {
     this.showPassword = !this.showPassword;
@@ -57,21 +71,25 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.loginData = this.logInForm.value;
+    this.showSpinner = true;
+    this.blur_bg = true;
     this.loginService.login(this.loginData).subscribe((res: any) => {
-      console.log(res)
       if (res.length == 1) {
-        this.router.navigate(['dashboard'], {
+        this.router.navigate([this.redirectURL], {
           replaceUrl: true,
         });
         localStorage.setItem('id', res[0]?._id);
+        this.cartService.loadCart()
       }
     },
       (err) => {
         this.logInError = true;
+        this.showSpinner = false;
+        this.blur_bg = false;
         setTimeout(() => {
           this.logInError = false;
         }, 5000);
-      })
+      });
   }
 
   loginWithOtp() {
@@ -96,6 +114,7 @@ export class LoginComponent implements OnInit {
           replaceUrl: true,
         });
         localStorage.setItem('id', res._id);
+        this.cartService.loadCart()
       }
     },
       (err) => {

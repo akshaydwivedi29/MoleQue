@@ -77,10 +77,9 @@
                             <button (click)="openRequestPage(list)" class="knowMoreBtn">Know more...</button>
                         </div>
                         <div class="button">
-                            <button class="btn" type="button" (click)="addToCart(list)"
-                                [disabled]="canAddToCart[list._id]">
+                            <button class="btn" type="button" (click)="addToCart(list)" [disabled]="canAddToCart(list)">
                                 <i class="bi bi-cart-fill mx-2"></i>
-                                {{canAddToCart[list._id]? 'Added To Cart' :'Add To Cart'}}
+                                {{canAddToCart(list)? 'Added To Cart' :'Add To Cart'}}
                             </button>
                         </div>
                     </div>
@@ -109,4 +108,5 @@
     </div>
 
 </section>
+<app-cart-modal #popup *ngIf="modal"></app-cart-modal>
 <app-footer></app-footer>
