@@ -4,10 +4,10 @@
 
     <div class="cart_items" *ngIf="testlist.length >= 1">
         <div class="items">
-            <h6><i class="fa fa-long-arrow-left"></i> Continue Shopping</h6>
+            <h6 [routerLink]="'/book-test'"><i class="fa fa-long-arrow-left"></i> Continue Booking</h6>
             <hr>
-            <h5>Shopping Cart</h5>
-            <h6>You have {{itemCount}} items in your cart</h6>
+            <h5>Booking Cart</h5>
+            <h6>You have {{testlist.length}} items in your cart</h6>
 
             <div class="table" *ngFor='let obj of testlist;'>
                 <div class="code_name">
