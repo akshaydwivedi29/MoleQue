@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
       this.redirectURL = params['redirectUrl'];
       console.log(params);
 
-      if (this.redirectURL == '' || undefined) {
+      if (this.redirectURL == '' ||this.redirectURL ==  undefined) {
         this.redirectURL = 'dashboard';
       }
     });

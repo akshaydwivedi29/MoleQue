@@ -34,12 +34,10 @@ export class CartService {
     return this.items;
   }
 
-
-
   clearCart() {
     this.items = [];
     localStorage.removeItem('cart_items');
-    this.loadCart();
+    this.saveCart();
     // return this.http.delete(`${environment.serverURL}cart/removeAll/${userId}`);
   }
 

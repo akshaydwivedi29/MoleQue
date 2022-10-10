@@ -43,7 +43,6 @@ export class CartComponent implements OnInit {
     this.loadData
   }
 
-
   clearCart() {
     this.cartService.clearCart();
     this.loadData();
