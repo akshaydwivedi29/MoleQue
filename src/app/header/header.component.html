@@ -6,7 +6,7 @@
     </div>
 
     <div class="header_logo">
-        <img src="../../assets/images/logo.png" routerLink="/" alt="Moleque Diagnostics" />
+        <img src="../../assets/images/akashlogo.png" routerLink="/" alt="Moleque Diagnostics" />
     </div>
 
     <div class="search">
@@ -51,7 +51,7 @@
     </div>
 
     <marquee class="user" width="20%" direction="left" *ngIf="userDetail?.firstName">Hello,
-        {{gender}}.{{userDetail?.firstName | titlecase}} {{userDetail?.lastName |titlecase}}</marquee>
+        {{gender}}.{{userDetail.firstName | titlecase}} {{userDetail.lastName |titlecase}}</marquee>
 
 </header>
 <!-- Top Header Ends -->
