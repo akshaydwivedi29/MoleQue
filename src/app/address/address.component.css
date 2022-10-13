@@ -1,0 +1,111 @@
+.address {
+    background: #EEEEEE;
+    padding: 40px;
+    margin-top: 50px;
+}
+
+.blur_body {
+    filter: blur(8px);
+    -webkit-filter: blur(2px);
+}
+
+button {
+    border: none;
+    background: #f22283;
+    color: #fff;
+    padding: 7px 15px;
+    border-radius: 5px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+
+button:hover {
+    background: #1f3d9d;
+}
+
+img {
+    width: 40px;
+    height: auto;
+    border-radius: 50%;
+}
+
+.addAddress {
+    float: right;
+    cursor: pointer;
+    color: #1f3d9d;
+}
+
+.savedAddress {
+    float: left;
+    font-weight: bold;
+}
+
+.row {
+    margin: 20px 0;
+    /* position: absolute; */
+    left: 0;
+}
+
+.card {
+    width: 20%;
+    margin: 5px;
+    border: 1px solid #1f3d9d;
+}
+
+.radioBtn {
+    float: right;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.date {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.slot {
+    font-weight: bold;
+}
+
+.inputDate {
+    width: 20%;
+    margin-left: 10px;
+}
+
+.timeSlot {
+    border: 1px solid #1f3d9d;
+}
+
+.timeSlot .card {
+    width: 10%;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.selected {
+    background-color: #1f3d9d;
+    color: #EEEEEE;
+}
+
+.selectedDateTime {
+    font-weight: bold;
+}
+
+.showDateTime {
+    color: #1f3d9d;
+    font-size: 20px;
+}
+
+.confirmBtn {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+}
+
+.error{
+    color: red;
+}

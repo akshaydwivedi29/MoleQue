@@ -40,7 +40,8 @@
     background: rgba(242, 34, 131, 0.25);
 }
 
-.code_name, .price_remove {
+.code_name,
+.price_remove {
     display: flex;
     align-items: center;
 }
@@ -63,15 +64,20 @@
     margin-left: 10px;
 }
 
+.cart .cart_items .items {
+    position: relative;
+}
+
 .cart .cart_items .items .clear_btn {
-    display: flex;
-    align-items: center;
-    justify-content: right;
+    position: absolute;
+    top: 15%;
+    right: 0;
 }
 
 .cart .cart_items .items button,
 .cart .cart_items .checkout button,
-.empty_cart button {
+.empty_cart button,
+.modal .modal-content .modal-body button {
     border: none;
     background: #f22283;
     color: #fff;
@@ -83,13 +89,96 @@
 }
 
 .cart .cart_items .items button:hover,
+.cart .cart_items .checkout button:hover,
 .empty_cart button:hover {
     background: #1f3d9d;
 }
 
 .cart .cart_items .checkout {
-    padding: 35px 0;
     width: 40%;
+}
+
+.cart .cart_items .checkout button{
+    float: right;
+}
+
+.payableAmount {
+    display: flex;
+    align-items: center;
+    padding: 7px 15px;
+    box-sizing: border-box;
+}
+
+.payableAmount span {
+    float: right;
+}
+
+.amount {
+    font-weight: bold;
+    font-size: 15px;
+    background: rgba(31, 61, 157, 0.25);
+    padding: 7px 15px;
+}
+
+.closeButton {
+    position: absolute;
+    right: 10px;
+}
+
+.button {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.reviewAmount {
+    float: right;
+}
+
+.netAmount{
+    font-size: 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.blur_body {
+    filter: blur(8px);
+    -webkit-filter: blur(2px);
+}
+
+.modal-content {
+    width: 40vw;
+}
+
+.modal .modal-header {
+    display: flex;
+    flex-direction: column;
+}
+
+.modal .modal-header img,
+.card .card-body img {
+    width: 50px;
+    height: auto;
+    border-radius: 50%;
+}
+
+.card {
+    margin: 10px;
+    cursor: pointer;
+}
+
+.selected {
+    border: 2px solid rgb(128, 228, 128);
+    box-shadow: 0px 6px 7px 0px rgb(0 0 0 / 20%);
+}
+
+.card .card-body {
+    display: flex;
+    align-items: center;
+}
+
+.text {
+    margin-left: 10px;
 }
 
 .cart .cart_items .checkout .book_for,
@@ -98,8 +187,12 @@
     color: #fff;
     border-radius: 5px;
     padding: 10px;
-    text-transform: uppercase;
+    text-transform: capitalize;
     letter-spacing: 1.5px;
+}
+
+.cart .cart_items .checkout {
+    margin-top: 50px;
 }
 
 /* .cart .payment {
@@ -126,6 +219,10 @@
 
 .empty_cart_text {
     display: grid;
+}
+
+.error{
+    color: red;
 }
 
 
@@ -173,7 +270,8 @@
         font-size: 20px;
     }
 
-    .code_name, .price_remove {
+    .code_name,
+    .price_remove {
         display: block;
     }
 

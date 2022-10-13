@@ -1,0 +1,100 @@
+<app-header></app-header>
+
+<section class="orderSummary">
+
+    <div class="title">
+        <h6>Patient Details</h6>
+    </div>
+
+    <div class="patientDetails row" *ngFor="let detail of userOrderDetail">
+        <div class="col">
+            <span>Name</span>
+            <p>{{detail.userDetail.firstName}}</p>
+        </div>
+        <div class="col">
+            <span>Gender</span>
+            <p>{{detail.userDetail.gender}}</p>
+        </div>
+        <div class="col">
+            <span>Date Of Birth</span>
+            <p>{{detail.userDetail.DOB | date }}</p>
+        </div>
+        <div class="col">
+            <span>Mobile Number</span>
+            <p>{{detail.userDetail.number}}</p>
+        </div>
+    </div>
+
+    <div class="title">
+        <h6>Home Collection Details</h6>
+    </div>
+
+    <div class="patientAddressDetails row" *ngFor="let detail of userOrderDetail">
+        <div class="col">
+            <div class="flexitem">
+                <img src="../../assets/images/icons/2356.png" alt="Avatar">
+                <div>
+                    <span>{{detail.userAddress.addressLine1}}, {{detail.userAddress.addressLine2}},
+                        {{detail.userAddress.city}}, {{detail.userAddress.state}}, {{detail.userAddress.pinCode}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="flexitem">
+                <i class="bi bi-alarm-fill fa-2x"></i>
+                <div>
+                    <p>Schedule Slot</p>
+                    <span>{{detail.scheduleSlot | date : 'medium'}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-9">
+            <div class="title">
+                <h6 class="cart">Test Selected</h6>
+            </div>
+
+            <div class="patientTestDetails">
+                <div class="row head">
+                    <div class="col">Test Code</div>
+                    <div class="col">Test Name</div>
+                    <div class="col">Price</div>
+                </div>
+                <div class="row testDetail" *ngFor="let cart of userCart">
+                    <div class="col">
+                        <p>{{cart.testcode}}</p>
+                    </div>
+                    <div class="col">
+                        <p>{{cart.testname}}</p>
+                    </div>
+                    <div class="col">
+                        <p>{{cart.price}}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">Total: ₹{{totalCartValue}}</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-3">
+            <div class="title">
+                <h6 class="cart">Review Your order</h6>
+            </div>
+
+            <div class="reviewOrder">
+                <button class="applycouponbtn">Apply Coupon</button>
+                <div class="payment">
+                    Net Payable Amount: ₹ {{totalCartValue}}
+                </div>
+                <button class="btn" type="button">Proceed to payment</button>
+
+            </div>
+
+        </div>
+    </div>
+
+</section>
+<app-footer></app-footer>

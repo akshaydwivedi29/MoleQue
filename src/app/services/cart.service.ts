@@ -72,8 +72,6 @@ export class CartService {
     if (userId) {
       this.http.get(`${environment.serverURL}cart/synchronizeCart/${userId}`).subscribe((res: any) => {
         this.items = res.cart;
-        console.log(this.items);
-
         localStorage.setItem('cart_items', JSON.stringify(this.items));
         this.publishCartCount();
       });
@@ -112,5 +110,17 @@ export class CartService {
       this.totalCartValue += parseFloat(element.price);
     });
     return this.totalCartValue;
+  }
+
+  createOrder(userId: string, order: any) {
+    return this.http.post(`${environment.serverURL}order/createOrder/${userId}`, order);
+  }
+
+  updateOrder(orderId: string, order: any) {
+    return this.http.patch(`${environment.serverURL}order/${orderId}`, order);
+  }
+
+  getOrderByUserId(userId:string){
+   return this.http.get(`${environment.serverURL}order/orderByUserId/${userId}`)
   }
 }

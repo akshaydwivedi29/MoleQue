@@ -1,0 +1,124 @@
+<app-header></app-header>
+<section [ngClass]="blur_bg ? 'blur_body address' : 'address'">
+    <div class="savedAddress">Saved Address</div>
+    <div class="addAddress" (click)="openAddAddressPopup()">+ Add New Address</div>
+    <div class="row">
+        <div class="card col-2" *ngFor="let add of address">
+            <div class="card-body">
+                <img src="../../assets/images/icons/2356.png" alt="Avatar">
+                <input type="radio" class="form-check-input radioBtn" name="flexRadioDefault" id="flexRadioDefault1"
+                    (click)="selectAddress(add)">
+                <div class="text">
+                    <h5 class="card-title">{{add.addressLine1 | titlecase}}</h5>
+                    <span class="card-text">{{add.addressLine2 | titlecase}} | </span>
+                    <span class="card-text">{{add.city | titlecase}} | </span>
+                    <span class="card-text">{{add.state | titlecase}} | </span>
+                    <span class="card-text">{{add.pinCode}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="date">
+        <span class="slot">Schedule Slot</span>
+        <input type="date" (change)="generateTimeSlot($event)" class="form-control inputDate" placeholder="MM/DD/YYYY">
+    </div>
+    <div class="timeSlot row">
+        <div [ngClass]="time==selectedDateTime?'card col-2 selected':'card col-2'" *ngFor="let time of timeSlot"
+            (click)="selectTime(time)">
+            <div class="card-body">
+                {{time | date : 'shortTime'}}
+            </div>
+        </div>
+        <div class="selectedDateTime">
+            <div>{{selectedDateTime? 'Your selected date and time are' : 'Please Select Address and Schedule slot'}}
+            </div>
+            <div class="showDateTime">{{selectedDateTime | date :'short'}}</div>
+        </div>
+        <div class="confirmBtn">
+            <button type="button" (click)="confirm()">Confirm</button>
+
+        </div>
+    </div>
+</section>
+
+<!-- Add Address PopUp -->
+<div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle}">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h4 class="modal-title"> Add Address</h4>
+                <button type="button" (click)="closeAddAddressPopup()">
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <form [formGroup]="addressForm" (ngSubmit)="addAddress()">
+                    <div class="row my-4">
+                        <div class="form-group col">
+                            <label for="AddressLine1" class="required">Address Line 1</label>
+                            <input type="text" class="form-control" formControlName="addressLine1"
+                                placeholder="Address Line 1">
+                            <div class="error"
+                                *ngIf="addressForm.controls['addressLine1'].invalid && addressForm.controls['addressLine1'].touched ">
+                                Please provide valid address</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col">
+                            <label for="AddressLine2" class="required">Address Line 2</label>
+                            <input type="text" class="form-control" formControlName="addressLine2"
+                                placeholder="Address Line 2">
+                            <div class="error"
+                                *ngIf="addressForm.controls['addressLine2'].invalid && addressForm.controls['addressLine2'].touched ">
+                                Please provide valid address</div>
+                        </div>
+                    </div>
+
+                    <div class="row my-4">
+                        <div class="form-group col-sm-6 col-xs-12 space">
+                            <label for="city" class="required">City</label>
+                            <input type="text" class="form-control" formControlName="city" placeholder="City">
+                            <div class="error"
+                                *ngIf="addressForm.controls['city'].invalid && addressForm.controls['city'].touched ">
+                                Please provide valid city</div>
+                        </div>
+                        <div class="form-group col-sm-6 col-xs-12">
+                            <label for="state" class="required">State</label>
+                            <input type="text" class="form-control" formControlName="state" placeholder="State">
+                            <div class="error"
+                                *ngIf="addressForm.controls['state'].invalid && addressForm.controls['state'].touched ">
+                                Please provide valid state</div>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+
+                        <div class="form-group col-sm-6 col-xs-12 space">
+                            <label for="pincode" class="required">PIN Code</label>
+                            <input type="tel" class="form-control" minlength="6" maxlength="6" formControlName="pinCode"
+                                (keypress)="keyPress($event)" placeholder="PIN Code">
+                            <div class="error"
+                                *ngIf="addressForm.controls['pinCode'].invalid && addressForm.controls['pinCode'].touched ">
+                                Please provide valid pinCode</div>
+                        </div>
+
+                        <div class="form-group col-sm-6 col-xs-12">
+                            <label for="landmark">Nearby Landmark</label>
+                            <input type="text" class="form-control" formControlName="landmark"
+                                placeholder="Nearby Landmark (optional)">
+                        </div>
+                    </div>
+
+                    <div class="d-flex align-items-center justify-content-center mt-5">
+                        <button type="submit" [disabled]="addressForm.invalid">Add Address</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

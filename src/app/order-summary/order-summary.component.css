@@ -1,0 +1,108 @@
+.orderSummary {
+    background: #EEEEEE;
+    padding: 40px;
+    margin-top: 50px;
+}
+
+.orderSummary .title h6 {
+    font-weight: bold;
+}
+
+.orderSummary .patientDetails {
+    border: 2px solid #1f3d9d;
+    padding: 10px;
+    margin-bottom: 30px;
+}
+
+.orderSummary .patientDetails span {
+    font-size: 14px;
+}
+
+.orderSummary .patientDetails p,
+.orderSummary .patientAddressDetails p {
+    color: #1f3d9d;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.orderSummary .patientAddressDetails .flexitem {
+    display: flex;
+    align-content: center;
+    align-items: center;
+}
+
+.orderSummary .patientAddressDetails .flexitem img,
+i {
+    width: 40px;
+    height: auto;
+    border-radius: 50%;
+}
+
+.orderSummary .patientAddressDetails .flexitem i {
+    color: #1f3d9d;
+}
+
+.cart {
+    margin-top: 10px;
+}
+
+.orderSummary .patientTestDetails {
+    border: 2px solid #1f3d9d;
+    padding: 0 10px;
+}
+
+.orderSummary .patientTestDetails .head {
+    padding-bottom: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    background: #1f3d9d !important;
+    color: #EEEEEE;
+}
+
+.orderSummary .patientTestDetails .testDetail {
+    font-size: 16px;
+}
+
+.orderSummary .patientTestDetails>.row:nth-child(odd) {
+    background: rgba(31, 61, 157, 0.25);
+}
+
+.orderSummary .patientTestDetails>.row:nth-child(even) {
+    background: rgba(242, 34, 131, 0.25);
+}
+
+.orderSummary .reviewOrder .applycouponbtn {
+    border-radius: 10px;
+    box-shadow: 0 0 4px 0 rgb(254 193 8 / 60%);
+    border: solid 1px #fec108;
+    background-color: #fff8e4;
+    width: 100%;
+    height: 44px;
+    text-align: left;
+    color: #7b7b7b;
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+
+.orderSummary .reviewOrder .payment{
+    font-size: 18px;
+    font-weight: bold;
+    color: #1f3d9d;
+    margin-bottom: 10px;
+}
+
+.orderSummary .reviewOrder .btn {
+    border: none;
+    background: #f22283;
+    color: #fff;
+    padding: 7px 15px;
+    border-radius: 5px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+
+.orderSummary .reviewOrder .btn:hover {
+    background: #1f3d9d;
+}
