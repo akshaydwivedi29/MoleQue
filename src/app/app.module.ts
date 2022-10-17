@@ -27,6 +27,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { CartModalComponent } from './cart-modal/cart-modal.component';
 import { AddressComponent } from './address/address.component';
 import { OrderSummaryComponent } from './order-summary/order-summary.component';
+import { PaymentComponent } from './payment/payment.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,6 +50,7 @@ import { OrderSummaryComponent } from './order-summary/order-summary.component';
     CartModalComponent,
     AddressComponent,
     OrderSummaryComponent,
+    PaymentComponent,
   ],
   imports: [
     BrowserModule,

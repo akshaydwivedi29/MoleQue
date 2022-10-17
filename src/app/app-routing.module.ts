@@ -13,6 +13,7 @@ import { ContactUsComponent } from './pages/contact-us/contact-us.component';
 import { PrivacyPolicyComponent } from './pages/privacy-policy/privacy-policy.component';
 import { StatutoryComplianceComponent } from './pages/statutory-compliance/statutory-compliance.component';
 import { TermsConditionsComponent } from './pages/terms-conditions/terms-conditions.component';
+import { PaymentComponent } from './payment/payment.component';
 import { ProfileComponent } from './profile/profile.component';
 import { SignupComponent } from './signup/signup.component';
 import { TestDetailsComponent } from './test-details/test-details.component';
@@ -86,6 +87,10 @@ const routes: Routes = [
   {
     path: 'cart/order-summary',
     component: OrderSummaryComponent,
+  },
+  {
+    path: 'cart/payment',
+    component: PaymentComponent,
   },
 ];
 

@@ -36,7 +36,7 @@ export class AddressComponent implements OnInit {
     });
 
     this.userId = localStorage.getItem('id') || '';
-    this.orderId = this.activateRoute.snapshot.params['orderId'];
+    this.orderId = localStorage.getItem('orderId') || '';
   }
 
   ngOnInit(): void {
@@ -110,8 +110,7 @@ export class AddressComponent implements OnInit {
 
   confirm() {
     this.cartService.updateOrder(this.orderId, { userAddress: this.userAddress, scheduleSlot: this.selectedDateTime },).subscribe((res: any) => {
-      console.log(res)
-      this.router.navigate(['/cart/order-summary',{orderId:this.orderId}])
+      this.router.navigate(['/cart/order-summary'])
     })
   }
 

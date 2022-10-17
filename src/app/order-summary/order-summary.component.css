@@ -64,12 +64,28 @@ i {
     font-size: 16px;
 }
 
+.orderSummary .patientTestDetails .price {
+    font-size: 20px;
+    font-weight: bold;
+    display: inline-block;
+    position: relative;
+    right: 0;
+    background-color: #1f3d9d;
+    color: white;
+
+}
+
 .orderSummary .patientTestDetails>.row:nth-child(odd) {
     background: rgba(31, 61, 157, 0.25);
 }
 
 .orderSummary .patientTestDetails>.row:nth-child(even) {
     background: rgba(242, 34, 131, 0.25);
+}
+
+.orderSummary .reviewOrder{
+    border: 2px solid #1f3d9d;
+    padding: 10px;
 }
 
 .orderSummary .reviewOrder .applycouponbtn {

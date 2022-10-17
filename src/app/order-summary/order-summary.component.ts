@@ -11,12 +11,12 @@ export class OrderSummaryComponent implements OnInit {
   orderId: string = '';
   userOrderDetail: any;
   userCart: any;
-  totalCartValue: any;
+  totalCartValue: number = 0;
 
   constructor(private cartService: CartService, private activateRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.orderId = this.activateRoute.snapshot.params['orderId'];
+    this.orderId = localStorage.getItem('orderId') || '';
     this.getOrderDetail();
   }
 
@@ -24,8 +24,10 @@ export class OrderSummaryComponent implements OnInit {
     this.cartService.getOrderByUserId(this.orderId).subscribe(res => {
       this.userOrderDetail = res;
       this.userCart = this.userOrderDetail[0].cart;
+      this.userCart.forEach((element: any) => {
+        this.totalCartValue += parseFloat(element.price);
+      });
     })
   }
 
-  
 }

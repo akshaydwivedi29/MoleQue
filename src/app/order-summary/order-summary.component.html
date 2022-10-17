@@ -70,11 +70,11 @@
                         <p>{{cart.testname}}</p>
                     </div>
                     <div class="col">
-                        <p>{{cart.price}}</p>
+                        <p>{{cart.price | number: '1.2-2'}}</p>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col">Total: ₹{{totalCartValue}}</div>
+                    <div class="col price">Total :  ₹{{totalCartValue | number: '1.2-2'}}</div>
                 </div>
             </div>
         </div>
@@ -87,9 +87,9 @@
             <div class="reviewOrder">
                 <button class="applycouponbtn">Apply Coupon</button>
                 <div class="payment">
-                    Net Payable Amount: ₹ {{totalCartValue}}
+                    Net Payable Amount: ₹ {{totalCartValue | number: '1.2-2'}}
                 </div>
-                <button class="btn" type="button">Proceed to payment</button>
+                <button class="btn" type="button" routerLink="/cart/payment">Proceed to payment</button>
 
             </div>
 

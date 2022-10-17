@@ -20,7 +20,7 @@
                 </div>
                 <div class="price_remove">
                     <div>₹ {{obj?.price}}</div>
-                    <div (click)="removeItem(obj); loadData()"><i class="bi bi-trash3-fill"></i></div>
+                    <div (click)="openConfirmDialog(obj)"><i class="bi bi-trash3-fill"></i></div>
                 </div>
             </div>
             <div class="payableAmount row">
@@ -148,7 +148,8 @@
                     </div>
                 </div>
                 <div class="button">
-                    <button class="mx-2" type="button" (click)="proceed()" [disabled]="!selfSelected && selectedMember<0">Proceed</button>
+                    <button class="mx-2" type="button" (click)="proceed()"
+                        [disabled]="!selfSelected && selectedMember<0">Proceed</button>
                     <button type="button" (click)="openFamilyPopup()">Add Patient</button>
                 </div>
             </div>
@@ -255,6 +256,26 @@
                     </div>
                 </form>
 
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- confirm Modal -->
+<div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayConfirm}">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h4 class="modal-title">Alert!</h4>
+            </div>
+
+            <div class="modal-body">
+                <p>Are you sure you want to remove this test from cart?</p>
+            </div>
+            <div class="buttons mb-4">
+            <button type="button" (click)="closeConfirmDialog()">Cancel</button>
+            <button class="mx-4" (click)="removeItem()" type="button">Confirm</button>
             </div>
         </div>
     </div>

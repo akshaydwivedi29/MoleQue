@@ -41,8 +41,6 @@ export class CartService {
     // return this.http.delete(`${environment.serverURL}cart/removeAll/${userId}`);
   }
 
-
-
   removeItem(item: any) {
     const index = this.items.findIndex((o: any) => o._id === item._id);
     if (index > -1) {
@@ -120,7 +118,11 @@ export class CartService {
     return this.http.patch(`${environment.serverURL}order/${orderId}`, order);
   }
 
-  getOrderByUserId(userId:string){
-   return this.http.get(`${environment.serverURL}order/orderByUserId/${userId}`)
+  getOrderByUserId(userId: string) {
+    return this.http.get(`${environment.serverURL}order/orderByUserId/${userId}`)
+  }
+
+  deleteOrder(orderId:string){
+    return this.http.delete(`${environment.serverURL}order/deleteOrderByOrderId/${orderId}`)
   }
 }

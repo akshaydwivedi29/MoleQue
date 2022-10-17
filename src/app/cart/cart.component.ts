@@ -24,6 +24,8 @@ export class CartComponent implements OnInit {
   displayStyleFamily: string = 'none';
   displayStyleAddress: string = 'none';
   displayStyleAddAddress: string = 'none';
+  displayConfirm: string = 'none';
+  test: any;
   selectedMember: number = -1;
   selectedAddress: number = -1;
   blur_bg: boolean = false;
@@ -90,19 +92,35 @@ export class CartComponent implements OnInit {
     this.itemCount = this.cartCount.length;
   } */
 
-
   loadData() {
     this.testlist = this.cartService.getItems();
     this.totalCartValue = this.cartService.getTotalCartValue();
   }
 
-  removeItem(test: any) {
-    this.cartService.removeItem(test);
+  openConfirmDialog(test: any) {
+    this.test = test;
+    this.displayConfirm = 'flex';
+    this.blurBody();
+  }
+
+  closeConfirmDialog() {
+    this.displayConfirm = 'none';
+    this.sharpBody();
+  }
+
+  removeItem() {
+    this.cartService.removeItem(this.test);
     this.loadData();
+    this.closeConfirmDialog();
   }
 
   clearCart() {
     this.cartService.clearCart();
+    const orderId = localStorage.getItem('orderId');
+    if (orderId) {
+      localStorage.removeItem('orderId');
+      this.cartService.deleteOrder(orderId).subscribe(res => { });
+    }
     this.loadData();
   }
 
@@ -184,9 +202,8 @@ export class CartComponent implements OnInit {
   proceed() {
     this.cartService.createOrder(this.userId, { userDetail: this.user, cart: this.testlist }).subscribe((res: any) => {
       const orderId = res._id;
-      this.router.navigate(['/cart/address', { orderId: orderId }])
+      localStorage.setItem('orderId', orderId)
+      this.router.navigate(['/cart/address'])
     })
   }
-
-
 }

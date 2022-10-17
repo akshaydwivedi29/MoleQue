@@ -77,7 +77,8 @@
 .cart .cart_items .items button,
 .cart .cart_items .checkout button,
 .empty_cart button,
-.modal .modal-content .modal-body button {
+.modal .modal-content .modal-body button,
+.modal .buttons button {
     border: none;
     background: #f22283;
     color: #fff;
@@ -90,8 +91,14 @@
 
 .cart .cart_items .items button:hover,
 .cart .cart_items .checkout button:hover,
-.empty_cart button:hover {
+.empty_cart button:hover,
+.modal .buttons button:hover {
     background: #1f3d9d;
+}
+
+.modal .buttons{
+    display: flex;
+    justify-content: flex-end;
 }
 
 .cart .cart_items .checkout {
