@@ -93,7 +93,7 @@ export class HeaderComponent implements OnInit {
   }
 
   logout() {
-    localStorage.removeItem('id')
+    localStorage.clear();
     this.router.navigate(['/login'])
   }
 

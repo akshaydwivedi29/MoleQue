@@ -14,7 +14,7 @@ import { TestDetailsComponent } from './test-details/test-details.component';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CartComponent } from './cart/cart.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { SignupComponent } from './signup/signup.component';
 import { ContactUsComponent } from './pages/contact-us/contact-us.component';
@@ -25,6 +25,9 @@ import { TestListComponent } from './test-list/test-list.component';
 import { BookTestComponent } from './book-test/book-test.component';
 import { ProfileComponent } from './profile/profile.component';
 import { CartModalComponent } from './cart-modal/cart-modal.component';
+import { AddressComponent } from './address/address.component';
+import { OrderSummaryComponent } from './order-summary/order-summary.component';
+import { PaymentComponent } from './payment/payment.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,6 +48,9 @@ import { CartModalComponent } from './cart-modal/cart-modal.component';
     BookTestComponent,
     ProfileComponent,
     CartModalComponent,
+    AddressComponent,
+    OrderSummaryComponent,
+    PaymentComponent,
   ],
   imports: [
     BrowserModule,
@@ -52,6 +58,7 @@ import { CartModalComponent } from './cart-modal/cart-modal.component';
     HttpClientModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
+    FormsModule,
     CarouselModule,
     BsDatepickerModule.forRoot(),
   ],

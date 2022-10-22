@@ -290,7 +290,6 @@ export class ProfileComponent implements OnInit {
     if (this.Id) {
       this.loginService.getUserDetail(this.Id).subscribe((res: any) => {
         this.userDetail = res;
-        console.log(this.userDetail)
         if (this.userDetail.DOB) {
           this.userDetail.DOB = new Date(this.userDetail.DOB)
         }

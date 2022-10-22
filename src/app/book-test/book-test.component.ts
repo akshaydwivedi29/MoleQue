@@ -97,9 +97,11 @@ export class BookTestComponent implements OnInit {
   }
 
   addToCart(item: any) {
-
     this.cartService.addToCart(item);
+  }
 
+  abc(item:any){
+    this.cartService.removeItem(item)
   }
 
   getTestList() {

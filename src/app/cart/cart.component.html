@@ -1,6 +1,6 @@
 <app-header></app-header>
 
-<section class="cart">
+<section [ngClass]="blur_bg ? 'blur_body cart' : 'cart'">
 
     <div class="cart_items" *ngIf="testlist.length >= 1">
         <div class="items">
@@ -8,6 +8,10 @@
             <hr>
             <h5>Booking Cart</h5>
             <h6>You have {{testlist.length}} items in your cart</h6>
+            <div class="clear_btn">
+                <button type="button" (click)="clearCart()">Clear
+                    Cart</button>
+            </div>
 
             <div class="table" *ngFor='let obj of testlist;'>
                 <div class="code_name">
@@ -16,21 +20,44 @@
                 </div>
                 <div class="price_remove">
                     <div>₹ {{obj?.price}}</div>
-                    <div (click)="removeItem(obj); loadData()"><i class="bi bi-trash3-fill"></i></div>
+                    <div (click)="openConfirmDialog(obj)"><i class="bi bi-trash3-fill"></i></div>
                 </div>
             </div>
-            <div class="clear_btn">
-                <button type="button" (click)="clearCart()">Clear
-                    Cart</button>
+            <div class="payableAmount row">
+                <div class="amount col-8">Total<span>₹{{ totalCartValue | number : '1.2-2'}}</span> </div>
+                <button class="col-4" type="button" [routerLink]="'/book-test'">+Add Tests</button>
             </div>
-
         </div>
 
         <div class="checkout">
-            <div class="book_for">Book For</div>
-            <div class="collection_details my-3">Sample Collection Date, Time & Address</div>
-            <button type="button">Proceed To Payment</button>
+            <h5>Review Your Order</h5>
+            <hr>
+            <div class="subtotal">
+                <span>Subtotal</span>
+                <span class="reviewAmount">₹ {{ totalCartValue | number : '1.2-2'}}</span>
+                <hr>
+            </div>
+            <div class="discount">
+                <span>Discount</span>
+                <span class="reviewAmount">₹ 00.00</span>
+                <hr>
+            </div>
+            <div class="netAmount">
+                <span>Net Payable Amount</span>
+                <span class="reviewAmount">₹ {{ totalCartValue | number : '1.2-2'}}</span>
+            </div>
+            <button class="my-4" type="button" (click)="openPopup()">Proceed/Add Patient</button>
         </div>
+        <!-- <div class="userDetail">
+                <div class="book_for my-3">Book For<span *ngIf="user">: {{user?.firstName}} | {{user?.gender}}</span>
+                </div>
+                <button type="button" (click)="openPopup()">{{user?'Change':'Choose'}}</button>
+            </div>
+            <div class="collection_details my-3">Address<span *ngIf="userAddress">: {{userAddress?.addressLine1}} |
+                    {{userAddress?.city}}</span></div>
+            <button type="button" (click)="openAddressPopup()">{{userAddress?'Change':'Choose'}}</button>
+            <div class="collection_details my-3">Sample Collection Date,Time<span *ngIf="dateTime">:{{dateTime | date :'short'}}</span></div>
+            <input type="datetime-local" class="form-control" [(ngModel)]="dateTime"> -->
 
 
         <!-- <div class="payment">
@@ -80,4 +107,181 @@
     </div>
 
 </section>
+<!-- MODAL POPUP STARTS -->
+<!-- Family Popup -->
+<div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle}">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="btn closeButton" (click)="closePopup()">
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                </button>
+                <img src="../../assets/images/icons/myfamily.png" alt="Avatar">
+                <h4 class="modal-title"> Family Details</h4>
+                <p>Select a patient from list</p>
+            </div>
+
+            <div class="modal-body">
+                <div (click)="selectSelf(userDetail)" [ngClass]="selfSelected? 'selected card':'card'">
+                    <div class="card-body">
+                        <img src="../../assets/images/icons/avatar.png" alt="Avatar">
+                        <div class="text">
+                            <h5 class="card-title">{{userDetail?.firstName | titlecase}}</h5>
+                            <span class="card-text">Self | </span>
+                            <span class="card-text">{{userDetail?.gender}} | </span>
+                            <span class="card-text">{{userDetail?.DOB | date}}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div (click)="selectFamilyMember(i,member)" [ngClass]="selectedMember==i? 'selected card':'card'"
+                    *ngFor="let member of familyMember; let i =index">
+                    <div class="card-body">
+                        <img src="../../assets/images/icons/avatar.png" alt="Avatar">
+                        <div class="text">
+                            <h5 class="card-title">{{member.memberFirstName | titlecase}}</h5>
+                            <span class="card-text">{{member.relation}} | </span>
+                            <span class="card-text">{{member.memberGender}} | </span>
+                            <span class="card-text">{{member.memberDOB | date}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="button">
+                    <button class="mx-2" type="button" (click)="proceed()"
+                        [disabled]="!selfSelected && selectedMember<0">Proceed</button>
+                    <button type="button" (click)="openFamilyPopup()">Add Patient</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Add Family Popup -->
+<div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyleFamily}">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="btn closeButton" (click)="closeFamilyPopup()">
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                </button>
+                <h4 class="modal-title"> Add Family Member</h4>
+            </div>
+
+            <div class="modal-body">
+                <form [formGroup]="familyMemberForm" (ngSubmit)="addMember()">
+                    <div class="row my-4">
+                        <div class="form-group col-sm-6 col-xs-12 space">
+                            <label for="memberfirstname" class="required">First Name</label>
+                            <input type="text" class="form-control name" formControlName="memberFirstName"
+                                placeholder="Enter First name">
+                            <div class="error"
+                                *ngIf="familyMemberForm.controls['memberFirstName'].invalid && familyMemberForm.controls['memberFirstName'].touched ">
+                                Please provide valid first name</div>
+                        </div>
+                        <div class="form-group col-sm-6 col-xs-12">
+                            <label for="memberlastname" class="required">Last Name</label>
+                            <input type="text" class="form-control name" formControlName="memberLastName"
+                                placeholder="Enter Last name">
+                            <div class="error"
+                                *ngIf="familyMemberForm.controls['memberLastName'].invalid && familyMemberForm.controls['memberLastName'].touched ">
+                                Please provide valid last name</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-sm-6 col-xs-12 space">
+                            <label for="relation" class="required">Relation</label>
+                            <select class="form-select" formControlName="relation" aria-label="Default select example">
+                                <option selected disabled value="">Please Choose Relation</option>
+                                <option value="Spouse">Spouse</option>
+                                <option value="Daughter">Daughter</option>
+                                <option value="Son">Son</option>
+                                <option value="Father">Father</option>
+                                <option value="Mother">Mother</option>
+                                <option value="Family">Family</option>
+                            </select>
+                            <div class="error"
+                                *ngIf="familyMemberForm.controls['relation'].invalid && familyMemberForm.controls['relation'].touched ">
+                                Please select relation</div>
+                        </div>
+
+                        <div class="form-group col-sm-6 col-xs-12">
+                            <label for="relativemobile" class="required">Mobile</label>
+                            <input type="tel" class="form-control" formControlName="memberMobile"
+                                placeholder="Enter Mobile" (keypress)="keyPress($event)" maxlength="10" minlength="10">
+                            <div class="error"
+                                *ngIf="familyMemberForm.controls['memberMobile'].invalid && familyMemberForm.controls['memberMobile'].touched ">
+                                Please provide valid mobile number</div>
+                        </div>
+                    </div>
+
+                    <div class="row my-4 ">
+                        <div class="form-group col-sm-6 col-xs-12 space">
+                            <label for="membergender" class="required">Gender</label>
+                            <div class="d-flex align-items-center">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" value="Male" id="flexRadioDefault1"
+                                        formControlName="memberGender">
+                                    <label class="form-check-label" for="flexRadioDefault3">
+                                        Male
+                                    </label>
+                                </div>
+                                <div class="form-check ms-4">
+                                    <input class="form-check-input" type="radio" value="Female" id="flexRadioDefault2"
+                                        formControlName="memberGender">
+                                    <label class="form-check-label" for="flexRadioDefault4">
+                                        Female
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="error"
+                                *ngIf="familyMemberForm.controls['memberGender'].invalid && familyMemberForm.controls['memberGender'].touched ">
+                                Please select gender</div>
+                        </div>
+
+                        <div class="form-group col-sm-6 col-xs-12">
+                            <label for="dob" class="required">Date Of Birth</label>
+                            <input type="text" bsDatepicker [bsConfig]="datePickerConfig" class="form-control"
+                                placeholder="MM/DD/YYYY" formControlName="memberDOB">
+                            <div class="error"
+                                *ngIf="familyMemberForm.controls['memberDOB'].invalid && familyMemberForm.controls['memberDOB'].touched ">
+                                Please provide valid date of birth</div>
+                        </div>
+
+                        <div class="d-flex align-items-center justify-content-center mt-5">
+                            <button type="submit" [disabled]="familyMemberForm.invalid">Add
+                                Member</button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- confirm Modal -->
+<div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayConfirm}">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h4 class="modal-title">Alert!</h4>
+            </div>
+
+            <div class="modal-body">
+                <p>Are you sure you want to remove this test from cart?</p>
+            </div>
+            <div class="buttons mb-4">
+            <button type="button" (click)="closeConfirmDialog()">Cancel</button>
+            <button class="mx-4" (click)="removeItem()" type="button">Confirm</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- MODAL POPUP ENDS  -->
+
 <app-footer></app-footer>

@@ -16,7 +16,7 @@
     justify-content: space-around;
 }
 
-.user{
+.user {
     position: absolute;
     bottom: 0;
     right: 70px;
@@ -32,7 +32,7 @@
 }
 
 .top_header .header_logo img {
-    width: 250px;
+    width: 225px;
     height: auto;
     cursor: pointer;
 }

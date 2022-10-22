@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { CartService } from '../services/cart.service';
 import { LoginServiceService } from '../services/login-service.service';
 
@@ -44,11 +44,9 @@ export class LoginComponent implements OnInit {
     this.otpForm = this.formBuilder.group({
       otpCode: ['', [Validators.required]],
     });
-    this.route.queryParams.subscribe(params => {
+    this.route.params.subscribe((params:Params) => {
       this.redirectURL = params['redirectUrl'];
-      console.log(params);
-
-      if (this.redirectURL == '' || undefined) {
+      if (this.redirectURL == '' ||this.redirectURL ==  undefined) {
         this.redirectURL = 'dashboard';
       }
     });
@@ -74,6 +72,7 @@ export class LoginComponent implements OnInit {
     this.showSpinner = true;
     this.blur_bg = true;
     this.loginService.login(this.loginData).subscribe((res: any) => {
+      console.log(res)
       if (res.length == 1) {
         this.router.navigate([this.redirectURL], {
           replaceUrl: true,

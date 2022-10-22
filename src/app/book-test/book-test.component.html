@@ -77,7 +77,8 @@
                             <button (click)="openRequestPage(list)" class="knowMoreBtn">Know more...</button>
                         </div>
                         <div class="button">
-                            <button class="btn" type="button" (click)="addToCart(list)" [disabled]="canAddToCart(list)">
+                            <button class="btn" type="button" (click)="addToCart(list)"
+                                [disabled]="canAddToCart(list)">
                                 <i class="bi bi-cart-fill mx-2"></i>
                                 {{canAddToCart(list)? 'Added To Cart' :'Add To Cart'}}
                             </button>

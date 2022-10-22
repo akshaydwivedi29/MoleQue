@@ -18222,3 +18222,7 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+button[disabled]{
+  cursor: not-allowed;
+  filter:grayscale(1);
+}
