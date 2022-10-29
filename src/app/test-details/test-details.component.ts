@@ -18,9 +18,8 @@ export class TestDetailsComponent implements OnInit {
   testId: string = '';
   userId: string = '';
   obj!: TestList;
-  toggleTab = false;
-  canAddToCart = true;
-  modal = false;
+  toggleTab:boolean = false;
+  modal:boolean = false;
 
   @ViewChild('popup') popup!: ElementRef;
   @ViewChild('patient') patient!: ElementRef;
@@ -52,9 +51,8 @@ export class TestDetailsComponent implements OnInit {
   ngOnInit(): void { }
 
   getData() {
-    this.testsService.getTestDetail(this.testId).subscribe((results: any) => {
+    this.testsService.getTestDetail(this.testId).subscribe((results: TestList) => {
       this.obj = results;
-      this.canAddToCart = !this.cartService.isAlreadyAddedInCart(this.obj);
     });
   }
 
@@ -62,10 +60,12 @@ export class TestDetailsComponent implements OnInit {
     this.toggleTab = !this.toggleTab;
   }
 
-  addToCart(item: any) {
+  addToCart(item: TestList) {
     this.cartService.addToCart(item);
-
-
     this.modal = true;
+  }
+
+   canAddToCart(item: TestList) {
+    return this.cartService.isAlreadyAddedInCart(item);
   }
 }

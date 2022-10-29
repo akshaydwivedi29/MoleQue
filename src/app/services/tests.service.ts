@@ -27,12 +27,12 @@ export interface TestList {
 export class TestsService {
   constructor(private http: HttpClient) {}
 
-  searchTestList(testName:TestList){
+  searchTestList(testName:string){
     return this.http.get<TestList[]>(`${environment.serverURL}search/${testName}`)
   }
 
   getTestDetail(testId:string){
-    return this.http.get(`${environment.serverURL}search/testDetails/${testId}`)
+    return this.http.get<TestList>(`${environment.serverURL}search/testDetails/${testId}`)
   }
 
   sortAsc(){

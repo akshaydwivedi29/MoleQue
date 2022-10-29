@@ -79,7 +79,7 @@ export class SignupComponent implements OnInit {
     );
   }
 
-  move(event: any, previous: any, current: any, next: any) {
+  move(event: KeyboardEvent, previous: any, current: any, next: any) {
     let length = current.value.length;
     let maxLength = current.getAttribute('maxlength');
     if (length == maxLength) {
@@ -94,10 +94,9 @@ export class SignupComponent implements OnInit {
     }
   }
 
-  submitOtp(otp1: any, otp2: any, otp3: any, otp4: any, otp5: any, otp6: any) {
+  submitOtp(otp1: HTMLInputElement, otp2: HTMLInputElement, otp3: HTMLInputElement, otp4: HTMLInputElement, otp5: HTMLInputElement, otp6: HTMLInputElement) {
     this.otpCode = otp1.value + otp2.value + otp3.value + otp4.value + otp5.value + otp6.value;
     this.loginService.loginWithOtp({ otp: this.otpCode, mobile: this.number }).subscribe((res: any) => {
-      console.log(res)
       localStorage.setItem('id', res._id);
       this.cartService.loadCart()
       this.router.navigate(['/profile', { number: this.number, userId: this.userId }

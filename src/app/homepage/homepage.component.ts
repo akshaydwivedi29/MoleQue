@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { HomeServiceService } from '../services/home-service.service';
 import { LoginServiceService } from '../services/login-service.service';
+import { TestList } from '../services/tests.service';
 import { InquiryForm, TestReport } from './homepage.model';
 
 @Component({
@@ -299,7 +300,7 @@ export class HomepageComponent implements OnInit {
   getOTP() {
     this.number = this.mobileNumber.value.mobile;
     this.loginService.generateOTP(this.number).subscribe(
-      (res: any) => {
+      (res) => {
         this.secure_login = true;
       },
       (err) => {
@@ -315,7 +316,7 @@ export class HomepageComponent implements OnInit {
     this.loginService.generateOTP(this.number).subscribe();
   }
 
-  submitOtp(otp1: any, otp2: any, otp3: any, otp4: any, otp5: any, otp6: any) {
+  submitOtp(otp1: HTMLInputElement, otp2: HTMLInputElement, otp3: HTMLInputElement, otp4: HTMLInputElement, otp5: HTMLInputElement, otp6: HTMLInputElement) {
     this.otpCode =
       otp1.value +
       otp2.value +
@@ -343,7 +344,7 @@ export class HomepageComponent implements OnInit {
       );
   }
 
-  move(event: any, previous: any, current: any, next: any) {
+  move(event: KeyboardEvent, previous: any, current: any, next: any) {
     let length = current.value.length;
     let maxLength = current.getAttribute('maxlength');
     if (length == maxLength) {

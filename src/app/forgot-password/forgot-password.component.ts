@@ -69,7 +69,7 @@ password() {
     this.show = true;
   }
 
-  submit(otp1: any, otp2: any, otp3: any, otp4: any, otp5: any, otp6: any) {
+  submit(otp1: HTMLInputElement, otp2: HTMLInputElement, otp3: HTMLInputElement, otp4: HTMLInputElement, otp5: HTMLInputElement, otp6: HTMLInputElement) {
     this.newPassword = this.otp.value.newPassword;
     this.code = otp1.value + otp2.value + otp3.value + otp4.value + otp5.value + otp6.value;
     this.forgotPwdService.generateNewPassword({ mobile: this.mobile, otpCode: this.code, newPassword: this.newPassword }).subscribe((res) => {
@@ -83,7 +83,7 @@ password() {
       });
   }
 
-  move(event: any, previous: any, current: any, next: any) {
+  move(event: KeyboardEvent, previous: any, current: any, next: any) {
     let length = current.value.length;
     let maxLength = current.getAttribute('maxlength');
     if (length == maxLength) {

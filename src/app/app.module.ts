@@ -21,7 +21,6 @@ import { ContactUsComponent } from './pages/contact-us/contact-us.component';
 import { PrivacyPolicyComponent } from './pages/privacy-policy/privacy-policy.component';
 import { StatutoryComplianceComponent } from './pages/statutory-compliance/statutory-compliance.component';
 import { TermsConditionsComponent } from './pages/terms-conditions/terms-conditions.component';
-import { TestListComponent } from './test-list/test-list.component';
 import { BookTestComponent } from './book-test/book-test.component';
 import { ProfileComponent } from './profile/profile.component';
 import { CartModalComponent } from './cart-modal/cart-modal.component';
@@ -44,7 +43,6 @@ import { PaymentComponent } from './payment/payment.component';
     PrivacyPolicyComponent,
     StatutoryComplianceComponent,
     TermsConditionsComponent,
-    TestListComponent,
     BookTestComponent,
     ProfileComponent,
     CartModalComponent,

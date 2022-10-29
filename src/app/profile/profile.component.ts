@@ -15,6 +15,7 @@ export class ProfileComponent implements OnInit {
   userId: string = '';
   number: string = '';
   Id: string = '';
+  click: string='';
   profileForm: FormGroup;
   addressForm: FormGroup;
   familyMemberForm: FormGroup;
@@ -27,7 +28,6 @@ export class ProfileComponent implements OnInit {
   addressIndex!: number;
   passwordError: boolean = false;
   blur_bg: boolean = false;
-  click: any;
   userDetail!: userProfile;
   profileDetail!: userProfile;
   addressValue!: Address;
@@ -128,11 +128,11 @@ export class ProfileComponent implements OnInit {
     this.getUserDetail();
   }
 
-  tabChange(ids: any) {
+  tabChange(ids: string) {
     this.id = ids;
   }
 
-  toggleForm(opened: any) {
+  toggleForm(opened: string) {
     this.open = opened;
   }
 
@@ -159,7 +159,7 @@ export class ProfileComponent implements OnInit {
     this.showConfirmPassword = !this.showConfirmPassword;
   }
 
-  register(add: any) {
+  register(add: string) {
     this.profileDetail = this.profileForm.value;
     const password = this.profileDetail.password;
     const confirmPassword = this.profileDetail.confirm_password;
@@ -216,7 +216,7 @@ export class ProfileComponent implements OnInit {
     this.getUserDetail();
   }
 
-  showAddressForm(opened: any, address: any, index: number) {
+  showAddressForm(opened: string, address: Address, index: number) {
     this.show = true;
     this.open = opened;
     this.addressForm.patchValue(address);
@@ -260,7 +260,7 @@ export class ProfileComponent implements OnInit {
     }
   }
 
-  showFamilyMemberForm(opened: any, member: any, index: number) {
+  showFamilyMemberForm(opened: string, member: FamilyMember, index: number) {
     this.show = true;
     this.open = opened;
     member.memberDOB = new Date(member.memberDOB)
@@ -288,7 +288,7 @@ export class ProfileComponent implements OnInit {
 
   getUserDetail() {
     if (this.Id) {
-      this.loginService.getUserDetail(this.Id).subscribe((res: any) => {
+      this.loginService.getUserDetail(this.Id).subscribe((res: userProfile) => {
         this.userDetail = res;
         if (this.userDetail.DOB) {
           this.userDetail.DOB = new Date(this.userDetail.DOB)

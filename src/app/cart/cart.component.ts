@@ -2,21 +2,23 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
-import { Address, FamilyMember, userProfile } from '../dashboard/dashboard.model';
+import { FamilyMember, userProfile } from '../dashboard/dashboard.model';
 import { CartService } from '../services/cart.service';
 import { LoginServiceService } from '../services/login-service.service';
 import { TestList } from '../services/tests.service';
+import { User, UserTestOrder } from './cart.model';
 
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css'],
 })
+
 export class CartComponent implements OnInit {
   testlist: TestList[] = [];
   familyMember: FamilyMember[] = [];
   userDetail!: userProfile;
-  user: any;
+  user!: User;
   itemCount: number = 0;
   totalCartValue: number = 0;
   userId: string = '';
@@ -25,14 +27,12 @@ export class CartComponent implements OnInit {
   displayStyleAddress: string = 'none';
   displayStyleAddAddress: string = 'none';
   displayConfirm: string = 'none';
-  test: any;
+  test!: TestList;
   selectedMember: number = -1;
   selectedAddress: number = -1;
   blur_bg: boolean = false;
   selfSelected: boolean = false;
-  cartCount: any;
   familyMemberForm: FormGroup;
-  dateTime: any;
   datePickerConfig: Partial<BsDatepickerConfig>;
 
   constructor(private cartService: CartService, private router: Router, private loginService: LoginServiceService, private fb: FormBuilder) {
@@ -43,7 +43,8 @@ export class CartComponent implements OnInit {
     );
     // Datepicker ends
 
-    this.cartService.events.subscribe((res: any) => {
+    this.cartService.events.subscribe((res:any) => {
+      console.log
       this.itemCount = parseInt(res);
       this.loadData()
     });
@@ -87,17 +88,12 @@ export class CartComponent implements OnInit {
     }
   }
 
-  /* async getCart() {
-    this.cartCount = this.cartService.getItems();
-    this.itemCount = this.cartCount.length;
-  } */
-
   loadData() {
     this.testlist = this.cartService.getItems();
     this.totalCartValue = this.cartService.getTotalCartValue();
   }
 
-  openConfirmDialog(test: any) {
+  openConfirmDialog(test: TestList) {
     this.test = test;
     this.displayConfirm = 'flex';
     this.blurBody();
@@ -119,7 +115,7 @@ export class CartComponent implements OnInit {
     const orderId = localStorage.getItem('orderId');
     if (orderId) {
       localStorage.removeItem('orderId');
-      this.cartService.deleteOrder(orderId).subscribe(res => { });
+      this.cartService.deleteOrder(orderId).subscribe(() => { });
     }
     this.loadData();
   }
@@ -149,7 +145,7 @@ export class CartComponent implements OnInit {
   }
 
   familyDetails() {
-    this.loginService.getUserDetail(this.userId).subscribe((res: any) => {
+    this.loginService.getUserDetail(this.userId).subscribe((res: userProfile) => {
       this.userDetail = res;
       this.familyMember = this.userDetail.familyMember;
     })
@@ -169,7 +165,7 @@ export class CartComponent implements OnInit {
 
   addMember() {
     if (this.userId && this.familyMemberForm.valid) {
-      this.loginService.addFamilyMember(this.userId, this.familyMemberForm.value).subscribe(res => {
+      this.loginService.addFamilyMember(this.userId, this.familyMemberForm.value).subscribe(() => {
         this.familyDetails();
         this.closeFamilyPopup();
         this.openPopup();
@@ -192,7 +188,7 @@ export class CartComponent implements OnInit {
     this.user = {
       firstName: user.firstName,
       gender: user.gender,
-      DOB: user.DOB, user,
+      DOB: user.DOB,
       number: user.number
     };
     this.selfSelected = !this.selfSelected;
@@ -200,7 +196,7 @@ export class CartComponent implements OnInit {
   }
 
   proceed() {
-    this.cartService.createOrder(this.userId, { userDetail: this.user, cart: this.testlist }).subscribe((res: any) => {
+    this.cartService.createOrder(this.userId, { userDetail: this.user, cart: this.testlist }).subscribe((res: UserTestOrder) => {
       const orderId = res._id;
       localStorage.setItem('orderId', orderId)
       this.router.navigate(['/cart/address'])

@@ -63,7 +63,7 @@
 
                         <div class="form-group col-sm-6 col-xs-12">
                             <label for="mobile" class="required">Mobile</label>
-                            <input type="tel" formControlName="number" class="form-control" placeholder="Enter Mobile"
+                            <input type="tel" formControlName="number" class="form-control" placeholder="Enter Mobile" readonly
                                 (keypress)="keyPress($event)" maxlength="10" minlength="10">
                             <div class="error"
                                 *ngIf="profileForm.controls['number']?.invalid && profileForm.controls['number'].touched ">

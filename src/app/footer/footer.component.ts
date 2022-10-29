@@ -55,8 +55,7 @@ export class FooterComponent implements OnInit {
     const userId = localStorage.getItem('id');
     this.getNumber.userId = userId || '';
     if (userId && this.getCallForm.valid) {
-      this.homeService.getNumber(this.getNumber).subscribe((res) => {
-        console.log(res)
+      this.homeService.getNumber(this.getNumber).subscribe(() => {
         this.openPopup();
         setTimeout(() => {
           this.displayStyle = 'none';
@@ -65,7 +64,7 @@ export class FooterComponent implements OnInit {
         this.submitted = false;
       });
     } else if (this.getCallForm.valid) {
-      this.homeService.getNumber(this.getNumber).subscribe((res) => {
+      this.homeService.getNumber(this.getNumber).subscribe(() => {
         this.openPopup();
         setTimeout(() => {
           this.displayStyle = 'none';

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { UserTestOrder } from '../cart/cart.model';
 import { TestList } from './tests.service';
 
 @Injectable({
@@ -9,7 +10,7 @@ import { TestList } from './tests.service';
 })
 export class CartService {
   items: TestList[] = [];
-  totalCartValue = 0;
+  totalCartValue:number = 0;
   protected _eventSubject = new Subject();
   public events = this._eventSubject.asObservable();
 
@@ -18,7 +19,7 @@ export class CartService {
     this.loadCart();
   }
 
-  addToCart(item: any) {
+  addToCart(item: TestList) {
     this.items.push(item);
     this.saveCart();
     // return this.http.post(`${environment.serverURL}cart/`, item);
@@ -41,8 +42,8 @@ export class CartService {
     // return this.http.delete(`${environment.serverURL}cart/removeAll/${userId}`);
   }
 
-  removeItem(item: any) {
-    const index = this.items.findIndex((o: any) => o._id === item._id);
+  removeItem(item: TestList) {
+    const index = this.items.findIndex((o: TestList) => o._id === item._id);
     if (index > -1) {
       this.items.splice(index, 1);
       this.saveCart();
@@ -96,8 +97,10 @@ export class CartService {
     this._eventSubject.next(this.items.length);
   }
 
-  isAlreadyAddedInCart(item: any) {
-    const index = this.items.findIndex((o: any) => o._id === item._id);
+  isAlreadyAddedInCart(item: TestList) {
+    const index = this.items.findIndex((o: TestList) => {
+      o._id === item._id
+    });
     if (index > -1) return true;
     return false;
   }
@@ -111,7 +114,7 @@ export class CartService {
   }
 
   createOrder(userId: string, order: any) {
-    return this.http.post(`${environment.serverURL}order/createOrder/${userId}`, order);
+    return this.http.post<UserTestOrder>(`${environment.serverURL}order/createOrder/${userId}`, order);
   }
 
   updateOrder(orderId: string, order: any) {
@@ -119,10 +122,10 @@ export class CartService {
   }
 
   getOrderByUserId(userId: string) {
-    return this.http.get(`${environment.serverURL}order/orderByUserId/${userId}`)
+    return this.http.get<UserTestOrder[]>(`${environment.serverURL}order/orderByUserId/${userId}`)
   }
 
-  deleteOrder(orderId:string){
+  deleteOrder(orderId: string) {
     return this.http.delete(`${environment.serverURL}order/deleteOrderByOrderId/${orderId}`)
   }
 }

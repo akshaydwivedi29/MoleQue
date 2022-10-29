@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { UserTestOrder } from '../cart/cart.model';
 import { CartService } from '../services/cart.service';
+import { TestList } from '../services/tests.service';
 
 @Component({
   selector: 'app-payment',
@@ -8,7 +10,7 @@ import { CartService } from '../services/cart.service';
 })
 export class PaymentComponent implements OnInit {
   totalCartValue: number = 0;
-  userCart: any;
+  userCart: TestList[]=[];
   selectedMethod: boolean = false;
   id: string = 'card';
 
@@ -20,7 +22,7 @@ export class PaymentComponent implements OnInit {
 
   getOrderDetail() {
     const orderId = localStorage.getItem('orderId') || '';
-    this.cartService.getOrderByUserId(orderId).subscribe((res: any) => {
+    this.cartService.getOrderByUserId(orderId).subscribe((res: UserTestOrder[]) => {
       this.userCart = res[0].cart;
       this.userCart.forEach((element: any) => {
         this.totalCartValue += parseFloat(element.price);

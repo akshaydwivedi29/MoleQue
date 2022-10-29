@@ -166,13 +166,14 @@
                 <button type="button" class="btn closeButton" (click)="closeFamilyPopup()">
                     <i class="fa fa-times" aria-hidden="true"></i>
                 </button>
-                <h4 class="modal-title"> Add Family Member</h4>
+                <h4 class="modal-title">Add Family Member</h4>
+                <img src="../../assets/images/icons/myfamily.png" alt="Avatar">
             </div>
 
             <div class="modal-body">
                 <form [formGroup]="familyMemberForm" (ngSubmit)="addMember()">
                     <div class="row my-4">
-                        <div class="form-group col-sm-6 col-xs-12 space">
+                        <div class="form-group col-sm-6 col-xs-12">
                             <label for="memberfirstname" class="required">First Name</label>
                             <input type="text" class="form-control name" formControlName="memberFirstName"
                                 placeholder="Enter First name">
@@ -190,7 +191,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="form-group col-sm-6 col-xs-12 space">
+                        <div class="form-group col-sm-6 col-xs-12">
                             <label for="relation" class="required">Relation</label>
                             <select class="form-select" formControlName="relation" aria-label="Default select example">
                                 <option selected disabled value="">Please Choose Relation</option>
@@ -217,7 +218,7 @@
                     </div>
 
                     <div class="row my-4 ">
-                        <div class="form-group col-sm-6 col-xs-12 space">
+                        <div class="form-group col-sm-6 col-xs-12">
                             <label for="membergender" class="required">Gender</label>
                             <div class="d-flex align-items-center">
                                 <div class="form-check">
@@ -268,10 +269,11 @@
 
             <div class="modal-header">
                 <h4 class="modal-title">Alert!</h4>
+                <img src="../../assets/images/icons/alert.png" alt="">
             </div>
 
             <div class="modal-body">
-                <p>Are you sure you want to remove this test from cart?</p>
+                <p>Are you sure you want to remove test?</p>
             </div>
             <div class="buttons mb-4">
             <button type="button" (click)="closeConfirmDialog()">Cancel</button>

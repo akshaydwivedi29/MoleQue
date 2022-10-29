@@ -14,9 +14,9 @@ import { TestList, TestsService } from '../services/tests.service';
 export class BookTestComponent implements OnInit {
   id: any = 'allTest';
   userId: string = '';
-  testList: any;
+  testList: TestList[] = [];
   datePickerConfig: Partial<BsDatepickerConfig>;
-  modal = false;
+  modal: boolean = false;
 
   offerOptions: OwlOptions = {
     loop: true,
@@ -77,8 +77,8 @@ export class BookTestComponent implements OnInit {
     }
   }
 
-  searchTest(event: any) {
-    let query = event.target.value;
+  searchTest(event: Event) {
+    let query = (event.target as HTMLInputElement).value;
     if (!query || query.length < 1) {
       return;
     }
@@ -87,21 +87,19 @@ export class BookTestComponent implements OnInit {
     });
   }
 
-  tabChange(ids: any) {
+  tabChange(ids: string) {
     this.id = ids;
   }
 
-  openRequestPage(test: any) {
-    this.testService.getTestDetail(test._id).subscribe();
-    this.router.navigate(['/test-details', { Id: test._id }]);
+  openRequestPage(test: TestList) {
+    this.testService.getTestDetail(test?._id).subscribe(() => {
+      this.router.navigate(['/test-details', { Id: test._id }]);
+    });
   }
 
-  addToCart(item: any) {
+  addToCart(item: TestList) {
     this.cartService.addToCart(item);
-  }
-
-  abc(item:any){
-    this.cartService.removeItem(item)
+    this.modal = true;
   }
 
   getTestList() {
@@ -109,7 +107,8 @@ export class BookTestComponent implements OnInit {
       this.testList = res;
     });
   }
-  canAddToCart(item: any) {
+
+  canAddToCart(item: TestList) {
     return this.cartService.isAlreadyAddedInCart(item);
   }
 }

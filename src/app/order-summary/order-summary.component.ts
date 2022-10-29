@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { UserTestOrder } from '../cart/cart.model';
 import { CartService } from '../services/cart.service';
+import { TestList } from '../services/tests.service';
 
 @Component({
   selector: 'app-order-summary',
@@ -9,8 +11,8 @@ import { CartService } from '../services/cart.service';
 })
 export class OrderSummaryComponent implements OnInit {
   orderId: string = '';
-  userOrderDetail: any;
-  userCart: any;
+  userOrderDetail: UserTestOrder[]=[];
+  userCart: TestList[]=[];
   totalCartValue: number = 0;
 
   constructor(private cartService: CartService, private activateRoute: ActivatedRoute) { }
@@ -21,7 +23,8 @@ export class OrderSummaryComponent implements OnInit {
   }
 
   getOrderDetail() {
-    this.cartService.getOrderByUserId(this.orderId).subscribe(res => {
+    this.cartService.getOrderByUserId(this.orderId).subscribe((res:UserTestOrder[]) => {
+      console.log(res)
       this.userOrderDetail = res;
       this.userCart = this.userOrderDetail[0].cart;
       this.userCart.forEach((element: any) => {

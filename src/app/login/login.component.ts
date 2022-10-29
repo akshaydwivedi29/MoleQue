@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { userProfile } from '../dashboard/dashboard.model';
 import { CartService } from '../services/cart.service';
 import { LoginServiceService } from '../services/login-service.service';
 
@@ -71,8 +72,7 @@ export class LoginComponent implements OnInit {
     this.loginData = this.logInForm.value;
     this.showSpinner = true;
     this.blur_bg = true;
-    this.loginService.login(this.loginData).subscribe((res: any) => {
-      console.log(res)
+    this.loginService.login(this.loginData).subscribe((res: userProfile[]) => {
       if (res.length == 1) {
         this.router.navigate([this.redirectURL], {
           replaceUrl: true,
@@ -93,7 +93,7 @@ export class LoginComponent implements OnInit {
 
   loginWithOtp() {
     this.number = this.logInForm.value.number;
-    this.loginService.generateOTP(this.number).subscribe((res: any) => {
+    this.loginService.generateOTP(this.number).subscribe((res) => {
       this.showOTP = true;
     },
       (err) => {
@@ -105,7 +105,7 @@ export class LoginComponent implements OnInit {
     );
   }
 
-  submitOtp(otp1: any, otp2: any, otp3: any, otp4: any, otp5: any, otp6: any) {
+  submitOtp(otp1: HTMLInputElement, otp2: HTMLInputElement, otp3: HTMLInputElement, otp4: HTMLInputElement, otp5: HTMLInputElement, otp6: HTMLInputElement) {
     this.otpCode = otp1.value + otp2.value + otp3.value + otp4.value + otp5.value + otp6.value;
     this.loginService.loginWithOtp({ mobile: this.number, otp: this.otpCode }).subscribe((res: any) => {
       if (res) {
@@ -129,7 +129,7 @@ export class LoginComponent implements OnInit {
     this.router.navigate(['/forgot-password', { number: this.number }]);
   }
 
-  move(event: any, previous: any, current: any, next: any) {
+  move(event: KeyboardEvent, previous: any, current: any, next: any) {
     let length = current.value.length;
     let maxLength = current.getAttribute('maxlength');
     if (length == maxLength) {

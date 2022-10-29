@@ -12,7 +12,7 @@ declare var $: any;
 })
 export class HeaderComponent implements OnInit {
   testlist: Array<TestList> = [];
-  cartCount: any;
+  cartCount: TestList[]=[];
   hasQuery: boolean = false;
   itemCount: number = 0;
   userId: string = '';
@@ -48,12 +48,12 @@ export class HeaderComponent implements OnInit {
     }
   }
 
-  sendData(event: any) {
-    let query = event.target.value;
+  sendData(event: Event) {
+    let query = (event.target as HTMLInputElement).value;
     if (!query || query.length < 1) {
       return;
     }
-    this.testsService.searchTestList(query).subscribe((res: any) => {
+    this.testsService.searchTestList(query).subscribe((res: TestList[]) => {
       this.testlist = res;
     });
   }
@@ -76,7 +76,7 @@ export class HeaderComponent implements OnInit {
     }, 300);
   }
 
-  routeData(searchText: any) {
+  routeData(searchText: TestList) {
     this.router.navigate(['/test-details', { Id: searchText._id }]);
   }
 

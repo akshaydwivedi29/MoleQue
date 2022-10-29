@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Address } from '../dashboard/dashboard.model';
+import { Address, userProfile } from '../dashboard/dashboard.model';
 import { CartService } from '../services/cart.service';
 import { LoginServiceService } from '../services/login-service.service';
 
@@ -12,19 +12,17 @@ import { LoginServiceService } from '../services/login-service.service';
 })
 export class AddressComponent implements OnInit {
 
-  userId: string = '';
-  address: Address[] = [];
-  userAddress!: Address;
-  displayStyle: string = 'none';
   addressForm: FormGroup;
-  blur_bg: boolean = false;
+  address: Address[] = [];
   timeSlot: Date[] = [];
-  date: any;
-  time: any;
-  selectedDateTime!: Date;
+  userAddress: Address | undefined;
+  selectedDateTime: Date | undefined;
+  userId: string = '';
+  displayStyle: string = 'none';
   orderId: string = '';
+  blur_bg: boolean = false;
 
-  constructor(private loginService: LoginServiceService, private fb: FormBuilder, private cartService: CartService, private router: Router, private activateRoute: ActivatedRoute) {
+  constructor(private loginService: LoginServiceService, private fb: FormBuilder, private cartService: CartService, private router: Router) {
 
     this.addressForm = this.fb.group({
       addressLine1: ['', [Validators.required]],
@@ -44,7 +42,7 @@ export class AddressComponent implements OnInit {
   }
 
   addressDetail() {
-    this.loginService.getUserDetail(this.userId).subscribe((res: any) => {
+    this.loginService.getUserDetail(this.userId).subscribe((res: userProfile) => {
       this.address = res.address;
     })
   }
@@ -77,7 +75,7 @@ export class AddressComponent implements OnInit {
 
   addAddress() {
     if (this.userId && this.addressForm.valid) {
-      this.loginService.addAddress(this.userId, this.addressForm.value).subscribe((res) => {
+      this.loginService.addAddress(this.userId, this.addressForm.value).subscribe(() => {
         this.addressForm.reset();
         this.addressDetail();
         this.closeAddAddressPopup();
@@ -89,13 +87,14 @@ export class AddressComponent implements OnInit {
     this.userAddress = address;
   }
 
-  selectTime(time: any) {
+  selectTime(time: Date) {
     this.selectedDateTime = time;
+    console.log('selectTime',this.selectedDateTime)
   }
 
-  generateTimeSlot(event: any) {
+  generateTimeSlot(event: Event) {
     this.timeSlot = [];
-    const date = event.target.value;
+    const date = (event.target as HTMLInputElement).value;
     const startDate = new Date(date);
     startDate.setHours(6);
     startDate.setMinutes(30);
@@ -109,7 +108,7 @@ export class AddressComponent implements OnInit {
   }
 
   confirm() {
-    this.cartService.updateOrder(this.orderId, { userAddress: this.userAddress, scheduleSlot: this.selectedDateTime },).subscribe((res: any) => {
+    this.cartService.updateOrder(this.orderId, { userAddress: this.userAddress, scheduleSlot: this.selectedDateTime },).subscribe(() => {
       this.router.navigate(['/cart/order-summary'])
     })
   }

@@ -15,7 +15,7 @@ export class LoginServiceService {
   }
 
   login(user: any) {
-    return this.http.post(`${environment.serverURL}users/login`, user)
+    return this.http.post<userProfile[]>(`${environment.serverURL}users/login`, user)
   }
 
   generateOTP(mobile: any) {
